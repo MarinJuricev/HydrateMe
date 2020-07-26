@@ -1,7 +1,6 @@
-import 'package:HydrateMe/waves.dart';
 import 'package:flutter/material.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
+
+import 'waves.dart';
 
 void main() {
   runApp(MyApp());
