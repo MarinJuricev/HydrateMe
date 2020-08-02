@@ -1,1 +1,1 @@
-enum ParticleProp { startPoint, endPoint }
+enum ParticleProp { width, height }

@@ -30,6 +30,8 @@ dependencies:
   cupertino_icons: ^0.1.3
   wave: ^0.0.8
   simple_animations: ^2.2.1
+
+  # Definetly remove this sugar, only the modified example from simple_animations uses this.
   supercharged: ^1.7.0
 
 dev_dependencies:

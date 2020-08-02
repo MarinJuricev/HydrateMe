@@ -1,4 +1,5 @@
 import 'package:HydrateMe/particle_model.dart';
+import 'package:HydrateMe/particle_prop.dart';
 import 'package:flutter/material.dart';
 
 class ParticlePainter extends CustomPainter {
@@ -14,8 +15,12 @@ class ParticlePainter extends CustomPainter {
     particles.forEach((particle) {
       var progress = particle.animationProgress.progress(time);
       final animation = particle.tween.transform(progress);
+      final widthAnimationValue = animation.get(ParticleProp.width);
+      final heightAnimationValue = animation.get(ParticleProp.height);
+
       final position =
-          Offset(animation["x"] * size.width, animation["y"] * size.height);
+          Offset(widthAnimationValue * size.width, heightAnimationValue * size.height);
+
       canvas.drawCircle(position, size.width * 0.2 * particle.size, paint);
     });
   }

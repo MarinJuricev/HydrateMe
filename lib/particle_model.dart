@@ -1,7 +1,9 @@
 import 'dart:math';
 
+import 'package:HydrateMe/particle_prop.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
+import 'package:supercharged/supercharged.dart';
 
 class ParticleModel {
   Animatable tween;
@@ -18,14 +20,10 @@ class ParticleModel {
     final endPosition = Offset(-0.2 + 1.4 * random.nextDouble(), -0.2);
     final duration = Duration(milliseconds: 3000 + random.nextInt(10000));
 
-    tween = MultiTrackTween([
-      Track("x").add(
-          duration, Tween(begin: startPosition.dx, end: endPosition.dx),
-          curve: Curves.easeInOutSine),
-      Track("y").add(
-          duration, Tween(begin: startPosition.dy, end: endPosition.dy),
-          curve: Curves.easeIn),
-    ]);
+     tween = MultiTween<ParticleProp>()
+  ..add(ParticleProp.width, Tween(begin: startPosition.dx, end: endPosition.dx), duration, Curves.easeInOutSine)
+  ..add(ParticleProp.height, Tween(begin: startPosition.dy, end: endPosition.dy), duration, Curves.easeIn);
+
     animationProgress = AnimationProgress(duration: duration, startTime: time);
     size = 0.1 + random.nextDouble() * 0.25;
   }
