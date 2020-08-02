@@ -16,35 +16,45 @@ class _WavesState extends State<Waves> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onPanUpdate: (details) {
-        _offset = Offset(0, _offset.dy - details.delta.dy);
-        print('Offset is: $_offset');
-        setState(() {});
-      },
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 100),
-          curve: Curves.decelerate,
-          child: WaveWidget(
-            duration: 1,
-            config: CustomConfig(
-              gradients: [
-                [Colors.blue, Colors.lightBlue],
-                [Color(0xFF396afc), Color(0xFF2948ff)],
-              ],
-              durations: [10800, 19440],
-              heightPercentages: [0.05, 0.075],
-              blur: MaskFilter.blur(BlurStyle.solid, 5),
-              gradientBegin: Alignment.centerLeft,
-              gradientEnd: Alignment.centerRight,
+    return Container(
+      height: 200.0,
+      width: double.infinity,
+      child: Card(
+        elevation: 12.0,
+        margin: EdgeInsets.only(right: 16.0, left: 16.0, bottom: 16.0),
+        clipBehavior: Clip.antiAlias,
+        shape: CircleBorder(),
+        child: GestureDetector(
+          onPanUpdate: (details) {
+            final gestureYOffset = _offset.dy - details.delta.dy;
+            _offset = Offset(0, gestureYOffset);
+            if (gestureYOffset >= 0) setState(() {});
+          },
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 100),
+              curve: Curves.decelerate,
+              child: WaveWidget(
+                duration: 1,
+                config: CustomConfig(
+                  gradients: [
+                    [Colors.blue, Colors.lightBlue],
+                    [Color(0xFF396afc), Color(0xFF2948ff)],
+                  ],
+                  durations: [10800, 19440],
+                  heightPercentages: [0.05, 0.075],
+                  blur: MaskFilter.blur(BlurStyle.solid, 5),
+                  gradientBegin: Alignment.centerLeft,
+                  gradientEnd: Alignment.centerRight,
+                ),
+                waveAmplitude: 1.0,
+                backgroundColor: Colors.transparent,
+                size: Size(double.infinity, double.infinity),
+              ),
+              height: _offset.dy,
             ),
-            waveAmplitude: 1.0,
-            backgroundColor: Colors.transparent,
-            size: Size(double.infinity, double.infinity),
           ),
-          height: _offset.dy,
         ),
       ),
     );

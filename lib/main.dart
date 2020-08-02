@@ -1,3 +1,4 @@
+import 'package:HydrateMe/particles.dart';
 import 'package:flutter/material.dart';
 
 import 'waves.dart';
@@ -16,7 +17,13 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-        body: Waves(),
+        backgroundColor: Colors.blue,
+        body: Stack(
+          children: <Widget>[
+            Positioned.fill(child: Particles(30)),
+             Center(child: Waves()),
+          ],
+        ),
       ),
     );
   }
