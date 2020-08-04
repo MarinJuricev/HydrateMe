@@ -38,7 +38,7 @@ class _ParticlesState extends State<Particles> {
         _simulateParticles(duration);
 
         return CustomPaint(
-          painter: ParticlePainter(particles, duration),
+          painter: ParticlePainter(particles),
         );
       },
     );

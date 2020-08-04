@@ -17,7 +17,7 @@ class _WavesState extends State<Waves> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.0,
+      height: 225.0,
       width: double.infinity,
       child: Card(
         elevation: 12.0,

@@ -4,16 +4,15 @@ import 'package:flutter/material.dart';
 
 class ParticlePainter extends CustomPainter {
   List<ParticleModel> particles;
-  Duration time;
 
-  ParticlePainter(this.particles, this.time);
+  ParticlePainter(this.particles);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()..color = Colors.white.withAlpha(50);
 
     particles.forEach((particle) {
-      var progress = particle.animationProgress.progress(time);
+      var progress = particle.progress();
       final animation = particle.tween.transform(progress);
       final widthAnimationValue = animation.get(ParticleProp.width);
       final heightAnimationValue = animation.get(ParticleProp.height);
