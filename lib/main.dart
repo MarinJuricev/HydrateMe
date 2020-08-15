@@ -1,3 +1,4 @@
+import 'package:HydrateMe/hydrate_button.dart';
 import 'package:HydrateMe/particles.dart';
 import 'package:flutter/material.dart';
 
@@ -18,11 +19,27 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         backgroundColor: Colors.blue,
-        body: Stack(
-          children: <Widget>[
-            Positioned.fill(child: Particles(30)),
-             Center(child: Waves()),
-          ],
+        body: SafeArea(
+          child: Stack(
+            children: <Widget>[
+              Positioned.fill(child: Particles(30)),
+              // HydrationProgress(),
+              Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 36.0),
+                    child: Waves(),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      HydrateButton(title: 'Deny'),
+                      HydrateButton(title: 'Confirm'),
+                    ],
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

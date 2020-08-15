@@ -34,7 +34,6 @@ class _ParticlesState extends State<Particles> {
       tween: ConstantTween(1),
       builder: (context, child, _) {
         final duration = DateTime.now().duration();
-
         _simulateParticles(duration);
 
         return CustomPaint(
