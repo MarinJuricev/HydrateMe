@@ -3,6 +3,8 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class Waves extends StatefulWidget {
+  
+
   Waves({Key key}) : super(key: key);
 
   @override
@@ -43,7 +45,7 @@ class _WavesState extends State<Waves> with TickerProviderStateMixin {
                     [Color(0xFF396afc), Color(0xFF2948ff)],
                   ],
                   durations: [10800, 19440],
-                  heightPercentages: [0.05, 0.075],
+                  heightPercentages: [0.025, 0.030],
                   blur: MaskFilter.blur(BlurStyle.solid, 5),
                   gradientBegin: Alignment.centerLeft,
                   gradientEnd: Alignment.centerRight,

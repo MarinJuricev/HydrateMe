@@ -1,10 +1,11 @@
 import 'dart:math';
 
-import 'package:HydrateMe/particle_model.dart';
-import 'package:HydrateMe/particle_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
+
+import 'particle_model.dart';
+import 'particle_painter.dart';
 
 class Particles extends StatefulWidget {
   final int numberOfParticles;

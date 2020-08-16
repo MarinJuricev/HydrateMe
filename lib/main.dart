@@ -1,10 +1,12 @@
-import 'package:HydrateMe/hydrate_button.dart';
-import 'package:HydrateMe/particles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'waves.dart';
+import 'presentation/features/water_intake/bloc/water_intake_bloc.dart';
+import 'presentation/features/water_intake/water_intake_page.dart';
+import 'service_locator.dart' as di;
 
-void main() {
+void main() async {
+  await di.init();
   runApp(MyApp());
 }
 
@@ -17,31 +19,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(
-        backgroundColor: Colors.blue,
-        body: SafeArea(
-          child: Stack(
-            children: <Widget>[
-              Positioned.fill(child: Particles(30)),
-              // HydrationProgress(),
-              Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 24.0),
-                    child: Waves(),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      HydrateButton(title: 'Deny'),
-                      HydrateButton(title: 'Confirm'),
-                    ],
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
+      home: BlocProvider(
+        create: (BuildContext context) => di.getIt<WaterIntakeBloc>(),
+        child: WaterIntakePage(),
       ),
     );
   }

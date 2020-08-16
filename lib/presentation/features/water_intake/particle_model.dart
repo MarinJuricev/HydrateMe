@@ -1,9 +1,10 @@
 import 'dart:math';
 
-import 'package:HydrateMe/particle_prop.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
+
+import 'particle_prop.dart';
 
 class ParticleModel {
   Animatable tween;
@@ -45,8 +46,8 @@ class ParticleModel {
   }
 
   double progress() {
-  return ((DateTime.now().duration() - startTime) / duration)
-    .clamp(0.0, 1.0)
-    .toDouble();
-}
+    return ((DateTime.now().duration() - startTime) / duration)
+        .clamp(0.0, 1.0)
+        .toDouble();
+  }
 }

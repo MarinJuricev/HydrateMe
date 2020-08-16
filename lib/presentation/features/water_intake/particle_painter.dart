@@ -1,6 +1,7 @@
-import 'package:HydrateMe/particle_model.dart';
-import 'package:HydrateMe/particle_prop.dart';
 import 'package:flutter/material.dart';
+
+import 'particle_model.dart';
+import 'particle_prop.dart';
 
 class ParticlePainter extends CustomPainter {
   List<ParticleModel> particles;
