@@ -27,10 +27,11 @@ class MyApp extends StatelessWidget {
               Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 36.0),
+                    padding: const EdgeInsets.symmetric(vertical: 24.0),
                     child: Waves(),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       HydrateButton(title: 'Deny'),
                       HydrateButton(title: 'Confirm'),

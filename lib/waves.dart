@@ -17,11 +17,11 @@ class _WavesState extends State<Waves> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2,
+      height: MediaQuery.of(context).size.height / 1.5,
       width: double.infinity,
       child: Card(
         elevation: 12.0,
-        margin: EdgeInsets.only(right: 16.0, left: 16.0, bottom: 16.0),
+        margin: const EdgeInsets.only(right: 16.0, left: 16.0, bottom: 16.0),
         clipBehavior: Clip.antiAlias,
         shape: CircleBorder(),
         child: GestureDetector(

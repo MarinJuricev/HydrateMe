@@ -7,10 +7,24 @@ class HydrateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlineButton(
-      onPressed: () {},
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-      child: Text(title),
+    return Container(
+      height: 40,
+      width: MediaQuery.of(context).size.width / 2.5,
+      child: OutlineButton(
+        onPressed: () {},
+        highlightedBorderColor: Colors.white,
+        borderSide: const BorderSide(color: Colors.white),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 18.0,
+          ),
+        ),
+      ),
     );
   }
 }
