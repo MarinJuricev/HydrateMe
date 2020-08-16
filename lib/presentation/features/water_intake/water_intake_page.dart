@@ -36,7 +36,7 @@ Widget _buildInitialWaterIntake() {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24.0),
-            child: Waves(),
+            child: Waves(currentHeightPercentage: 1,),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

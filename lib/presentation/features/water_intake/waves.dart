@@ -3,18 +3,29 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class Waves extends StatefulWidget {
-  
+  final currentHeightPercentage;
 
-  Waves({Key key}) : super(key: key);
+  Waves({
+    Key key,
+    @required this.currentHeightPercentage,
+  }) : super(key: key);
 
   @override
   _WavesState createState() => _WavesState();
 }
 
 class _WavesState extends State<Waves> with TickerProviderStateMixin {
-  static double _minHeight = 80;
+  Offset _offset;
 
-  Offset _offset = Offset(0, _minHeight);
+  @override
+  void didChangeDependencies() {
+    _offset = Offset(
+      0,
+      widget.currentHeightPercentage * MediaQuery.of(context).size.height / 1.5,
+    );
+
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -9,6 +9,611 @@ part of 'water_intake_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+class _$WaterIntakeEventTearOff {
+  const _$WaterIntakeEventTearOff();
+
+// ignore: unused_element
+  WaterIntakeChangedEvent changed(double changedValue) {
+    return WaterIntakeChangedEvent(
+      changedValue,
+    );
+  }
+
+// ignore: unused_element
+  WaterIntakeUpdatedEvent updated(double updatedValue) {
+    return WaterIntakeUpdatedEvent(
+      updatedValue,
+    );
+  }
+
+// ignore: unused_element
+  WaterIntakeAcceptedEvent accepted(double acceptedValue) {
+    return WaterIntakeAcceptedEvent(
+      acceptedValue,
+    );
+  }
+
+// ignore: unused_element
+  WaterIntakeCanceledEvent canceled() {
+    return const WaterIntakeCanceledEvent();
+  }
+}
+
+// ignore: unused_element
+const $WaterIntakeEvent = _$WaterIntakeEventTearOff();
+
+mixin _$WaterIntakeEvent {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result changed(double changedValue),
+    @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
+    @required Result canceled(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result changed(double changedValue),
+    Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
+    Result canceled(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result changed(WaterIntakeChangedEvent value),
+    @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result accepted(WaterIntakeAcceptedEvent value),
+    @required Result canceled(WaterIntakeCanceledEvent value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result changed(WaterIntakeChangedEvent value),
+    Result updated(WaterIntakeUpdatedEvent value),
+    Result accepted(WaterIntakeAcceptedEvent value),
+    Result canceled(WaterIntakeCanceledEvent value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $WaterIntakeEventCopyWith<$Res> {
+  factory $WaterIntakeEventCopyWith(
+          WaterIntakeEvent value, $Res Function(WaterIntakeEvent) then) =
+      _$WaterIntakeEventCopyWithImpl<$Res>;
+}
+
+class _$WaterIntakeEventCopyWithImpl<$Res>
+    implements $WaterIntakeEventCopyWith<$Res> {
+  _$WaterIntakeEventCopyWithImpl(this._value, this._then);
+
+  final WaterIntakeEvent _value;
+  // ignore: unused_field
+  final $Res Function(WaterIntakeEvent) _then;
+}
+
+abstract class $WaterIntakeChangedEventCopyWith<$Res> {
+  factory $WaterIntakeChangedEventCopyWith(WaterIntakeChangedEvent value,
+          $Res Function(WaterIntakeChangedEvent) then) =
+      _$WaterIntakeChangedEventCopyWithImpl<$Res>;
+  $Res call({double changedValue});
+}
+
+class _$WaterIntakeChangedEventCopyWithImpl<$Res>
+    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    implements $WaterIntakeChangedEventCopyWith<$Res> {
+  _$WaterIntakeChangedEventCopyWithImpl(WaterIntakeChangedEvent _value,
+      $Res Function(WaterIntakeChangedEvent) _then)
+      : super(_value, (v) => _then(v as WaterIntakeChangedEvent));
+
+  @override
+  WaterIntakeChangedEvent get _value => super._value as WaterIntakeChangedEvent;
+
+  @override
+  $Res call({
+    Object changedValue = freezed,
+  }) {
+    return _then(WaterIntakeChangedEvent(
+      changedValue == freezed ? _value.changedValue : changedValue as double,
+    ));
+  }
+}
+
+class _$WaterIntakeChangedEvent
+    with DiagnosticableTreeMixin
+    implements WaterIntakeChangedEvent {
+  const _$WaterIntakeChangedEvent(this.changedValue)
+      : assert(changedValue != null);
+
+  @override
+  final double changedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WaterIntakeEvent.changed(changedValue: $changedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WaterIntakeEvent.changed'))
+      ..add(DiagnosticsProperty('changedValue', changedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WaterIntakeChangedEvent &&
+            (identical(other.changedValue, changedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.changedValue, changedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(changedValue);
+
+  @override
+  $WaterIntakeChangedEventCopyWith<WaterIntakeChangedEvent> get copyWith =>
+      _$WaterIntakeChangedEventCopyWithImpl<WaterIntakeChangedEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result changed(double changedValue),
+    @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
+    @required Result canceled(),
+  }) {
+    assert(changed != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(canceled != null);
+    return changed(changedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result changed(double changedValue),
+    Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
+    Result canceled(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changed != null) {
+      return changed(changedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result changed(WaterIntakeChangedEvent value),
+    @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result accepted(WaterIntakeAcceptedEvent value),
+    @required Result canceled(WaterIntakeCanceledEvent value),
+  }) {
+    assert(changed != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(canceled != null);
+    return changed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result changed(WaterIntakeChangedEvent value),
+    Result updated(WaterIntakeUpdatedEvent value),
+    Result accepted(WaterIntakeAcceptedEvent value),
+    Result canceled(WaterIntakeCanceledEvent value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changed != null) {
+      return changed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WaterIntakeChangedEvent implements WaterIntakeEvent {
+  const factory WaterIntakeChangedEvent(double changedValue) =
+      _$WaterIntakeChangedEvent;
+
+  double get changedValue;
+  $WaterIntakeChangedEventCopyWith<WaterIntakeChangedEvent> get copyWith;
+}
+
+abstract class $WaterIntakeUpdatedEventCopyWith<$Res> {
+  factory $WaterIntakeUpdatedEventCopyWith(WaterIntakeUpdatedEvent value,
+          $Res Function(WaterIntakeUpdatedEvent) then) =
+      _$WaterIntakeUpdatedEventCopyWithImpl<$Res>;
+  $Res call({double updatedValue});
+}
+
+class _$WaterIntakeUpdatedEventCopyWithImpl<$Res>
+    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    implements $WaterIntakeUpdatedEventCopyWith<$Res> {
+  _$WaterIntakeUpdatedEventCopyWithImpl(WaterIntakeUpdatedEvent _value,
+      $Res Function(WaterIntakeUpdatedEvent) _then)
+      : super(_value, (v) => _then(v as WaterIntakeUpdatedEvent));
+
+  @override
+  WaterIntakeUpdatedEvent get _value => super._value as WaterIntakeUpdatedEvent;
+
+  @override
+  $Res call({
+    Object updatedValue = freezed,
+  }) {
+    return _then(WaterIntakeUpdatedEvent(
+      updatedValue == freezed ? _value.updatedValue : updatedValue as double,
+    ));
+  }
+}
+
+class _$WaterIntakeUpdatedEvent
+    with DiagnosticableTreeMixin
+    implements WaterIntakeUpdatedEvent {
+  const _$WaterIntakeUpdatedEvent(this.updatedValue)
+      : assert(updatedValue != null);
+
+  @override
+  final double updatedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WaterIntakeEvent.updated(updatedValue: $updatedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WaterIntakeEvent.updated'))
+      ..add(DiagnosticsProperty('updatedValue', updatedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WaterIntakeUpdatedEvent &&
+            (identical(other.updatedValue, updatedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.updatedValue, updatedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(updatedValue);
+
+  @override
+  $WaterIntakeUpdatedEventCopyWith<WaterIntakeUpdatedEvent> get copyWith =>
+      _$WaterIntakeUpdatedEventCopyWithImpl<WaterIntakeUpdatedEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result changed(double changedValue),
+    @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
+    @required Result canceled(),
+  }) {
+    assert(changed != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(canceled != null);
+    return updated(updatedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result changed(double changedValue),
+    Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
+    Result canceled(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (updated != null) {
+      return updated(updatedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result changed(WaterIntakeChangedEvent value),
+    @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result accepted(WaterIntakeAcceptedEvent value),
+    @required Result canceled(WaterIntakeCanceledEvent value),
+  }) {
+    assert(changed != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(canceled != null);
+    return updated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result changed(WaterIntakeChangedEvent value),
+    Result updated(WaterIntakeUpdatedEvent value),
+    Result accepted(WaterIntakeAcceptedEvent value),
+    Result canceled(WaterIntakeCanceledEvent value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (updated != null) {
+      return updated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WaterIntakeUpdatedEvent implements WaterIntakeEvent {
+  const factory WaterIntakeUpdatedEvent(double updatedValue) =
+      _$WaterIntakeUpdatedEvent;
+
+  double get updatedValue;
+  $WaterIntakeUpdatedEventCopyWith<WaterIntakeUpdatedEvent> get copyWith;
+}
+
+abstract class $WaterIntakeAcceptedEventCopyWith<$Res> {
+  factory $WaterIntakeAcceptedEventCopyWith(WaterIntakeAcceptedEvent value,
+          $Res Function(WaterIntakeAcceptedEvent) then) =
+      _$WaterIntakeAcceptedEventCopyWithImpl<$Res>;
+  $Res call({double acceptedValue});
+}
+
+class _$WaterIntakeAcceptedEventCopyWithImpl<$Res>
+    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    implements $WaterIntakeAcceptedEventCopyWith<$Res> {
+  _$WaterIntakeAcceptedEventCopyWithImpl(WaterIntakeAcceptedEvent _value,
+      $Res Function(WaterIntakeAcceptedEvent) _then)
+      : super(_value, (v) => _then(v as WaterIntakeAcceptedEvent));
+
+  @override
+  WaterIntakeAcceptedEvent get _value =>
+      super._value as WaterIntakeAcceptedEvent;
+
+  @override
+  $Res call({
+    Object acceptedValue = freezed,
+  }) {
+    return _then(WaterIntakeAcceptedEvent(
+      acceptedValue == freezed ? _value.acceptedValue : acceptedValue as double,
+    ));
+  }
+}
+
+class _$WaterIntakeAcceptedEvent
+    with DiagnosticableTreeMixin
+    implements WaterIntakeAcceptedEvent {
+  const _$WaterIntakeAcceptedEvent(this.acceptedValue)
+      : assert(acceptedValue != null);
+
+  @override
+  final double acceptedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WaterIntakeEvent.accepted(acceptedValue: $acceptedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WaterIntakeEvent.accepted'))
+      ..add(DiagnosticsProperty('acceptedValue', acceptedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WaterIntakeAcceptedEvent &&
+            (identical(other.acceptedValue, acceptedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.acceptedValue, acceptedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(acceptedValue);
+
+  @override
+  $WaterIntakeAcceptedEventCopyWith<WaterIntakeAcceptedEvent> get copyWith =>
+      _$WaterIntakeAcceptedEventCopyWithImpl<WaterIntakeAcceptedEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result changed(double changedValue),
+    @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
+    @required Result canceled(),
+  }) {
+    assert(changed != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(canceled != null);
+    return accepted(acceptedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result changed(double changedValue),
+    Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
+    Result canceled(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (accepted != null) {
+      return accepted(acceptedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result changed(WaterIntakeChangedEvent value),
+    @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result accepted(WaterIntakeAcceptedEvent value),
+    @required Result canceled(WaterIntakeCanceledEvent value),
+  }) {
+    assert(changed != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(canceled != null);
+    return accepted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result changed(WaterIntakeChangedEvent value),
+    Result updated(WaterIntakeUpdatedEvent value),
+    Result accepted(WaterIntakeAcceptedEvent value),
+    Result canceled(WaterIntakeCanceledEvent value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (accepted != null) {
+      return accepted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WaterIntakeAcceptedEvent implements WaterIntakeEvent {
+  const factory WaterIntakeAcceptedEvent(double acceptedValue) =
+      _$WaterIntakeAcceptedEvent;
+
+  double get acceptedValue;
+  $WaterIntakeAcceptedEventCopyWith<WaterIntakeAcceptedEvent> get copyWith;
+}
+
+abstract class $WaterIntakeCanceledEventCopyWith<$Res> {
+  factory $WaterIntakeCanceledEventCopyWith(WaterIntakeCanceledEvent value,
+          $Res Function(WaterIntakeCanceledEvent) then) =
+      _$WaterIntakeCanceledEventCopyWithImpl<$Res>;
+}
+
+class _$WaterIntakeCanceledEventCopyWithImpl<$Res>
+    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    implements $WaterIntakeCanceledEventCopyWith<$Res> {
+  _$WaterIntakeCanceledEventCopyWithImpl(WaterIntakeCanceledEvent _value,
+      $Res Function(WaterIntakeCanceledEvent) _then)
+      : super(_value, (v) => _then(v as WaterIntakeCanceledEvent));
+
+  @override
+  WaterIntakeCanceledEvent get _value =>
+      super._value as WaterIntakeCanceledEvent;
+}
+
+class _$WaterIntakeCanceledEvent
+    with DiagnosticableTreeMixin
+    implements WaterIntakeCanceledEvent {
+  const _$WaterIntakeCanceledEvent();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WaterIntakeEvent.canceled()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WaterIntakeEvent.canceled'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is WaterIntakeCanceledEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result changed(double changedValue),
+    @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
+    @required Result canceled(),
+  }) {
+    assert(changed != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(canceled != null);
+    return canceled();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result changed(double changedValue),
+    Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
+    Result canceled(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (canceled != null) {
+      return canceled();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result changed(WaterIntakeChangedEvent value),
+    @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result accepted(WaterIntakeAcceptedEvent value),
+    @required Result canceled(WaterIntakeCanceledEvent value),
+  }) {
+    assert(changed != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(canceled != null);
+    return canceled(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result changed(WaterIntakeChangedEvent value),
+    Result updated(WaterIntakeUpdatedEvent value),
+    Result accepted(WaterIntakeAcceptedEvent value),
+    Result canceled(WaterIntakeCanceledEvent value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (canceled != null) {
+      return canceled(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WaterIntakeCanceledEvent implements WaterIntakeEvent {
+  const factory WaterIntakeCanceledEvent() = _$WaterIntakeCanceledEvent;
+}
+
 class _$WaterIntakeStateTearOff {
   const _$WaterIntakeStateTearOff();
 
@@ -18,16 +623,16 @@ class _$WaterIntakeStateTearOff {
   }
 
 // ignore: unused_element
-  WaterIntakeChangedState changed(double updatedValue) {
-    return WaterIntakeChangedState(
+  WaterIntakeUpdatedState updated(double updatedValue) {
+    return WaterIntakeUpdatedState(
       updatedValue,
     );
   }
 
 // ignore: unused_element
-  WaterIntakeUpdatedState updated(double updatedValue) {
-    return WaterIntakeUpdatedState(
-      updatedValue,
+  WaterIntakeAcceptedState accepted(double acceptedValue) {
+    return WaterIntakeAcceptedState(
+      acceptedValue,
     );
   }
 
@@ -44,30 +649,30 @@ mixin _$WaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result changed(double updatedValue),
     @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
     @required Result completed(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result changed(double updatedValue),
     Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
     Result completed(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(WaterIntakeInitialState value),
-    @required Result changed(WaterIntakeChangedState value),
     @required Result updated(WaterIntakeUpdatedState value),
+    @required Result accepted(WaterIntakeAcceptedState value),
     @required Result completed(WaterIntakeCompletedState value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(WaterIntakeInitialState value),
-    Result changed(WaterIntakeChangedState value),
     Result updated(WaterIntakeUpdatedState value),
+    Result accepted(WaterIntakeAcceptedState value),
     Result completed(WaterIntakeCompletedState value),
     @required Result orElse(),
   });
@@ -133,13 +738,13 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result changed(double updatedValue),
     @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
     @required Result completed(),
   }) {
     assert(initial != null);
-    assert(changed != null);
     assert(updated != null);
+    assert(accepted != null);
     assert(completed != null);
     return initial();
   }
@@ -148,8 +753,8 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result changed(double updatedValue),
     Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
     Result completed(),
     @required Result orElse(),
   }) {
@@ -164,13 +769,13 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(WaterIntakeInitialState value),
-    @required Result changed(WaterIntakeChangedState value),
     @required Result updated(WaterIntakeUpdatedState value),
+    @required Result accepted(WaterIntakeAcceptedState value),
     @required Result completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
-    assert(changed != null);
     assert(updated != null);
+    assert(accepted != null);
     assert(completed != null);
     return initial(this);
   }
@@ -179,8 +784,8 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(WaterIntakeInitialState value),
-    Result changed(WaterIntakeChangedState value),
     Result updated(WaterIntakeUpdatedState value),
+    Result accepted(WaterIntakeAcceptedState value),
     Result completed(WaterIntakeCompletedState value),
     @required Result orElse(),
   }) {
@@ -194,144 +799,6 @@ class _$WaterIntakeInitialState
 
 abstract class WaterIntakeInitialState implements WaterIntakeState {
   const factory WaterIntakeInitialState() = _$WaterIntakeInitialState;
-}
-
-abstract class $WaterIntakeChangedStateCopyWith<$Res> {
-  factory $WaterIntakeChangedStateCopyWith(WaterIntakeChangedState value,
-          $Res Function(WaterIntakeChangedState) then) =
-      _$WaterIntakeChangedStateCopyWithImpl<$Res>;
-  $Res call({double updatedValue});
-}
-
-class _$WaterIntakeChangedStateCopyWithImpl<$Res>
-    extends _$WaterIntakeStateCopyWithImpl<$Res>
-    implements $WaterIntakeChangedStateCopyWith<$Res> {
-  _$WaterIntakeChangedStateCopyWithImpl(WaterIntakeChangedState _value,
-      $Res Function(WaterIntakeChangedState) _then)
-      : super(_value, (v) => _then(v as WaterIntakeChangedState));
-
-  @override
-  WaterIntakeChangedState get _value => super._value as WaterIntakeChangedState;
-
-  @override
-  $Res call({
-    Object updatedValue = freezed,
-  }) {
-    return _then(WaterIntakeChangedState(
-      updatedValue == freezed ? _value.updatedValue : updatedValue as double,
-    ));
-  }
-}
-
-class _$WaterIntakeChangedState
-    with DiagnosticableTreeMixin
-    implements WaterIntakeChangedState {
-  const _$WaterIntakeChangedState(this.updatedValue)
-      : assert(updatedValue != null);
-
-  @override
-  final double updatedValue;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeState.changed(updatedValue: $updatedValue)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'WaterIntakeState.changed'))
-      ..add(DiagnosticsProperty('updatedValue', updatedValue));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is WaterIntakeChangedState &&
-            (identical(other.updatedValue, updatedValue) ||
-                const DeepCollectionEquality()
-                    .equals(other.updatedValue, updatedValue)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(updatedValue);
-
-  @override
-  $WaterIntakeChangedStateCopyWith<WaterIntakeChangedState> get copyWith =>
-      _$WaterIntakeChangedStateCopyWithImpl<WaterIntakeChangedState>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result changed(double updatedValue),
-    @required Result updated(double updatedValue),
-    @required Result completed(),
-  }) {
-    assert(initial != null);
-    assert(changed != null);
-    assert(updated != null);
-    assert(completed != null);
-    return changed(updatedValue);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result changed(double updatedValue),
-    Result updated(double updatedValue),
-    Result completed(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (changed != null) {
-      return changed(updatedValue);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(WaterIntakeInitialState value),
-    @required Result changed(WaterIntakeChangedState value),
-    @required Result updated(WaterIntakeUpdatedState value),
-    @required Result completed(WaterIntakeCompletedState value),
-  }) {
-    assert(initial != null);
-    assert(changed != null);
-    assert(updated != null);
-    assert(completed != null);
-    return changed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(WaterIntakeInitialState value),
-    Result changed(WaterIntakeChangedState value),
-    Result updated(WaterIntakeUpdatedState value),
-    Result completed(WaterIntakeCompletedState value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (changed != null) {
-      return changed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class WaterIntakeChangedState implements WaterIntakeState {
-  const factory WaterIntakeChangedState(double updatedValue) =
-      _$WaterIntakeChangedState;
-
-  double get updatedValue;
-  $WaterIntakeChangedStateCopyWith<WaterIntakeChangedState> get copyWith;
 }
 
 abstract class $WaterIntakeUpdatedStateCopyWith<$Res> {
@@ -405,13 +872,13 @@ class _$WaterIntakeUpdatedState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result changed(double updatedValue),
     @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
     @required Result completed(),
   }) {
     assert(initial != null);
-    assert(changed != null);
     assert(updated != null);
+    assert(accepted != null);
     assert(completed != null);
     return updated(updatedValue);
   }
@@ -420,8 +887,8 @@ class _$WaterIntakeUpdatedState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result changed(double updatedValue),
     Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
     Result completed(),
     @required Result orElse(),
   }) {
@@ -436,13 +903,13 @@ class _$WaterIntakeUpdatedState
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(WaterIntakeInitialState value),
-    @required Result changed(WaterIntakeChangedState value),
     @required Result updated(WaterIntakeUpdatedState value),
+    @required Result accepted(WaterIntakeAcceptedState value),
     @required Result completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
-    assert(changed != null);
     assert(updated != null);
+    assert(accepted != null);
     assert(completed != null);
     return updated(this);
   }
@@ -451,8 +918,8 @@ class _$WaterIntakeUpdatedState
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(WaterIntakeInitialState value),
-    Result changed(WaterIntakeChangedState value),
     Result updated(WaterIntakeUpdatedState value),
+    Result accepted(WaterIntakeAcceptedState value),
     Result completed(WaterIntakeCompletedState value),
     @required Result orElse(),
   }) {
@@ -470,6 +937,145 @@ abstract class WaterIntakeUpdatedState implements WaterIntakeState {
 
   double get updatedValue;
   $WaterIntakeUpdatedStateCopyWith<WaterIntakeUpdatedState> get copyWith;
+}
+
+abstract class $WaterIntakeAcceptedStateCopyWith<$Res> {
+  factory $WaterIntakeAcceptedStateCopyWith(WaterIntakeAcceptedState value,
+          $Res Function(WaterIntakeAcceptedState) then) =
+      _$WaterIntakeAcceptedStateCopyWithImpl<$Res>;
+  $Res call({double acceptedValue});
+}
+
+class _$WaterIntakeAcceptedStateCopyWithImpl<$Res>
+    extends _$WaterIntakeStateCopyWithImpl<$Res>
+    implements $WaterIntakeAcceptedStateCopyWith<$Res> {
+  _$WaterIntakeAcceptedStateCopyWithImpl(WaterIntakeAcceptedState _value,
+      $Res Function(WaterIntakeAcceptedState) _then)
+      : super(_value, (v) => _then(v as WaterIntakeAcceptedState));
+
+  @override
+  WaterIntakeAcceptedState get _value =>
+      super._value as WaterIntakeAcceptedState;
+
+  @override
+  $Res call({
+    Object acceptedValue = freezed,
+  }) {
+    return _then(WaterIntakeAcceptedState(
+      acceptedValue == freezed ? _value.acceptedValue : acceptedValue as double,
+    ));
+  }
+}
+
+class _$WaterIntakeAcceptedState
+    with DiagnosticableTreeMixin
+    implements WaterIntakeAcceptedState {
+  const _$WaterIntakeAcceptedState(this.acceptedValue)
+      : assert(acceptedValue != null);
+
+  @override
+  final double acceptedValue;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WaterIntakeState.accepted(acceptedValue: $acceptedValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WaterIntakeState.accepted'))
+      ..add(DiagnosticsProperty('acceptedValue', acceptedValue));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WaterIntakeAcceptedState &&
+            (identical(other.acceptedValue, acceptedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.acceptedValue, acceptedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(acceptedValue);
+
+  @override
+  $WaterIntakeAcceptedStateCopyWith<WaterIntakeAcceptedState> get copyWith =>
+      _$WaterIntakeAcceptedStateCopyWithImpl<WaterIntakeAcceptedState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
+    @required Result completed(),
+  }) {
+    assert(initial != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(completed != null);
+    return accepted(acceptedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
+    Result completed(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (accepted != null) {
+      return accepted(acceptedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(WaterIntakeInitialState value),
+    @required Result updated(WaterIntakeUpdatedState value),
+    @required Result accepted(WaterIntakeAcceptedState value),
+    @required Result completed(WaterIntakeCompletedState value),
+  }) {
+    assert(initial != null);
+    assert(updated != null);
+    assert(accepted != null);
+    assert(completed != null);
+    return accepted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(WaterIntakeInitialState value),
+    Result updated(WaterIntakeUpdatedState value),
+    Result accepted(WaterIntakeAcceptedState value),
+    Result completed(WaterIntakeCompletedState value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (accepted != null) {
+      return accepted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WaterIntakeAcceptedState implements WaterIntakeState {
+  const factory WaterIntakeAcceptedState(double acceptedValue) =
+      _$WaterIntakeAcceptedState;
+
+  double get acceptedValue;
+  $WaterIntakeAcceptedStateCopyWith<WaterIntakeAcceptedState> get copyWith;
 }
 
 abstract class $WaterIntakeCompletedStateCopyWith<$Res> {
@@ -518,13 +1124,13 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result changed(double updatedValue),
     @required Result updated(double updatedValue),
+    @required Result accepted(double acceptedValue),
     @required Result completed(),
   }) {
     assert(initial != null);
-    assert(changed != null);
     assert(updated != null);
+    assert(accepted != null);
     assert(completed != null);
     return completed();
   }
@@ -533,8 +1139,8 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result changed(double updatedValue),
     Result updated(double updatedValue),
+    Result accepted(double acceptedValue),
     Result completed(),
     @required Result orElse(),
   }) {
@@ -549,13 +1155,13 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(WaterIntakeInitialState value),
-    @required Result changed(WaterIntakeChangedState value),
     @required Result updated(WaterIntakeUpdatedState value),
+    @required Result accepted(WaterIntakeAcceptedState value),
     @required Result completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
-    assert(changed != null);
     assert(updated != null);
+    assert(accepted != null);
     assert(completed != null);
     return completed(this);
   }
@@ -564,8 +1170,8 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(WaterIntakeInitialState value),
-    Result changed(WaterIntakeChangedState value),
     Result updated(WaterIntakeUpdatedState value),
+    Result accepted(WaterIntakeAcceptedState value),
     Result completed(WaterIntakeCompletedState value),
     @required Result orElse(),
   }) {
