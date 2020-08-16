@@ -16,7 +16,7 @@ class WaterIntakePage extends StatelessWidget {
           builder: (context, state) {
             return state.when(
               initial: () => _buildInitialWaterIntake(),
-              changed: (_) => _buildInitialWaterIntake(),
+              accepted: (_) => _buildInitialWaterIntake(),
               updated: (_) => _buildInitialWaterIntake(),
               completed: () => _buildInitialWaterIntake(),
             );
