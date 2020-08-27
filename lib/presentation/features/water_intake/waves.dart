@@ -1,9 +1,13 @@
+import 'package:HydrateMe/presentation/features/water_intake/bloc/water_intake_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 class Waves extends StatefulWidget {
   final currentHeightPercentage;
+
+  static const WAVE_HEIGHT_OFFSET = 1.5;
 
   Waves({
     Key key,
@@ -14,23 +18,21 @@ class Waves extends StatefulWidget {
   _WavesState createState() => _WavesState();
 }
 
-class _WavesState extends State<Waves> with TickerProviderStateMixin {
+class _WavesState extends State<Waves> {
   Offset _offset;
-
-  @override
-  void didChangeDependencies() {
-    _offset = Offset(
-      0,
-      widget.currentHeightPercentage * MediaQuery.of(context).size.height / 1.5,
-    );
-
-    super.didChangeDependencies();
-  }
+  double _wavesHeight;
 
   @override
   Widget build(BuildContext context) {
+    _wavesHeight =
+        MediaQuery.of(context).size.height / Waves.WAVE_HEIGHT_OFFSET;
+    _offset = Offset(
+      0,
+      widget.currentHeightPercentage * _wavesHeight,
+    );
+
     return Container(
-      height: MediaQuery.of(context).size.height / 1.5,
+      height: MediaQuery.of(context).size.height / Waves.WAVE_HEIGHT_OFFSET,
       width: double.infinity,
       child: Card(
         elevation: 12.0,
@@ -40,8 +42,13 @@ class _WavesState extends State<Waves> with TickerProviderStateMixin {
         child: GestureDetector(
           onPanUpdate: (details) {
             final gestureYOffset = _offset.dy - details.delta.dy;
-            _offset = Offset(0, gestureYOffset);
-            if (gestureYOffset >= 0) setState(() {});
+            if (gestureYOffset >= 0) {
+              BlocProvider.of<WaterIntakeBloc>(context).add(
+                WaterIntakeEvent.updated(
+                    updatedValue: gestureYOffset,
+                    waterMaximumHeight: _wavesHeight),
+              );
+            }
           },
           child: Align(
             alignment: Alignment.bottomCenter,
@@ -52,8 +59,14 @@ class _WavesState extends State<Waves> with TickerProviderStateMixin {
                 duration: 1,
                 config: CustomConfig(
                   gradients: [
-                    [Colors.blue, Colors.lightBlue],
-                    [Color(0xFF396afc), Color(0xFF2948ff)],
+                    [
+                      Color.fromRGBO(0, 100, 175, 0.4),
+                      Color.fromRGBO(0, 100, 235, 0.8)
+                    ],
+                    [
+                      Color.fromRGBO(0, 0, 235, 0.8),
+                      Color.fromRGBO(0, 0, 200, 0.1)
+                    ],
                   ],
                   durations: [10800, 19440],
                   heightPercentages: [0.025, 0.030],

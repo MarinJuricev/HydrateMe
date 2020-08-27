@@ -15,10 +15,11 @@ class WaterIntakePage extends StatelessWidget {
         child: BlocBuilder<WaterIntakeBloc, WaterIntakeState>(
           builder: (context, state) {
             return state.when(
-              initial: () => _buildInitialWaterIntake(),
-              accepted: (_) => _buildInitialWaterIntake(),
-              updated: (_) => _buildInitialWaterIntake(),
-              completed: () => _buildInitialWaterIntake(),
+              initial: () => _buildInitialWaterIntake(1),
+              updated: (double wavesPercentage) =>
+                  _buildInitialWaterIntake(wavesPercentage),
+              completed: () => _buildInitialWaterIntake(0),
+              error: (String errorMessage) => Text(errorMessage),
             );
           },
         ),
@@ -27,7 +28,7 @@ class WaterIntakePage extends StatelessWidget {
   }
 }
 
-Widget _buildInitialWaterIntake() {
+Widget _buildInitialWaterIntake(double heightPerc) {
   return Stack(
     children: <Widget>[
       Positioned.fill(child: Particles(30)),
@@ -36,7 +37,9 @@ Widget _buildInitialWaterIntake() {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24.0),
-            child: Waves(currentHeightPercentage: 1,),
+            child: Waves(
+              currentHeightPercentage: heightPerc,
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

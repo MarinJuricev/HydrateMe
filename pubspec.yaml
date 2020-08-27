@@ -32,6 +32,8 @@ dependencies:
 
   # Adds Kotlin like data classes, exhaustive when statement and much more.
   freezed_annotation: ^0.11.0+1
+  # Functional lib, provides Either type and much more
+  dartz: ^0.9.1
 
   # TODO Definetly remove this sugar, only the modified example from simple_animations uses this.
   supercharged: ^1.7.0
