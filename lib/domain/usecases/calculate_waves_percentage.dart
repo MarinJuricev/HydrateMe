@@ -10,8 +10,9 @@ class CalculateWavesPercentage
   @override
   Future<Either<Failure, HydrateStatus>> call(
       CalculateWavesPercentageParams params) async {
-    final hydrationPercentage = params.updatedValue / params.waterMaximumHeight;
-    final percentage = calculatePercentage(hydrationPercentage);
+    final hydrationPercentage = calculateHydrationPercentage(
+        params.updatedValue, params.waterMaximumHeight);
+    final percentage = formatPercentage(hydrationPercentage);
 
     return Right(
       HydrateStatus(
@@ -21,7 +22,20 @@ class CalculateWavesPercentage
     );
   }
 
-  String calculatePercentage(double hydrationPercentage) {
+  double calculateHydrationPercentage(
+      double updatedValue, double waterMaximumHeight) {
+    var hydrationpercentage = updatedValue / waterMaximumHeight;
+
+    if (hydrationpercentage > 1.0) {
+      hydrationpercentage = 1.0;
+    } else if (hydrationpercentage < 0.0) {
+      hydrationpercentage = 0.0;
+    }
+
+    return hydrationpercentage;
+  }
+
+  String formatPercentage(double hydrationPercentage) {
     String roundedUpPercentage = roundUpPercentage(hydrationPercentage);
 
     return toPercentage(roundedUpPercentage);

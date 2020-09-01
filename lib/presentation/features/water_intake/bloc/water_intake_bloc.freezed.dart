@@ -417,6 +417,8 @@ abstract class $WaterIntakeUpdatedStateCopyWith<$Res> {
           $Res Function(WaterIntakeUpdatedState) then) =
       _$WaterIntakeUpdatedStateCopyWithImpl<$Res>;
   $Res call({HydrateStatus updatedHydrateStatus});
+
+  $HydrateStatusCopyWith<$Res> get updatedHydrateStatus;
 }
 
 class _$WaterIntakeUpdatedStateCopyWithImpl<$Res>
@@ -438,6 +440,16 @@ class _$WaterIntakeUpdatedStateCopyWithImpl<$Res>
           ? _value.updatedHydrateStatus
           : updatedHydrateStatus as HydrateStatus,
     ));
+  }
+
+  @override
+  $HydrateStatusCopyWith<$Res> get updatedHydrateStatus {
+    if (_value.updatedHydrateStatus == null) {
+      return null;
+    }
+    return $HydrateStatusCopyWith<$Res>(_value.updatedHydrateStatus, (value) {
+      return _then(_value.copyWith(updatedHydrateStatus: value));
+    });
   }
 }
 

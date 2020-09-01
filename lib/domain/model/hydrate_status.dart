@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class HydrateStatus {
-  // Used to render the waves widget, it should range from [0.0 - 1.0]
-  double hydrationPercentage;
-  // Used to display the % value of hydrationPercentage, EX: 0.7 should be mapped as 70%
-  String percentage;
+part 'hydrate_status.freezed.dart';
 
-  HydrateStatus({
-    @required this.hydrationPercentage,
-    @required this.percentage,
-  });
-
+@freezed
+abstract class HydrateStatus with _$HydrateStatus {
+  factory HydrateStatus({
+    // Used to render the waves widget, it should range from [0.0 - 1.0]
+    @required double hydrationPercentage,
+    // Used to display the % value of hydrationPercentage, EX: 0.7 should be mapped as 70%
+    @required String percentage,
+  }) = _HydrateStatus;
 }
