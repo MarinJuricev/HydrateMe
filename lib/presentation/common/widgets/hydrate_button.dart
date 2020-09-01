@@ -8,12 +8,13 @@ class HydrateButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
       width: MediaQuery.of(context).size.width / 2.5,
       child: OutlineButton(
         onPressed: () {},
         highlightedBorderColor: Colors.white,
-        borderSide: const BorderSide(color: Colors.white),
+        borderSide: const BorderSide(
+          color: Color.fromRGBO(0, 100, 235, 0.8),
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
@@ -21,7 +22,7 @@ class HydrateButton extends StatelessWidget {
           title,
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 18.0,
+            fontSize: 14.0,
           ),
         ),
       ),

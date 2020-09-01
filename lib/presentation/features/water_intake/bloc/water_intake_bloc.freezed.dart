@@ -234,9 +234,9 @@ class _$WaterIntakeStateTearOff {
   }
 
 // ignore: unused_element
-  WaterIntakeUpdatedState updated(double updatedValue) {
+  WaterIntakeUpdatedState updated(HydrateStatus updatedHydrateStatus) {
     return WaterIntakeUpdatedState(
-      updatedValue,
+      updatedHydrateStatus,
     );
   }
 
@@ -260,14 +260,14 @@ mixin _$WaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result updated(double updatedValue),
+    @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result updated(double updatedValue),
+    Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
     @required Result orElse(),
@@ -349,7 +349,7 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result updated(double updatedValue),
+    @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
   }) {
@@ -364,7 +364,7 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result updated(double updatedValue),
+    Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
     @required Result orElse(),
@@ -416,7 +416,7 @@ abstract class $WaterIntakeUpdatedStateCopyWith<$Res> {
   factory $WaterIntakeUpdatedStateCopyWith(WaterIntakeUpdatedState value,
           $Res Function(WaterIntakeUpdatedState) then) =
       _$WaterIntakeUpdatedStateCopyWithImpl<$Res>;
-  $Res call({double updatedValue});
+  $Res call({HydrateStatus updatedHydrateStatus});
 }
 
 class _$WaterIntakeUpdatedStateCopyWithImpl<$Res>
@@ -431,10 +431,12 @@ class _$WaterIntakeUpdatedStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object updatedValue = freezed,
+    Object updatedHydrateStatus = freezed,
   }) {
     return _then(WaterIntakeUpdatedState(
-      updatedValue == freezed ? _value.updatedValue : updatedValue as double,
+      updatedHydrateStatus == freezed
+          ? _value.updatedHydrateStatus
+          : updatedHydrateStatus as HydrateStatus,
     ));
   }
 }
@@ -442,15 +444,15 @@ class _$WaterIntakeUpdatedStateCopyWithImpl<$Res>
 class _$WaterIntakeUpdatedState
     with DiagnosticableTreeMixin
     implements WaterIntakeUpdatedState {
-  const _$WaterIntakeUpdatedState(this.updatedValue)
-      : assert(updatedValue != null);
+  const _$WaterIntakeUpdatedState(this.updatedHydrateStatus)
+      : assert(updatedHydrateStatus != null);
 
   @override
-  final double updatedValue;
+  final HydrateStatus updatedHydrateStatus;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeState.updated(updatedValue: $updatedValue)';
+    return 'WaterIntakeState.updated(updatedHydrateStatus: $updatedHydrateStatus)';
   }
 
   @override
@@ -458,21 +460,22 @@ class _$WaterIntakeUpdatedState
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'WaterIntakeState.updated'))
-      ..add(DiagnosticsProperty('updatedValue', updatedValue));
+      ..add(DiagnosticsProperty('updatedHydrateStatus', updatedHydrateStatus));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is WaterIntakeUpdatedState &&
-            (identical(other.updatedValue, updatedValue) ||
+            (identical(other.updatedHydrateStatus, updatedHydrateStatus) ||
                 const DeepCollectionEquality()
-                    .equals(other.updatedValue, updatedValue)));
+                    .equals(other.updatedHydrateStatus, updatedHydrateStatus)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(updatedValue);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(updatedHydrateStatus);
 
   @override
   $WaterIntakeUpdatedStateCopyWith<WaterIntakeUpdatedState> get copyWith =>
@@ -483,7 +486,7 @@ class _$WaterIntakeUpdatedState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result updated(double updatedValue),
+    @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
   }) {
@@ -491,21 +494,21 @@ class _$WaterIntakeUpdatedState
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
-    return updated(updatedValue);
+    return updated(updatedHydrateStatus);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result updated(double updatedValue),
+    Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (updated != null) {
-      return updated(updatedValue);
+      return updated(updatedHydrateStatus);
     }
     return orElse();
   }
@@ -543,10 +546,10 @@ class _$WaterIntakeUpdatedState
 }
 
 abstract class WaterIntakeUpdatedState implements WaterIntakeState {
-  const factory WaterIntakeUpdatedState(double updatedValue) =
+  const factory WaterIntakeUpdatedState(HydrateStatus updatedHydrateStatus) =
       _$WaterIntakeUpdatedState;
 
-  double get updatedValue;
+  HydrateStatus get updatedHydrateStatus;
   $WaterIntakeUpdatedStateCopyWith<WaterIntakeUpdatedState> get copyWith;
 }
 
@@ -621,7 +624,7 @@ class _$WaterIntakeErrorState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result updated(double updatedValue),
+    @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
   }) {
@@ -636,7 +639,7 @@ class _$WaterIntakeErrorState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result updated(double updatedValue),
+    Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
     @required Result orElse(),
@@ -734,7 +737,7 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result updated(double updatedValue),
+    @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
   }) {
@@ -749,7 +752,7 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result updated(double updatedValue),
+    Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
     @required Result orElse(),

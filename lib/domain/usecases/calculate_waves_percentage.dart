@@ -1,14 +1,38 @@
-import 'package:HydrateMe/core/failure/base_failure.dart';
-import 'package:HydrateMe/core/usecase/base_usecase.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../core/failure/base_failure.dart';
+import '../../core/usecase/base_usecase.dart';
+import '../model/hydrate_status.dart';
+
 class CalculateWavesPercentage
-    extends BaseUseCase<double, CalculateWavesPercentageParams> {
+    extends BaseUseCase<HydrateStatus, CalculateWavesPercentageParams> {
   @override
-  Future<Either<Failure, double>> call(
+  Future<Either<Failure, HydrateStatus>> call(
       CalculateWavesPercentageParams params) async {
-    return Right(params.updatedValue / params.waterMaximumHeight);
+    final hydrationPercentage = params.updatedValue / params.waterMaximumHeight;
+    final percentage = calculatePercentage(hydrationPercentage);
+
+    return Right(
+      HydrateStatus(
+        hydrationPercentage: hydrationPercentage,
+        percentage: percentage,
+      ),
+    );
+  }
+
+  String calculatePercentage(double hydrationPercentage) {
+    String roundedUpPercentage = roundUpPercentage(hydrationPercentage);
+
+    return toPercentage(roundedUpPercentage);
+  }
+
+  String roundUpPercentage(hydrationPercentage) {
+    return hydrationPercentage.toStringAsFixed(2);
+  }
+
+  String toPercentage(String roundedUpPercentage) {
+    return '${(double.parse(roundedUpPercentage) * 100).toString()}%';
   }
 }
 

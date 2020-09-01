@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:HydrateMe/domain/usecases/calculate_waves_percentage.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -39,7 +40,7 @@ class WaterIntakeBloc extends Bloc<WaterIntakeEvent, WaterIntakeState> {
 
     yield useCaseResult.fold(
       (failure) => WaterIntakeState.error(failure.message),
-      (newPercentage) => WaterIntakeState.updated(newPercentage),
+      (newHydrationStatus) => WaterIntakeState.updated(newHydrationStatus),
     );
   }
 }
