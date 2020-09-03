@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import 'domain/usecases/calculate_waves_percentage.dart';
-import 'presentation/features/water_intake/bloc/water_intake_bloc.dart';
+import 'presentation/features/display_current_water_intake/bloc/water_intake_bloc.dart';
 
 
 final getIt = GetIt.instance;

@@ -13,7 +13,7 @@ void main() {
   );
 
   test(
-    'Should return valid hydrate status with hydrationPercentage 0.70 and percentage 70% when 70 and 100 are provided',
+    'should return valid hydrate status with hydrationPercentage 0.70 and percentage 70% when 70 and 100 are provided',
     () async {
       final actualResult = await calculateWavesPercentage(
         CalculateWavesPercentageParams(
@@ -34,7 +34,7 @@ void main() {
   );
 
   test(
-    'Should return hydrate status with hydrationPercentage 1.0 and percentage 100% when 110 and 100 are provided',
+    'should return hydrate status with hydrationPercentage 1.0 and percentage 100% when 110 and 100 are provided',
     () async {
       final actualResult = await calculateWavesPercentage(
         CalculateWavesPercentageParams(
@@ -55,7 +55,7 @@ void main() {
   );
 
   test(
-    'Should return hydrate status with hydrationPercentage 0.0 and percentage 0% when -10 and 100 are provided',
+    'should return hydrate status with hydrationPercentage 0.0 and percentage 0% when -10 and 100 are provided',
     () async {
       final actualResult = await calculateWavesPercentage(
         CalculateWavesPercentageParams(

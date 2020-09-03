@@ -1,9 +1,10 @@
-import 'package:HydrateMe/domain/model/hydrate_status.dart';
-import 'package:HydrateMe/presentation/features/water_intake/bloc/water_intake_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+
+import '../../../domain/model/hydrate_status.dart';
+import 'bloc/water_intake_bloc.dart';
 
 class Waves extends StatefulWidget {
   final HydrateStatus currentHydrateStatus;

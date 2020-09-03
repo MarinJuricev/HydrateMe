@@ -7,7 +7,7 @@ import 'particles.dart';
 import 'waves.dart';
 import 'widget/manual_water_intake.dart';
 
-class WaterIntakePage extends StatelessWidget {
+class DisplayCurrentWaterIntakePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,23 +21,21 @@ class WaterIntakePage extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.blue,
-      body: SafeArea(
-        child: BlocBuilder<WaterIntakeBloc, WaterIntakeState>(
-          builder: (context, state) {
-            return state.when(
-              initial: () => _buildWaterIntake(
-                HydrateStatus(hydrationPercentage: 1, percentage: '100%'),
-              ),
-              updated: (HydrateStatus hydrateStatus) =>
-                  _buildWaterIntake(hydrateStatus),
-              completed: () => _buildWaterIntake(
-                //TODO Make a static variable or a builder for the 100% and 0% case
-                HydrateStatus(hydrationPercentage: 0, percentage: '0%'),
-              ),
-              error: (String errorMessage) => Text(errorMessage),
-            );
-          },
-        ),
+      body: BlocBuilder<WaterIntakeBloc, WaterIntakeState>(
+        builder: (context, state) {
+          return state.when(
+            initial: () => _buildWaterIntake(
+              HydrateStatus(hydrationPercentage: 1, percentage: '100%'),
+            ),
+            updated: (HydrateStatus hydrateStatus) =>
+                _buildWaterIntake(hydrateStatus),
+            completed: () => _buildWaterIntake(
+              //TODO Make a static variable or a builder for the 100% and 0% case
+              HydrateStatus(hydrationPercentage: 0, percentage: '0%'),
+            ),
+            error: (String errorMessage) => Text(errorMessage),
+          );
+        },
       ),
     );
   }
