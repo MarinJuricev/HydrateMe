@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:HydrateMe/presentation/common/model/gender.dart';
 import 'package:HydrateMe/presentation/common/model/weight_type.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -17,25 +18,11 @@ class CalculateWaterIntakeBloc
     CalculateWaterIntakeEvent event,
   ) async* {
     yield* event.map(
-      weightEntered: (params) => _handleWeightEntered(
-        params.weight,
-        params.weightType,
-      ),
-      activityEntered: (params) => _handleActivityEntered(
-        params.activeMinutes,
-      ),
+      calculateClicked: (params) => _handleCalculateClicked(params),
     );
   }
+}
 
-  Stream<CalculateWaterIntakeState> _handleWeightEntered(
-    int weight,
-    WeightType weightType,
-  ) async* {
-    yield CalculateWaterIntakeState.weightEnterSuccess();
-  }
-
-  Stream<CalculateWaterIntakeState> _handleActivityEntered(
-      int activeMinutes) async* {
-    yield CalculateWaterIntakeState.initial();
-  }
+Stream<CalculateWaterIntakeState> _handleCalculateClicked(_CalculateClicked params) async* {
+  yield CalculateWaterIntakeState.initial();
 }

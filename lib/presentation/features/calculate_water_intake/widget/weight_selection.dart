@@ -1,8 +1,16 @@
+import 'package:HydrateMe/presentation/common/model/weight_type.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class WeightSelection extends StatefulWidget {
-  WeightSelection({Key key}) : super(key: key);
+  final Function(WeightType value) onWeightTypeSwitchCallback;
+  final Function(int value) onWeightChangeCallback;
+
+  WeightSelection({
+    Key key,
+    @required this.onWeightTypeSwitchCallback,
+    @required this.onWeightChangeCallback,
+  }) : super(key: key);
 
   @override
   _WeightSelectionState createState() => _WeightSelectionState();
@@ -40,7 +48,7 @@ class _WeightSelectionState extends State<WeightSelection> {
                   color: Colors.white,
                 ),
               )),
-              onChanged: (newValue) {},
+              onChanged: (newValue) => widget.onWeightChangeCallback(newValue),
             ),
           ),
         ),
@@ -69,6 +77,12 @@ class _WeightSelectionState extends State<WeightSelection> {
                       _isSelected[buttonIndex] = true;
                     } else {
                       _isSelected[buttonIndex] = false;
+                    }
+
+                    if (index == 0) {
+                      widget.onWeightTypeSwitchCallback(WeightType.kg);
+                    } else {
+                      widget.onWeightTypeSwitchCallback(WeightType.lbs);
                     }
                   }
                 });

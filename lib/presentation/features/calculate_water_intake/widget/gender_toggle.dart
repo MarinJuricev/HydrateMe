@@ -1,8 +1,14 @@
+import 'package:HydrateMe/presentation/common/model/gender.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class GenderToggle extends StatefulWidget {
-  GenderToggle({Key key}) : super(key: key);
+  final Function(Gender value) onGenderSwitchCallback;
+
+  GenderToggle({
+    Key key,
+    @required this.onGenderSwitchCallback,
+  }) : super(key: key);
 
   @override
   _GenderToggleState createState() => _GenderToggleState();
@@ -26,7 +32,6 @@ class _GenderToggleState extends State<GenderToggle> {
           'assets/images/male.svg',
           height: 24,
           width: 24,
-          
         ),
         SvgPicture.asset(
           'assets/images/female.svg',
@@ -44,6 +49,12 @@ class _GenderToggleState extends State<GenderToggle> {
             } else {
               isSelected[buttonIndex] = false;
             }
+          }
+
+          if (index == 0) {
+            widget.onGenderSwitchCallback(Gender.male);
+          } else {
+            widget.onGenderSwitchCallback(Gender.female);
           }
         });
       },

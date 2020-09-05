@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class ActivitySelection extends StatelessWidget {
+  final Function(int value) onActivityChangeCallback;
+
+  const ActivitySelection({
+    Key key,
+    @required this.onActivityChangeCallback,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -23,7 +30,7 @@ class ActivitySelection extends StatelessWidget {
             color: Colors.white,
           ),
         )),
-        onChanged: (newValue) {},
+        onChanged: (newActivity) => onActivityChangeCallback(newActivity),
       ),
     );
   }

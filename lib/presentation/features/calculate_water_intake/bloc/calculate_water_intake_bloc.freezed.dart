@@ -13,17 +13,16 @@ class _$CalculateWaterIntakeEventTearOff {
   const _$CalculateWaterIntakeEventTearOff();
 
 // ignore: unused_element
-  _WeightEntered weightEntered(int weight, WeightType weightType) {
-    return _WeightEntered(
-      weight,
-      weightType,
-    );
-  }
-
-// ignore: unused_element
-  _ActivityEntered activityEntered(int activeMinutes) {
-    return _ActivityEntered(
-      activeMinutes,
+  _CalculateClicked calculateClicked(
+      Gender currentSelectedGender,
+      WeightType currentSelectedWeightType,
+      int currentWeight,
+      int currentActivityInMinutes) {
+    return _CalculateClicked(
+      currentSelectedGender,
+      currentSelectedWeightType,
+      currentWeight,
+      currentActivityInMinutes,
     );
   }
 }
@@ -32,34 +31,51 @@ class _$CalculateWaterIntakeEventTearOff {
 const $CalculateWaterIntakeEvent = _$CalculateWaterIntakeEventTearOff();
 
 mixin _$CalculateWaterIntakeEvent {
+  Gender get currentSelectedGender;
+  WeightType get currentSelectedWeightType;
+  int get currentWeight;
+  int get currentActivityInMinutes;
+
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result weightEntered(int weight, WeightType weightType),
-    @required Result activityEntered(int activeMinutes),
+    @required
+        Result calculateClicked(
+            Gender currentSelectedGender,
+            WeightType currentSelectedWeightType,
+            int currentWeight,
+            int currentActivityInMinutes),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result weightEntered(int weight, WeightType weightType),
-    Result activityEntered(int activeMinutes),
+    Result calculateClicked(
+        Gender currentSelectedGender,
+        WeightType currentSelectedWeightType,
+        int currentWeight,
+        int currentActivityInMinutes),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result weightEntered(_WeightEntered value),
-    @required Result activityEntered(_ActivityEntered value),
+    @required Result calculateClicked(_CalculateClicked value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result weightEntered(_WeightEntered value),
-    Result activityEntered(_ActivityEntered value),
+    Result calculateClicked(_CalculateClicked value),
     @required Result orElse(),
   });
+
+  $CalculateWaterIntakeEventCopyWith<CalculateWaterIntakeEvent> get copyWith;
 }
 
 abstract class $CalculateWaterIntakeEventCopyWith<$Res> {
   factory $CalculateWaterIntakeEventCopyWith(CalculateWaterIntakeEvent value,
           $Res Function(CalculateWaterIntakeEvent) then) =
       _$CalculateWaterIntakeEventCopyWithImpl<$Res>;
+  $Res call(
+      {Gender currentSelectedGender,
+      WeightType currentSelectedWeightType,
+      int currentWeight,
+      int currentActivityInMinutes});
 }
 
 class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
@@ -69,94 +85,163 @@ class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
   final CalculateWaterIntakeEvent _value;
   // ignore: unused_field
   final $Res Function(CalculateWaterIntakeEvent) _then;
-}
-
-abstract class _$WeightEnteredCopyWith<$Res> {
-  factory _$WeightEnteredCopyWith(
-          _WeightEntered value, $Res Function(_WeightEntered) then) =
-      __$WeightEnteredCopyWithImpl<$Res>;
-  $Res call({int weight, WeightType weightType});
-}
-
-class __$WeightEnteredCopyWithImpl<$Res>
-    extends _$CalculateWaterIntakeEventCopyWithImpl<$Res>
-    implements _$WeightEnteredCopyWith<$Res> {
-  __$WeightEnteredCopyWithImpl(
-      _WeightEntered _value, $Res Function(_WeightEntered) _then)
-      : super(_value, (v) => _then(v as _WeightEntered));
-
-  @override
-  _WeightEntered get _value => super._value as _WeightEntered;
 
   @override
   $Res call({
-    Object weight = freezed,
-    Object weightType = freezed,
+    Object currentSelectedGender = freezed,
+    Object currentSelectedWeightType = freezed,
+    Object currentWeight = freezed,
+    Object currentActivityInMinutes = freezed,
   }) {
-    return _then(_WeightEntered(
-      weight == freezed ? _value.weight : weight as int,
-      weightType == freezed ? _value.weightType : weightType as WeightType,
+    return _then(_value.copyWith(
+      currentSelectedGender: currentSelectedGender == freezed
+          ? _value.currentSelectedGender
+          : currentSelectedGender as Gender,
+      currentSelectedWeightType: currentSelectedWeightType == freezed
+          ? _value.currentSelectedWeightType
+          : currentSelectedWeightType as WeightType,
+      currentWeight: currentWeight == freezed
+          ? _value.currentWeight
+          : currentWeight as int,
+      currentActivityInMinutes: currentActivityInMinutes == freezed
+          ? _value.currentActivityInMinutes
+          : currentActivityInMinutes as int,
     ));
   }
 }
 
-class _$_WeightEntered implements _WeightEntered {
-  const _$_WeightEntered(this.weight, this.weightType)
-      : assert(weight != null),
-        assert(weightType != null);
+abstract class _$CalculateClickedCopyWith<$Res>
+    implements $CalculateWaterIntakeEventCopyWith<$Res> {
+  factory _$CalculateClickedCopyWith(
+          _CalculateClicked value, $Res Function(_CalculateClicked) then) =
+      __$CalculateClickedCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {Gender currentSelectedGender,
+      WeightType currentSelectedWeightType,
+      int currentWeight,
+      int currentActivityInMinutes});
+}
+
+class __$CalculateClickedCopyWithImpl<$Res>
+    extends _$CalculateWaterIntakeEventCopyWithImpl<$Res>
+    implements _$CalculateClickedCopyWith<$Res> {
+  __$CalculateClickedCopyWithImpl(
+      _CalculateClicked _value, $Res Function(_CalculateClicked) _then)
+      : super(_value, (v) => _then(v as _CalculateClicked));
 
   @override
-  final int weight;
+  _CalculateClicked get _value => super._value as _CalculateClicked;
+
   @override
-  final WeightType weightType;
+  $Res call({
+    Object currentSelectedGender = freezed,
+    Object currentSelectedWeightType = freezed,
+    Object currentWeight = freezed,
+    Object currentActivityInMinutes = freezed,
+  }) {
+    return _then(_CalculateClicked(
+      currentSelectedGender == freezed
+          ? _value.currentSelectedGender
+          : currentSelectedGender as Gender,
+      currentSelectedWeightType == freezed
+          ? _value.currentSelectedWeightType
+          : currentSelectedWeightType as WeightType,
+      currentWeight == freezed ? _value.currentWeight : currentWeight as int,
+      currentActivityInMinutes == freezed
+          ? _value.currentActivityInMinutes
+          : currentActivityInMinutes as int,
+    ));
+  }
+}
+
+class _$_CalculateClicked implements _CalculateClicked {
+  const _$_CalculateClicked(
+      this.currentSelectedGender,
+      this.currentSelectedWeightType,
+      this.currentWeight,
+      this.currentActivityInMinutes)
+      : assert(currentSelectedGender != null),
+        assert(currentSelectedWeightType != null),
+        assert(currentWeight != null),
+        assert(currentActivityInMinutes != null);
+
+  @override
+  final Gender currentSelectedGender;
+  @override
+  final WeightType currentSelectedWeightType;
+  @override
+  final int currentWeight;
+  @override
+  final int currentActivityInMinutes;
 
   @override
   String toString() {
-    return 'CalculateWaterIntakeEvent.weightEntered(weight: $weight, weightType: $weightType)';
+    return 'CalculateWaterIntakeEvent.calculateClicked(currentSelectedGender: $currentSelectedGender, currentSelectedWeightType: $currentSelectedWeightType, currentWeight: $currentWeight, currentActivityInMinutes: $currentActivityInMinutes)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _WeightEntered &&
-            (identical(other.weight, weight) ||
-                const DeepCollectionEquality().equals(other.weight, weight)) &&
-            (identical(other.weightType, weightType) ||
+        (other is _CalculateClicked &&
+            (identical(other.currentSelectedGender, currentSelectedGender) ||
+                const DeepCollectionEquality().equals(
+                    other.currentSelectedGender, currentSelectedGender)) &&
+            (identical(other.currentSelectedWeightType,
+                    currentSelectedWeightType) ||
+                const DeepCollectionEquality().equals(
+                    other.currentSelectedWeightType,
+                    currentSelectedWeightType)) &&
+            (identical(other.currentWeight, currentWeight) ||
                 const DeepCollectionEquality()
-                    .equals(other.weightType, weightType)));
+                    .equals(other.currentWeight, currentWeight)) &&
+            (identical(
+                    other.currentActivityInMinutes, currentActivityInMinutes) ||
+                const DeepCollectionEquality().equals(
+                    other.currentActivityInMinutes, currentActivityInMinutes)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(weight) ^
-      const DeepCollectionEquality().hash(weightType);
+      const DeepCollectionEquality().hash(currentSelectedGender) ^
+      const DeepCollectionEquality().hash(currentSelectedWeightType) ^
+      const DeepCollectionEquality().hash(currentWeight) ^
+      const DeepCollectionEquality().hash(currentActivityInMinutes);
 
   @override
-  _$WeightEnteredCopyWith<_WeightEntered> get copyWith =>
-      __$WeightEnteredCopyWithImpl<_WeightEntered>(this, _$identity);
+  _$CalculateClickedCopyWith<_CalculateClicked> get copyWith =>
+      __$CalculateClickedCopyWithImpl<_CalculateClicked>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result weightEntered(int weight, WeightType weightType),
-    @required Result activityEntered(int activeMinutes),
+    @required
+        Result calculateClicked(
+            Gender currentSelectedGender,
+            WeightType currentSelectedWeightType,
+            int currentWeight,
+            int currentActivityInMinutes),
   }) {
-    assert(weightEntered != null);
-    assert(activityEntered != null);
-    return weightEntered(weight, weightType);
+    assert(calculateClicked != null);
+    return calculateClicked(currentSelectedGender, currentSelectedWeightType,
+        currentWeight, currentActivityInMinutes);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result weightEntered(int weight, WeightType weightType),
-    Result activityEntered(int activeMinutes),
+    Result calculateClicked(
+        Gender currentSelectedGender,
+        WeightType currentSelectedWeightType,
+        int currentWeight,
+        int currentActivityInMinutes),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (weightEntered != null) {
-      return weightEntered(weight, weightType);
+    if (calculateClicked != null) {
+      return calculateClicked(currentSelectedGender, currentSelectedWeightType,
+          currentWeight, currentActivityInMinutes);
     }
     return orElse();
   }
@@ -164,149 +249,43 @@ class _$_WeightEntered implements _WeightEntered {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result weightEntered(_WeightEntered value),
-    @required Result activityEntered(_ActivityEntered value),
+    @required Result calculateClicked(_CalculateClicked value),
   }) {
-    assert(weightEntered != null);
-    assert(activityEntered != null);
-    return weightEntered(this);
+    assert(calculateClicked != null);
+    return calculateClicked(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result weightEntered(_WeightEntered value),
-    Result activityEntered(_ActivityEntered value),
+    Result calculateClicked(_CalculateClicked value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (weightEntered != null) {
-      return weightEntered(this);
+    if (calculateClicked != null) {
+      return calculateClicked(this);
     }
     return orElse();
   }
 }
 
-abstract class _WeightEntered implements CalculateWaterIntakeEvent {
-  const factory _WeightEntered(int weight, WeightType weightType) =
-      _$_WeightEntered;
-
-  int get weight;
-  WeightType get weightType;
-  _$WeightEnteredCopyWith<_WeightEntered> get copyWith;
-}
-
-abstract class _$ActivityEnteredCopyWith<$Res> {
-  factory _$ActivityEnteredCopyWith(
-          _ActivityEntered value, $Res Function(_ActivityEntered) then) =
-      __$ActivityEnteredCopyWithImpl<$Res>;
-  $Res call({int activeMinutes});
-}
-
-class __$ActivityEnteredCopyWithImpl<$Res>
-    extends _$CalculateWaterIntakeEventCopyWithImpl<$Res>
-    implements _$ActivityEnteredCopyWith<$Res> {
-  __$ActivityEnteredCopyWithImpl(
-      _ActivityEntered _value, $Res Function(_ActivityEntered) _then)
-      : super(_value, (v) => _then(v as _ActivityEntered));
+abstract class _CalculateClicked implements CalculateWaterIntakeEvent {
+  const factory _CalculateClicked(
+      Gender currentSelectedGender,
+      WeightType currentSelectedWeightType,
+      int currentWeight,
+      int currentActivityInMinutes) = _$_CalculateClicked;
 
   @override
-  _ActivityEntered get _value => super._value as _ActivityEntered;
-
+  Gender get currentSelectedGender;
   @override
-  $Res call({
-    Object activeMinutes = freezed,
-  }) {
-    return _then(_ActivityEntered(
-      activeMinutes == freezed ? _value.activeMinutes : activeMinutes as int,
-    ));
-  }
-}
-
-class _$_ActivityEntered implements _ActivityEntered {
-  const _$_ActivityEntered(this.activeMinutes) : assert(activeMinutes != null);
-
+  WeightType get currentSelectedWeightType;
   @override
-  final int activeMinutes;
-
+  int get currentWeight;
   @override
-  String toString() {
-    return 'CalculateWaterIntakeEvent.activityEntered(activeMinutes: $activeMinutes)';
-  }
-
+  int get currentActivityInMinutes;
   @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _ActivityEntered &&
-            (identical(other.activeMinutes, activeMinutes) ||
-                const DeepCollectionEquality()
-                    .equals(other.activeMinutes, activeMinutes)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(activeMinutes);
-
-  @override
-  _$ActivityEnteredCopyWith<_ActivityEntered> get copyWith =>
-      __$ActivityEnteredCopyWithImpl<_ActivityEntered>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result weightEntered(int weight, WeightType weightType),
-    @required Result activityEntered(int activeMinutes),
-  }) {
-    assert(weightEntered != null);
-    assert(activityEntered != null);
-    return activityEntered(activeMinutes);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result weightEntered(int weight, WeightType weightType),
-    Result activityEntered(int activeMinutes),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (activityEntered != null) {
-      return activityEntered(activeMinutes);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result weightEntered(_WeightEntered value),
-    @required Result activityEntered(_ActivityEntered value),
-  }) {
-    assert(weightEntered != null);
-    assert(activityEntered != null);
-    return activityEntered(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result weightEntered(_WeightEntered value),
-    Result activityEntered(_ActivityEntered value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (activityEntered != null) {
-      return activityEntered(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ActivityEntered implements CalculateWaterIntakeEvent {
-  const factory _ActivityEntered(int activeMinutes) = _$_ActivityEntered;
-
-  int get activeMinutes;
-  _$ActivityEnteredCopyWith<_ActivityEntered> get copyWith;
+  _$CalculateClickedCopyWith<_CalculateClicked> get copyWith;
 }
 
 class _$CalculateWaterIntakeStateTearOff {
@@ -318,8 +297,13 @@ class _$CalculateWaterIntakeStateTearOff {
   }
 
 // ignore: unused_element
-  _WeightEnterSuccess weightEnterSuccess() {
-    return const _WeightEnterSuccess();
+  _CalculationInProgress calculationInProgress() {
+    return const _CalculationInProgress();
+  }
+
+// ignore: unused_element
+  _CalculationFinished calculationFinished() {
+    return const _CalculationFinished();
   }
 }
 
@@ -330,23 +314,27 @@ mixin _$CalculateWaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result weightEnterSuccess(),
+    @required Result calculationInProgress(),
+    @required Result calculationFinished(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result weightEnterSuccess(),
+    Result calculationInProgress(),
+    Result calculationFinished(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
-    @required Result weightEnterSuccess(_WeightEnterSuccess value),
+    @required Result calculationInProgress(_CalculationInProgress value),
+    @required Result calculationFinished(_CalculationFinished value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
-    Result weightEnterSuccess(_WeightEnterSuccess value),
+    Result calculationInProgress(_CalculationInProgress value),
+    Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
   });
 }
@@ -401,10 +389,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result weightEnterSuccess(),
+    @required Result calculationInProgress(),
+    @required Result calculationFinished(),
   }) {
     assert(initial != null);
-    assert(weightEnterSuccess != null);
+    assert(calculationInProgress != null);
+    assert(calculationFinished != null);
     return initial();
   }
 
@@ -412,7 +402,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result weightEnterSuccess(),
+    Result calculationInProgress(),
+    Result calculationFinished(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -426,10 +417,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
-    @required Result weightEnterSuccess(_WeightEnterSuccess value),
+    @required Result calculationInProgress(_CalculationInProgress value),
+    @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
-    assert(weightEnterSuccess != null);
+    assert(calculationInProgress != null);
+    assert(calculationFinished != null);
     return initial(this);
   }
 
@@ -437,7 +430,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
-    Result weightEnterSuccess(_WeightEnterSuccess value),
+    Result calculationInProgress(_CalculationInProgress value),
+    Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -452,34 +446,34 @@ abstract class _Initial implements CalculateWaterIntakeState {
   const factory _Initial() = _$_Initial;
 }
 
-abstract class _$WeightEnterSuccessCopyWith<$Res> {
-  factory _$WeightEnterSuccessCopyWith(
-          _WeightEnterSuccess value, $Res Function(_WeightEnterSuccess) then) =
-      __$WeightEnterSuccessCopyWithImpl<$Res>;
+abstract class _$CalculationInProgressCopyWith<$Res> {
+  factory _$CalculationInProgressCopyWith(_CalculationInProgress value,
+          $Res Function(_CalculationInProgress) then) =
+      __$CalculationInProgressCopyWithImpl<$Res>;
 }
 
-class __$WeightEnterSuccessCopyWithImpl<$Res>
+class __$CalculationInProgressCopyWithImpl<$Res>
     extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
-    implements _$WeightEnterSuccessCopyWith<$Res> {
-  __$WeightEnterSuccessCopyWithImpl(
-      _WeightEnterSuccess _value, $Res Function(_WeightEnterSuccess) _then)
-      : super(_value, (v) => _then(v as _WeightEnterSuccess));
+    implements _$CalculationInProgressCopyWith<$Res> {
+  __$CalculationInProgressCopyWithImpl(_CalculationInProgress _value,
+      $Res Function(_CalculationInProgress) _then)
+      : super(_value, (v) => _then(v as _CalculationInProgress));
 
   @override
-  _WeightEnterSuccess get _value => super._value as _WeightEnterSuccess;
+  _CalculationInProgress get _value => super._value as _CalculationInProgress;
 }
 
-class _$_WeightEnterSuccess implements _WeightEnterSuccess {
-  const _$_WeightEnterSuccess();
+class _$_CalculationInProgress implements _CalculationInProgress {
+  const _$_CalculationInProgress();
 
   @override
   String toString() {
-    return 'CalculateWaterIntakeState.weightEnterSuccess()';
+    return 'CalculateWaterIntakeState.calculationInProgress()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _WeightEnterSuccess);
+    return identical(this, other) || (other is _CalculationInProgress);
   }
 
   @override
@@ -489,23 +483,26 @@ class _$_WeightEnterSuccess implements _WeightEnterSuccess {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result weightEnterSuccess(),
+    @required Result calculationInProgress(),
+    @required Result calculationFinished(),
   }) {
     assert(initial != null);
-    assert(weightEnterSuccess != null);
-    return weightEnterSuccess();
+    assert(calculationInProgress != null);
+    assert(calculationFinished != null);
+    return calculationInProgress();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result weightEnterSuccess(),
+    Result calculationInProgress(),
+    Result calculationFinished(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (weightEnterSuccess != null) {
-      return weightEnterSuccess();
+    if (calculationInProgress != null) {
+      return calculationInProgress();
     }
     return orElse();
   }
@@ -514,28 +511,125 @@ class _$_WeightEnterSuccess implements _WeightEnterSuccess {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
-    @required Result weightEnterSuccess(_WeightEnterSuccess value),
+    @required Result calculationInProgress(_CalculationInProgress value),
+    @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
-    assert(weightEnterSuccess != null);
-    return weightEnterSuccess(this);
+    assert(calculationInProgress != null);
+    assert(calculationFinished != null);
+    return calculationInProgress(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
-    Result weightEnterSuccess(_WeightEnterSuccess value),
+    Result calculationInProgress(_CalculationInProgress value),
+    Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (weightEnterSuccess != null) {
-      return weightEnterSuccess(this);
+    if (calculationInProgress != null) {
+      return calculationInProgress(this);
     }
     return orElse();
   }
 }
 
-abstract class _WeightEnterSuccess implements CalculateWaterIntakeState {
-  const factory _WeightEnterSuccess() = _$_WeightEnterSuccess;
+abstract class _CalculationInProgress implements CalculateWaterIntakeState {
+  const factory _CalculationInProgress() = _$_CalculationInProgress;
+}
+
+abstract class _$CalculationFinishedCopyWith<$Res> {
+  factory _$CalculationFinishedCopyWith(_CalculationFinished value,
+          $Res Function(_CalculationFinished) then) =
+      __$CalculationFinishedCopyWithImpl<$Res>;
+}
+
+class __$CalculationFinishedCopyWithImpl<$Res>
+    extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
+    implements _$CalculationFinishedCopyWith<$Res> {
+  __$CalculationFinishedCopyWithImpl(
+      _CalculationFinished _value, $Res Function(_CalculationFinished) _then)
+      : super(_value, (v) => _then(v as _CalculationFinished));
+
+  @override
+  _CalculationFinished get _value => super._value as _CalculationFinished;
+}
+
+class _$_CalculationFinished implements _CalculationFinished {
+  const _$_CalculationFinished();
+
+  @override
+  String toString() {
+    return 'CalculateWaterIntakeState.calculationFinished()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _CalculationFinished);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result calculationInProgress(),
+    @required Result calculationFinished(),
+  }) {
+    assert(initial != null);
+    assert(calculationInProgress != null);
+    assert(calculationFinished != null);
+    return calculationFinished();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result calculationInProgress(),
+    Result calculationFinished(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (calculationFinished != null) {
+      return calculationFinished();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result calculationInProgress(_CalculationInProgress value),
+    @required Result calculationFinished(_CalculationFinished value),
+  }) {
+    assert(initial != null);
+    assert(calculationInProgress != null);
+    assert(calculationFinished != null);
+    return calculationFinished(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result calculationInProgress(_CalculationInProgress value),
+    Result calculationFinished(_CalculationFinished value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (calculationFinished != null) {
+      return calculationFinished(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CalculationFinished implements CalculateWaterIntakeState {
+  const factory _CalculationFinished() = _$_CalculationFinished;
 }
