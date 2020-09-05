@@ -42,6 +42,10 @@ dependencies:
 
   # TODO Definetly remove this sugar, only the modified example from simple_animations uses this.
   supercharged: ^1.7.0
+  # SVG support
+  flutter_svg: ^0.18.1
+  # Material/Android-like number picker that scrolls vertically
+  numberpicker: ^1.2.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -70,7 +74,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/weight-scale.png
+    - assets/images/gender.svg
+    - assets/images/male.svg
+    - assets/images/female.svg
+    - assets/images/weight.svg
+    - assets/images/activity.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

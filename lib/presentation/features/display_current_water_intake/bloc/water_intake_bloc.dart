@@ -23,11 +23,11 @@ class WaterIntakeBloc extends Bloc<WaterIntakeEvent, WaterIntakeState> {
   ) async* {
     yield* event.map(
       updated: (params) =>
-          addTestEvent(params.updatedValue, params.waterMaximumHeight),
+          _updateWaterIntake(params.updatedValue, params.waterMaximumHeight),
     );
   }
 
-  Stream<WaterIntakeState> addTestEvent(
+  Stream<WaterIntakeState> _updateWaterIntake(
     double updatedValue,
     double waterMaximumHeight,
   ) async* {
