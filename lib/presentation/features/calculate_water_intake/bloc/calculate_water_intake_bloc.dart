@@ -24,5 +24,7 @@ class CalculateWaterIntakeBloc
 }
 
 Stream<CalculateWaterIntakeState> _handleCalculateClicked(_CalculateClicked params) async* {
-  yield CalculateWaterIntakeState.initial();
+  yield CalculateWaterIntakeState.calculationInProgress();
+
+  
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/common/constants/constants.dart';
 import '../../../../service_locator.dart' as di;
 import '../../../common/model/gender.dart';
 import '../../../common/model/weight_type.dart';
@@ -17,10 +18,10 @@ class CalculateWaterIntakePage extends StatefulWidget {
 }
 
 class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
-  Gender _currentSelectedGender;
-  WeightType _currentSelectedWeightType;
-  int _currentWeight;
-  int _currentActivityInMinutes;
+  Gender _currentSelectedGender = INITIAL_GENDER;
+  WeightType _currentSelectedWeightType = INITIAL_WEIGHT_TYPE;
+  int _currentWeight = INITIAL_WEIGHT;
+  int _currentActivityInMinutes = INITIAL_DAILY_ACTIVITY;
 
   @override
   Widget build(BuildContext context) {

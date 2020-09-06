@@ -1,7 +1,15 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-abstract class Failure {
+abstract class Failure extends Equatable {
   final String message;
 
   Failure({@required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+class NegativeNumberFailure extends Failure {
+  NegativeNumberFailure(String errorMessage) : super(message: errorMessage);
 }

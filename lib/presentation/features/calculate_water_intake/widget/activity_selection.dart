@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
+import '../../../../core/common/constants/constants.dart';
+
 class ActivitySelection extends StatelessWidget {
   final Function(int value) onActivityChangeCallback;
 
@@ -17,7 +19,7 @@ class ActivitySelection extends StatelessWidget {
         textTheme: TextTheme(bodyText2: TextStyle(color: Colors.white)),
       ),
       child: NumberPicker.integer(
-        initialValue: 0,
+        initialValue: INITIAL_DAILY_ACTIVITY,
         minValue: 0,
         maxValue: 1440,
         infiniteLoop: true,

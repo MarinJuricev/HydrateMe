@@ -46,6 +46,8 @@ dependencies:
   flutter_svg: ^0.18.1
   # Material/Android-like number picker that scrolls vertically
   numberpicker: ^1.2.1
+  # Easier value equality 
+  equatable: ^1.2.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

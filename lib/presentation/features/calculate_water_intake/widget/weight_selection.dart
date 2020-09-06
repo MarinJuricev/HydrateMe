@@ -1,6 +1,8 @@
-import 'package:HydrateMe/presentation/common/model/weight_type.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
+
+import '../../../../core/common/constants/constants.dart';
+import '../../../common/model/weight_type.dart';
 
 class WeightSelection extends StatefulWidget {
   final Function(WeightType value) onWeightTypeSwitchCallback;
@@ -18,7 +20,7 @@ class WeightSelection extends StatefulWidget {
 
 class _WeightSelectionState extends State<WeightSelection> {
   final List<bool> _isSelected = [true, false];
-  final _currentWeight = 50;
+  final _currentWeight = INITIAL_WEIGHT;
   final _maximumWeight = 200;
 
   @override
