@@ -10,5 +10,7 @@ abstract class HydrateStatus with _$HydrateStatus {
     @required double hydrationPercentage,
     // Used to display the % value of hydrationPercentage, EX: 0.7 should be mapped as 70%
     @required String percentage,
+    @required int dailyIntakeGoal,
+    @required int currentIntake,
   }) = _HydrateStatus;
 }

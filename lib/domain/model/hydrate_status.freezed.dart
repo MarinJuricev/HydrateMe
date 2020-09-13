@@ -14,10 +14,15 @@ class _$HydrateStatusTearOff {
 
 // ignore: unused_element
   _HydrateStatus call(
-      {@required double hydrationPercentage, @required String percentage}) {
+      {@required double hydrationPercentage,
+      @required String percentage,
+      @required int dailyIntakeGoal,
+      @required int currentIntake}) {
     return _HydrateStatus(
       hydrationPercentage: hydrationPercentage,
       percentage: percentage,
+      dailyIntakeGoal: dailyIntakeGoal,
+      currentIntake: currentIntake,
     );
   }
 }
@@ -28,6 +33,8 @@ const $HydrateStatus = _$HydrateStatusTearOff();
 mixin _$HydrateStatus {
   double get hydrationPercentage;
   String get percentage;
+  int get dailyIntakeGoal;
+  int get currentIntake;
 
   $HydrateStatusCopyWith<HydrateStatus> get copyWith;
 }
@@ -36,7 +43,11 @@ abstract class $HydrateStatusCopyWith<$Res> {
   factory $HydrateStatusCopyWith(
           HydrateStatus value, $Res Function(HydrateStatus) then) =
       _$HydrateStatusCopyWithImpl<$Res>;
-  $Res call({double hydrationPercentage, String percentage});
+  $Res call(
+      {double hydrationPercentage,
+      String percentage,
+      int dailyIntakeGoal,
+      int currentIntake});
 }
 
 class _$HydrateStatusCopyWithImpl<$Res>
@@ -51,6 +62,8 @@ class _$HydrateStatusCopyWithImpl<$Res>
   $Res call({
     Object hydrationPercentage = freezed,
     Object percentage = freezed,
+    Object dailyIntakeGoal = freezed,
+    Object currentIntake = freezed,
   }) {
     return _then(_value.copyWith(
       hydrationPercentage: hydrationPercentage == freezed
@@ -58,6 +71,12 @@ class _$HydrateStatusCopyWithImpl<$Res>
           : hydrationPercentage as double,
       percentage:
           percentage == freezed ? _value.percentage : percentage as String,
+      dailyIntakeGoal: dailyIntakeGoal == freezed
+          ? _value.dailyIntakeGoal
+          : dailyIntakeGoal as int,
+      currentIntake: currentIntake == freezed
+          ? _value.currentIntake
+          : currentIntake as int,
     ));
   }
 }
@@ -68,7 +87,11 @@ abstract class _$HydrateStatusCopyWith<$Res>
           _HydrateStatus value, $Res Function(_HydrateStatus) then) =
       __$HydrateStatusCopyWithImpl<$Res>;
   @override
-  $Res call({double hydrationPercentage, String percentage});
+  $Res call(
+      {double hydrationPercentage,
+      String percentage,
+      int dailyIntakeGoal,
+      int currentIntake});
 }
 
 class __$HydrateStatusCopyWithImpl<$Res>
@@ -85,6 +108,8 @@ class __$HydrateStatusCopyWithImpl<$Res>
   $Res call({
     Object hydrationPercentage = freezed,
     Object percentage = freezed,
+    Object dailyIntakeGoal = freezed,
+    Object currentIntake = freezed,
   }) {
     return _then(_HydrateStatus(
       hydrationPercentage: hydrationPercentage == freezed
@@ -92,24 +117,39 @@ class __$HydrateStatusCopyWithImpl<$Res>
           : hydrationPercentage as double,
       percentage:
           percentage == freezed ? _value.percentage : percentage as String,
+      dailyIntakeGoal: dailyIntakeGoal == freezed
+          ? _value.dailyIntakeGoal
+          : dailyIntakeGoal as int,
+      currentIntake: currentIntake == freezed
+          ? _value.currentIntake
+          : currentIntake as int,
     ));
   }
 }
 
 class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
   _$_HydrateStatus(
-      {@required this.hydrationPercentage, @required this.percentage})
+      {@required this.hydrationPercentage,
+      @required this.percentage,
+      @required this.dailyIntakeGoal,
+      @required this.currentIntake})
       : assert(hydrationPercentage != null),
-        assert(percentage != null);
+        assert(percentage != null),
+        assert(dailyIntakeGoal != null),
+        assert(currentIntake != null);
 
   @override
   final double hydrationPercentage;
   @override
   final String percentage;
+  @override
+  final int dailyIntakeGoal;
+  @override
+  final int currentIntake;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HydrateStatus(hydrationPercentage: $hydrationPercentage, percentage: $percentage)';
+    return 'HydrateStatus(hydrationPercentage: $hydrationPercentage, percentage: $percentage, dailyIntakeGoal: $dailyIntakeGoal, currentIntake: $currentIntake)';
   }
 
   @override
@@ -118,7 +158,9 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
     properties
       ..add(DiagnosticsProperty('type', 'HydrateStatus'))
       ..add(DiagnosticsProperty('hydrationPercentage', hydrationPercentage))
-      ..add(DiagnosticsProperty('percentage', percentage));
+      ..add(DiagnosticsProperty('percentage', percentage))
+      ..add(DiagnosticsProperty('dailyIntakeGoal', dailyIntakeGoal))
+      ..add(DiagnosticsProperty('currentIntake', currentIntake));
   }
 
   @override
@@ -130,14 +172,22 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
                     .equals(other.hydrationPercentage, hydrationPercentage)) &&
             (identical(other.percentage, percentage) ||
                 const DeepCollectionEquality()
-                    .equals(other.percentage, percentage)));
+                    .equals(other.percentage, percentage)) &&
+            (identical(other.dailyIntakeGoal, dailyIntakeGoal) ||
+                const DeepCollectionEquality()
+                    .equals(other.dailyIntakeGoal, dailyIntakeGoal)) &&
+            (identical(other.currentIntake, currentIntake) ||
+                const DeepCollectionEquality()
+                    .equals(other.currentIntake, currentIntake)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(hydrationPercentage) ^
-      const DeepCollectionEquality().hash(percentage);
+      const DeepCollectionEquality().hash(percentage) ^
+      const DeepCollectionEquality().hash(dailyIntakeGoal) ^
+      const DeepCollectionEquality().hash(currentIntake);
 
   @override
   _$HydrateStatusCopyWith<_HydrateStatus> get copyWith =>
@@ -147,12 +197,18 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
 abstract class _HydrateStatus implements HydrateStatus {
   factory _HydrateStatus(
       {@required double hydrationPercentage,
-      @required String percentage}) = _$_HydrateStatus;
+      @required String percentage,
+      @required int dailyIntakeGoal,
+      @required int currentIntake}) = _$_HydrateStatus;
 
   @override
   double get hydrationPercentage;
   @override
   String get percentage;
+  @override
+  int get dailyIntakeGoal;
+  @override
+  int get currentIntake;
   @override
   _$HydrateStatusCopyWith<_HydrateStatus> get copyWith;
 }
