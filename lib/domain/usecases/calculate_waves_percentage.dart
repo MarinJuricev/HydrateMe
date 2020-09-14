@@ -18,6 +18,8 @@ class CalculateWavesPercentage
       HydrateStatus(
         hydrationPercentage: hydrationPercentage,
         percentage: percentage,
+        currentIntake: 0,
+        dailyIntakeGoal: 0
       ),
     );
   }

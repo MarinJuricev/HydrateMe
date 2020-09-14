@@ -292,13 +292,20 @@ class _$CalculateWaterIntakeStateTearOff {
   const _$CalculateWaterIntakeStateTearOff();
 
 // ignore: unused_element
-  _Initial initial() {
-    return const _Initial();
+  _CalculateWaterIntakeInitial initial() {
+    return const _CalculateWaterIntakeInitial();
   }
 
 // ignore: unused_element
   _CalculationInProgress calculationInProgress() {
     return const _CalculationInProgress();
+  }
+
+// ignore: unused_element
+  _CalculateWaterIntakeErrorState error(String errorMessage) {
+    return _CalculateWaterIntakeErrorState(
+      errorMessage,
+    );
   }
 
 // ignore: unused_element
@@ -315,25 +322,29 @@ mixin _$CalculateWaterIntakeState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result calculationInProgress(),
+    @required Result error(String errorMessage),
     @required Result calculationFinished(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result calculationInProgress(),
+    Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initial(_Initial value),
+    @required Result initial(_CalculateWaterIntakeInitial value),
     @required Result calculationInProgress(_CalculationInProgress value),
+    @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
+    Result initial(_CalculateWaterIntakeInitial value),
     Result calculationInProgress(_CalculationInProgress value),
+    Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
   });
@@ -354,23 +365,28 @@ class _$CalculateWaterIntakeStateCopyWithImpl<$Res>
   final $Res Function(CalculateWaterIntakeState) _then;
 }
 
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$CalculateWaterIntakeInitialCopyWith<$Res> {
+  factory _$CalculateWaterIntakeInitialCopyWith(
+          _CalculateWaterIntakeInitial value,
+          $Res Function(_CalculateWaterIntakeInitial) then) =
+      __$CalculateWaterIntakeInitialCopyWithImpl<$Res>;
 }
 
-class __$InitialCopyWithImpl<$Res>
+class __$CalculateWaterIntakeInitialCopyWithImpl<$Res>
     extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+    implements _$CalculateWaterIntakeInitialCopyWith<$Res> {
+  __$CalculateWaterIntakeInitialCopyWithImpl(
+      _CalculateWaterIntakeInitial _value,
+      $Res Function(_CalculateWaterIntakeInitial) _then)
+      : super(_value, (v) => _then(v as _CalculateWaterIntakeInitial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _CalculateWaterIntakeInitial get _value =>
+      super._value as _CalculateWaterIntakeInitial;
 }
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
+  const _$_CalculateWaterIntakeInitial();
 
   @override
   String toString() {
@@ -379,7 +395,7 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) || (other is _CalculateWaterIntakeInitial);
   }
 
   @override
@@ -390,10 +406,12 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result calculationInProgress(),
+    @required Result error(String errorMessage),
     @required Result calculationFinished(),
   }) {
     assert(initial != null);
     assert(calculationInProgress != null);
+    assert(error != null);
     assert(calculationFinished != null);
     return initial();
   }
@@ -403,6 +421,7 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result calculationInProgress(),
+    Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
   }) {
@@ -416,12 +435,14 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initial(_Initial value),
+    @required Result initial(_CalculateWaterIntakeInitial value),
     @required Result calculationInProgress(_CalculationInProgress value),
+    @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
     assert(calculationInProgress != null);
+    assert(error != null);
     assert(calculationFinished != null);
     return initial(this);
   }
@@ -429,8 +450,9 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
+    Result initial(_CalculateWaterIntakeInitial value),
     Result calculationInProgress(_CalculationInProgress value),
+    Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
   }) {
@@ -442,8 +464,9 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements CalculateWaterIntakeState {
-  const factory _Initial() = _$_Initial;
+abstract class _CalculateWaterIntakeInitial
+    implements CalculateWaterIntakeState {
+  const factory _CalculateWaterIntakeInitial() = _$_CalculateWaterIntakeInitial;
 }
 
 abstract class _$CalculationInProgressCopyWith<$Res> {
@@ -484,10 +507,12 @@ class _$_CalculationInProgress implements _CalculationInProgress {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result calculationInProgress(),
+    @required Result error(String errorMessage),
     @required Result calculationFinished(),
   }) {
     assert(initial != null);
     assert(calculationInProgress != null);
+    assert(error != null);
     assert(calculationFinished != null);
     return calculationInProgress();
   }
@@ -497,6 +522,7 @@ class _$_CalculationInProgress implements _CalculationInProgress {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result calculationInProgress(),
+    Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
   }) {
@@ -510,12 +536,14 @@ class _$_CalculationInProgress implements _CalculationInProgress {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initial(_Initial value),
+    @required Result initial(_CalculateWaterIntakeInitial value),
     @required Result calculationInProgress(_CalculationInProgress value),
+    @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
     assert(calculationInProgress != null);
+    assert(error != null);
     assert(calculationFinished != null);
     return calculationInProgress(this);
   }
@@ -523,8 +551,9 @@ class _$_CalculationInProgress implements _CalculationInProgress {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
+    Result initial(_CalculateWaterIntakeInitial value),
     Result calculationInProgress(_CalculationInProgress value),
+    Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
   }) {
@@ -538,6 +567,140 @@ class _$_CalculationInProgress implements _CalculationInProgress {
 
 abstract class _CalculationInProgress implements CalculateWaterIntakeState {
   const factory _CalculationInProgress() = _$_CalculationInProgress;
+}
+
+abstract class _$CalculateWaterIntakeErrorStateCopyWith<$Res> {
+  factory _$CalculateWaterIntakeErrorStateCopyWith(
+          _CalculateWaterIntakeErrorState value,
+          $Res Function(_CalculateWaterIntakeErrorState) then) =
+      __$CalculateWaterIntakeErrorStateCopyWithImpl<$Res>;
+  $Res call({String errorMessage});
+}
+
+class __$CalculateWaterIntakeErrorStateCopyWithImpl<$Res>
+    extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
+    implements _$CalculateWaterIntakeErrorStateCopyWith<$Res> {
+  __$CalculateWaterIntakeErrorStateCopyWithImpl(
+      _CalculateWaterIntakeErrorState _value,
+      $Res Function(_CalculateWaterIntakeErrorState) _then)
+      : super(_value, (v) => _then(v as _CalculateWaterIntakeErrorState));
+
+  @override
+  _CalculateWaterIntakeErrorState get _value =>
+      super._value as _CalculateWaterIntakeErrorState;
+
+  @override
+  $Res call({
+    Object errorMessage = freezed,
+  }) {
+    return _then(_CalculateWaterIntakeErrorState(
+      errorMessage == freezed ? _value.errorMessage : errorMessage as String,
+    ));
+  }
+}
+
+class _$_CalculateWaterIntakeErrorState
+    implements _CalculateWaterIntakeErrorState {
+  const _$_CalculateWaterIntakeErrorState(this.errorMessage)
+      : assert(errorMessage != null);
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'CalculateWaterIntakeState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CalculateWaterIntakeErrorState &&
+            (identical(other.errorMessage, errorMessage) ||
+                const DeepCollectionEquality()
+                    .equals(other.errorMessage, errorMessage)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(errorMessage);
+
+  @override
+  _$CalculateWaterIntakeErrorStateCopyWith<_CalculateWaterIntakeErrorState>
+      get copyWith => __$CalculateWaterIntakeErrorStateCopyWithImpl<
+          _CalculateWaterIntakeErrorState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result calculationInProgress(),
+    @required Result error(String errorMessage),
+    @required Result calculationFinished(),
+  }) {
+    assert(initial != null);
+    assert(calculationInProgress != null);
+    assert(error != null);
+    assert(calculationFinished != null);
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result calculationInProgress(),
+    Result error(String errorMessage),
+    Result calculationFinished(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_CalculateWaterIntakeInitial value),
+    @required Result calculationInProgress(_CalculationInProgress value),
+    @required Result error(_CalculateWaterIntakeErrorState value),
+    @required Result calculationFinished(_CalculationFinished value),
+  }) {
+    assert(initial != null);
+    assert(calculationInProgress != null);
+    assert(error != null);
+    assert(calculationFinished != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_CalculateWaterIntakeInitial value),
+    Result calculationInProgress(_CalculationInProgress value),
+    Result error(_CalculateWaterIntakeErrorState value),
+    Result calculationFinished(_CalculationFinished value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CalculateWaterIntakeErrorState
+    implements CalculateWaterIntakeState {
+  const factory _CalculateWaterIntakeErrorState(String errorMessage) =
+      _$_CalculateWaterIntakeErrorState;
+
+  String get errorMessage;
+  _$CalculateWaterIntakeErrorStateCopyWith<_CalculateWaterIntakeErrorState>
+      get copyWith;
 }
 
 abstract class _$CalculationFinishedCopyWith<$Res> {
@@ -578,10 +741,12 @@ class _$_CalculationFinished implements _CalculationFinished {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result calculationInProgress(),
+    @required Result error(String errorMessage),
     @required Result calculationFinished(),
   }) {
     assert(initial != null);
     assert(calculationInProgress != null);
+    assert(error != null);
     assert(calculationFinished != null);
     return calculationFinished();
   }
@@ -591,6 +756,7 @@ class _$_CalculationFinished implements _CalculationFinished {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result calculationInProgress(),
+    Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
   }) {
@@ -604,12 +770,14 @@ class _$_CalculationFinished implements _CalculationFinished {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result initial(_Initial value),
+    @required Result initial(_CalculateWaterIntakeInitial value),
     @required Result calculationInProgress(_CalculationInProgress value),
+    @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
     assert(calculationInProgress != null);
+    assert(error != null);
     assert(calculationFinished != null);
     return calculationFinished(this);
   }
@@ -617,8 +785,9 @@ class _$_CalculationFinished implements _CalculationFinished {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
+    Result initial(_CalculateWaterIntakeInitial value),
     Result calculationInProgress(_CalculationInProgress value),
+    Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
   }) {

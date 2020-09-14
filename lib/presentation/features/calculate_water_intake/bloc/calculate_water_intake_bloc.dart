@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
 import 'package:HydrateMe/presentation/common/model/gender.dart';
 import 'package:HydrateMe/presentation/common/model/weight_type.dart';
 import 'package:bloc/bloc.dart';
@@ -11,7 +12,10 @@ part 'calculate_water_intake_bloc.freezed.dart';
 
 class CalculateWaterIntakeBloc
     extends Bloc<CalculateWaterIntakeEvent, CalculateWaterIntakeState> {
-  CalculateWaterIntakeBloc() : super(CalculateWaterIntakeState.initial());
+  final CalculateDailyWaterIntake _calculateDailyWaterIntake;
+
+  CalculateWaterIntakeBloc(this._calculateDailyWaterIntake)
+      : super(CalculateWaterIntakeState.initial());
 
   @override
   Stream<CalculateWaterIntakeState> mapEventToState(
@@ -21,10 +25,22 @@ class CalculateWaterIntakeBloc
       calculateClicked: (params) => _handleCalculateClicked(params),
     );
   }
-}
 
-Stream<CalculateWaterIntakeState> _handleCalculateClicked(_CalculateClicked params) async* {
-  yield CalculateWaterIntakeState.calculationInProgress();
+  Stream<CalculateWaterIntakeState> _handleCalculateClicked(
+      _CalculateClicked params) async* {
+    yield CalculateWaterIntakeState.calculationInProgress();
 
-  
+    final dailyWaterIntakeResult = await _calculateDailyWaterIntake(
+      CalculateDailyWaterIntakeParams(
+          currentSelectedGender: params.currentSelectedGender,
+          currentSelectedWeightType: params.currentSelectedWeightType,
+          currentWeight: params.currentWeight,
+          currentActivityInMinutes: params.currentActivityInMinutes),
+    );
+
+    yield  dailyWaterIntakeResult.fold(
+      (failure) => CalculateWaterIntakeState.error(failure.message),
+      (hydrateStatus) => CalculateWaterIntakeState.calculationFinished(),
+    );
+  }
 }

@@ -27,8 +27,8 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      body: BlocProvider(
-        create: (BuildContext context) => di.getIt<CalculateWaterIntakeBloc>(),
+      body: BlocProvider<CalculateWaterIntakeBloc>(
+        create: (context) => di.getIt<CalculateWaterIntakeBloc>(),
         child: Column(
           children: [
             Padding(

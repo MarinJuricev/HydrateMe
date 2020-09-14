@@ -30,7 +30,6 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
             updated: (HydrateStatus hydrateStatus) =>
                 _buildWaterIntake(hydrateStatus),
             completed: () => _buildWaterIntake(
-              //TODO Make a static variable or a builder for the 100% and 0% case, or provide new state that has the HydrateStatus provided
               HydrateStatus(hydrationPercentage: 0, percentage: '0%'),
             ),
             error: (String errorMessage) => Text(errorMessage),
