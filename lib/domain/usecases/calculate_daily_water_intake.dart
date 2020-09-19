@@ -14,16 +14,16 @@ const INVALID_CONVERTED_WEIGHT = -1;
 
 class CalculateDailyWaterIntake
     extends BaseUseCase<HydrateStatus, CalculateDailyWaterIntakeParams> {
-  final KgToLbsConverter _converter;
+  final KgToLbsConverter kgToLbsconverter;
   final CalculateAdditionalWaterIntakePerActivity
-      _calculateAdditionalWaterIntakePerActivity;
-  final OzToMIliliterConverter _ozToMIliliterConverter;
+      calculateAdditionalWaterIntakePerActivity;
+  final OzToMIliliterConverter ozToMIliliterConverter;
 
-  CalculateDailyWaterIntake(
-    this._converter,
-    this._calculateAdditionalWaterIntakePerActivity,
-    this._ozToMIliliterConverter,
-  );
+  CalculateDailyWaterIntake({
+    @required this.kgToLbsconverter,
+    @required this.calculateAdditionalWaterIntakePerActivity,
+    @required this.ozToMIliliterConverter,
+  });
 
   @override
   Future<Either<Failure, HydrateStatus>> call(
@@ -56,7 +56,7 @@ class CalculateDailyWaterIntake
   Future<int> getWeightInLbs(
       int currentWeight, WeightType currentSelectedWeightType) async {
     if (currentSelectedWeightType == WeightType.kg) {
-      final converterResult = await _converter(currentWeight);
+      final converterResult = await kgToLbsconverter(currentWeight);
       return converterResult.fold(
         (error) => INVALID_CONVERTED_WEIGHT,
         (convertedWeight) => convertedWeight,
@@ -68,7 +68,7 @@ class CalculateDailyWaterIntake
 
   Future<int> getAdditionalWaterIntake(int currentActivityInMinutes) async {
     final additionalWaterIntakeResult =
-        await _calculateAdditionalWaterIntakePerActivity(
+        await calculateAdditionalWaterIntakePerActivity(
             currentActivityInMinutes);
     return additionalWaterIntakeResult.fold(
       (error) => 0,
@@ -79,7 +79,7 @@ class CalculateDailyWaterIntake
   Future<int> getWaterIntakeInMiliLiters(
       double dailyWaterIntakeInOunces) async {
     final waterInMiliLitersResult =
-        await _ozToMIliliterConverter(dailyWaterIntakeInOunces);
+        await ozToMIliliterConverter(dailyWaterIntakeInOunces);
     return waterInMiliLitersResult.fold(
       (error) => 0,
       (waterInMililiters) => waterInMililiters,
