@@ -28,101 +28,112 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       body: BlocProvider<CalculateWaterIntakeBloc>(
-        create: (context) => di.getIt<CalculateWaterIntakeBloc>(),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 16.0,
-                horizontal: 16.0,
-              ),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: const Text(
-                  'ABOUT ME',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                  ),
-                  child: Column(
-                    children: [
-                      HydrateTextWithIcon(
-                        assetIconPath: 'assets/images/gender.svg',
-                        text: 'Gender',
-                      ),
-                      const SizedBox(height: 8.0),
-                      GenderToggle(
-                          onGenderSwitchCallback: (Gender selectedGender) =>
-                              _currentSelectedGender = selectedGender),
-                      const SizedBox(height: 8.0),
-                      HydrateTextWithIcon(
-                        assetIconPath: 'assets/images/weight.svg',
-                        text: 'Weight',
-                      ),
-                      const SizedBox(height: 8.0),
-                      WeightSelection(
-                        onWeightChangeCallback: (int newWeight) =>
-                            _currentWeight = newWeight,
-                        onWeightTypeSwitchCallback:
-                            (WeightType newWeightType) =>
-                                _currentSelectedWeightType = newWeightType,
-                      ),
-                      const SizedBox(height: 8.0),
-                      HydrateTextWithIcon(
-                        assetIconPath: 'assets/images/activity.svg',
-                        text: 'Daily activity',
-                      ),
-                      ActivitySelection(
-                        onActivityChangeCallback: (int newActivity) =>
-                            _currentActivityInMinutes = newActivity,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: RaisedButton(
-                  child: const Text('Generate Plan'),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(12.0),
-                    ),
-                  ),
-                  onPressed: () => _sendCalculateEvent(
-                    _currentSelectedGender,
-                    _currentSelectedWeightType,
-                    _currentWeight,
-                    _currentActivityInMinutes,
-                    context,
-                  ),
-                  color: Colors.lightBlue,
-                  textColor: Colors.white,
-                ),
-              ),
-            )
-          ],
-        ),
+        create: (blocContext) => di.getIt<CalculateWaterIntakeBloc>(),
+        child: BlocBuilder<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
+            builder: (context, state) {
+          return state.when(
+            initial: () => _buildInitialState(),
+            error: (errorMessage) =>
+                Text('PlaceHolder Error Text: $errorMessage'),
+            calculationFinished: () => Text('PlaceHolder finished event'),
+          );
+        }),
       ),
+    );
+  }
+
+  _buildInitialState() {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 16.0,
+            horizontal: 16.0,
+          ),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: const Text(
+              'ABOUT ME',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0,
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.lightBlue,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(12.0),
+                ),
+              ),
+              child: Column(
+                children: [
+                  HydrateTextWithIcon(
+                    assetIconPath: 'assets/images/gender.svg',
+                    text: 'Gender',
+                  ),
+                  const SizedBox(height: 8.0),
+                  GenderToggle(
+                      onGenderSwitchCallback: (Gender selectedGender) =>
+                          _currentSelectedGender = selectedGender),
+                  const SizedBox(height: 8.0),
+                  HydrateTextWithIcon(
+                    assetIconPath: 'assets/images/weight.svg',
+                    text: 'Weight',
+                  ),
+                  const SizedBox(height: 8.0),
+                  WeightSelection(
+                    onWeightChangeCallback: (int newWeight) =>
+                        _currentWeight = newWeight,
+                    onWeightTypeSwitchCallback: (WeightType newWeightType) =>
+                        _currentSelectedWeightType = newWeightType,
+                  ),
+                  const SizedBox(height: 8.0),
+                  HydrateTextWithIcon(
+                    assetIconPath: 'assets/images/activity.svg',
+                    text: 'Daily activity',
+                  ),
+                  ActivitySelection(
+                    onActivityChangeCallback: (int newActivity) =>
+                        _currentActivityInMinutes = newActivity,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: RaisedButton(
+              child: const Text('Generate Plan'),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(12.0),
+                ),
+              ),
+              onPressed: () => _sendCalculateEvent(
+                _currentSelectedGender,
+                _currentSelectedWeightType,
+                _currentWeight,
+                _currentActivityInMinutes,
+                context,
+              ),
+              color: Colors.lightBlue,
+              textColor: Colors.white,
+            ),
+          ),
+        )
+      ],
     );
   }
 }

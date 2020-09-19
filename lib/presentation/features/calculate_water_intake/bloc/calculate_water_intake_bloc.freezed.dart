@@ -297,11 +297,6 @@ class _$CalculateWaterIntakeStateTearOff {
   }
 
 // ignore: unused_element
-  _CalculationInProgress calculationInProgress() {
-    return const _CalculationInProgress();
-  }
-
-// ignore: unused_element
   _CalculateWaterIntakeErrorState error(String errorMessage) {
     return _CalculateWaterIntakeErrorState(
       errorMessage,
@@ -321,14 +316,12 @@ mixin _$CalculateWaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result calculationInProgress(),
     @required Result error(String errorMessage),
     @required Result calculationFinished(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result calculationInProgress(),
     Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
@@ -336,14 +329,12 @@ mixin _$CalculateWaterIntakeState {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_CalculateWaterIntakeInitial value),
-    @required Result calculationInProgress(_CalculationInProgress value),
     @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_CalculateWaterIntakeInitial value),
-    Result calculationInProgress(_CalculationInProgress value),
     Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
@@ -405,12 +396,10 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result calculationInProgress(),
     @required Result error(String errorMessage),
     @required Result calculationFinished(),
   }) {
     assert(initial != null);
-    assert(calculationInProgress != null);
     assert(error != null);
     assert(calculationFinished != null);
     return initial();
@@ -420,7 +409,6 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result calculationInProgress(),
     Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
@@ -436,12 +424,10 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_CalculateWaterIntakeInitial value),
-    @required Result calculationInProgress(_CalculationInProgress value),
     @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
-    assert(calculationInProgress != null);
     assert(error != null);
     assert(calculationFinished != null);
     return initial(this);
@@ -451,7 +437,6 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_CalculateWaterIntakeInitial value),
-    Result calculationInProgress(_CalculationInProgress value),
     Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
@@ -467,106 +452,6 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
 abstract class _CalculateWaterIntakeInitial
     implements CalculateWaterIntakeState {
   const factory _CalculateWaterIntakeInitial() = _$_CalculateWaterIntakeInitial;
-}
-
-abstract class _$CalculationInProgressCopyWith<$Res> {
-  factory _$CalculationInProgressCopyWith(_CalculationInProgress value,
-          $Res Function(_CalculationInProgress) then) =
-      __$CalculationInProgressCopyWithImpl<$Res>;
-}
-
-class __$CalculationInProgressCopyWithImpl<$Res>
-    extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
-    implements _$CalculationInProgressCopyWith<$Res> {
-  __$CalculationInProgressCopyWithImpl(_CalculationInProgress _value,
-      $Res Function(_CalculationInProgress) _then)
-      : super(_value, (v) => _then(v as _CalculationInProgress));
-
-  @override
-  _CalculationInProgress get _value => super._value as _CalculationInProgress;
-}
-
-class _$_CalculationInProgress implements _CalculationInProgress {
-  const _$_CalculationInProgress();
-
-  @override
-  String toString() {
-    return 'CalculateWaterIntakeState.calculationInProgress()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _CalculationInProgress);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result calculationInProgress(),
-    @required Result error(String errorMessage),
-    @required Result calculationFinished(),
-  }) {
-    assert(initial != null);
-    assert(calculationInProgress != null);
-    assert(error != null);
-    assert(calculationFinished != null);
-    return calculationInProgress();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result calculationInProgress(),
-    Result error(String errorMessage),
-    Result calculationFinished(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (calculationInProgress != null) {
-      return calculationInProgress();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_CalculateWaterIntakeInitial value),
-    @required Result calculationInProgress(_CalculationInProgress value),
-    @required Result error(_CalculateWaterIntakeErrorState value),
-    @required Result calculationFinished(_CalculationFinished value),
-  }) {
-    assert(initial != null);
-    assert(calculationInProgress != null);
-    assert(error != null);
-    assert(calculationFinished != null);
-    return calculationInProgress(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_CalculateWaterIntakeInitial value),
-    Result calculationInProgress(_CalculationInProgress value),
-    Result error(_CalculateWaterIntakeErrorState value),
-    Result calculationFinished(_CalculationFinished value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (calculationInProgress != null) {
-      return calculationInProgress(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CalculationInProgress implements CalculateWaterIntakeState {
-  const factory _CalculationInProgress() = _$_CalculationInProgress;
 }
 
 abstract class _$CalculateWaterIntakeErrorStateCopyWith<$Res> {
@@ -634,12 +519,10 @@ class _$_CalculateWaterIntakeErrorState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result calculationInProgress(),
     @required Result error(String errorMessage),
     @required Result calculationFinished(),
   }) {
     assert(initial != null);
-    assert(calculationInProgress != null);
     assert(error != null);
     assert(calculationFinished != null);
     return error(errorMessage);
@@ -649,7 +532,6 @@ class _$_CalculateWaterIntakeErrorState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result calculationInProgress(),
     Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
@@ -665,12 +547,10 @@ class _$_CalculateWaterIntakeErrorState
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_CalculateWaterIntakeInitial value),
-    @required Result calculationInProgress(_CalculationInProgress value),
     @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
-    assert(calculationInProgress != null);
     assert(error != null);
     assert(calculationFinished != null);
     return error(this);
@@ -680,7 +560,6 @@ class _$_CalculateWaterIntakeErrorState
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_CalculateWaterIntakeInitial value),
-    Result calculationInProgress(_CalculationInProgress value),
     Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
@@ -740,12 +619,10 @@ class _$_CalculationFinished implements _CalculationFinished {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result calculationInProgress(),
     @required Result error(String errorMessage),
     @required Result calculationFinished(),
   }) {
     assert(initial != null);
-    assert(calculationInProgress != null);
     assert(error != null);
     assert(calculationFinished != null);
     return calculationFinished();
@@ -755,7 +632,6 @@ class _$_CalculationFinished implements _CalculationFinished {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result calculationInProgress(),
     Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
@@ -771,12 +647,10 @@ class _$_CalculationFinished implements _CalculationFinished {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_CalculateWaterIntakeInitial value),
-    @required Result calculationInProgress(_CalculationInProgress value),
     @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
-    assert(calculationInProgress != null);
     assert(error != null);
     assert(calculationFinished != null);
     return calculationFinished(this);
@@ -786,7 +660,6 @@ class _$_CalculationFinished implements _CalculationFinished {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_CalculateWaterIntakeInitial value),
-    Result calculationInProgress(_CalculationInProgress value),
     Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),

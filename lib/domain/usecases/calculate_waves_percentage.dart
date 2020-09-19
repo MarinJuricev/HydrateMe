@@ -16,11 +16,10 @@ class CalculateWavesPercentage
 
     return Right(
       HydrateStatus(
-        hydrationPercentage: hydrationPercentage,
-        percentage: percentage,
-        currentIntake: 0,
-        dailyIntakeGoal: 0
-      ),
+          hydrationPercentage: hydrationPercentage,
+          percentage: percentage,
+          currentIntake: 0,
+          dailyIntakeGoal: 0),
     );
   }
 

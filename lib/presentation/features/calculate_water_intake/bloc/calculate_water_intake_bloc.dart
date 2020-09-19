@@ -28,8 +28,6 @@ class CalculateWaterIntakeBloc
 
   Stream<CalculateWaterIntakeState> _handleCalculateClicked(
       _CalculateClicked params) async* {
-    yield CalculateWaterIntakeState.calculationInProgress();
-
     final dailyWaterIntakeResult = await _calculateDailyWaterIntake(
       CalculateDailyWaterIntakeParams(
           currentSelectedGender: params.currentSelectedGender,
