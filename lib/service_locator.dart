@@ -15,7 +15,8 @@ Future<void> init() async {
   //Bloc
   getIt.registerFactory(
       () => WaterIntakeBloc(getIt<CalculateWavesPercentage>()));
-  getIt.registerFactory(() => CalculateWaterIntakeBloc(getIt<CalculateDailyWaterIntake>()));
+  getIt.registerFactory(
+      () => CalculateWaterIntakeBloc(getIt<CalculateDailyWaterIntake>()));
 
   //Usecase
   getIt.registerFactory(() => CalculateWavesPercentage());
@@ -24,9 +25,10 @@ Future<void> init() async {
   getIt.registerFactory(() => OzToMIliliterConverter());
   getIt.registerFactory(
     () => CalculateDailyWaterIntake(
-      getIt<KgToLbsConverter>(),
-      getIt<CalculateAdditionalWaterIntakePerActivity>(),
-      getIt<OzToMIliliterConverter>(),
+      kgToLbsconverter: getIt<KgToLbsConverter>(),
+      calculateAdditionalWaterIntakePerActivity:
+          getIt<CalculateAdditionalWaterIntakePerActivity>(),
+      ozToMIliliterConverter: getIt<OzToMIliliterConverter>(),
     ),
   );
 

@@ -26,6 +26,8 @@ void main() {
         HydrateStatus(
           hydrationPercentage: 0.7,
           percentage: '70.0%',
+          currentIntake: 0,
+          dailyIntakeGoal: 0,
         ),
       );
 
@@ -47,6 +49,8 @@ void main() {
         HydrateStatus(
           hydrationPercentage: 1.0,
           percentage: '100.0%',
+          currentIntake: 0,
+          dailyIntakeGoal: 0,
         ),
       );
 
@@ -68,6 +72,8 @@ void main() {
         HydrateStatus(
           hydrationPercentage: 0.0,
           percentage: '0.0%',
+          currentIntake: 0,
+          dailyIntakeGoal: 0,
         ),
       );
 

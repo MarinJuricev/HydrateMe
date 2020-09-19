@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/common/constants/constants.dart';
 import '../../../../service_locator.dart' as di;
-import '../../../common/model/gender.dart';
-import '../../../common/model/weight_type.dart';
+import '../../../../domain/model/gender.dart';
+import '../../../../domain/model/weight_type.dart';
 import '../bloc/calculate_water_intake_bloc.dart';
 import '../widget/activity_selection.dart';
 import '../widget/gender_toggle.dart';
@@ -30,6 +30,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
       body: BlocProvider<CalculateWaterIntakeBloc>(
         create: (context) => di.getIt<CalculateWaterIntakeBloc>(),
         child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -48,48 +49,51 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(12.0),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.lightBlue,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(12.0),
+                    ),
                   ),
-                ),
-                child: Column(
-                  children: [
-                    HydrateTextWithIcon(
-                      assetIconPath: 'assets/images/gender.svg',
-                      text: 'Gender',
-                    ),
-                    const SizedBox(height: 8.0),
-                    GenderToggle(
-                        onGenderSwitchCallback: (Gender selectedGender) =>
-                            _currentSelectedGender = selectedGender),
-                    const SizedBox(height: 8.0),
-                    HydrateTextWithIcon(
-                      assetIconPath: 'assets/images/weight.svg',
-                      text: 'Weight',
-                    ),
-                    const SizedBox(height: 8.0),
-                    WeightSelection(
-                      onWeightChangeCallback: (int newWeight) =>
-                          _currentWeight = newWeight,
-                      onWeightTypeSwitchCallback: (WeightType newWeightType) =>
-                          _currentSelectedWeightType = newWeightType,
-                    ),
-                    const SizedBox(height: 8.0),
-                    HydrateTextWithIcon(
-                      assetIconPath: 'assets/images/activity.svg',
-                      text: 'Daily activity',
-                    ),
-                    ActivitySelection(
-                      onActivityChangeCallback: (int newActivity) =>
-                          _currentActivityInMinutes = newActivity,
-                    ),
-                  ],
+                  child: Column(
+                    children: [
+                      HydrateTextWithIcon(
+                        assetIconPath: 'assets/images/gender.svg',
+                        text: 'Gender',
+                      ),
+                      const SizedBox(height: 8.0),
+                      GenderToggle(
+                          onGenderSwitchCallback: (Gender selectedGender) =>
+                              _currentSelectedGender = selectedGender),
+                      const SizedBox(height: 8.0),
+                      HydrateTextWithIcon(
+                        assetIconPath: 'assets/images/weight.svg',
+                        text: 'Weight',
+                      ),
+                      const SizedBox(height: 8.0),
+                      WeightSelection(
+                        onWeightChangeCallback: (int newWeight) =>
+                            _currentWeight = newWeight,
+                        onWeightTypeSwitchCallback:
+                            (WeightType newWeightType) =>
+                                _currentSelectedWeightType = newWeightType,
+                      ),
+                      const SizedBox(height: 8.0),
+                      HydrateTextWithIcon(
+                        assetIconPath: 'assets/images/activity.svg',
+                        text: 'Daily activity',
+                      ),
+                      ActivitySelection(
+                        onActivityChangeCallback: (int newActivity) =>
+                            _currentActivityInMinutes = newActivity,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

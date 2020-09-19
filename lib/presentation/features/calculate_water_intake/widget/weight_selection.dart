@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 import '../../../../core/common/constants/constants.dart';
-import '../../../common/model/weight_type.dart';
+import '../../../../domain/model/weight_type.dart';
 
 class WeightSelection extends StatefulWidget {
   final Function(WeightType value) onWeightTypeSwitchCallback;

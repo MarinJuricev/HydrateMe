@@ -1,5 +1,5 @@
-import '../../../presentation/common/model/gender.dart';
-import '../../../presentation/common/model/weight_type.dart';
+import '../../../domain/model/gender.dart';
+import '../../../domain/model/weight_type.dart';
 
 const INITIAL_GENDER = Gender.male;
 const INITIAL_WEIGHT = 50;

@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 
 import '../../core/failure/base_failure.dart';
 import '../../core/usecase/base_usecase.dart';
-import '../../presentation/common/model/gender.dart';
-import '../../presentation/common/model/weight_type.dart';
+import '../model/gender.dart';
+import '../model/weight_type.dart';
 import '../model/hydrate_status.dart';
 import 'kg_to_lbs_converter.dart';
 
@@ -29,9 +29,12 @@ class CalculateDailyWaterIntake
   Future<Either<Failure, HydrateStatus>> call(
       CalculateDailyWaterIntakeParams params) async {
     final int weightInLbs = await getWeightInLbs(
-        params.currentWeight, params.currentSelectedWeightType);
-    final int additionalOuncesForAcitivty =
-        await getAdditionalWaterIntake(params.currentActivityInMinutes);
+      params.currentWeight,
+      params.currentSelectedWeightType,
+    );
+    final int additionalOuncesForAcitivty = await getAdditionalWaterIntake(
+      params.currentActivityInMinutes,
+    );
 
     // Intake in LBS
     // 2/3 Weight = X in ounces water per day ( we'll return in ml for HydrationStatus)
@@ -54,7 +57,9 @@ class CalculateDailyWaterIntake
   }
 
   Future<int> getWeightInLbs(
-      int currentWeight, WeightType currentSelectedWeightType) async {
+    int currentWeight,
+    WeightType currentSelectedWeightType,
+  ) async {
     if (currentSelectedWeightType == WeightType.kg) {
       final converterResult = await kgToLbsconverter(currentWeight);
       return converterResult.fold(
@@ -66,7 +71,9 @@ class CalculateDailyWaterIntake
     }
   }
 
-  Future<int> getAdditionalWaterIntake(int currentActivityInMinutes) async {
+  Future<int> getAdditionalWaterIntake(
+    int currentActivityInMinutes,
+  ) async {
     final additionalWaterIntakeResult =
         await calculateAdditionalWaterIntakePerActivity(
             currentActivityInMinutes);
@@ -77,7 +84,8 @@ class CalculateDailyWaterIntake
   }
 
   Future<int> getWaterIntakeInMiliLiters(
-      double dailyWaterIntakeInOunces) async {
+    double dailyWaterIntakeInOunces,
+  ) async {
     final waterInMiliLitersResult =
         await ozToMIliliterConverter(dailyWaterIntakeInOunces);
     return waterInMiliLitersResult.fold(

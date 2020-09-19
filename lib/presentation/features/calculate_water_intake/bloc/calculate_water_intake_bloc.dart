@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
-import 'package:HydrateMe/presentation/common/model/gender.dart';
-import 'package:HydrateMe/presentation/common/model/weight_type.dart';
+import 'package:HydrateMe/domain/model/gender.dart';
+import 'package:HydrateMe/domain/model/weight_type.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -38,7 +38,7 @@ class CalculateWaterIntakeBloc
           currentActivityInMinutes: params.currentActivityInMinutes),
     );
 
-    yield  dailyWaterIntakeResult.fold(
+    yield dailyWaterIntakeResult.fold(
       (failure) => CalculateWaterIntakeState.error(failure.message),
       (hydrateStatus) => CalculateWaterIntakeState.calculationFinished(),
     );

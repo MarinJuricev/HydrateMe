@@ -1,4 +1,4 @@
-import 'package:HydrateMe/presentation/common/model/gender.dart';
+import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
