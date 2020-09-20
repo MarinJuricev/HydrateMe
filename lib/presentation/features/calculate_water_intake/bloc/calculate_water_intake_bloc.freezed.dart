@@ -16,13 +16,13 @@ class _$CalculateWaterIntakeEventTearOff {
   _CalculateClicked calculateClicked(
       Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
-      int currentWeight,
-      int currentActivityInMinutes) {
+      ActivityLevel activityLevel,
+      int currentWeight) {
     return _CalculateClicked(
       currentSelectedGender,
       currentSelectedWeightType,
+      activityLevel,
       currentWeight,
-      currentActivityInMinutes,
     );
   }
 }
@@ -33,8 +33,8 @@ const $CalculateWaterIntakeEvent = _$CalculateWaterIntakeEventTearOff();
 mixin _$CalculateWaterIntakeEvent {
   Gender get currentSelectedGender;
   WeightType get currentSelectedWeightType;
+  ActivityLevel get activityLevel;
   int get currentWeight;
-  int get currentActivityInMinutes;
 
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -42,16 +42,16 @@ mixin _$CalculateWaterIntakeEvent {
         Result calculateClicked(
             Gender currentSelectedGender,
             WeightType currentSelectedWeightType,
-            int currentWeight,
-            int currentActivityInMinutes),
+            ActivityLevel activityLevel,
+            int currentWeight),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result calculateClicked(
         Gender currentSelectedGender,
         WeightType currentSelectedWeightType,
-        int currentWeight,
-        int currentActivityInMinutes),
+        ActivityLevel activityLevel,
+        int currentWeight),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -74,8 +74,8 @@ abstract class $CalculateWaterIntakeEventCopyWith<$Res> {
   $Res call(
       {Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
-      int currentWeight,
-      int currentActivityInMinutes});
+      ActivityLevel activityLevel,
+      int currentWeight});
 }
 
 class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
@@ -90,8 +90,8 @@ class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
   $Res call({
     Object currentSelectedGender = freezed,
     Object currentSelectedWeightType = freezed,
+    Object activityLevel = freezed,
     Object currentWeight = freezed,
-    Object currentActivityInMinutes = freezed,
   }) {
     return _then(_value.copyWith(
       currentSelectedGender: currentSelectedGender == freezed
@@ -100,12 +100,12 @@ class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
       currentSelectedWeightType: currentSelectedWeightType == freezed
           ? _value.currentSelectedWeightType
           : currentSelectedWeightType as WeightType,
+      activityLevel: activityLevel == freezed
+          ? _value.activityLevel
+          : activityLevel as ActivityLevel,
       currentWeight: currentWeight == freezed
           ? _value.currentWeight
           : currentWeight as int,
-      currentActivityInMinutes: currentActivityInMinutes == freezed
-          ? _value.currentActivityInMinutes
-          : currentActivityInMinutes as int,
     ));
   }
 }
@@ -119,8 +119,8 @@ abstract class _$CalculateClickedCopyWith<$Res>
   $Res call(
       {Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
-      int currentWeight,
-      int currentActivityInMinutes});
+      ActivityLevel activityLevel,
+      int currentWeight});
 }
 
 class __$CalculateClickedCopyWithImpl<$Res>
@@ -137,8 +137,8 @@ class __$CalculateClickedCopyWithImpl<$Res>
   $Res call({
     Object currentSelectedGender = freezed,
     Object currentSelectedWeightType = freezed,
+    Object activityLevel = freezed,
     Object currentWeight = freezed,
-    Object currentActivityInMinutes = freezed,
   }) {
     return _then(_CalculateClicked(
       currentSelectedGender == freezed
@@ -147,37 +147,34 @@ class __$CalculateClickedCopyWithImpl<$Res>
       currentSelectedWeightType == freezed
           ? _value.currentSelectedWeightType
           : currentSelectedWeightType as WeightType,
+      activityLevel == freezed
+          ? _value.activityLevel
+          : activityLevel as ActivityLevel,
       currentWeight == freezed ? _value.currentWeight : currentWeight as int,
-      currentActivityInMinutes == freezed
-          ? _value.currentActivityInMinutes
-          : currentActivityInMinutes as int,
     ));
   }
 }
 
 class _$_CalculateClicked implements _CalculateClicked {
-  const _$_CalculateClicked(
-      this.currentSelectedGender,
-      this.currentSelectedWeightType,
-      this.currentWeight,
-      this.currentActivityInMinutes)
+  const _$_CalculateClicked(this.currentSelectedGender,
+      this.currentSelectedWeightType, this.activityLevel, this.currentWeight)
       : assert(currentSelectedGender != null),
         assert(currentSelectedWeightType != null),
-        assert(currentWeight != null),
-        assert(currentActivityInMinutes != null);
+        assert(activityLevel != null),
+        assert(currentWeight != null);
 
   @override
   final Gender currentSelectedGender;
   @override
   final WeightType currentSelectedWeightType;
   @override
-  final int currentWeight;
+  final ActivityLevel activityLevel;
   @override
-  final int currentActivityInMinutes;
+  final int currentWeight;
 
   @override
   String toString() {
-    return 'CalculateWaterIntakeEvent.calculateClicked(currentSelectedGender: $currentSelectedGender, currentSelectedWeightType: $currentSelectedWeightType, currentWeight: $currentWeight, currentActivityInMinutes: $currentActivityInMinutes)';
+    return 'CalculateWaterIntakeEvent.calculateClicked(currentSelectedGender: $currentSelectedGender, currentSelectedWeightType: $currentSelectedWeightType, activityLevel: $activityLevel, currentWeight: $currentWeight)';
   }
 
   @override
@@ -192,13 +189,12 @@ class _$_CalculateClicked implements _CalculateClicked {
                 const DeepCollectionEquality().equals(
                     other.currentSelectedWeightType,
                     currentSelectedWeightType)) &&
+            (identical(other.activityLevel, activityLevel) ||
+                const DeepCollectionEquality()
+                    .equals(other.activityLevel, activityLevel)) &&
             (identical(other.currentWeight, currentWeight) ||
                 const DeepCollectionEquality()
-                    .equals(other.currentWeight, currentWeight)) &&
-            (identical(
-                    other.currentActivityInMinutes, currentActivityInMinutes) ||
-                const DeepCollectionEquality().equals(
-                    other.currentActivityInMinutes, currentActivityInMinutes)));
+                    .equals(other.currentWeight, currentWeight)));
   }
 
   @override
@@ -206,8 +202,8 @@ class _$_CalculateClicked implements _CalculateClicked {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(currentSelectedGender) ^
       const DeepCollectionEquality().hash(currentSelectedWeightType) ^
-      const DeepCollectionEquality().hash(currentWeight) ^
-      const DeepCollectionEquality().hash(currentActivityInMinutes);
+      const DeepCollectionEquality().hash(activityLevel) ^
+      const DeepCollectionEquality().hash(currentWeight);
 
   @override
   _$CalculateClickedCopyWith<_CalculateClicked> get copyWith =>
@@ -220,12 +216,12 @@ class _$_CalculateClicked implements _CalculateClicked {
         Result calculateClicked(
             Gender currentSelectedGender,
             WeightType currentSelectedWeightType,
-            int currentWeight,
-            int currentActivityInMinutes),
+            ActivityLevel activityLevel,
+            int currentWeight),
   }) {
     assert(calculateClicked != null);
     return calculateClicked(currentSelectedGender, currentSelectedWeightType,
-        currentWeight, currentActivityInMinutes);
+        activityLevel, currentWeight);
   }
 
   @override
@@ -234,14 +230,14 @@ class _$_CalculateClicked implements _CalculateClicked {
     Result calculateClicked(
         Gender currentSelectedGender,
         WeightType currentSelectedWeightType,
-        int currentWeight,
-        int currentActivityInMinutes),
+        ActivityLevel activityLevel,
+        int currentWeight),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (calculateClicked != null) {
       return calculateClicked(currentSelectedGender, currentSelectedWeightType,
-          currentWeight, currentActivityInMinutes);
+          activityLevel, currentWeight);
     }
     return orElse();
   }
@@ -273,17 +269,17 @@ abstract class _CalculateClicked implements CalculateWaterIntakeEvent {
   const factory _CalculateClicked(
       Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
-      int currentWeight,
-      int currentActivityInMinutes) = _$_CalculateClicked;
+      ActivityLevel activityLevel,
+      int currentWeight) = _$_CalculateClicked;
 
   @override
   Gender get currentSelectedGender;
   @override
   WeightType get currentSelectedWeightType;
   @override
-  int get currentWeight;
+  ActivityLevel get activityLevel;
   @override
-  int get currentActivityInMinutes;
+  int get currentWeight;
   @override
   _$CalculateClickedCopyWith<_CalculateClicked> get copyWith;
 }

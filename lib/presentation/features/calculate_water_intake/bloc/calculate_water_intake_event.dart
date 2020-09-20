@@ -5,7 +5,7 @@ abstract class CalculateWaterIntakeEvent with _$CalculateWaterIntakeEvent {
   const factory CalculateWaterIntakeEvent.calculateClicked(
     Gender currentSelectedGender,
     WeightType currentSelectedWeightType,
+    ActivityLevel activityLevel,
     int currentWeight,
-    int currentActivityInMinutes,
   ) = _CalculateClicked;
 }

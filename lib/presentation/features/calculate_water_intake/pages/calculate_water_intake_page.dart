@@ -1,3 +1,4 @@
+import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/presentation/features/calculate_water_intake/widget/water_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,8 +24,8 @@ class CalculateWaterIntakePage extends StatefulWidget {
 class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
   Gender _currentSelectedGender = INITIAL_GENDER;
   WeightType _currentSelectedWeightType = INITIAL_WEIGHT_TYPE;
+  ActivityLevel _currentActivityInMinutes = INITIAL_DAILY_ACTIVITY;
   int _currentWeight = INITIAL_WEIGHT;
-  int _currentActivityInMinutes = INITIAL_DAILY_ACTIVITY;
 
   @override
   Widget build(BuildContext context) {
@@ -86,29 +87,30 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                     assetIconPath: 'assets/images/gender.svg',
                     text: 'Gender',
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 16.0),
                   GenderToggle(
                       onGenderSwitchCallback: (Gender selectedGender) =>
                           _currentSelectedGender = selectedGender),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 16.0),
                   HydrateTextWithIcon(
                     assetIconPath: 'assets/images/weight.svg',
                     text: 'Weight',
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 16.0),
                   WeightSelection(
                     onWeightChangeCallback: (int newWeight) =>
                         _currentWeight = newWeight,
                     onWeightTypeSwitchCallback: (WeightType newWeightType) =>
                         _currentSelectedWeightType = newWeightType,
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 16.0),
                   HydrateTextWithIcon(
                     assetIconPath: 'assets/images/activity.svg',
                     text: 'Daily activity',
                   ),
+                  const SizedBox(height: 16.0),
                   ActivitySelection(
-                    onActivityChangeCallback: (int newActivity) =>
+                    onActivityChangeCallback: (ActivityLevel newActivity) =>
                         _currentActivityInMinutes = newActivity,
                   ),
                 ],
@@ -130,8 +132,8 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
               onPressed: () => _sendCalculateEvent(
                 _currentSelectedGender,
                 _currentSelectedWeightType,
-                _currentWeight,
                 _currentActivityInMinutes,
+                _currentWeight,
                 blocContext,
               ),
               color: Colors.lightBlue,
@@ -147,16 +149,16 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
 _sendCalculateEvent(
   Gender currentSelectedGender,
   WeightType currentSelectedWeightType,
+  ActivityLevel currentActivityInMinutes,
   int currentWeight,
-  int currentActivityInMinutes,
   BuildContext context,
 ) {
   BlocProvider.of<CalculateWaterIntakeBloc>(context).add(
     CalculateWaterIntakeEvent.calculateClicked(
       currentSelectedGender,
       currentSelectedWeightType,
-      currentWeight,
       currentActivityInMinutes,
+      currentWeight,
     ),
   );
 }

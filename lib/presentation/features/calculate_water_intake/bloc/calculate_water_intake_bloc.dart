@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
 import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:HydrateMe/domain/model/weight_type.dart';
@@ -33,7 +34,7 @@ class CalculateWaterIntakeBloc
           currentSelectedGender: params.currentSelectedGender,
           currentSelectedWeightType: params.currentSelectedWeightType,
           currentWeight: params.currentWeight,
-          currentActivityInMinutes: params.currentActivityInMinutes),
+          currentActivityInMinutes: params.activityLevel),
     );
 
     yield dailyWaterIntakeResult.fold(

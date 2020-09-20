@@ -1,3 +1,4 @@
+import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:HydrateMe/domain/model/weight_type.dart';
@@ -27,14 +28,14 @@ void main() {
     currentSelectedGender: Gender.male,
     currentSelectedWeightType: WeightType.kg,
     currentWeight: 75,
-    currentActivityInMinutes: 30,
+    currentActivityInMinutes: ActivityLevel.active,
   );
 
   final useCaseParamsInLbs = CalculateDailyWaterIntakeParams(
     currentSelectedGender: Gender.male,
     currentSelectedWeightType: WeightType.lbs,
     currentWeight: 75,
-    currentActivityInMinutes: 30,
+    currentActivityInMinutes: ActivityLevel.active,
   );
 
   CalculateDailyWaterIntake _calculateDailyWaterIntake;

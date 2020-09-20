@@ -1,3 +1,4 @@
+import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
 import 'package:dartz/dartz.dart';
@@ -72,7 +73,7 @@ class CalculateDailyWaterIntake
   }
 
   Future<int> getAdditionalWaterIntake(
-    int currentActivityInMinutes,
+    ActivityLevel currentActivityInMinutes,
   ) async {
     final additionalWaterIntakeResult =
         await calculateAdditionalWaterIntakePerActivity(
@@ -98,8 +99,8 @@ class CalculateDailyWaterIntake
 class CalculateDailyWaterIntakeParams {
   Gender currentSelectedGender;
   WeightType currentSelectedWeightType;
+  ActivityLevel currentActivityInMinutes;
   int currentWeight;
-  int currentActivityInMinutes;
 
   CalculateDailyWaterIntakeParams({
     @required this.currentSelectedGender,
