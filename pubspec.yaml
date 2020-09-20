@@ -27,7 +27,7 @@ dependencies:
   bloc: ^6.0.2
   flutter_bloc: ^6.0.1
   get_it: ^4.0.4
-  wave: ^0.0.8
+  wave: ^0.1.0
   simple_animations: ^2.2.1
   # Better slider
   flutter_xlider: ^3.4.0

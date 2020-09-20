@@ -1,3 +1,4 @@
+import 'package:HydrateMe/presentation/features/calculate_water_intake/widget/water_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,6 +13,8 @@ import '../widget/hydrate_text_with_icon.dart';
 import '../widget/weight_selection.dart';
 
 class CalculateWaterIntakePage extends StatefulWidget {
+  static const CALCULATE_WATER_INTAKE_PAGE = '/calculateIntakePage';
+
   @override
   _CalculateWaterIntakePageState createState() =>
       _CalculateWaterIntakePageState();
@@ -25,24 +28,27 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade200,
-      body: BlocProvider<CalculateWaterIntakeBloc>(
-        create: (blocContext) => di.getIt<CalculateWaterIntakeBloc>(),
-        child: BlocBuilder<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
-            builder: (context, state) {
-          return state.when(
-            initial: () => _buildInitialState(),
-            error: (errorMessage) =>
-                Text('PlaceHolder Error Text: $errorMessage'),
-            calculationFinished: () => Text('PlaceHolder finished event'),
-          );
-        }),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.grey.shade200,
+        body: BlocProvider<CalculateWaterIntakeBloc>(
+          create: (blocContext) => di.getIt<CalculateWaterIntakeBloc>(),
+          child:
+              BlocBuilder<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
+                  builder: (blocContext, state) {
+            return state.when(
+              initial: () => _buildInitialState(blocContext),
+              error: (errorMessage) =>
+                  Text('PlaceHolder Error Text: $errorMessage'),
+              calculationFinished: () => WaterTransition(),
+            );
+          }),
+        ),
       ),
     );
   }
 
-  _buildInitialState() {
+  _buildInitialState(BuildContext blocContext) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -126,7 +132,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                 _currentSelectedWeightType,
                 _currentWeight,
                 _currentActivityInMinutes,
-                context,
+                blocContext,
               ),
               color: Colors.lightBlue,
               textColor: Colors.white,

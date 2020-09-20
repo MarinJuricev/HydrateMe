@@ -6,8 +6,11 @@ import 'bloc/water_intake_bloc.dart';
 import 'particles.dart';
 import 'waves.dart';
 import 'widget/manual_water_intake.dart';
+import '../../../service_locator.dart' as di;
 
 class DisplayCurrentWaterIntakePage extends StatelessWidget {
+  static const DISPLAY_CURRENT_WATER_INTAKE_PAGE = '/displayCurrentWaterIntake';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,20 +24,33 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.blue,
-      body: BlocBuilder<WaterIntakeBloc, WaterIntakeState>(
-        builder: (context, state) {
-          return state.when(
-            initial: () => _buildWaterIntake(
-              HydrateStatus(hydrationPercentage: 1, percentage: '100%'),
-            ),
-            updated: (HydrateStatus hydrateStatus) =>
-                _buildWaterIntake(hydrateStatus),
-            completed: () => _buildWaterIntake(
-              HydrateStatus(hydrationPercentage: 0, percentage: '0%'),
-            ),
-            error: (String errorMessage) => Text(errorMessage),
-          );
-        },
+      body: BlocProvider(
+        create: (BuildContext context) => di.getIt<WaterIntakeBloc>(),
+        child: BlocBuilder<WaterIntakeBloc, WaterIntakeState>(
+          builder: (context, state) {
+            return state.when(
+              initial: () => _buildWaterIntake(
+                HydrateStatus(
+                  hydrationPercentage: 1,
+                  percentage: '100%',
+                  currentIntake: 0,
+                  dailyIntakeGoal: 0,
+                ),
+              ),
+              updated: (HydrateStatus hydrateStatus) =>
+                  _buildWaterIntake(hydrateStatus),
+              completed: () => _buildWaterIntake(
+                HydrateStatus(
+                  hydrationPercentage: 0,
+                  percentage: '0%',
+                  currentIntake: 0,
+                  dailyIntakeGoal: 0,
+                ),
+              ),
+              error: (String errorMessage) => Text(errorMessage),
+            );
+          },
+        ),
       ),
     );
   }

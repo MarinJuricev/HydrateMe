@@ -80,6 +80,9 @@ void main() {
         ),
       );
 
+      // We can safely ignore this lint error since we are the ones who
+      // are returning Right(HydrateStatus), we know that it isn't Left(Failure)
+      // ignore: unrelated_type_equality_checks
       assert(expectedResult == actualResult);
     },
   );

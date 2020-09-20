@@ -1,8 +1,7 @@
+import 'package:HydrateMe/presentation/features/display_current_water_intake/display_current_water_intake_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'presentation/features/calculate_water_intake/pages/calculate_water_intake_page.dart';
-import 'presentation/features/display_current_water_intake/bloc/water_intake_bloc.dart';
 import 'service_locator.dart' as di;
 
 void main() async {
@@ -19,12 +18,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BlocProvider(
-        create: (BuildContext context) => di.getIt<WaterIntakeBloc>(),
-        child: SafeArea(
-          child: CalculateWaterIntakePage(),
-        ),
-      ),
+      initialRoute: CalculateWaterIntakePage.CALCULATE_WATER_INTAKE_PAGE,
+      routes: {
+        CalculateWaterIntakePage.CALCULATE_WATER_INTAKE_PAGE: (context) =>
+            CalculateWaterIntakePage(),
+        DisplayCurrentWaterIntakePage.DISPLAY_CURRENT_WATER_INTAKE_PAGE:
+            (context) => DisplayCurrentWaterIntakePage()
+      },
     );
   }
 }
