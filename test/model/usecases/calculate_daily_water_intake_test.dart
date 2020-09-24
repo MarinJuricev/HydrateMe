@@ -2,6 +2,7 @@ import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:HydrateMe/domain/model/weight_type.dart';
+import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
 import 'package:HydrateMe/domain/usecases/kg_to_lbs_converter.dart';
@@ -18,11 +19,14 @@ class MockCalculateAdditionalWaterIntakePerActivity extends Mock
 class MockOzToMIliliterConverter extends Mock
     implements OzToMIliliterConverter {}
 
+class MockWaterIntakeRepository extends Mock implements WaterIntakeRepository {}
+
 void main() {
   MockKgToLbsConverter _mockKgToLbsConverter;
   MockCalculateAdditionalWaterIntakePerActivity
       _mockCalculateAdditionalWaterIntakePerActivity;
   MockOzToMIliliterConverter _mockOzToMIliliterConverter;
+  MockWaterIntakeRepository _mockWaterIntakeRepository;
 
   final useCaseParamsInKg = CalculateDailyWaterIntakeParams(
     currentSelectedGender: Gender.male,
@@ -46,12 +50,15 @@ void main() {
       _mockCalculateAdditionalWaterIntakePerActivity =
           MockCalculateAdditionalWaterIntakePerActivity();
       _mockOzToMIliliterConverter = MockOzToMIliliterConverter();
+      _mockWaterIntakeRepository = MockWaterIntakeRepository();
 
       _calculateDailyWaterIntake = CalculateDailyWaterIntake(
-          calculateAdditionalWaterIntakePerActivity:
-              _mockCalculateAdditionalWaterIntakePerActivity,
-          kgToLbsconverter: _mockKgToLbsConverter,
-          ozToMIliliterConverter: _mockOzToMIliliterConverter);
+        calculateAdditionalWaterIntakePerActivity:
+            _mockCalculateAdditionalWaterIntakePerActivity,
+        kgToLbsconverter: _mockKgToLbsConverter,
+        ozToMIliliterConverter: _mockOzToMIliliterConverter,
+        waterIntakeRepository: _mockWaterIntakeRepository,
+      );
     },
   );
 
@@ -71,20 +78,23 @@ void main() {
         _mockOzToMIliliterConverter(130.0),
       ).thenAnswer((_) async => (Right(2000)));
 
-      final actualResult = await _calculateDailyWaterIntake(useCaseParamsInKg);
-      final expectedResult = Right(
-        HydrateStatus(
-          hydrationPercentage: 0,
-          percentage: "0%",
-          dailyIntakeGoal: 2000,
-          currentIntake: 0,
-        ),
+      final expectedHydrateStatus = HydrateStatus(
+        hydrationPercentage: 0,
+        percentage: "0%",
+        dailyIntakeGoal: 2000,
+        currentIntake: 0,
       );
+
+      final actualResult = await _calculateDailyWaterIntake(useCaseParamsInKg);
+      final expectedResult = Right(expectedHydrateStatus);
 
       // We can safely ignore this lint error since we are the ones who
       // are returning Right(HydrateStatus), we know that it isn't Left(Failure)
       // ignore: unrelated_type_equality_checks
       assert(expectedResult == actualResult);
+
+      verify(_mockWaterIntakeRepository
+          .saveCurrentWaterIntake(expectedHydrateStatus));
     },
   );
 
@@ -104,20 +114,23 @@ void main() {
         _mockOzToMIliliterConverter(80.0),
       ).thenAnswer((_) async => (Right(2000)));
 
-      final actualResult = await _calculateDailyWaterIntake(useCaseParamsInLbs);
-      final expectedResult = Right(
-        HydrateStatus(
-          hydrationPercentage: 0,
-          percentage: "0%",
-          dailyIntakeGoal: 2000,
-          currentIntake: 0,
-        ),
+      final expectedHydrateStatus = HydrateStatus(
+        hydrationPercentage: 0,
+        percentage: "0%",
+        dailyIntakeGoal: 2000,
+        currentIntake: 0,
       );
+
+      final actualResult = await _calculateDailyWaterIntake(useCaseParamsInLbs);
+      final expectedResult = Right(expectedHydrateStatus);
 
       // We can safely ignore this lint error since we are the ones who
       // are returning Right(HydrateStatus), we know that it isn't Left(Failure)
       // ignore: unrelated_type_equality_checks
       assert(expectedResult == actualResult);
+
+      verify(_mockWaterIntakeRepository
+          .saveCurrentWaterIntake(expectedHydrateStatus));
     },
   );
 }

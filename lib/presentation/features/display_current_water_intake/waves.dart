@@ -73,10 +73,11 @@ class _WavesState extends State<Waves> {
                         ],
                       ],
                       durations: [10800, 19440],
-                      heightPercentages: [0.025, 0.030],
+                      heightPercentages: [0.0, 0.0],
                       blur: MaskFilter.blur(BlurStyle.solid, 5),
                       gradientBegin: Alignment.centerLeft,
                       gradientEnd: Alignment.centerRight,
+                      
                     ),
                     waveAmplitude: 1.0,
                     backgroundColor: Colors.transparent,

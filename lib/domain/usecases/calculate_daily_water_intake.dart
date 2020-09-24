@@ -1,4 +1,5 @@
 import 'package:HydrateMe/domain/model/activity_level.dart';
+import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
 import 'package:dartz/dartz.dart';
@@ -19,11 +20,13 @@ class CalculateDailyWaterIntake
   final CalculateAdditionalWaterIntakePerActivity
       calculateAdditionalWaterIntakePerActivity;
   final OzToMIliliterConverter ozToMIliliterConverter;
+  final WaterIntakeRepository waterIntakeRepository;
 
   CalculateDailyWaterIntake({
     @required this.kgToLbsconverter,
     @required this.calculateAdditionalWaterIntakePerActivity,
     @required this.ozToMIliliterConverter,
+    @required this.waterIntakeRepository,
   });
 
   @override
@@ -45,16 +48,16 @@ class CalculateDailyWaterIntake
     final dailyWaterIntakeInMiliLiters =
         await getWaterIntakeInMiliLiters(dailyWaterIntakeInOunces);
 
-    return Future.value(
-      Right(
-        HydrateStatus(
-          hydrationPercentage: 0,
-          percentage: "0%",
-          dailyIntakeGoal: dailyWaterIntakeInMiliLiters,
-          currentIntake: 0,
-        ),
-      ),
+    final hydrateStatus = HydrateStatus(
+      hydrationPercentage: 0,
+      percentage: "0%",
+      dailyIntakeGoal: dailyWaterIntakeInMiliLiters,
+      currentIntake: 0,
     );
+
+    await waterIntakeRepository.saveCurrentWaterIntake(hydrateStatus);
+
+    return Future.value(Right(hydrateStatus));
   }
 
   Future<int> getWeightInLbs(

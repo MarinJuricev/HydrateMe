@@ -1,3 +1,5 @@
+import 'package:HydrateMe/data/repository/water_intake_repository_impl.dart';
+import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
 import 'package:HydrateMe/domain/usecases/kg_to_lbs_converter.dart';
@@ -29,12 +31,17 @@ Future<void> init() async {
       calculateAdditionalWaterIntakePerActivity:
           getIt<CalculateAdditionalWaterIntakePerActivity>(),
       ozToMIliliterConverter: getIt<OzToMIliliterConverter>(),
+      waterIntakeRepository: getIt<WaterIntakeRepository>(),
     ),
   );
 
   //Datasources
-  // External
   getIt.registerLazySingleton<LocalPersistenceProvider>(
     () => LocalPersistenceProviderImpl(),
+  );
+
+  //Repository
+  getIt.registerLazySingleton<WaterIntakeRepository>(
+    () => WaterIntakeRepositoryImpl(),
   );
 }
