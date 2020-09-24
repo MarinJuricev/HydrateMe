@@ -9,7 +9,7 @@ import 'bloc/water_intake_bloc.dart';
 class Waves extends StatefulWidget {
   final HydrateStatus currentHydrateStatus;
 
-  static const WAVE_HEIGHT_OFFSET = 1.5;
+  static const WAVE_HEIGHT_OFFSET = 2;
 
   Waves({
     Key key,
@@ -40,8 +40,7 @@ class _WavesState extends State<Waves> {
         children: [
           Card(
             elevation: 12.0,
-            margin:
-                const EdgeInsets.only(right: 16.0, left: 16.0, bottom: 16.0),
+            margin: const EdgeInsets.only(right: 16.0, left: 16.0),
             clipBehavior: Clip.antiAlias,
             shape: CircleBorder(),
             child: GestureDetector(

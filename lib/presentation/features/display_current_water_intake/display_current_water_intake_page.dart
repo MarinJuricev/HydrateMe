@@ -61,6 +61,7 @@ Widget _buildWaterIntake(HydrateStatus hydrateStatus) {
     children: <Widget>[
       Positioned.fill(child: Particles(30)),
       Column(
+        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24.0),
@@ -68,7 +69,15 @@ Widget _buildWaterIntake(HydrateStatus hydrateStatus) {
               currentHydrateStatus: hydrateStatus,
             ),
           ),
-          ManualWaterIntake()
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ManualWaterIntake(),
+              ),
+            ),
+          )
         ],
       ),
     ],
