@@ -21,7 +21,11 @@ Future<void> init() async {
       () => CalculateWaterIntakeBloc(getIt<CalculateDailyWaterIntake>()));
 
   //Usecase
-  getIt.registerFactory(() => CalculateWavesPercentage());
+  getIt.registerFactory(
+    () => CalculateWavesPercentage(
+      waterIntakeRepository: getIt<WaterIntakeRepository>(),
+    ),
+  );
   getIt.registerFactory(() => CalculateAdditionalWaterIntakePerActivity());
   getIt.registerFactory(() => KgToLbsConverter());
   getIt.registerFactory(() => OzToMIliliterConverter());

@@ -88,15 +88,28 @@ class _WavesState extends State<Waves> {
               ),
             ),
           ),
-          Center(
-            child: Text(
-              widget.currentHydrateStatus.percentage,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16.0,
-              ),
+             Center(
+               child: Column(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    widget.currentHydrateStatus.percentage,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  Text(
+                    widget.currentHydrateStatus.currentIntake.toString(),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ],
             ),
-          ),
+             ),
         ],
       ),
     );
