@@ -32,7 +32,7 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
               initial: () => _buildWaterIntake(
                 HydrateStatus(
                   hydrationPercentage: 1,
-                  percentage: '100%',
+                  formattedCurrentIntake: '0',
                   currentIntake: 0,
                   dailyIntakeGoal: 0,
                 ),
@@ -42,7 +42,7 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
               completed: () => _buildWaterIntake(
                 HydrateStatus(
                   hydrationPercentage: 0,
-                  percentage: '0%',
+                  formattedCurrentIntake: '0',
                   currentIntake: 0,
                   dailyIntakeGoal: 0,
                 ),

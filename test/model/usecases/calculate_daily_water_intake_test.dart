@@ -80,8 +80,8 @@ void main() {
 
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 0,
-        percentage: "0%",
         dailyIntakeGoal: 2000,
+        formattedCurrentIntake: '0/2000',
         currentIntake: 0,
       );
 
@@ -116,8 +116,8 @@ void main() {
 
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 0,
-        percentage: "0%",
         dailyIntakeGoal: 2000,
+        formattedCurrentIntake: '0/2000',
         currentIntake: 0,
       );
 

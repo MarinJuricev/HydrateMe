@@ -15,7 +15,7 @@ class WaterIntakeBloc extends Bloc<WaterIntakeEvent, WaterIntakeState> {
   final CalculateWavesPercentage calculateWavesPercentage;
 
   WaterIntakeBloc(this.calculateWavesPercentage)
-      : super(WaterIntakeState.initial());
+      : super(WaterIntakeState.loading());
 
   @override
   Stream<WaterIntakeState> mapEventToState(
@@ -24,6 +24,7 @@ class WaterIntakeBloc extends Bloc<WaterIntakeEvent, WaterIntakeState> {
     yield* event.map(
       updated: (params) =>
           _updateWaterIntake(params.updatedValue, params.waterMaximumHeight),
+      started: (WaterIntakeStaredEvent value) => _handleStartedEvent(),
     );
   }
 
@@ -42,5 +43,9 @@ class WaterIntakeBloc extends Bloc<WaterIntakeEvent, WaterIntakeState> {
       (failure) => WaterIntakeState.error(failure.message),
       (newHydrationStatus) => WaterIntakeState.updated(newHydrationStatus),
     );
+  }
+
+  Stream<WaterIntakeState> _handleStartedEvent() async* {
+    final useCaseResult = await
   }
 }

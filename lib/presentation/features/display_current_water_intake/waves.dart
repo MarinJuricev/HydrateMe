@@ -42,7 +42,9 @@ class _WavesState extends State<Waves> {
             elevation: 12.0,
             margin: const EdgeInsets.only(right: 16.0, left: 16.0),
             clipBehavior: Clip.antiAlias,
-            shape: CircleBorder(),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(48)),
+            ),
             child: GestureDetector(
               onPanUpdate: (details) {
                 final gestureYOffset = _offset.dy - details.delta.dy;
@@ -77,7 +79,6 @@ class _WavesState extends State<Waves> {
                       blur: MaskFilter.blur(BlurStyle.solid, 5),
                       gradientBegin: Alignment.centerLeft,
                       gradientEnd: Alignment.centerRight,
-                      
                     ),
                     waveAmplitude: 1.0,
                     backgroundColor: Colors.transparent,
@@ -88,28 +89,15 @@ class _WavesState extends State<Waves> {
               ),
             ),
           ),
-             Center(
-               child: Column(
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.currentHydrateStatus.percentage,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  Text(
-                    widget.currentHydrateStatus.currentIntake.toString(),
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ],
+          Center(
+            child: Text(
+              widget.currentHydrateStatus.formattedCurrentIntake,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+              ),
             ),
-             ),
+          ),
         ],
       ),
     );

@@ -15,12 +15,12 @@ class _$HydrateStatusTearOff {
 // ignore: unused_element
   _HydrateStatus call(
       {@required double hydrationPercentage,
-      @required String percentage,
+      @required String formattedCurrentIntake,
       @required int dailyIntakeGoal,
       @required int currentIntake}) {
     return _HydrateStatus(
       hydrationPercentage: hydrationPercentage,
-      percentage: percentage,
+      formattedCurrentIntake: formattedCurrentIntake,
       dailyIntakeGoal: dailyIntakeGoal,
       currentIntake: currentIntake,
     );
@@ -32,7 +32,7 @@ const $HydrateStatus = _$HydrateStatusTearOff();
 
 mixin _$HydrateStatus {
   double get hydrationPercentage;
-  String get percentage;
+  String get formattedCurrentIntake;
   int get dailyIntakeGoal;
   int get currentIntake;
 
@@ -45,7 +45,7 @@ abstract class $HydrateStatusCopyWith<$Res> {
       _$HydrateStatusCopyWithImpl<$Res>;
   $Res call(
       {double hydrationPercentage,
-      String percentage,
+      String formattedCurrentIntake,
       int dailyIntakeGoal,
       int currentIntake});
 }
@@ -61,7 +61,7 @@ class _$HydrateStatusCopyWithImpl<$Res>
   @override
   $Res call({
     Object hydrationPercentage = freezed,
-    Object percentage = freezed,
+    Object formattedCurrentIntake = freezed,
     Object dailyIntakeGoal = freezed,
     Object currentIntake = freezed,
   }) {
@@ -69,8 +69,9 @@ class _$HydrateStatusCopyWithImpl<$Res>
       hydrationPercentage: hydrationPercentage == freezed
           ? _value.hydrationPercentage
           : hydrationPercentage as double,
-      percentage:
-          percentage == freezed ? _value.percentage : percentage as String,
+      formattedCurrentIntake: formattedCurrentIntake == freezed
+          ? _value.formattedCurrentIntake
+          : formattedCurrentIntake as String,
       dailyIntakeGoal: dailyIntakeGoal == freezed
           ? _value.dailyIntakeGoal
           : dailyIntakeGoal as int,
@@ -89,7 +90,7 @@ abstract class _$HydrateStatusCopyWith<$Res>
   @override
   $Res call(
       {double hydrationPercentage,
-      String percentage,
+      String formattedCurrentIntake,
       int dailyIntakeGoal,
       int currentIntake});
 }
@@ -107,7 +108,7 @@ class __$HydrateStatusCopyWithImpl<$Res>
   @override
   $Res call({
     Object hydrationPercentage = freezed,
-    Object percentage = freezed,
+    Object formattedCurrentIntake = freezed,
     Object dailyIntakeGoal = freezed,
     Object currentIntake = freezed,
   }) {
@@ -115,8 +116,9 @@ class __$HydrateStatusCopyWithImpl<$Res>
       hydrationPercentage: hydrationPercentage == freezed
           ? _value.hydrationPercentage
           : hydrationPercentage as double,
-      percentage:
-          percentage == freezed ? _value.percentage : percentage as String,
+      formattedCurrentIntake: formattedCurrentIntake == freezed
+          ? _value.formattedCurrentIntake
+          : formattedCurrentIntake as String,
       dailyIntakeGoal: dailyIntakeGoal == freezed
           ? _value.dailyIntakeGoal
           : dailyIntakeGoal as int,
@@ -130,18 +132,18 @@ class __$HydrateStatusCopyWithImpl<$Res>
 class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
   _$_HydrateStatus(
       {@required this.hydrationPercentage,
-      @required this.percentage,
+      @required this.formattedCurrentIntake,
       @required this.dailyIntakeGoal,
       @required this.currentIntake})
       : assert(hydrationPercentage != null),
-        assert(percentage != null),
+        assert(formattedCurrentIntake != null),
         assert(dailyIntakeGoal != null),
         assert(currentIntake != null);
 
   @override
   final double hydrationPercentage;
   @override
-  final String percentage;
+  final String formattedCurrentIntake;
   @override
   final int dailyIntakeGoal;
   @override
@@ -149,7 +151,7 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HydrateStatus(hydrationPercentage: $hydrationPercentage, percentage: $percentage, dailyIntakeGoal: $dailyIntakeGoal, currentIntake: $currentIntake)';
+    return 'HydrateStatus(hydrationPercentage: $hydrationPercentage, formattedCurrentIntake: $formattedCurrentIntake, dailyIntakeGoal: $dailyIntakeGoal, currentIntake: $currentIntake)';
   }
 
   @override
@@ -158,7 +160,8 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
     properties
       ..add(DiagnosticsProperty('type', 'HydrateStatus'))
       ..add(DiagnosticsProperty('hydrationPercentage', hydrationPercentage))
-      ..add(DiagnosticsProperty('percentage', percentage))
+      ..add(
+          DiagnosticsProperty('formattedCurrentIntake', formattedCurrentIntake))
       ..add(DiagnosticsProperty('dailyIntakeGoal', dailyIntakeGoal))
       ..add(DiagnosticsProperty('currentIntake', currentIntake));
   }
@@ -170,9 +173,9 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
             (identical(other.hydrationPercentage, hydrationPercentage) ||
                 const DeepCollectionEquality()
                     .equals(other.hydrationPercentage, hydrationPercentage)) &&
-            (identical(other.percentage, percentage) ||
-                const DeepCollectionEquality()
-                    .equals(other.percentage, percentage)) &&
+            (identical(other.formattedCurrentIntake, formattedCurrentIntake) ||
+                const DeepCollectionEquality().equals(
+                    other.formattedCurrentIntake, formattedCurrentIntake)) &&
             (identical(other.dailyIntakeGoal, dailyIntakeGoal) ||
                 const DeepCollectionEquality()
                     .equals(other.dailyIntakeGoal, dailyIntakeGoal)) &&
@@ -185,7 +188,7 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(hydrationPercentage) ^
-      const DeepCollectionEquality().hash(percentage) ^
+      const DeepCollectionEquality().hash(formattedCurrentIntake) ^
       const DeepCollectionEquality().hash(dailyIntakeGoal) ^
       const DeepCollectionEquality().hash(currentIntake);
 
@@ -197,14 +200,14 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
 abstract class _HydrateStatus implements HydrateStatus {
   factory _HydrateStatus(
       {@required double hydrationPercentage,
-      @required String percentage,
+      @required String formattedCurrentIntake,
       @required int dailyIntakeGoal,
       @required int currentIntake}) = _$_HydrateStatus;
 
   @override
   double get hydrationPercentage;
   @override
-  String get percentage;
+  String get formattedCurrentIntake;
   @override
   int get dailyIntakeGoal;
   @override

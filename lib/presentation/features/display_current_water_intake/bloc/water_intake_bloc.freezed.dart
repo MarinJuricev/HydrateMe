@@ -20,42 +20,45 @@ class _$WaterIntakeEventTearOff {
       waterMaximumHeight: waterMaximumHeight,
     );
   }
+
+// ignore: unused_element
+  WaterIntakeStaredEvent started() {
+    return const WaterIntakeStaredEvent();
+  }
 }
 
 // ignore: unused_element
 const $WaterIntakeEvent = _$WaterIntakeEventTearOff();
 
 mixin _$WaterIntakeEvent {
-  double get updatedValue;
-  double get waterMaximumHeight;
-
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result updated(double updatedValue, double waterMaximumHeight),
+    @required Result started(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result updated(double updatedValue, double waterMaximumHeight),
+    Result started(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result started(WaterIntakeStaredEvent value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result updated(WaterIntakeUpdatedEvent value),
+    Result started(WaterIntakeStaredEvent value),
     @required Result orElse(),
   });
-
-  $WaterIntakeEventCopyWith<WaterIntakeEvent> get copyWith;
 }
 
 abstract class $WaterIntakeEventCopyWith<$Res> {
   factory $WaterIntakeEventCopyWith(
           WaterIntakeEvent value, $Res Function(WaterIntakeEvent) then) =
       _$WaterIntakeEventCopyWithImpl<$Res>;
-  $Res call({double updatedValue, double waterMaximumHeight});
 }
 
 class _$WaterIntakeEventCopyWithImpl<$Res>
@@ -65,29 +68,12 @@ class _$WaterIntakeEventCopyWithImpl<$Res>
   final WaterIntakeEvent _value;
   // ignore: unused_field
   final $Res Function(WaterIntakeEvent) _then;
-
-  @override
-  $Res call({
-    Object updatedValue = freezed,
-    Object waterMaximumHeight = freezed,
-  }) {
-    return _then(_value.copyWith(
-      updatedValue: updatedValue == freezed
-          ? _value.updatedValue
-          : updatedValue as double,
-      waterMaximumHeight: waterMaximumHeight == freezed
-          ? _value.waterMaximumHeight
-          : waterMaximumHeight as double,
-    ));
-  }
 }
 
-abstract class $WaterIntakeUpdatedEventCopyWith<$Res>
-    implements $WaterIntakeEventCopyWith<$Res> {
+abstract class $WaterIntakeUpdatedEventCopyWith<$Res> {
   factory $WaterIntakeUpdatedEventCopyWith(WaterIntakeUpdatedEvent value,
           $Res Function(WaterIntakeUpdatedEvent) then) =
       _$WaterIntakeUpdatedEventCopyWithImpl<$Res>;
-  @override
   $Res call({double updatedValue, double waterMaximumHeight});
 }
 
@@ -171,8 +157,10 @@ class _$WaterIntakeUpdatedEvent
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result updated(double updatedValue, double waterMaximumHeight),
+    @required Result started(),
   }) {
     assert(updated != null);
+    assert(started != null);
     return updated(updatedValue, waterMaximumHeight);
   }
 
@@ -180,6 +168,7 @@ class _$WaterIntakeUpdatedEvent
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result updated(double updatedValue, double waterMaximumHeight),
+    Result started(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -193,8 +182,10 @@ class _$WaterIntakeUpdatedEvent
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result started(WaterIntakeStaredEvent value),
   }) {
     assert(updated != null);
+    assert(started != null);
     return updated(this);
   }
 
@@ -202,6 +193,7 @@ class _$WaterIntakeUpdatedEvent
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result updated(WaterIntakeUpdatedEvent value),
+    Result started(WaterIntakeStaredEvent value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -217,12 +209,105 @@ abstract class WaterIntakeUpdatedEvent implements WaterIntakeEvent {
       {@required double updatedValue,
       @required double waterMaximumHeight}) = _$WaterIntakeUpdatedEvent;
 
-  @override
   double get updatedValue;
-  @override
   double get waterMaximumHeight;
-  @override
   $WaterIntakeUpdatedEventCopyWith<WaterIntakeUpdatedEvent> get copyWith;
+}
+
+abstract class $WaterIntakeStaredEventCopyWith<$Res> {
+  factory $WaterIntakeStaredEventCopyWith(WaterIntakeStaredEvent value,
+          $Res Function(WaterIntakeStaredEvent) then) =
+      _$WaterIntakeStaredEventCopyWithImpl<$Res>;
+}
+
+class _$WaterIntakeStaredEventCopyWithImpl<$Res>
+    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    implements $WaterIntakeStaredEventCopyWith<$Res> {
+  _$WaterIntakeStaredEventCopyWithImpl(WaterIntakeStaredEvent _value,
+      $Res Function(WaterIntakeStaredEvent) _then)
+      : super(_value, (v) => _then(v as WaterIntakeStaredEvent));
+
+  @override
+  WaterIntakeStaredEvent get _value => super._value as WaterIntakeStaredEvent;
+}
+
+class _$WaterIntakeStaredEvent
+    with DiagnosticableTreeMixin
+    implements WaterIntakeStaredEvent {
+  const _$WaterIntakeStaredEvent();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WaterIntakeEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WaterIntakeEvent.started'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is WaterIntakeStaredEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result updated(double updatedValue, double waterMaximumHeight),
+    @required Result started(),
+  }) {
+    assert(updated != null);
+    assert(started != null);
+    return started();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result updated(double updatedValue, double waterMaximumHeight),
+    Result started(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (started != null) {
+      return started();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result started(WaterIntakeStaredEvent value),
+  }) {
+    assert(updated != null);
+    assert(started != null);
+    return started(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result updated(WaterIntakeUpdatedEvent value),
+    Result started(WaterIntakeStaredEvent value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (started != null) {
+      return started(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WaterIntakeStaredEvent implements WaterIntakeEvent {
+  const factory WaterIntakeStaredEvent() = _$WaterIntakeStaredEvent;
 }
 
 class _$WaterIntakeStateTearOff {
@@ -231,6 +316,11 @@ class _$WaterIntakeStateTearOff {
 // ignore: unused_element
   WaterIntakeInitialState initial() {
     return const WaterIntakeInitialState();
+  }
+
+// ignore: unused_element
+  WaterIntakeLoadingState loading() {
+    return const WaterIntakeLoadingState();
   }
 
 // ignore: unused_element
@@ -260,6 +350,7 @@ mixin _$WaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
@@ -267,6 +358,7 @@ mixin _$WaterIntakeState {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
@@ -275,6 +367,7 @@ mixin _$WaterIntakeState {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(WaterIntakeInitialState value),
+    @required Result loading(WaterIntakeLoadingState value),
     @required Result updated(WaterIntakeUpdatedState value),
     @required Result error(WaterIntakeErrorState value),
     @required Result completed(WaterIntakeCompletedState value),
@@ -282,6 +375,7 @@ mixin _$WaterIntakeState {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(WaterIntakeInitialState value),
+    Result loading(WaterIntakeLoadingState value),
     Result updated(WaterIntakeUpdatedState value),
     Result error(WaterIntakeErrorState value),
     Result completed(WaterIntakeCompletedState value),
@@ -349,11 +443,13 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
@@ -364,6 +460,7 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
@@ -380,11 +477,13 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(WaterIntakeInitialState value),
+    @required Result loading(WaterIntakeLoadingState value),
     @required Result updated(WaterIntakeUpdatedState value),
     @required Result error(WaterIntakeErrorState value),
     @required Result completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
@@ -395,6 +494,7 @@ class _$WaterIntakeInitialState
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(WaterIntakeInitialState value),
+    Result loading(WaterIntakeLoadingState value),
     Result updated(WaterIntakeUpdatedState value),
     Result error(WaterIntakeErrorState value),
     Result completed(WaterIntakeCompletedState value),
@@ -410,6 +510,120 @@ class _$WaterIntakeInitialState
 
 abstract class WaterIntakeInitialState implements WaterIntakeState {
   const factory WaterIntakeInitialState() = _$WaterIntakeInitialState;
+}
+
+abstract class $WaterIntakeLoadingStateCopyWith<$Res> {
+  factory $WaterIntakeLoadingStateCopyWith(WaterIntakeLoadingState value,
+          $Res Function(WaterIntakeLoadingState) then) =
+      _$WaterIntakeLoadingStateCopyWithImpl<$Res>;
+}
+
+class _$WaterIntakeLoadingStateCopyWithImpl<$Res>
+    extends _$WaterIntakeStateCopyWithImpl<$Res>
+    implements $WaterIntakeLoadingStateCopyWith<$Res> {
+  _$WaterIntakeLoadingStateCopyWithImpl(WaterIntakeLoadingState _value,
+      $Res Function(WaterIntakeLoadingState) _then)
+      : super(_value, (v) => _then(v as WaterIntakeLoadingState));
+
+  @override
+  WaterIntakeLoadingState get _value => super._value as WaterIntakeLoadingState;
+}
+
+class _$WaterIntakeLoadingState
+    with DiagnosticableTreeMixin
+    implements WaterIntakeLoadingState {
+  const _$WaterIntakeLoadingState();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WaterIntakeState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'WaterIntakeState.loading'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is WaterIntakeLoadingState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result loading(),
+    @required Result updated(HydrateStatus updatedHydrateStatus),
+    @required Result error(String errorMessage),
+    @required Result completed(),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(updated != null);
+    assert(error != null);
+    assert(completed != null);
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result loading(),
+    Result updated(HydrateStatus updatedHydrateStatus),
+    Result error(String errorMessage),
+    Result completed(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(WaterIntakeInitialState value),
+    @required Result loading(WaterIntakeLoadingState value),
+    @required Result updated(WaterIntakeUpdatedState value),
+    @required Result error(WaterIntakeErrorState value),
+    @required Result completed(WaterIntakeCompletedState value),
+  }) {
+    assert(initial != null);
+    assert(loading != null);
+    assert(updated != null);
+    assert(error != null);
+    assert(completed != null);
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(WaterIntakeInitialState value),
+    Result loading(WaterIntakeLoadingState value),
+    Result updated(WaterIntakeUpdatedState value),
+    Result error(WaterIntakeErrorState value),
+    Result completed(WaterIntakeCompletedState value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WaterIntakeLoadingState implements WaterIntakeState {
+  const factory WaterIntakeLoadingState() = _$WaterIntakeLoadingState;
 }
 
 abstract class $WaterIntakeUpdatedStateCopyWith<$Res> {
@@ -498,11 +712,13 @@ class _$WaterIntakeUpdatedState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
@@ -513,6 +729,7 @@ class _$WaterIntakeUpdatedState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
@@ -529,11 +746,13 @@ class _$WaterIntakeUpdatedState
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(WaterIntakeInitialState value),
+    @required Result loading(WaterIntakeLoadingState value),
     @required Result updated(WaterIntakeUpdatedState value),
     @required Result error(WaterIntakeErrorState value),
     @required Result completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
@@ -544,6 +763,7 @@ class _$WaterIntakeUpdatedState
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(WaterIntakeInitialState value),
+    Result loading(WaterIntakeLoadingState value),
     Result updated(WaterIntakeUpdatedState value),
     Result error(WaterIntakeErrorState value),
     Result completed(WaterIntakeCompletedState value),
@@ -636,11 +856,13 @@ class _$WaterIntakeErrorState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
@@ -651,6 +873,7 @@ class _$WaterIntakeErrorState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
@@ -667,11 +890,13 @@ class _$WaterIntakeErrorState
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(WaterIntakeInitialState value),
+    @required Result loading(WaterIntakeLoadingState value),
     @required Result updated(WaterIntakeUpdatedState value),
     @required Result error(WaterIntakeErrorState value),
     @required Result completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
@@ -682,6 +907,7 @@ class _$WaterIntakeErrorState
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(WaterIntakeInitialState value),
+    Result loading(WaterIntakeLoadingState value),
     Result updated(WaterIntakeUpdatedState value),
     Result error(WaterIntakeErrorState value),
     Result completed(WaterIntakeCompletedState value),
@@ -749,11 +975,13 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
     @required Result completed(),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
@@ -764,6 +992,7 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
     Result completed(),
@@ -780,11 +1009,13 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(WaterIntakeInitialState value),
+    @required Result loading(WaterIntakeLoadingState value),
     @required Result updated(WaterIntakeUpdatedState value),
     @required Result error(WaterIntakeErrorState value),
     @required Result completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
+    assert(loading != null);
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
@@ -795,6 +1026,7 @@ class _$WaterIntakeCompletedState
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(WaterIntakeInitialState value),
+    Result loading(WaterIntakeLoadingState value),
     Result updated(WaterIntakeUpdatedState value),
     Result error(WaterIntakeErrorState value),
     Result completed(WaterIntakeCompletedState value),

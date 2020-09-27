@@ -22,16 +22,18 @@ class CalculateWavesPercentage
       params.updatedValue,
       params.waterMaximumHeight,
     );
-    final percentage = formatPercentage(hydrationPercentage);
     final currentIntake = calculateCurrentIntake(
         hydrationPercentage, currentHydrateStatus.dailyIntakeGoal);
+    final formattedCurrentIntake = formatCurrentIntake(
+        currentIntake, currentHydrateStatus.dailyIntakeGoal);
 
     return Right(
       HydrateStatus(
-          hydrationPercentage: hydrationPercentage,
-          percentage: percentage,
-          currentIntake: currentIntake,
-          dailyIntakeGoal: currentHydrateStatus.dailyIntakeGoal),
+        hydrationPercentage: hydrationPercentage,
+        formattedCurrentIntake: formattedCurrentIntake,
+        currentIntake: currentIntake,
+        dailyIntakeGoal: currentHydrateStatus.dailyIntakeGoal,
+      ),
     );
   }
 
@@ -50,12 +52,6 @@ class CalculateWavesPercentage
     return hydrationpercentage;
   }
 
-  String formatPercentage(double hydrationPercentage) {
-    String roundedUpPercentage = roundUpPercentage(hydrationPercentage);
-
-    return toPercentage(roundedUpPercentage);
-  }
-
   String roundUpPercentage(hydrationPercentage) {
     return hydrationPercentage.toStringAsFixed(2);
   }
@@ -66,6 +62,10 @@ class CalculateWavesPercentage
 
   int calculateCurrentIntake(double hydrationPercentage, int dailyIntakeGoal) {
     return (hydrationPercentage * dailyIntakeGoal).toInt();
+  }
+
+  String formatCurrentIntake(int currentIntake, int dailyIntakeGoal) {
+    return '$currentIntake/$dailyIntakeGoal';
   }
 }
 
