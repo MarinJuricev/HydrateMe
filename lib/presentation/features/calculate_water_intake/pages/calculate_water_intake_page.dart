@@ -1,12 +1,12 @@
-import 'package:HydrateMe/domain/model/activity_level.dart';
-import 'package:HydrateMe/presentation/features/calculate_water_intake/widget/water_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/common/constants/constants.dart';
-import '../../../../service_locator.dart' as di;
+import '../../../../domain/model/activity_level.dart';
 import '../../../../domain/model/gender.dart';
 import '../../../../domain/model/weight_type.dart';
+import '../../../../service_locator.dart' as di;
+import '../../display_current_water_intake/display_current_water_intake_page.dart';
 import '../bloc/calculate_water_intake_bloc.dart';
 import '../widget/activity_selection.dart';
 import '../widget/gender_toggle.dart';
@@ -35,15 +35,28 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
         body: BlocProvider<CalculateWaterIntakeBloc>(
           create: (blocContext) => di.getIt<CalculateWaterIntakeBloc>(),
           child:
-              BlocBuilder<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
-                  builder: (blocContext, state) {
-            return state.when(
-              initial: () => _buildInitialState(blocContext),
-              error: (errorMessage) =>
-                  Text('PlaceHolder Error Text: $errorMessage'),
-              calculationFinished: () => WaterTransition(),
-            );
-          }),
+              BlocConsumer<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
+            buildWhen: (previousState, newState) {
+              return (newState !=
+                  CalculateWaterIntakeState.calculationFinished());
+            },
+            builder: (blocContext, state) {
+              return state.maybeWhen(
+                initial: () => _buildInitialState(blocContext),
+                error: (errorMessage) =>
+                    Text('PlaceHolder Error Text: $errorMessage'),
+                orElse: () => Container(),
+              );
+            },
+            listenWhen: (previousState, newState) {
+              return (newState ==
+                  CalculateWaterIntakeState.calculationFinished());
+            },
+            listener: (blocContext, state) {
+              return state.maybeWhen(
+                  calculationFinished: _navigateToDisplayPage(), orElse: null);
+            },
+          ),
         ),
       ),
     );
@@ -142,6 +155,15 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
           ),
         )
       ],
+    );
+  }
+
+  _navigateToDisplayPage() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DisplayCurrentWaterIntakePage(),
+      ),
     );
   }
 }

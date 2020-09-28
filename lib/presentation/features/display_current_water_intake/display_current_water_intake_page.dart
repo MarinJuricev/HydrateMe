@@ -1,4 +1,5 @@
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
+import 'package:HydrateMe/presentation/features/calculate_water_intake/widget/water_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,7 +43,7 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
                 ),
               ),
               error: (String errorMessage) => Text(errorMessage),
-              loading: () => CircularProgressIndicator(),
+              loading: () => WaterTransition(),
             );
           },
         ),
