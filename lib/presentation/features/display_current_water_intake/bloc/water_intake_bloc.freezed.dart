@@ -314,8 +314,10 @@ class _$WaterIntakeStateTearOff {
   const _$WaterIntakeStateTearOff();
 
 // ignore: unused_element
-  WaterIntakeInitialState initial() {
-    return const WaterIntakeInitialState();
+  WaterIntakeInitialState initial(HydrateStatus initalHydrateStatus) {
+    return WaterIntakeInitialState(
+      initalHydrateStatus,
+    );
   }
 
 // ignore: unused_element
@@ -349,7 +351,7 @@ const $WaterIntakeState = _$WaterIntakeStateTearOff();
 mixin _$WaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(HydrateStatus initalHydrateStatus),
     @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
@@ -357,7 +359,7 @@ mixin _$WaterIntakeState {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(HydrateStatus initalHydrateStatus),
     Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
@@ -402,6 +404,9 @@ abstract class $WaterIntakeInitialStateCopyWith<$Res> {
   factory $WaterIntakeInitialStateCopyWith(WaterIntakeInitialState value,
           $Res Function(WaterIntakeInitialState) then) =
       _$WaterIntakeInitialStateCopyWithImpl<$Res>;
+  $Res call({HydrateStatus initalHydrateStatus});
+
+  $HydrateStatusCopyWith<$Res> get initalHydrateStatus;
 }
 
 class _$WaterIntakeInitialStateCopyWithImpl<$Res>
@@ -413,36 +418,74 @@ class _$WaterIntakeInitialStateCopyWithImpl<$Res>
 
   @override
   WaterIntakeInitialState get _value => super._value as WaterIntakeInitialState;
+
+  @override
+  $Res call({
+    Object initalHydrateStatus = freezed,
+  }) {
+    return _then(WaterIntakeInitialState(
+      initalHydrateStatus == freezed
+          ? _value.initalHydrateStatus
+          : initalHydrateStatus as HydrateStatus,
+    ));
+  }
+
+  @override
+  $HydrateStatusCopyWith<$Res> get initalHydrateStatus {
+    if (_value.initalHydrateStatus == null) {
+      return null;
+    }
+    return $HydrateStatusCopyWith<$Res>(_value.initalHydrateStatus, (value) {
+      return _then(_value.copyWith(initalHydrateStatus: value));
+    });
+  }
 }
 
 class _$WaterIntakeInitialState
     with DiagnosticableTreeMixin
     implements WaterIntakeInitialState {
-  const _$WaterIntakeInitialState();
+  const _$WaterIntakeInitialState(this.initalHydrateStatus)
+      : assert(initalHydrateStatus != null);
+
+  @override
+  final HydrateStatus initalHydrateStatus;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeState.initial()';
+    return 'WaterIntakeState.initial(initalHydrateStatus: $initalHydrateStatus)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'WaterIntakeState.initial'));
+    properties
+      ..add(DiagnosticsProperty('type', 'WaterIntakeState.initial'))
+      ..add(DiagnosticsProperty('initalHydrateStatus', initalHydrateStatus));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is WaterIntakeInitialState);
+    return identical(this, other) ||
+        (other is WaterIntakeInitialState &&
+            (identical(other.initalHydrateStatus, initalHydrateStatus) ||
+                const DeepCollectionEquality()
+                    .equals(other.initalHydrateStatus, initalHydrateStatus)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(initalHydrateStatus);
+
+  @override
+  $WaterIntakeInitialStateCopyWith<WaterIntakeInitialState> get copyWith =>
+      _$WaterIntakeInitialStateCopyWithImpl<WaterIntakeInitialState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(HydrateStatus initalHydrateStatus),
     @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
@@ -453,13 +496,13 @@ class _$WaterIntakeInitialState
     assert(updated != null);
     assert(error != null);
     assert(completed != null);
-    return initial();
+    return initial(initalHydrateStatus);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(HydrateStatus initalHydrateStatus),
     Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
@@ -468,7 +511,7 @@ class _$WaterIntakeInitialState
   }) {
     assert(orElse != null);
     if (initial != null) {
-      return initial();
+      return initial(initalHydrateStatus);
     }
     return orElse();
   }
@@ -509,7 +552,11 @@ class _$WaterIntakeInitialState
 }
 
 abstract class WaterIntakeInitialState implements WaterIntakeState {
-  const factory WaterIntakeInitialState() = _$WaterIntakeInitialState;
+  const factory WaterIntakeInitialState(HydrateStatus initalHydrateStatus) =
+      _$WaterIntakeInitialState;
+
+  HydrateStatus get initalHydrateStatus;
+  $WaterIntakeInitialStateCopyWith<WaterIntakeInitialState> get copyWith;
 }
 
 abstract class $WaterIntakeLoadingStateCopyWith<$Res> {
@@ -556,7 +603,7 @@ class _$WaterIntakeLoadingState
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(HydrateStatus initalHydrateStatus),
     @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
@@ -573,7 +620,7 @@ class _$WaterIntakeLoadingState
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(HydrateStatus initalHydrateStatus),
     Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
@@ -711,7 +758,7 @@ class _$WaterIntakeUpdatedState
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(HydrateStatus initalHydrateStatus),
     @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
@@ -728,7 +775,7 @@ class _$WaterIntakeUpdatedState
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(HydrateStatus initalHydrateStatus),
     Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
@@ -855,7 +902,7 @@ class _$WaterIntakeErrorState
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(HydrateStatus initalHydrateStatus),
     @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
@@ -872,7 +919,7 @@ class _$WaterIntakeErrorState
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(HydrateStatus initalHydrateStatus),
     Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),
@@ -974,7 +1021,7 @@ class _$WaterIntakeCompletedState
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result initial(),
+    @required Result initial(HydrateStatus initalHydrateStatus),
     @required Result loading(),
     @required Result updated(HydrateStatus updatedHydrateStatus),
     @required Result error(String errorMessage),
@@ -991,7 +1038,7 @@ class _$WaterIntakeCompletedState
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result initial(),
+    Result initial(HydrateStatus initalHydrateStatus),
     Result loading(),
     Result updated(HydrateStatus updatedHydrateStatus),
     Result error(String errorMessage),

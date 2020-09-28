@@ -1,3 +1,4 @@
+import 'package:HydrateMe/core/common/constants/constants.dart';
 import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
@@ -15,24 +16,31 @@ class CalculateWavesPercentage
   @override
   Future<Either<Failure, HydrateStatus>> call(
       CalculateWavesPercentageParams params) async {
-    final currentHydrateStatus =
+    final currentHydrateStatusEither =
         await waterIntakeRepository.getCurrentWaterIntake();
+
+    final dailyIntakeGoal = extractDailyIntake(currentHydrateStatusEither);
+
+    if(dailyIntakeGoal == 0){
+      return Left(NonExistentDailyIntake(DAILY_WATER_INTAKE_MUST_BE_DEFINED));
+    }
 
     final hydrationPercentage = calculateHydrationPercentage(
       params.updatedValue,
       params.waterMaximumHeight,
     );
-    final currentIntake = calculateCurrentIntake(
-        hydrationPercentage, currentHydrateStatus.dailyIntakeGoal);
-    final formattedCurrentIntake = formatCurrentIntake(
-        currentIntake, currentHydrateStatus.dailyIntakeGoal);
+
+    final currentIntake =
+        calculateCurrentIntake(hydrationPercentage, dailyIntakeGoal);
+    final formattedCurrentIntake =
+        formatCurrentIntake(currentIntake, dailyIntakeGoal);
 
     return Right(
       HydrateStatus(
         hydrationPercentage: hydrationPercentage,
         formattedCurrentIntake: formattedCurrentIntake,
         currentIntake: currentIntake,
-        dailyIntakeGoal: currentHydrateStatus.dailyIntakeGoal,
+        dailyIntakeGoal: dailyIntakeGoal,
       ),
     );
   }
@@ -66,6 +74,14 @@ class CalculateWavesPercentage
 
   String formatCurrentIntake(int currentIntake, int dailyIntakeGoal) {
     return '$currentIntake/$dailyIntakeGoal';
+  }
+
+  int extractDailyIntake(
+      Either<Failure, HydrateStatus> currentHydrateStatusEither) {
+    return currentHydrateStatusEither.fold(
+      (error) => 0,
+      (currentHydrateStatus) => currentHydrateStatus.dailyIntakeGoal,
+    );
   }
 }
 

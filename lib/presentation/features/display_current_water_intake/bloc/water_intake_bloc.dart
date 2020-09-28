@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:HydrateMe/core/usecase/base_usecase.dart';
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:HydrateMe/domain/usecases/calculate_waves_percentage.dart';
+import 'package:HydrateMe/domain/usecases/get_current_hydrate_status.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
@@ -13,9 +15,12 @@ part 'water_intake_bloc.freezed.dart';
 
 class WaterIntakeBloc extends Bloc<WaterIntakeEvent, WaterIntakeState> {
   final CalculateWavesPercentage calculateWavesPercentage;
+  final GetCurrentHydrateStatus getCurrentHydrateStatus;
 
-  WaterIntakeBloc(this.calculateWavesPercentage)
-      : super(WaterIntakeState.loading());
+  WaterIntakeBloc({
+    @required this.calculateWavesPercentage,
+    @required this.getCurrentHydrateStatus,
+  }) : super(WaterIntakeState.loading());
 
   @override
   Stream<WaterIntakeState> mapEventToState(
@@ -46,6 +51,11 @@ class WaterIntakeBloc extends Bloc<WaterIntakeEvent, WaterIntakeState> {
   }
 
   Stream<WaterIntakeState> _handleStartedEvent() async* {
-    final useCaseResult = await
+    final useCaseResult = await getCurrentHydrateStatus(NoParams());
+
+    yield useCaseResult.fold(
+      (failure) => WaterIntakeState.error(failure.message),
+      (newHydrationStatus) => WaterIntakeState.initial(newHydrationStatus),
+    );
   }
 }

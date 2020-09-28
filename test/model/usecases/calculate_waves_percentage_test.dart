@@ -1,3 +1,5 @@
+import 'package:HydrateMe/core/common/constants/constants.dart';
+import 'package:HydrateMe/core/failure/base_failure.dart';
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:HydrateMe/domain/usecases/calculate_waves_percentage.dart';
@@ -31,8 +33,11 @@ void main() {
         currentIntake: 0,
       );
 
+       final Either<Failure, HydrateStatus> testRepositoryResponse =
+          Right(testHydrateStatus);
+
       when(_mockWaterIntakeRepository.getCurrentWaterIntake())
-          .thenAnswer((_) async => testHydrateStatus);
+          .thenAnswer((_) async => testRepositoryResponse);
 
       final actualResult = await _calculateWavesPercentage(
         CalculateWavesPercentageParams(
@@ -64,8 +69,11 @@ void main() {
         currentIntake: 0,
       );
 
+      final Either<Failure, HydrateStatus> testRepositoryResponse =
+          Right(testHydrateStatus);
+
       when(_mockWaterIntakeRepository.getCurrentWaterIntake())
-          .thenAnswer((_) async => testHydrateStatus);
+          .thenAnswer((_) async => testRepositoryResponse);
 
       final actualResult = await _calculateWavesPercentage(
         CalculateWavesPercentageParams(
@@ -88,7 +96,7 @@ void main() {
   );
 
   test(
-    'should return hydrate status with hydrationPercentage 0.0 and percentage 0% when -10 and 100 are provided',
+    'should return <Left(NonExistentDailyIntake)> when 0 dailyIntake is returned from the repo',
     () async {
       final testHydrateStatus = HydrateStatus(
         hydrationPercentage: 0,
@@ -97,8 +105,11 @@ void main() {
         currentIntake: 0,
       );
 
+      final Either<Failure, HydrateStatus> testRepositoryResponse =
+          Right(testHydrateStatus);
+
       when(_mockWaterIntakeRepository.getCurrentWaterIntake())
-          .thenAnswer((_) async => testHydrateStatus);
+          .thenAnswer((_) async => testRepositoryResponse);
 
       final actualResult = await _calculateWavesPercentage(
         CalculateWavesPercentageParams(
@@ -107,14 +118,7 @@ void main() {
         ),
       );
 
-      final expectedValue = Right(
-        HydrateStatus(
-          hydrationPercentage: 0.0,
-          currentIntake: 0,
-          dailyIntakeGoal: 0,
-          formattedCurrentIntake: '0/0',
-        ),
-      );
+      final expectedValue = Left(NonExistentDailyIntake(DAILY_WATER_INTAKE_MUST_BE_DEFINED));
 
       expect(actualResult, expectedValue);
     },

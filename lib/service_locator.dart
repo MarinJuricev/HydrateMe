@@ -8,6 +8,7 @@ import 'package:get_it/get_it.dart';
 
 import 'data/data_source/local_persistence_provider.dart';
 import 'domain/usecases/calculate_waves_percentage.dart';
+import 'domain/usecases/get_current_hydrate_status.dart';
 import 'presentation/features/calculate_water_intake/bloc/calculate_water_intake_bloc.dart';
 import 'presentation/features/display_current_water_intake/bloc/water_intake_bloc.dart';
 
@@ -16,7 +17,10 @@ final getIt = GetIt.instance;
 Future<void> init() async {
   //Bloc
   getIt.registerFactory(
-      () => WaterIntakeBloc(getIt<CalculateWavesPercentage>()));
+    () => WaterIntakeBloc(
+        calculateWavesPercentage: getIt<CalculateWavesPercentage>(),
+        getCurrentHydrateStatus: getIt<GetCurrentHydrateStatus>()),
+  );
   getIt.registerFactory(
       () => CalculateWaterIntakeBloc(getIt<CalculateDailyWaterIntake>()));
 
@@ -38,6 +42,8 @@ Future<void> init() async {
       waterIntakeRepository: getIt<WaterIntakeRepository>(),
     ),
   );
+  getIt.registerFactory(() => GetCurrentHydrateStatus(
+      waterIntakeRepository: getIt<WaterIntakeRepository>()));
 
   //Datasources
   getIt.registerLazySingleton<LocalPersistenceProvider>(

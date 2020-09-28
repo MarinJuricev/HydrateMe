@@ -10,3 +10,4 @@ const INITIAL_DAILY_ACTIVITY = ActivityLevel.active;
 
 // Budget error messages
 const CANT_PROVIDE_NEGATIVE_NUMBER = 'Can\'t provide a negative number';
+const DAILY_WATER_INTAKE_MUST_BE_DEFINED = 'Daily water intake must be defined';

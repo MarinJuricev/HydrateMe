@@ -13,3 +13,7 @@ abstract class Failure extends Equatable {
 class NegativeNumberFailure extends Failure {
   NegativeNumberFailure(String errorMessage) : super(message: errorMessage);
 }
+
+class NonExistentDailyIntake extends Failure {
+  NonExistentDailyIntake(String errorMessage) : super(message: errorMessage);
+}

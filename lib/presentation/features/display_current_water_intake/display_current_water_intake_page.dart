@@ -29,14 +29,8 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
         child: BlocBuilder<WaterIntakeBloc, WaterIntakeState>(
           builder: (context, state) {
             return state.when(
-              initial: () => _buildWaterIntake(
-                HydrateStatus(
-                  hydrationPercentage: 1,
-                  formattedCurrentIntake: '0',
-                  currentIntake: 0,
-                  dailyIntakeGoal: 0,
-                ),
-              ),
+              initial: (HydrateStatus initialHydrateStatus) =>
+                  _buildWaterIntake(initialHydrateStatus),
               updated: (HydrateStatus hydrateStatus) =>
                   _buildWaterIntake(hydrateStatus),
               completed: () => _buildWaterIntake(
@@ -48,6 +42,7 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
                 ),
               ),
               error: (String errorMessage) => Text(errorMessage),
+              loading: () => CircularProgressIndicator(),
             );
           },
         ),
