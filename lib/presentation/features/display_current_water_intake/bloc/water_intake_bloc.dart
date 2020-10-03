@@ -27,13 +27,17 @@ class WaterIntakeBloc extends Bloc<WaterIntakeEvent, WaterIntakeState> {
     WaterIntakeEvent event,
   ) async* {
     yield* event.map(
-      updated: (params) =>
-          _updateWaterIntake(params.updatedValue, params.waterMaximumHeight),
+      updated: (params) => _handleUpdateWaterIntake(
+        params.updatedValue,
+        params.waterMaximumHeight,
+      ),
       started: (WaterIntakeStaredEvent value) => _handleStartedEvent(),
+      manualIncrease: (params) => _handleManualIncrease(params.waterToAdd),
+      manualDecrease: (params) => _handleManualDecrease(params.waterToSubtract),
     );
   }
 
-  Stream<WaterIntakeState> _updateWaterIntake(
+  Stream<WaterIntakeState> _handleUpdateWaterIntake(
     double updatedValue,
     double waterMaximumHeight,
   ) async* {
@@ -51,6 +55,25 @@ class WaterIntakeBloc extends Bloc<WaterIntakeEvent, WaterIntakeState> {
   }
 
   Stream<WaterIntakeState> _handleStartedEvent() async* {
+    final useCaseResult = await getCurrentHydrateStatus(NoParams());
+
+    yield useCaseResult.fold(
+      (failure) => WaterIntakeState.error(failure.message),
+      (newHydrationStatus) => WaterIntakeState.initial(newHydrationStatus),
+    );
+  }
+
+  Stream<WaterIntakeState> _handleManualIncrease(String waterToAdd) async* {
+    final useCaseResult = await getCurrentHydrateStatus(NoParams());
+
+    yield useCaseResult.fold(
+      (failure) => WaterIntakeState.error(failure.message),
+      (newHydrationStatus) => WaterIntakeState.initial(newHydrationStatus),
+    );
+  }
+
+  Stream<WaterIntakeState> _handleManualDecrease(
+      String waterToSubtract) async* {
     final useCaseResult = await getCurrentHydrateStatus(NoParams());
 
     yield useCaseResult.fold(

@@ -9,4 +9,8 @@ abstract class WaterIntakeEvent with _$WaterIntakeEvent {
     @required double waterMaximumHeight,
   }) = WaterIntakeUpdatedEvent;
   const factory WaterIntakeEvent.started() = WaterIntakeStaredEvent;
+  const factory WaterIntakeEvent.manualIncrease({@required String waterToAdd}) =
+      WaterIntakeManualAddEvent;
+  const factory WaterIntakeEvent.manualDecrease(
+      {@required String waterToSubtract}) = WaterIntakeManualDecreaseEvent;
 }

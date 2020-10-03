@@ -5,7 +5,7 @@ extension StringGenderExtension on String {
     switch (this.toLowerCase()) {
       case 'male':
         return Gender.male;
-      case 'LBS':
+      case 'female':
         return Gender.female;
       default:
         return Gender.male;

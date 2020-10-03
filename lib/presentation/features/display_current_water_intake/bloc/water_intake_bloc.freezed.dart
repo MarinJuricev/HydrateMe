@@ -25,6 +25,21 @@ class _$WaterIntakeEventTearOff {
   WaterIntakeStaredEvent started() {
     return const WaterIntakeStaredEvent();
   }
+
+// ignore: unused_element
+  WaterIntakeManualAddEvent manualIncrease({@required String waterToAdd}) {
+    return WaterIntakeManualAddEvent(
+      waterToAdd: waterToAdd,
+    );
+  }
+
+// ignore: unused_element
+  WaterIntakeManualDecreaseEvent manualDecrease(
+      {@required String waterToSubtract}) {
+    return WaterIntakeManualDecreaseEvent(
+      waterToSubtract: waterToSubtract,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -35,22 +50,30 @@ mixin _$WaterIntakeEvent {
   Result when<Result extends Object>({
     @required Result updated(double updatedValue, double waterMaximumHeight),
     @required Result started(),
+    @required Result manualIncrease(String waterToAdd),
+    @required Result manualDecrease(String waterToSubtract),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result updated(double updatedValue, double waterMaximumHeight),
     Result started(),
+    Result manualIncrease(String waterToAdd),
+    Result manualDecrease(String waterToSubtract),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result updated(WaterIntakeUpdatedEvent value),
     @required Result started(WaterIntakeStaredEvent value),
+    @required Result manualIncrease(WaterIntakeManualAddEvent value),
+    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result updated(WaterIntakeUpdatedEvent value),
     Result started(WaterIntakeStaredEvent value),
+    Result manualIncrease(WaterIntakeManualAddEvent value),
+    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
     @required Result orElse(),
   });
 }
@@ -158,9 +181,13 @@ class _$WaterIntakeUpdatedEvent
   Result when<Result extends Object>({
     @required Result updated(double updatedValue, double waterMaximumHeight),
     @required Result started(),
+    @required Result manualIncrease(String waterToAdd),
+    @required Result manualDecrease(String waterToSubtract),
   }) {
     assert(updated != null);
     assert(started != null);
+    assert(manualIncrease != null);
+    assert(manualDecrease != null);
     return updated(updatedValue, waterMaximumHeight);
   }
 
@@ -169,6 +196,8 @@ class _$WaterIntakeUpdatedEvent
   Result maybeWhen<Result extends Object>({
     Result updated(double updatedValue, double waterMaximumHeight),
     Result started(),
+    Result manualIncrease(String waterToAdd),
+    Result manualDecrease(String waterToSubtract),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -183,9 +212,13 @@ class _$WaterIntakeUpdatedEvent
   Result map<Result extends Object>({
     @required Result updated(WaterIntakeUpdatedEvent value),
     @required Result started(WaterIntakeStaredEvent value),
+    @required Result manualIncrease(WaterIntakeManualAddEvent value),
+    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
   }) {
     assert(updated != null);
     assert(started != null);
+    assert(manualIncrease != null);
+    assert(manualDecrease != null);
     return updated(this);
   }
 
@@ -194,6 +227,8 @@ class _$WaterIntakeUpdatedEvent
   Result maybeMap<Result extends Object>({
     Result updated(WaterIntakeUpdatedEvent value),
     Result started(WaterIntakeStaredEvent value),
+    Result manualIncrease(WaterIntakeManualAddEvent value),
+    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -260,9 +295,13 @@ class _$WaterIntakeStaredEvent
   Result when<Result extends Object>({
     @required Result updated(double updatedValue, double waterMaximumHeight),
     @required Result started(),
+    @required Result manualIncrease(String waterToAdd),
+    @required Result manualDecrease(String waterToSubtract),
   }) {
     assert(updated != null);
     assert(started != null);
+    assert(manualIncrease != null);
+    assert(manualDecrease != null);
     return started();
   }
 
@@ -271,6 +310,8 @@ class _$WaterIntakeStaredEvent
   Result maybeWhen<Result extends Object>({
     Result updated(double updatedValue, double waterMaximumHeight),
     Result started(),
+    Result manualIncrease(String waterToAdd),
+    Result manualDecrease(String waterToSubtract),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -285,9 +326,13 @@ class _$WaterIntakeStaredEvent
   Result map<Result extends Object>({
     @required Result updated(WaterIntakeUpdatedEvent value),
     @required Result started(WaterIntakeStaredEvent value),
+    @required Result manualIncrease(WaterIntakeManualAddEvent value),
+    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
   }) {
     assert(updated != null);
     assert(started != null);
+    assert(manualIncrease != null);
+    assert(manualDecrease != null);
     return started(this);
   }
 
@@ -296,6 +341,8 @@ class _$WaterIntakeStaredEvent
   Result maybeMap<Result extends Object>({
     Result updated(WaterIntakeUpdatedEvent value),
     Result started(WaterIntakeStaredEvent value),
+    Result manualIncrease(WaterIntakeManualAddEvent value),
+    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -308,6 +355,291 @@ class _$WaterIntakeStaredEvent
 
 abstract class WaterIntakeStaredEvent implements WaterIntakeEvent {
   const factory WaterIntakeStaredEvent() = _$WaterIntakeStaredEvent;
+}
+
+abstract class $WaterIntakeManualAddEventCopyWith<$Res> {
+  factory $WaterIntakeManualAddEventCopyWith(WaterIntakeManualAddEvent value,
+          $Res Function(WaterIntakeManualAddEvent) then) =
+      _$WaterIntakeManualAddEventCopyWithImpl<$Res>;
+  $Res call({String waterToAdd});
+}
+
+class _$WaterIntakeManualAddEventCopyWithImpl<$Res>
+    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    implements $WaterIntakeManualAddEventCopyWith<$Res> {
+  _$WaterIntakeManualAddEventCopyWithImpl(WaterIntakeManualAddEvent _value,
+      $Res Function(WaterIntakeManualAddEvent) _then)
+      : super(_value, (v) => _then(v as WaterIntakeManualAddEvent));
+
+  @override
+  WaterIntakeManualAddEvent get _value =>
+      super._value as WaterIntakeManualAddEvent;
+
+  @override
+  $Res call({
+    Object waterToAdd = freezed,
+  }) {
+    return _then(WaterIntakeManualAddEvent(
+      waterToAdd:
+          waterToAdd == freezed ? _value.waterToAdd : waterToAdd as String,
+    ));
+  }
+}
+
+class _$WaterIntakeManualAddEvent
+    with DiagnosticableTreeMixin
+    implements WaterIntakeManualAddEvent {
+  const _$WaterIntakeManualAddEvent({@required this.waterToAdd})
+      : assert(waterToAdd != null);
+
+  @override
+  final String waterToAdd;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WaterIntakeEvent.manualIncrease(waterToAdd: $waterToAdd)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WaterIntakeEvent.manualIncrease'))
+      ..add(DiagnosticsProperty('waterToAdd', waterToAdd));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WaterIntakeManualAddEvent &&
+            (identical(other.waterToAdd, waterToAdd) ||
+                const DeepCollectionEquality()
+                    .equals(other.waterToAdd, waterToAdd)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(waterToAdd);
+
+  @override
+  $WaterIntakeManualAddEventCopyWith<WaterIntakeManualAddEvent> get copyWith =>
+      _$WaterIntakeManualAddEventCopyWithImpl<WaterIntakeManualAddEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result updated(double updatedValue, double waterMaximumHeight),
+    @required Result started(),
+    @required Result manualIncrease(String waterToAdd),
+    @required Result manualDecrease(String waterToSubtract),
+  }) {
+    assert(updated != null);
+    assert(started != null);
+    assert(manualIncrease != null);
+    assert(manualDecrease != null);
+    return manualIncrease(waterToAdd);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result updated(double updatedValue, double waterMaximumHeight),
+    Result started(),
+    Result manualIncrease(String waterToAdd),
+    Result manualDecrease(String waterToSubtract),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (manualIncrease != null) {
+      return manualIncrease(waterToAdd);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result started(WaterIntakeStaredEvent value),
+    @required Result manualIncrease(WaterIntakeManualAddEvent value),
+    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
+  }) {
+    assert(updated != null);
+    assert(started != null);
+    assert(manualIncrease != null);
+    assert(manualDecrease != null);
+    return manualIncrease(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result updated(WaterIntakeUpdatedEvent value),
+    Result started(WaterIntakeStaredEvent value),
+    Result manualIncrease(WaterIntakeManualAddEvent value),
+    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (manualIncrease != null) {
+      return manualIncrease(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WaterIntakeManualAddEvent implements WaterIntakeEvent {
+  const factory WaterIntakeManualAddEvent({@required String waterToAdd}) =
+      _$WaterIntakeManualAddEvent;
+
+  String get waterToAdd;
+  $WaterIntakeManualAddEventCopyWith<WaterIntakeManualAddEvent> get copyWith;
+}
+
+abstract class $WaterIntakeManualDecreaseEventCopyWith<$Res> {
+  factory $WaterIntakeManualDecreaseEventCopyWith(
+          WaterIntakeManualDecreaseEvent value,
+          $Res Function(WaterIntakeManualDecreaseEvent) then) =
+      _$WaterIntakeManualDecreaseEventCopyWithImpl<$Res>;
+  $Res call({String waterToSubtract});
+}
+
+class _$WaterIntakeManualDecreaseEventCopyWithImpl<$Res>
+    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    implements $WaterIntakeManualDecreaseEventCopyWith<$Res> {
+  _$WaterIntakeManualDecreaseEventCopyWithImpl(
+      WaterIntakeManualDecreaseEvent _value,
+      $Res Function(WaterIntakeManualDecreaseEvent) _then)
+      : super(_value, (v) => _then(v as WaterIntakeManualDecreaseEvent));
+
+  @override
+  WaterIntakeManualDecreaseEvent get _value =>
+      super._value as WaterIntakeManualDecreaseEvent;
+
+  @override
+  $Res call({
+    Object waterToSubtract = freezed,
+  }) {
+    return _then(WaterIntakeManualDecreaseEvent(
+      waterToSubtract: waterToSubtract == freezed
+          ? _value.waterToSubtract
+          : waterToSubtract as String,
+    ));
+  }
+}
+
+class _$WaterIntakeManualDecreaseEvent
+    with DiagnosticableTreeMixin
+    implements WaterIntakeManualDecreaseEvent {
+  const _$WaterIntakeManualDecreaseEvent({@required this.waterToSubtract})
+      : assert(waterToSubtract != null);
+
+  @override
+  final String waterToSubtract;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'WaterIntakeEvent.manualDecrease(waterToSubtract: $waterToSubtract)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'WaterIntakeEvent.manualDecrease'))
+      ..add(DiagnosticsProperty('waterToSubtract', waterToSubtract));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is WaterIntakeManualDecreaseEvent &&
+            (identical(other.waterToSubtract, waterToSubtract) ||
+                const DeepCollectionEquality()
+                    .equals(other.waterToSubtract, waterToSubtract)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(waterToSubtract);
+
+  @override
+  $WaterIntakeManualDecreaseEventCopyWith<WaterIntakeManualDecreaseEvent>
+      get copyWith => _$WaterIntakeManualDecreaseEventCopyWithImpl<
+          WaterIntakeManualDecreaseEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result updated(double updatedValue, double waterMaximumHeight),
+    @required Result started(),
+    @required Result manualIncrease(String waterToAdd),
+    @required Result manualDecrease(String waterToSubtract),
+  }) {
+    assert(updated != null);
+    assert(started != null);
+    assert(manualIncrease != null);
+    assert(manualDecrease != null);
+    return manualDecrease(waterToSubtract);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result updated(double updatedValue, double waterMaximumHeight),
+    Result started(),
+    Result manualIncrease(String waterToAdd),
+    Result manualDecrease(String waterToSubtract),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (manualDecrease != null) {
+      return manualDecrease(waterToSubtract);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result updated(WaterIntakeUpdatedEvent value),
+    @required Result started(WaterIntakeStaredEvent value),
+    @required Result manualIncrease(WaterIntakeManualAddEvent value),
+    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
+  }) {
+    assert(updated != null);
+    assert(started != null);
+    assert(manualIncrease != null);
+    assert(manualDecrease != null);
+    return manualDecrease(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result updated(WaterIntakeUpdatedEvent value),
+    Result started(WaterIntakeStaredEvent value),
+    Result manualIncrease(WaterIntakeManualAddEvent value),
+    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (manualDecrease != null) {
+      return manualDecrease(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WaterIntakeManualDecreaseEvent implements WaterIntakeEvent {
+  const factory WaterIntakeManualDecreaseEvent(
+      {@required String waterToSubtract}) = _$WaterIntakeManualDecreaseEvent;
+
+  String get waterToSubtract;
+  $WaterIntakeManualDecreaseEventCopyWith<WaterIntakeManualDecreaseEvent>
+      get copyWith;
 }
 
 class _$WaterIntakeStateTearOff {

@@ -79,10 +79,10 @@ void main() {
       ).thenAnswer((_) async => (Right(2000)));
 
       final expectedHydrateStatus = HydrateStatus(
-        hydrationPercentage: 0,
+        hydrationPercentage: 1.0,
         dailyIntakeGoal: 2000,
-        formattedCurrentIntake: '0/2000',
-        currentIntake: 0,
+        formattedCurrentIntake: '2000/2000',
+        currentIntake: 2000,
       );
 
       final actualResult = await _calculateDailyWaterIntake(useCaseParamsInKg);
@@ -115,10 +115,10 @@ void main() {
       ).thenAnswer((_) async => (Right(2000)));
 
       final expectedHydrateStatus = HydrateStatus(
-        hydrationPercentage: 0,
+        hydrationPercentage: 1.0,
         dailyIntakeGoal: 2000,
-        formattedCurrentIntake: '0/2000',
-        currentIntake: 0,
+        formattedCurrentIntake: '2000/2000',
+        currentIntake: 2000,
       );
 
       final actualResult = await _calculateDailyWaterIntake(useCaseParamsInLbs);

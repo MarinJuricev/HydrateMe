@@ -33,29 +33,28 @@ class _WavesState extends State<Waves> {
       widget.currentHydrateStatus.hydrationPercentage * _wavesHeight,
     );
 
-    return Container(
-      height: MediaQuery.of(context).size.height / Waves.WAVE_HEIGHT_OFFSET,
-      width: double.infinity,
-      child: Stack(
-        children: [
-          Card(
-            elevation: 12.0,
-            margin: const EdgeInsets.only(right: 16.0, left: 16.0),
-            clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(48)),
-            ),
-            child: GestureDetector(
-              onPanUpdate: (details) {
-                final gestureYOffset = _offset.dy - details.delta.dy;
-                if (gestureYOffset >= 0) {
-                  BlocProvider.of<WaterIntakeBloc>(context).add(
-                    WaterIntakeEvent.updated(
-                        updatedValue: gestureYOffset,
-                        waterMaximumHeight: _wavesHeight),
-                  );
-                }
-              },
+    return GestureDetector(
+      onPanUpdate: (details) {
+        final gestureYOffset = _offset.dy - details.delta.dy;
+        if (gestureYOffset >= 0) {
+          BlocProvider.of<WaterIntakeBloc>(context).add(
+            WaterIntakeEvent.updated(
+                updatedValue: gestureYOffset, waterMaximumHeight: _wavesHeight),
+          );
+        }
+      },
+      child: Container(
+        height: MediaQuery.of(context).size.height / Waves.WAVE_HEIGHT_OFFSET,
+        width: double.infinity,
+        child: Stack(
+          children: [
+            Card(
+              elevation: 12.0,
+              margin: const EdgeInsets.only(right: 16.0, left: 16.0),
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(48)),
+              ),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: AnimatedContainer(
@@ -88,17 +87,17 @@ class _WavesState extends State<Waves> {
                 ),
               ),
             ),
-          ),
-          Center(
-            child: Text(
-              widget.currentHydrateStatus.formattedCurrentIntake,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16.0,
+            Center(
+              child: Text(
+                widget.currentHydrateStatus.formattedCurrentIntake,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

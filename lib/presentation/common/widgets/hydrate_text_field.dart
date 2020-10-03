@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class HydrateTextField extends StatelessWidget {
   final labelText;
   final hintText;
+  final Function(String) getCurrentTextCallback;
 
   const HydrateTextField({
     Key key,
     @required this.labelText,
     this.hintText = '',
+    this.getCurrentTextCallback,
   }) : super(key: key);
 
   @override
@@ -15,6 +17,7 @@ class HydrateTextField extends StatelessWidget {
     return TextField(
       onSubmitted: (newWaterIntake) {},
       style: TextStyle(color: Colors.white),
+      onChanged: (newValue) => getCurrentTextCallback(newValue),
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: labelText,
