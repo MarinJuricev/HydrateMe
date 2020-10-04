@@ -4,6 +4,7 @@ import 'package:HydrateMe/core/usecase/base_usecase.dart';
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:HydrateMe/domain/usecases/calculate_waves_percentage.dart';
 import 'package:HydrateMe/domain/usecases/get_current_hydrate_status.dart';
+import 'package:HydrateMe/domain/util/input_converter.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';

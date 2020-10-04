@@ -17,3 +17,7 @@ class NegativeNumberFailure extends Failure {
 class NonExistentDailyIntake extends Failure {
   NonExistentDailyIntake(String errorMessage) : super(message: errorMessage);
 }
+
+class ValidationFailure extends Failure {
+  ValidationFailure(String errorMessage) : super(message: errorMessage);
+}

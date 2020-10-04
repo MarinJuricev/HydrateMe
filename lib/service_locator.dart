@@ -4,6 +4,7 @@ import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_
 import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
 import 'package:HydrateMe/domain/usecases/kg_to_lbs_converter.dart';
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
+import 'package:HydrateMe/domain/util/input_converter.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/data_source/local_persistence_provider.dart';
@@ -18,8 +19,9 @@ Future<void> init() async {
   //Bloc
   getIt.registerFactory(
     () => WaterIntakeBloc(
-        calculateWavesPercentage: getIt<CalculateWavesPercentage>(),
-        getCurrentHydrateStatus: getIt<GetCurrentHydrateStatus>()),
+      calculateWavesPercentage: getIt<CalculateWavesPercentage>(),
+      getCurrentHydrateStatus: getIt<GetCurrentHydrateStatus>(),
+    ),
   );
   getIt.registerFactory(
       () => CalculateWaterIntakeBloc(getIt<CalculateDailyWaterIntake>()));
@@ -54,4 +56,7 @@ Future<void> init() async {
   getIt.registerLazySingleton<WaterIntakeRepository>(
     () => WaterIntakeRepositoryImpl(),
   );
+
+  //Util
+  getIt.registerLazySingleton(() => InputConverter());
 }
