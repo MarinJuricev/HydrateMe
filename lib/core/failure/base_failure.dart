@@ -21,3 +21,7 @@ class NonExistentDailyIntake extends Failure {
 class ValidationFailure extends Failure {
   ValidationFailure(String errorMessage) : super(message: errorMessage);
 }
+
+class GeneralFailure extends Failure {
+  GeneralFailure(String errorMessage) : super(message: errorMessage);
+}

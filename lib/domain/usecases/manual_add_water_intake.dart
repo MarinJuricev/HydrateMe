@@ -1,3 +1,4 @@
+import 'package:HydrateMe/core/common/constants/constants.dart';
 import 'package:HydrateMe/core/failure/base_failure.dart';
 import 'package:HydrateMe/core/usecase/base_usecase.dart';
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
@@ -21,12 +22,48 @@ class ManualAddWaterIntake extends BaseUseCase<HydrateStatus, String> {
     final convertedEither = inputConverter.stringToUnsignedInteger(waterToAdd);
 
     final currentHydrateStatus = repositoryEither.getOrElse(() => null);
-    final conertedWaterToAdd = convertedEither.getOrElse(() => null);
+    final convertedWaterToAdd = convertedEither.getOrElse(() => null);
 
-    // return convertedEither.fold(
-    //   (failure) => Future.value(Left(failure)),
-    //   (convertedValue) => {},
-    // );
-    return null;
+    if (currentHydrateStatus == null || convertedWaterToAdd == null)
+      return Future.value(Left(GeneralFailure(GENERAL_ERROR_MESSAGE)));
+
+    return Future.value(
+      Right(
+        updateHydrateStatus(
+          currentHydrateStatus,
+          convertedWaterToAdd,
+        ),
+      ),
+    );
+  }
+
+  HydrateStatus updateHydrateStatus(
+    HydrateStatus currentHydrateStatus,
+    int convertedWaterToAdd,
+  ) {
+    final updatedCurrentIntake =
+        addWaterIntake(currentHydrateStatus, convertedWaterToAdd);
+
+    final updatedHydrationPercentage =
+        updatedCurrentIntake / currentHydrateStatus.dailyIntakeGoal;
+    final updatedFormattedCurrentIntake =
+        '$updatedCurrentIntake/${currentHydrateStatus.dailyIntakeGoal}';
+
+    return currentHydrateStatus.copyWith.call(
+      hydrationPercentage: updatedHydrationPercentage,
+      formattedCurrentIntake: updatedFormattedCurrentIntake,
+      currentIntake: updatedCurrentIntake,
+      dailyIntakeGoal: currentHydrateStatus.dailyIntakeGoal,
+    );
+  }
+
+  int addWaterIntake(
+      HydrateStatus currentHydrateStatus, int convertedWaterToAdd) {
+    final addedWater = currentHydrateStatus.currentIntake + convertedWaterToAdd;
+    if (addedWater >= currentHydrateStatus.dailyIntakeGoal) {
+      return currentHydrateStatus.dailyIntakeGoal;
+    } else {
+      return addedWater;
+    }
   }
 }

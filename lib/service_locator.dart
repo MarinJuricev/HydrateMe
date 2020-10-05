@@ -3,6 +3,7 @@ import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
 import 'package:HydrateMe/domain/usecases/kg_to_lbs_converter.dart';
+import 'package:HydrateMe/domain/usecases/manual_add_water_intake.dart';
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
 import 'package:HydrateMe/domain/util/input_converter.dart';
 import 'package:get_it/get_it.dart';
@@ -21,6 +22,7 @@ Future<void> init() async {
     () => WaterIntakeBloc(
       calculateWavesPercentage: getIt<CalculateWavesPercentage>(),
       getCurrentHydrateStatus: getIt<GetCurrentHydrateStatus>(),
+      manualAddWaterIntake: getIt<ManualAddWaterIntake>(),
     ),
   );
   getIt.registerFactory(
@@ -35,17 +37,19 @@ Future<void> init() async {
   getIt.registerFactory(() => CalculateAdditionalWaterIntakePerActivity());
   getIt.registerFactory(() => KgToLbsConverter());
   getIt.registerFactory(() => OzToMIliliterConverter());
-  getIt.registerFactory(
-    () => CalculateDailyWaterIntake(
-      kgToLbsconverter: getIt<KgToLbsConverter>(),
-      calculateAdditionalWaterIntakePerActivity:
-          getIt<CalculateAdditionalWaterIntakePerActivity>(),
-      ozToMIliliterConverter: getIt<OzToMIliliterConverter>(),
-      waterIntakeRepository: getIt<WaterIntakeRepository>(),
-    ),
-  );
+  getIt.registerFactory(() => CalculateDailyWaterIntake(
+        kgToLbsconverter: getIt<KgToLbsConverter>(),
+        calculateAdditionalWaterIntakePerActivity:
+            getIt<CalculateAdditionalWaterIntakePerActivity>(),
+        ozToMIliliterConverter: getIt<OzToMIliliterConverter>(),
+        waterIntakeRepository: getIt<WaterIntakeRepository>(),
+      ));
   getIt.registerFactory(() => GetCurrentHydrateStatus(
       waterIntakeRepository: getIt<WaterIntakeRepository>()));
+  getIt.registerFactory(() => ManualAddWaterIntake(
+        inputConverter: getIt<InputConverter>(),
+        repository: getIt<WaterIntakeRepository>(),
+      ));
 
   //Datasources
   getIt.registerLazySingleton<LocalPersistenceProvider>(
@@ -58,5 +62,5 @@ Future<void> init() async {
   );
 
   //Util
-  getIt.registerLazySingleton(() => InputConverter());
+  getIt.registerFactory(() => InputConverter());
 }
