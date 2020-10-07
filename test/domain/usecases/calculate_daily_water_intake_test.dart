@@ -81,8 +81,8 @@ void main() {
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 1.0,
         dailyIntakeGoal: 2000,
-        formattedCurrentIntake: '2000/2000',
-        currentIntake: 2000,
+        formattedCurrentIntake: '0/2000',
+        currentIntake: 0,
       );
 
       final actualResult = await _calculateDailyWaterIntake(useCaseParamsInKg);
@@ -117,8 +117,8 @@ void main() {
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 1.0,
         dailyIntakeGoal: 2000,
-        formattedCurrentIntake: '2000/2000',
-        currentIntake: 2000,
+        formattedCurrentIntake: '0/2000',
+        currentIntake: 0,
       );
 
       final actualResult = await _calculateDailyWaterIntake(useCaseParamsInLbs);

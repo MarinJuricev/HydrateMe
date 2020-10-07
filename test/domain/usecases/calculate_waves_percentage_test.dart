@@ -33,7 +33,7 @@ void main() {
         currentIntake: 0,
       );
 
-       final Either<Failure, HydrateStatus> testRepositoryResponse =
+      final Either<Failure, HydrateStatus> testRepositoryResponse =
           Right(testHydrateStatus);
 
       when(_mockWaterIntakeRepository.getCurrentWaterIntake())
@@ -46,15 +46,18 @@ void main() {
         ),
       );
 
-      final expectedValue = Right(
-        HydrateStatus(
-          hydrationPercentage: 0.7,
-          currentIntake: 700,
-          formattedCurrentIntake: '700/1000',
-          dailyIntakeGoal: 1000,
-        ),
+      final expectedHydrateStatus = HydrateStatus(
+        hydrationPercentage: 0.7,
+        currentIntake: 300,
+        formattedCurrentIntake: '300/1000',
+        dailyIntakeGoal: 1000,
       );
+      final expectedValue = Right(expectedHydrateStatus);
 
+      verify(
+        _mockWaterIntakeRepository
+            .saveCurrentWaterIntake(expectedHydrateStatus),
+      );
       expect(actualResult, expectedValue);
     },
   );
@@ -82,15 +85,18 @@ void main() {
         ),
       );
 
-      final expectedValue = Right(
-        HydrateStatus(
-          hydrationPercentage: 1.0,
-          currentIntake: 1000,
-          dailyIntakeGoal: 1000,
-          formattedCurrentIntake: '1000/1000',
-        ),
+      final expectedHydrateStatus = HydrateStatus(
+        hydrationPercentage: 1.0,
+        currentIntake: 0,
+        dailyIntakeGoal: 1000,
+        formattedCurrentIntake: '0/1000',
       );
+      final expectedValue = Right(expectedHydrateStatus);
 
+      verify(
+        _mockWaterIntakeRepository
+            .saveCurrentWaterIntake(expectedHydrateStatus),
+      );
       expect(actualResult, expectedValue);
     },
   );
@@ -118,7 +124,8 @@ void main() {
         ),
       );
 
-      final expectedValue = Left(NonExistentDailyIntake(DAILY_WATER_INTAKE_MUST_BE_DEFINED));
+      final expectedValue =
+          Left(NonExistentDailyIntake(DAILY_WATER_INTAKE_MUST_BE_DEFINED));
 
       expect(actualResult, expectedValue);
     },

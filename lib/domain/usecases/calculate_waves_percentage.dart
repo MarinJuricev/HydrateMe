@@ -21,7 +21,7 @@ class CalculateWavesPercentage
 
     final dailyIntakeGoal = extractDailyIntake(currentHydrateStatusEither);
 
-    if(dailyIntakeGoal == 0){
+    if (dailyIntakeGoal == 0) {
       return Left(NonExistentDailyIntake(DAILY_WATER_INTAKE_MUST_BE_DEFINED));
     }
 
@@ -35,14 +35,16 @@ class CalculateWavesPercentage
     final formattedCurrentIntake =
         formatCurrentIntake(currentIntake, dailyIntakeGoal);
 
-    return Right(
-      HydrateStatus(
-        hydrationPercentage: hydrationPercentage,
-        formattedCurrentIntake: formattedCurrentIntake,
-        currentIntake: currentIntake,
-        dailyIntakeGoal: dailyIntakeGoal,
-      ),
+    final updatedHydrateStatus = HydrateStatus(
+      hydrationPercentage: hydrationPercentage,
+      formattedCurrentIntake: formattedCurrentIntake,
+      currentIntake: currentIntake,
+      dailyIntakeGoal: dailyIntakeGoal,
     );
+
+    await waterIntakeRepository.saveCurrentWaterIntake(updatedHydrateStatus);
+
+    return Right(updatedHydrateStatus);
   }
 
   double calculateHydrationPercentage(
@@ -69,7 +71,7 @@ class CalculateWavesPercentage
   }
 
   int calculateCurrentIntake(double hydrationPercentage, int dailyIntakeGoal) {
-    return (hydrationPercentage * dailyIntakeGoal).toInt();
+    return dailyIntakeGoal - (hydrationPercentage * dailyIntakeGoal).toInt();
   }
 
   String formatCurrentIntake(int currentIntake, int dailyIntakeGoal) {

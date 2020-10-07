@@ -51,9 +51,8 @@ class CalculateDailyWaterIntake
     final hydrateStatus = HydrateStatus(
       hydrationPercentage: 1.0,
       dailyIntakeGoal: dailyWaterIntakeInMiliLiters,
-      currentIntake: dailyWaterIntakeInMiliLiters,
-      formattedCurrentIntake:
-          '$dailyWaterIntakeInMiliLiters/$dailyWaterIntakeInMiliLiters',
+      currentIntake: 0,
+      formattedCurrentIntake: '0/$dailyWaterIntakeInMiliLiters',
     );
 
     await waterIntakeRepository.saveCurrentWaterIntake(hydrateStatus);
