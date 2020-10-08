@@ -1,13 +1,13 @@
-import 'package:HydrateMe/domain/model/hydrate_status.dart';
-import 'package:HydrateMe/presentation/features/calculate_water_intake/widget/water_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/water_intake_bloc.dart';
+import '../../../domain/model/hydrate_status.dart';
+import '../../../service_locator.dart' as di;
+import '../calculate_water_intake/widget/water_transition.dart';
+import 'bloc/current_water_intake_bloc.dart';
 import 'particles.dart';
 import 'waves.dart';
 import 'widget/manual_water_intake.dart';
-import '../../../service_locator.dart' as di;
 
 class DisplayCurrentWaterIntakePage extends StatelessWidget {
   static const DISPLAY_CURRENT_WATER_INTAKE_PAGE = '/displayCurrentWaterIntake';
@@ -26,8 +26,8 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
       ),
       backgroundColor: Colors.blue,
       body: BlocProvider(
-        create: (BuildContext context) => di.getIt<WaterIntakeBloc>(),
-        child: BlocBuilder<WaterIntakeBloc, WaterIntakeState>(
+        create: (BuildContext context) => di.getIt<CurrentWaterIntakeBloc>(),
+        child: BlocBuilder<CurrentWaterIntakeBloc, CurrentWaterIntakeState>(
           builder: (context, state) {
             return state.when(
               initial: (HydrateStatus initialHydrateStatus) =>

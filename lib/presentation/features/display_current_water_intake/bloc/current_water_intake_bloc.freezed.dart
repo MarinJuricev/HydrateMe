@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'water_intake_bloc.dart';
+part of 'current_water_intake_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -9,8 +9,8 @@ part of 'water_intake_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
-class _$WaterIntakeEventTearOff {
-  const _$WaterIntakeEventTearOff();
+class _$CurrentWaterIntakeEventTearOff {
+  const _$CurrentWaterIntakeEventTearOff();
 
 // ignore: unused_element
   WaterIntakeUpdatedEvent updated(
@@ -43,9 +43,9 @@ class _$WaterIntakeEventTearOff {
 }
 
 // ignore: unused_element
-const $WaterIntakeEvent = _$WaterIntakeEventTearOff();
+const $CurrentWaterIntakeEvent = _$CurrentWaterIntakeEventTearOff();
 
-mixin _$WaterIntakeEvent {
+mixin _$CurrentWaterIntakeEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result updated(double updatedValue, double waterMaximumHeight),
@@ -78,19 +78,19 @@ mixin _$WaterIntakeEvent {
   });
 }
 
-abstract class $WaterIntakeEventCopyWith<$Res> {
-  factory $WaterIntakeEventCopyWith(
-          WaterIntakeEvent value, $Res Function(WaterIntakeEvent) then) =
-      _$WaterIntakeEventCopyWithImpl<$Res>;
+abstract class $CurrentWaterIntakeEventCopyWith<$Res> {
+  factory $CurrentWaterIntakeEventCopyWith(CurrentWaterIntakeEvent value,
+          $Res Function(CurrentWaterIntakeEvent) then) =
+      _$CurrentWaterIntakeEventCopyWithImpl<$Res>;
 }
 
-class _$WaterIntakeEventCopyWithImpl<$Res>
-    implements $WaterIntakeEventCopyWith<$Res> {
-  _$WaterIntakeEventCopyWithImpl(this._value, this._then);
+class _$CurrentWaterIntakeEventCopyWithImpl<$Res>
+    implements $CurrentWaterIntakeEventCopyWith<$Res> {
+  _$CurrentWaterIntakeEventCopyWithImpl(this._value, this._then);
 
-  final WaterIntakeEvent _value;
+  final CurrentWaterIntakeEvent _value;
   // ignore: unused_field
-  final $Res Function(WaterIntakeEvent) _then;
+  final $Res Function(CurrentWaterIntakeEvent) _then;
 }
 
 abstract class $WaterIntakeUpdatedEventCopyWith<$Res> {
@@ -101,7 +101,7 @@ abstract class $WaterIntakeUpdatedEventCopyWith<$Res> {
 }
 
 class _$WaterIntakeUpdatedEventCopyWithImpl<$Res>
-    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    extends _$CurrentWaterIntakeEventCopyWithImpl<$Res>
     implements $WaterIntakeUpdatedEventCopyWith<$Res> {
   _$WaterIntakeUpdatedEventCopyWithImpl(WaterIntakeUpdatedEvent _value,
       $Res Function(WaterIntakeUpdatedEvent) _then)
@@ -141,14 +141,14 @@ class _$WaterIntakeUpdatedEvent
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeEvent.updated(updatedValue: $updatedValue, waterMaximumHeight: $waterMaximumHeight)';
+    return 'CurrentWaterIntakeEvent.updated(updatedValue: $updatedValue, waterMaximumHeight: $waterMaximumHeight)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WaterIntakeEvent.updated'))
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeEvent.updated'))
       ..add(DiagnosticsProperty('updatedValue', updatedValue))
       ..add(DiagnosticsProperty('waterMaximumHeight', waterMaximumHeight));
   }
@@ -239,7 +239,7 @@ class _$WaterIntakeUpdatedEvent
   }
 }
 
-abstract class WaterIntakeUpdatedEvent implements WaterIntakeEvent {
+abstract class WaterIntakeUpdatedEvent implements CurrentWaterIntakeEvent {
   const factory WaterIntakeUpdatedEvent(
       {@required double updatedValue,
       @required double waterMaximumHeight}) = _$WaterIntakeUpdatedEvent;
@@ -256,7 +256,7 @@ abstract class $WaterIntakeStaredEventCopyWith<$Res> {
 }
 
 class _$WaterIntakeStaredEventCopyWithImpl<$Res>
-    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    extends _$CurrentWaterIntakeEventCopyWithImpl<$Res>
     implements $WaterIntakeStaredEventCopyWith<$Res> {
   _$WaterIntakeStaredEventCopyWithImpl(WaterIntakeStaredEvent _value,
       $Res Function(WaterIntakeStaredEvent) _then)
@@ -273,13 +273,14 @@ class _$WaterIntakeStaredEvent
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeEvent.started()';
+    return 'CurrentWaterIntakeEvent.started()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'WaterIntakeEvent.started'));
+    properties
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeEvent.started'));
   }
 
   @override
@@ -353,7 +354,7 @@ class _$WaterIntakeStaredEvent
   }
 }
 
-abstract class WaterIntakeStaredEvent implements WaterIntakeEvent {
+abstract class WaterIntakeStaredEvent implements CurrentWaterIntakeEvent {
   const factory WaterIntakeStaredEvent() = _$WaterIntakeStaredEvent;
 }
 
@@ -365,7 +366,7 @@ abstract class $WaterIntakeManualAddEventCopyWith<$Res> {
 }
 
 class _$WaterIntakeManualAddEventCopyWithImpl<$Res>
-    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    extends _$CurrentWaterIntakeEventCopyWithImpl<$Res>
     implements $WaterIntakeManualAddEventCopyWith<$Res> {
   _$WaterIntakeManualAddEventCopyWithImpl(WaterIntakeManualAddEvent _value,
       $Res Function(WaterIntakeManualAddEvent) _then)
@@ -397,14 +398,15 @@ class _$WaterIntakeManualAddEvent
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeEvent.manualIncrease(waterToAdd: $waterToAdd)';
+    return 'CurrentWaterIntakeEvent.manualIncrease(waterToAdd: $waterToAdd)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WaterIntakeEvent.manualIncrease'))
+      ..add(
+          DiagnosticsProperty('type', 'CurrentWaterIntakeEvent.manualIncrease'))
       ..add(DiagnosticsProperty('waterToAdd', waterToAdd));
   }
 
@@ -489,7 +491,7 @@ class _$WaterIntakeManualAddEvent
   }
 }
 
-abstract class WaterIntakeManualAddEvent implements WaterIntakeEvent {
+abstract class WaterIntakeManualAddEvent implements CurrentWaterIntakeEvent {
   const factory WaterIntakeManualAddEvent({@required String waterToAdd}) =
       _$WaterIntakeManualAddEvent;
 
@@ -506,7 +508,7 @@ abstract class $WaterIntakeManualDecreaseEventCopyWith<$Res> {
 }
 
 class _$WaterIntakeManualDecreaseEventCopyWithImpl<$Res>
-    extends _$WaterIntakeEventCopyWithImpl<$Res>
+    extends _$CurrentWaterIntakeEventCopyWithImpl<$Res>
     implements $WaterIntakeManualDecreaseEventCopyWith<$Res> {
   _$WaterIntakeManualDecreaseEventCopyWithImpl(
       WaterIntakeManualDecreaseEvent _value,
@@ -540,14 +542,15 @@ class _$WaterIntakeManualDecreaseEvent
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeEvent.manualDecrease(waterToSubtract: $waterToSubtract)';
+    return 'CurrentWaterIntakeEvent.manualDecrease(waterToSubtract: $waterToSubtract)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WaterIntakeEvent.manualDecrease'))
+      ..add(
+          DiagnosticsProperty('type', 'CurrentWaterIntakeEvent.manualDecrease'))
       ..add(DiagnosticsProperty('waterToSubtract', waterToSubtract));
   }
 
@@ -633,7 +636,8 @@ class _$WaterIntakeManualDecreaseEvent
   }
 }
 
-abstract class WaterIntakeManualDecreaseEvent implements WaterIntakeEvent {
+abstract class WaterIntakeManualDecreaseEvent
+    implements CurrentWaterIntakeEvent {
   const factory WaterIntakeManualDecreaseEvent(
       {@required String waterToSubtract}) = _$WaterIntakeManualDecreaseEvent;
 
@@ -642,8 +646,8 @@ abstract class WaterIntakeManualDecreaseEvent implements WaterIntakeEvent {
       get copyWith;
 }
 
-class _$WaterIntakeStateTearOff {
-  const _$WaterIntakeStateTearOff();
+class _$CurrentWaterIntakeStateTearOff {
+  const _$CurrentWaterIntakeStateTearOff();
 
 // ignore: unused_element
   WaterIntakeInitialState initial(HydrateStatus initalHydrateStatus) {
@@ -678,9 +682,9 @@ class _$WaterIntakeStateTearOff {
 }
 
 // ignore: unused_element
-const $WaterIntakeState = _$WaterIntakeStateTearOff();
+const $CurrentWaterIntakeState = _$CurrentWaterIntakeStateTearOff();
 
-mixin _$WaterIntakeState {
+mixin _$CurrentWaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(HydrateStatus initalHydrateStatus),
@@ -717,19 +721,19 @@ mixin _$WaterIntakeState {
   });
 }
 
-abstract class $WaterIntakeStateCopyWith<$Res> {
-  factory $WaterIntakeStateCopyWith(
-          WaterIntakeState value, $Res Function(WaterIntakeState) then) =
-      _$WaterIntakeStateCopyWithImpl<$Res>;
+abstract class $CurrentWaterIntakeStateCopyWith<$Res> {
+  factory $CurrentWaterIntakeStateCopyWith(CurrentWaterIntakeState value,
+          $Res Function(CurrentWaterIntakeState) then) =
+      _$CurrentWaterIntakeStateCopyWithImpl<$Res>;
 }
 
-class _$WaterIntakeStateCopyWithImpl<$Res>
-    implements $WaterIntakeStateCopyWith<$Res> {
-  _$WaterIntakeStateCopyWithImpl(this._value, this._then);
+class _$CurrentWaterIntakeStateCopyWithImpl<$Res>
+    implements $CurrentWaterIntakeStateCopyWith<$Res> {
+  _$CurrentWaterIntakeStateCopyWithImpl(this._value, this._then);
 
-  final WaterIntakeState _value;
+  final CurrentWaterIntakeState _value;
   // ignore: unused_field
-  final $Res Function(WaterIntakeState) _then;
+  final $Res Function(CurrentWaterIntakeState) _then;
 }
 
 abstract class $WaterIntakeInitialStateCopyWith<$Res> {
@@ -742,7 +746,7 @@ abstract class $WaterIntakeInitialStateCopyWith<$Res> {
 }
 
 class _$WaterIntakeInitialStateCopyWithImpl<$Res>
-    extends _$WaterIntakeStateCopyWithImpl<$Res>
+    extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeInitialStateCopyWith<$Res> {
   _$WaterIntakeInitialStateCopyWithImpl(WaterIntakeInitialState _value,
       $Res Function(WaterIntakeInitialState) _then)
@@ -784,14 +788,14 @@ class _$WaterIntakeInitialState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeState.initial(initalHydrateStatus: $initalHydrateStatus)';
+    return 'CurrentWaterIntakeState.initial(initalHydrateStatus: $initalHydrateStatus)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WaterIntakeState.initial'))
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.initial'))
       ..add(DiagnosticsProperty('initalHydrateStatus', initalHydrateStatus));
   }
 
@@ -883,7 +887,7 @@ class _$WaterIntakeInitialState
   }
 }
 
-abstract class WaterIntakeInitialState implements WaterIntakeState {
+abstract class WaterIntakeInitialState implements CurrentWaterIntakeState {
   const factory WaterIntakeInitialState(HydrateStatus initalHydrateStatus) =
       _$WaterIntakeInitialState;
 
@@ -898,7 +902,7 @@ abstract class $WaterIntakeLoadingStateCopyWith<$Res> {
 }
 
 class _$WaterIntakeLoadingStateCopyWithImpl<$Res>
-    extends _$WaterIntakeStateCopyWithImpl<$Res>
+    extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeLoadingStateCopyWith<$Res> {
   _$WaterIntakeLoadingStateCopyWithImpl(WaterIntakeLoadingState _value,
       $Res Function(WaterIntakeLoadingState) _then)
@@ -915,13 +919,14 @@ class _$WaterIntakeLoadingState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeState.loading()';
+    return 'CurrentWaterIntakeState.loading()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'WaterIntakeState.loading'));
+    properties
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.loading'));
   }
 
   @override
@@ -1001,7 +1006,7 @@ class _$WaterIntakeLoadingState
   }
 }
 
-abstract class WaterIntakeLoadingState implements WaterIntakeState {
+abstract class WaterIntakeLoadingState implements CurrentWaterIntakeState {
   const factory WaterIntakeLoadingState() = _$WaterIntakeLoadingState;
 }
 
@@ -1015,7 +1020,7 @@ abstract class $WaterIntakeUpdatedStateCopyWith<$Res> {
 }
 
 class _$WaterIntakeUpdatedStateCopyWithImpl<$Res>
-    extends _$WaterIntakeStateCopyWithImpl<$Res>
+    extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeUpdatedStateCopyWith<$Res> {
   _$WaterIntakeUpdatedStateCopyWithImpl(WaterIntakeUpdatedState _value,
       $Res Function(WaterIntakeUpdatedState) _then)
@@ -1057,14 +1062,14 @@ class _$WaterIntakeUpdatedState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeState.updated(updatedHydrateStatus: $updatedHydrateStatus)';
+    return 'CurrentWaterIntakeState.updated(updatedHydrateStatus: $updatedHydrateStatus)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WaterIntakeState.updated'))
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.updated'))
       ..add(DiagnosticsProperty('updatedHydrateStatus', updatedHydrateStatus));
   }
 
@@ -1156,7 +1161,7 @@ class _$WaterIntakeUpdatedState
   }
 }
 
-abstract class WaterIntakeUpdatedState implements WaterIntakeState {
+abstract class WaterIntakeUpdatedState implements CurrentWaterIntakeState {
   const factory WaterIntakeUpdatedState(HydrateStatus updatedHydrateStatus) =
       _$WaterIntakeUpdatedState;
 
@@ -1172,7 +1177,7 @@ abstract class $WaterIntakeErrorStateCopyWith<$Res> {
 }
 
 class _$WaterIntakeErrorStateCopyWithImpl<$Res>
-    extends _$WaterIntakeStateCopyWithImpl<$Res>
+    extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeErrorStateCopyWith<$Res> {
   _$WaterIntakeErrorStateCopyWithImpl(
       WaterIntakeErrorState _value, $Res Function(WaterIntakeErrorState) _then)
@@ -1202,14 +1207,14 @@ class _$WaterIntakeErrorState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeState.error(errorMessage: $errorMessage)';
+    return 'CurrentWaterIntakeState.error(errorMessage: $errorMessage)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'WaterIntakeState.error'))
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.error'))
       ..add(DiagnosticsProperty('errorMessage', errorMessage));
   }
 
@@ -1300,7 +1305,7 @@ class _$WaterIntakeErrorState
   }
 }
 
-abstract class WaterIntakeErrorState implements WaterIntakeState {
+abstract class WaterIntakeErrorState implements CurrentWaterIntakeState {
   const factory WaterIntakeErrorState(String errorMessage) =
       _$WaterIntakeErrorState;
 
@@ -1315,7 +1320,7 @@ abstract class $WaterIntakeCompletedStateCopyWith<$Res> {
 }
 
 class _$WaterIntakeCompletedStateCopyWithImpl<$Res>
-    extends _$WaterIntakeStateCopyWithImpl<$Res>
+    extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeCompletedStateCopyWith<$Res> {
   _$WaterIntakeCompletedStateCopyWithImpl(WaterIntakeCompletedState _value,
       $Res Function(WaterIntakeCompletedState) _then)
@@ -1333,13 +1338,14 @@ class _$WaterIntakeCompletedState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'WaterIntakeState.completed()';
+    return 'CurrentWaterIntakeState.completed()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'WaterIntakeState.completed'));
+    properties
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.completed'));
   }
 
   @override
@@ -1419,6 +1425,6 @@ class _$WaterIntakeCompletedState
   }
 }
 
-abstract class WaterIntakeCompletedState implements WaterIntakeState {
+abstract class WaterIntakeCompletedState implements CurrentWaterIntakeState {
   const factory WaterIntakeCompletedState() = _$WaterIntakeCompletedState;
 }

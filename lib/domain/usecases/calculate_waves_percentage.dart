@@ -1,11 +1,12 @@
-import 'package:HydrateMe/core/common/constants/constants.dart';
-import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../core/common/constants/constants.dart';
+import '../util/extensions/double_extensions.dart';
 import '../../core/failure/base_failure.dart';
 import '../../core/usecase/base_usecase.dart';
 import '../model/hydrate_status.dart';
+import '../repository/water_intake_repository.dart';
 
 class CalculateWavesPercentage
     extends BaseUseCase<HydrateStatus, CalculateWavesPercentageParams> {
@@ -51,7 +52,8 @@ class CalculateWavesPercentage
     double updatedValue,
     double waterMaximumHeight,
   ) {
-    var hydrationpercentage = updatedValue / waterMaximumHeight;
+    var hydrationpercentage =
+        (updatedValue / waterMaximumHeight).formatToTwoDecimal();
 
     if (hydrationpercentage > 1.0) {
       hydrationpercentage = 1.0;

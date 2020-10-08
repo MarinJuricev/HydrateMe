@@ -1,6 +1,6 @@
 import 'package:HydrateMe/presentation/common/widgets/hydrate_button.dart';
 import 'package:HydrateMe/presentation/common/widgets/hydrate_text_field.dart';
-import 'package:HydrateMe/presentation/features/display_current_water_intake/bloc/water_intake_bloc.dart';
+import 'package:HydrateMe/presentation/features/display_current_water_intake/bloc/current_water_intake_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,14 +53,16 @@ class _ManualWaterIntakeState extends State<ManualWaterIntake> {
   }
 
   void _onManualAddClicked(BuildContext context) {
-    BlocProvider.of<WaterIntakeBloc>(context).add(
-      WaterIntakeEvent.manualIncrease(waterToAdd: currentManualEntryText),
+    BlocProvider.of<CurrentWaterIntakeBloc>(context).add(
+      CurrentWaterIntakeEvent.manualIncrease(
+          waterToAdd: currentManualEntryText),
     );
   }
 
   void _onManualDecreaseClicked() {
-    BlocProvider.of<WaterIntakeBloc>(context).add(
-      WaterIntakeEvent.manualDecrease(waterToSubtract: currentManualEntryText),
+    BlocProvider.of<CurrentWaterIntakeBloc>(context).add(
+      CurrentWaterIntakeEvent.manualDecrease(
+          waterToSubtract: currentManualEntryText),
     );
   }
 }

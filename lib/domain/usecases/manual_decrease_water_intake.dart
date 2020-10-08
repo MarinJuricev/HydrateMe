@@ -6,22 +6,23 @@ import '../../core/failure/base_failure.dart';
 import '../../core/usecase/base_usecase.dart';
 import '../model/hydrate_status.dart';
 import '../repository/water_intake_repository.dart';
-import '../util/extensions/double_extensions.dart';
 import '../util/input_converter.dart';
+import '../util/extensions/double_extensions.dart';
 
-class ManualAddWaterIntake extends BaseUseCase<HydrateStatus, String> {
+class ManualDecreaseWaterIntake extends BaseUseCase<HydrateStatus, String> {
   final InputConverter inputConverter;
   final WaterIntakeRepository repository;
 
-  ManualAddWaterIntake({
+  ManualDecreaseWaterIntake({
     @required this.inputConverter,
     @required this.repository,
   });
 
   @override
-  Future<Either<Failure, HydrateStatus>> call(String waterToAdd) async {
+  Future<Either<Failure, HydrateStatus>> call(String waterToDecrease) async {
     final repositoryEither = await repository.getCurrentWaterIntake();
-    final convertedEither = inputConverter.stringToUnsignedInteger(waterToAdd);
+    final convertedEither =
+        inputConverter.stringToUnsignedInteger(waterToDecrease);
 
     final currentHydrateStatus = repositoryEither.getOrElse(() => null);
     final convertedWaterToAdd = convertedEither.getOrElse(() => null);
@@ -44,7 +45,7 @@ class ManualAddWaterIntake extends BaseUseCase<HydrateStatus, String> {
     int convertedWaterToAdd,
   ) {
     final updatedCurrentIntake =
-        addWaterIntake(currentHydrateStatus, convertedWaterToAdd);
+        decreaseWaterIntake(currentHydrateStatus, convertedWaterToAdd);
 
     final updatedHydrationPercentage =
         (1 - updatedCurrentIntake / currentHydrateStatus.dailyIntakeGoal)
@@ -60,13 +61,14 @@ class ManualAddWaterIntake extends BaseUseCase<HydrateStatus, String> {
     );
   }
 
-  int addWaterIntake(
+  int decreaseWaterIntake(
       HydrateStatus currentHydrateStatus, int convertedWaterToAdd) {
-    final addedWater = currentHydrateStatus.currentIntake + convertedWaterToAdd;
-    if (addedWater >= currentHydrateStatus.dailyIntakeGoal) {
-      return currentHydrateStatus.dailyIntakeGoal;
+    final decreasedWater =
+        currentHydrateStatus.currentIntake - convertedWaterToAdd;
+    if (decreasedWater <= 0) {
+      return 0;
     } else {
-      return addedWater;
+      return decreasedWater;
     }
   }
 }

@@ -4,7 +4,7 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
 import '../../../domain/model/hydrate_status.dart';
-import 'bloc/water_intake_bloc.dart';
+import 'bloc/current_water_intake_bloc.dart';
 
 class Waves extends StatefulWidget {
   final HydrateStatus currentHydrateStatus;
@@ -37,8 +37,8 @@ class _WavesState extends State<Waves> {
       onPanUpdate: (details) {
         final gestureYOffset = _offset.dy - details.delta.dy;
         if (gestureYOffset >= 0) {
-          BlocProvider.of<WaterIntakeBloc>(context).add(
-            WaterIntakeEvent.updated(
+          BlocProvider.of<CurrentWaterIntakeBloc>(context).add(
+            CurrentWaterIntakeEvent.updated(
                 updatedValue: gestureYOffset, waterMaximumHeight: _wavesHeight),
           );
         }

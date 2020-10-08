@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-import '../../display_current_water_intake/bloc/water_intake_bloc.dart';
+import '../../display_current_water_intake/bloc/current_water_intake_bloc.dart';
 
 class WaterTransition extends StatefulWidget {
   WaterTransition({Key key}) : super(key: key);
@@ -35,8 +35,8 @@ class _WaterTransitionState extends State<WaterTransition>
           Duration(milliseconds: 1000),
         ).then(
           (value) => {
-            BlocProvider.of<WaterIntakeBloc>(context)
-                .add(WaterIntakeEvent.started())
+            BlocProvider.of<CurrentWaterIntakeBloc>(context)
+                .add(CurrentWaterIntakeEvent.started())
           },
         );
       }
