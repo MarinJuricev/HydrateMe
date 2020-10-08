@@ -45,7 +45,7 @@ class ManualAddWaterIntake extends BaseUseCase<HydrateStatus, String> {
         addWaterIntake(currentHydrateStatus, convertedWaterToAdd);
 
     final updatedHydrationPercentage =
-        updatedCurrentIntake / currentHydrateStatus.dailyIntakeGoal;
+        1 - updatedCurrentIntake / currentHydrateStatus.dailyIntakeGoal;
     final updatedFormattedCurrentIntake =
         '$updatedCurrentIntake/${currentHydrateStatus.dailyIntakeGoal}';
 

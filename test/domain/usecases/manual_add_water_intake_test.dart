@@ -106,7 +106,7 @@ void main() {
 
       final actualResult = await manualAddWaterIntake(TEST_WATER_TO_ADD);
       final expectedResult = Right(HydrateStatus(
-        hydrationPercentage: 0.2,
+        hydrationPercentage: 0.8,
         formattedCurrentIntake: '200/1000',
         currentIntake: 200,
         dailyIntakeGoal: 1000,
@@ -126,7 +126,7 @@ void main() {
 
       final actualResult = await manualAddWaterIntake(TEST_WATER_TO_ADD);
       final expectedResult = Right(HydrateStatus(
-        hydrationPercentage: 1.0,
+        hydrationPercentage: 0.0,
         formattedCurrentIntake: '1000/1000',
         currentIntake: 1000,
         dailyIntakeGoal: 1000,
