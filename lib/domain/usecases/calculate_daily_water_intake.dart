@@ -4,6 +4,7 @@ import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import '../../core/failure/base_failure.dart';
 import '../../core/usecase/base_usecase.dart';
@@ -104,11 +105,15 @@ class CalculateDailyWaterIntakeParams {
   WeightType currentSelectedWeightType;
   ActivityLevel currentActivityInMinutes;
   int currentWeight;
+  TimeOfDay wakeUpTime;
+  TimeOfDay sleepTime;
 
   CalculateDailyWaterIntakeParams({
     @required this.currentSelectedGender,
     @required this.currentSelectedWeightType,
     @required this.currentWeight,
     @required this.currentActivityInMinutes,
+    @required this.wakeUpTime,
+    @required this.sleepTime,
   });
 }

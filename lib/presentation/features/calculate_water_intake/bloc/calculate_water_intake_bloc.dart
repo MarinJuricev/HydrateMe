@@ -5,6 +5,7 @@ import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
 import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:HydrateMe/domain/model/weight_type.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'calculate_water_intake_event.dart';

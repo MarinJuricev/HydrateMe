@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import '../../../../core/common/constants/constants.dart';
+import '../../../../core/notifications/notification_setup.dart';
 import '../../../../domain/model/activity_level.dart';
 import '../../../../domain/model/gender.dart';
 import '../../../../domain/model/weight_type.dart';
@@ -11,6 +13,7 @@ import '../bloc/calculate_water_intake_bloc.dart';
 import '../widget/activity_selection.dart';
 import '../widget/gender_toggle.dart';
 import '../widget/hydrate_text_with_icon.dart';
+import '../widget/time_selection.dart';
 import '../widget/weight_selection.dart';
 
 class CalculateWaterIntakePage extends StatefulWidget {
@@ -26,6 +29,15 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
   WeightType _currentSelectedWeightType = INITIAL_WEIGHT_TYPE;
   ActivityLevel _currentActivityInMinutes = INITIAL_DAILY_ACTIVITY;
   int _currentWeight = INITIAL_WEIGHT;
+  TimeOfDay _wakeUpTime;
+  TimeOfDay _sleepTime;
+
+  @override
+  void initState() {
+    super.initState();
+    _wakeUpTime = TimeOfDay.now();
+    _sleepTime = TimeOfDay.now();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +57,8 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                 initial: () => _buildInitialState(blocContext),
                 error: (errorMessage) =>
                     Text('PlaceHolder Error Text: $errorMessage'),
-                orElse: () => Container(),
+                orElse: () =>
+                    Container(), //TODO Add a generic unknown error occured widget
               );
             },
             listenWhen: (previousState, newState) {
@@ -126,6 +139,30 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                     onActivityChangeCallback: (ActivityLevel newActivity) =>
                         _currentActivityInMinutes = newActivity,
                   ),
+                  const SizedBox(height: 16.0),
+                  HydrateTextWithIcon(
+                    assetIconPath: 'assets/images/alarm-clock.svg',
+                    text: 'Wake up time',
+                  ),
+                  const SizedBox(height: 16.0),
+                  TimeSelection(
+                    title: 'Select usual wake up time',
+                    timeOfDay: _wakeUpTime,
+                    onTimeSelectedCallback: (newWakeUpTime) =>
+                        _wakeUpTime = newWakeUpTime,
+                  ),
+                  const SizedBox(height: 16.0),
+                  HydrateTextWithIcon(
+                    assetIconPath: 'assets/images/sleep.svg',
+                    text: 'Sleep time',
+                  ),
+                  const SizedBox(height: 16.0),
+                  TimeSelection(
+                    title: 'Select usual sleep time',
+                    timeOfDay: _wakeUpTime,
+                    onTimeSelectedCallback: (newWakeUpTime) =>
+                        _wakeUpTime = newWakeUpTime,
+                  ),
                 ],
               ),
             ),
@@ -147,6 +184,8 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                 _currentSelectedWeightType,
                 _currentActivityInMinutes,
                 _currentWeight,
+                _wakeUpTime,
+                _sleepTime,
                 blocContext,
               ),
               color: Colors.lightBlue,
@@ -173,6 +212,8 @@ _sendCalculateEvent(
   WeightType currentSelectedWeightType,
   ActivityLevel currentActivityInMinutes,
   int currentWeight,
+  TimeOfDay wakeUpTime,
+  TimeOfDay sleepTime,
   BuildContext context,
 ) {
   BlocProvider.of<CalculateWaterIntakeBloc>(context).add(
@@ -181,6 +222,26 @@ _sendCalculateEvent(
       currentSelectedWeightType,
       currentActivityInMinutes,
       currentWeight,
+      wakeUpTime,
+      sleepTime,
     ),
+  );
+}
+
+Future<void> _showNotification() async {
+  const AndroidNotificationDetails androidPlatformChannelSpecifics =
+      AndroidNotificationDetails(
+          'your channel id', 'your channel name', 'your channel description',
+          importance: Importance.max,
+          priority: Priority.high,
+          ticker: 'ticker');
+  const NotificationDetails platformChannelSpecifics =
+      NotificationDetails(android: androidPlatformChannelSpecifics);
+  await flutterLocalNotificationsPlugin.show(
+    0,
+    'plain title',
+    'plain body',
+    platformChannelSpecifics,
+    payload: 'item x',
   );
 }

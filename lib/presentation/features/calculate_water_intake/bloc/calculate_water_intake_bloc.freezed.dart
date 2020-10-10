@@ -17,12 +17,16 @@ class _$CalculateWaterIntakeEventTearOff {
       Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
       ActivityLevel activityLevel,
-      int currentWeight) {
+      int currentWeight,
+      TimeOfDay wakeUpTime,
+      TimeOfDay sleepTime) {
     return _CalculateClicked(
       currentSelectedGender,
       currentSelectedWeightType,
       activityLevel,
       currentWeight,
+      wakeUpTime,
+      sleepTime,
     );
   }
 }
@@ -35,6 +39,8 @@ mixin _$CalculateWaterIntakeEvent {
   WeightType get currentSelectedWeightType;
   ActivityLevel get activityLevel;
   int get currentWeight;
+  TimeOfDay get wakeUpTime;
+  TimeOfDay get sleepTime;
 
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -43,7 +49,9 @@ mixin _$CalculateWaterIntakeEvent {
             Gender currentSelectedGender,
             WeightType currentSelectedWeightType,
             ActivityLevel activityLevel,
-            int currentWeight),
+            int currentWeight,
+            TimeOfDay wakeUpTime,
+            TimeOfDay sleepTime),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -51,7 +59,9 @@ mixin _$CalculateWaterIntakeEvent {
         Gender currentSelectedGender,
         WeightType currentSelectedWeightType,
         ActivityLevel activityLevel,
-        int currentWeight),
+        int currentWeight,
+        TimeOfDay wakeUpTime,
+        TimeOfDay sleepTime),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -75,7 +85,9 @@ abstract class $CalculateWaterIntakeEventCopyWith<$Res> {
       {Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
       ActivityLevel activityLevel,
-      int currentWeight});
+      int currentWeight,
+      TimeOfDay wakeUpTime,
+      TimeOfDay sleepTime});
 }
 
 class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
@@ -92,6 +104,8 @@ class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
     Object currentSelectedWeightType = freezed,
     Object activityLevel = freezed,
     Object currentWeight = freezed,
+    Object wakeUpTime = freezed,
+    Object sleepTime = freezed,
   }) {
     return _then(_value.copyWith(
       currentSelectedGender: currentSelectedGender == freezed
@@ -106,6 +120,10 @@ class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
       currentWeight: currentWeight == freezed
           ? _value.currentWeight
           : currentWeight as int,
+      wakeUpTime:
+          wakeUpTime == freezed ? _value.wakeUpTime : wakeUpTime as TimeOfDay,
+      sleepTime:
+          sleepTime == freezed ? _value.sleepTime : sleepTime as TimeOfDay,
     ));
   }
 }
@@ -120,7 +138,9 @@ abstract class _$CalculateClickedCopyWith<$Res>
       {Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
       ActivityLevel activityLevel,
-      int currentWeight});
+      int currentWeight,
+      TimeOfDay wakeUpTime,
+      TimeOfDay sleepTime});
 }
 
 class __$CalculateClickedCopyWithImpl<$Res>
@@ -139,6 +159,8 @@ class __$CalculateClickedCopyWithImpl<$Res>
     Object currentSelectedWeightType = freezed,
     Object activityLevel = freezed,
     Object currentWeight = freezed,
+    Object wakeUpTime = freezed,
+    Object sleepTime = freezed,
   }) {
     return _then(_CalculateClicked(
       currentSelectedGender == freezed
@@ -151,17 +173,26 @@ class __$CalculateClickedCopyWithImpl<$Res>
           ? _value.activityLevel
           : activityLevel as ActivityLevel,
       currentWeight == freezed ? _value.currentWeight : currentWeight as int,
+      wakeUpTime == freezed ? _value.wakeUpTime : wakeUpTime as TimeOfDay,
+      sleepTime == freezed ? _value.sleepTime : sleepTime as TimeOfDay,
     ));
   }
 }
 
 class _$_CalculateClicked implements _CalculateClicked {
-  const _$_CalculateClicked(this.currentSelectedGender,
-      this.currentSelectedWeightType, this.activityLevel, this.currentWeight)
+  const _$_CalculateClicked(
+      this.currentSelectedGender,
+      this.currentSelectedWeightType,
+      this.activityLevel,
+      this.currentWeight,
+      this.wakeUpTime,
+      this.sleepTime)
       : assert(currentSelectedGender != null),
         assert(currentSelectedWeightType != null),
         assert(activityLevel != null),
-        assert(currentWeight != null);
+        assert(currentWeight != null),
+        assert(wakeUpTime != null),
+        assert(sleepTime != null);
 
   @override
   final Gender currentSelectedGender;
@@ -171,10 +202,14 @@ class _$_CalculateClicked implements _CalculateClicked {
   final ActivityLevel activityLevel;
   @override
   final int currentWeight;
+  @override
+  final TimeOfDay wakeUpTime;
+  @override
+  final TimeOfDay sleepTime;
 
   @override
   String toString() {
-    return 'CalculateWaterIntakeEvent.calculateClicked(currentSelectedGender: $currentSelectedGender, currentSelectedWeightType: $currentSelectedWeightType, activityLevel: $activityLevel, currentWeight: $currentWeight)';
+    return 'CalculateWaterIntakeEvent.calculateClicked(currentSelectedGender: $currentSelectedGender, currentSelectedWeightType: $currentSelectedWeightType, activityLevel: $activityLevel, currentWeight: $currentWeight, wakeUpTime: $wakeUpTime, sleepTime: $sleepTime)';
   }
 
   @override
@@ -194,7 +229,13 @@ class _$_CalculateClicked implements _CalculateClicked {
                     .equals(other.activityLevel, activityLevel)) &&
             (identical(other.currentWeight, currentWeight) ||
                 const DeepCollectionEquality()
-                    .equals(other.currentWeight, currentWeight)));
+                    .equals(other.currentWeight, currentWeight)) &&
+            (identical(other.wakeUpTime, wakeUpTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.wakeUpTime, wakeUpTime)) &&
+            (identical(other.sleepTime, sleepTime) ||
+                const DeepCollectionEquality()
+                    .equals(other.sleepTime, sleepTime)));
   }
 
   @override
@@ -203,7 +244,9 @@ class _$_CalculateClicked implements _CalculateClicked {
       const DeepCollectionEquality().hash(currentSelectedGender) ^
       const DeepCollectionEquality().hash(currentSelectedWeightType) ^
       const DeepCollectionEquality().hash(activityLevel) ^
-      const DeepCollectionEquality().hash(currentWeight);
+      const DeepCollectionEquality().hash(currentWeight) ^
+      const DeepCollectionEquality().hash(wakeUpTime) ^
+      const DeepCollectionEquality().hash(sleepTime);
 
   @override
   _$CalculateClickedCopyWith<_CalculateClicked> get copyWith =>
@@ -217,11 +260,13 @@ class _$_CalculateClicked implements _CalculateClicked {
             Gender currentSelectedGender,
             WeightType currentSelectedWeightType,
             ActivityLevel activityLevel,
-            int currentWeight),
+            int currentWeight,
+            TimeOfDay wakeUpTime,
+            TimeOfDay sleepTime),
   }) {
     assert(calculateClicked != null);
     return calculateClicked(currentSelectedGender, currentSelectedWeightType,
-        activityLevel, currentWeight);
+        activityLevel, currentWeight, wakeUpTime, sleepTime);
   }
 
   @override
@@ -231,13 +276,15 @@ class _$_CalculateClicked implements _CalculateClicked {
         Gender currentSelectedGender,
         WeightType currentSelectedWeightType,
         ActivityLevel activityLevel,
-        int currentWeight),
+        int currentWeight,
+        TimeOfDay wakeUpTime,
+        TimeOfDay sleepTime),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (calculateClicked != null) {
       return calculateClicked(currentSelectedGender, currentSelectedWeightType,
-          activityLevel, currentWeight);
+          activityLevel, currentWeight, wakeUpTime, sleepTime);
     }
     return orElse();
   }
@@ -270,7 +317,9 @@ abstract class _CalculateClicked implements CalculateWaterIntakeEvent {
       Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
       ActivityLevel activityLevel,
-      int currentWeight) = _$_CalculateClicked;
+      int currentWeight,
+      TimeOfDay wakeUpTime,
+      TimeOfDay sleepTime) = _$_CalculateClicked;
 
   @override
   Gender get currentSelectedGender;
@@ -280,6 +329,10 @@ abstract class _CalculateClicked implements CalculateWaterIntakeEvent {
   ActivityLevel get activityLevel;
   @override
   int get currentWeight;
+  @override
+  TimeOfDay get wakeUpTime;
+  @override
+  TimeOfDay get sleepTime;
   @override
   _$CalculateClickedCopyWith<_CalculateClicked> get copyWith;
 }

@@ -7,5 +7,7 @@ abstract class CalculateWaterIntakeEvent with _$CalculateWaterIntakeEvent {
     WeightType currentSelectedWeightType,
     ActivityLevel activityLevel,
     int currentWeight,
+    TimeOfDay wakeUpTime,
+    TimeOfDay sleepTime,
   ) = _CalculateClicked;
 }

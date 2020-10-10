@@ -48,6 +48,13 @@ dependencies:
   numberpicker: ^1.2.1
   # Easier value equality 
   equatable: ^1.2.4
+  # Cross platform local notification wrapper
+  flutter_local_notifications: ^2.0.0+1
+  # Seems like a huge overkill to import rxDart just for notifications..
+  rxdart: ^0.24.0
+  # Instead of writing the iOS and Android platform code to fetch the currents device time zone
+  # use a plugin to fetch into the native dependencies #lazy
+  flutter_native_timezone: ^1.0.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -81,6 +88,8 @@ flutter:
     - assets/images/female.svg
     - assets/images/weight.svg
     - assets/images/activity.svg
+    - assets/images/alarm-clock.svg
+    - assets/images/sleep.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

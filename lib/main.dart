@@ -1,10 +1,14 @@
-import 'package:HydrateMe/presentation/features/display_current_water_intake/display_current_water_intake_page.dart';
 import 'package:flutter/material.dart';
 
+import 'core/notifications/notification_setup.dart';
 import 'presentation/features/calculate_water_intake/pages/calculate_water_intake_page.dart';
+import 'presentation/features/display_current_water_intake/display_current_water_intake_page.dart';
 import 'service_locator.dart' as di;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await setupNotifications();
   await di.init();
   runApp(MyApp());
 }
