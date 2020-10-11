@@ -2,12 +2,14 @@ import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:HydrateMe/domain/model/weight_type.dart';
+import 'package:HydrateMe/domain/repository/notification_repository.dart';
 import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
 import 'package:HydrateMe/domain/usecases/kg_to_lbs_converter.dart';
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -21,18 +23,24 @@ class MockOzToMIliliterConverter extends Mock
 
 class MockWaterIntakeRepository extends Mock implements WaterIntakeRepository {}
 
+class MockNotificationRepository extends Mock
+    implements NotificationRepository {}
+
 void main() {
   MockKgToLbsConverter _mockKgToLbsConverter;
   MockCalculateAdditionalWaterIntakePerActivity
       _mockCalculateAdditionalWaterIntakePerActivity;
   MockOzToMIliliterConverter _mockOzToMIliliterConverter;
   MockWaterIntakeRepository _mockWaterIntakeRepository;
+  MockNotificationRepository _mockNotificationRepository;
 
   final useCaseParamsInKg = CalculateDailyWaterIntakeParams(
     currentSelectedGender: Gender.male,
     currentSelectedWeightType: WeightType.kg,
     currentWeight: 75,
     currentActivityInMinutes: ActivityLevel.active,
+    wakeUpTime: TimeOfDay(hour: 7, minute: 0),
+    sleepTime: TimeOfDay(hour: 24, minute: 0),
   );
 
   final useCaseParamsInLbs = CalculateDailyWaterIntakeParams(
@@ -40,6 +48,8 @@ void main() {
     currentSelectedWeightType: WeightType.lbs,
     currentWeight: 75,
     currentActivityInMinutes: ActivityLevel.active,
+    wakeUpTime: TimeOfDay(hour: 7, minute: 0),
+    sleepTime: TimeOfDay(hour: 24, minute: 0),
   );
 
   CalculateDailyWaterIntake _calculateDailyWaterIntake;
@@ -51,6 +61,7 @@ void main() {
           MockCalculateAdditionalWaterIntakePerActivity();
       _mockOzToMIliliterConverter = MockOzToMIliliterConverter();
       _mockWaterIntakeRepository = MockWaterIntakeRepository();
+      _mockNotificationRepository = MockNotificationRepository();
 
       _calculateDailyWaterIntake = CalculateDailyWaterIntake(
         calculateAdditionalWaterIntakePerActivity:
@@ -58,6 +69,7 @@ void main() {
         kgToLbsconverter: _mockKgToLbsConverter,
         ozToMIliliterConverter: _mockOzToMIliliterConverter,
         waterIntakeRepository: _mockWaterIntakeRepository,
+        notificationRepository: _mockNotificationRepository,
       );
     },
   );
@@ -95,6 +107,10 @@ void main() {
 
       verify(_mockWaterIntakeRepository
           .saveCurrentWaterIntake(expectedHydrateStatus));
+      verify(_mockNotificationRepository.scheduleDailyNotifications(
+        useCaseParamsInKg.wakeUpTime,
+        useCaseParamsInKg.sleepTime,
+      ));
     },
   );
 
@@ -131,6 +147,10 @@ void main() {
 
       verify(_mockWaterIntakeRepository
           .saveCurrentWaterIntake(expectedHydrateStatus));
+      verify(_mockNotificationRepository.scheduleDailyNotifications(
+        useCaseParamsInLbs.wakeUpTime,
+        useCaseParamsInLbs.sleepTime,
+      ));
     },
   );
 }

@@ -32,10 +32,13 @@ class CalculateWaterIntakeBloc
       _CalculateClicked params) async* {
     final dailyWaterIntakeResult = await _calculateDailyWaterIntake(
       CalculateDailyWaterIntakeParams(
-          currentSelectedGender: params.currentSelectedGender,
-          currentSelectedWeightType: params.currentSelectedWeightType,
-          currentWeight: params.currentWeight,
-          currentActivityInMinutes: params.activityLevel),
+        currentSelectedGender: params.currentSelectedGender,
+        currentSelectedWeightType: params.currentSelectedWeightType,
+        currentWeight: params.currentWeight,
+        currentActivityInMinutes: params.activityLevel,
+        wakeUpTime: params.wakeUpTime,
+        sleepTime: params.sleepTime,
+      ),
     );
 
     yield dailyWaterIntakeResult.fold(

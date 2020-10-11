@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import '../../../../core/common/constants/constants.dart';
-import '../../../../core/notifications/notification_setup.dart';
 import '../../../../domain/model/activity_level.dart';
 import '../../../../domain/model/gender.dart';
 import '../../../../domain/model/weight_type.dart';
@@ -225,23 +223,5 @@ _sendCalculateEvent(
       wakeUpTime,
       sleepTime,
     ),
-  );
-}
-
-Future<void> _showNotification() async {
-  const AndroidNotificationDetails androidPlatformChannelSpecifics =
-      AndroidNotificationDetails(
-          'your channel id', 'your channel name', 'your channel description',
-          importance: Importance.max,
-          priority: Priority.high,
-          ticker: 'ticker');
-  const NotificationDetails platformChannelSpecifics =
-      NotificationDetails(android: androidPlatformChannelSpecifics);
-  await flutterLocalNotificationsPlugin.show(
-    0,
-    'plain title',
-    'plain body',
-    platformChannelSpecifics,
-    payload: 'item x',
   );
 }

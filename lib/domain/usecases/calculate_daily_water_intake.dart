@@ -1,4 +1,5 @@
 import 'package:HydrateMe/domain/model/activity_level.dart';
+import 'package:HydrateMe/domain/repository/notification_repository.dart';
 import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
@@ -22,12 +23,14 @@ class CalculateDailyWaterIntake
       calculateAdditionalWaterIntakePerActivity;
   final OzToMIliliterConverter ozToMIliliterConverter;
   final WaterIntakeRepository waterIntakeRepository;
+  final NotificationRepository notificationRepository;
 
   CalculateDailyWaterIntake({
     @required this.kgToLbsconverter,
     @required this.calculateAdditionalWaterIntakePerActivity,
     @required this.ozToMIliliterConverter,
     @required this.waterIntakeRepository,
+    @required this.notificationRepository,
   });
 
   @override
@@ -57,6 +60,10 @@ class CalculateDailyWaterIntake
     );
 
     await waterIntakeRepository.saveCurrentWaterIntake(hydrateStatus);
+    await notificationRepository.scheduleDailyNotifications(
+      params.wakeUpTime,
+      params.sleepTime,
+    );
 
     return Future.value(Right(hydrateStatus));
   }
