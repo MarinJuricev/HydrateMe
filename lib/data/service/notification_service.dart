@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -5,18 +6,18 @@ import 'package:timezone/timezone.dart' as tz;
 import '../../core/notifications/notification_setup.dart';
 
 abstract class NotificationService {
-  Future<void> scheduleDailyNotification(int hourToSchedule);
+  Future<void> scheduleDailyNotification(TimeOfDay hourToSchedule);
   Future<void> scheduleInstantNotification();
 }
 
 class NotificationServiceImpl extends NotificationService {
   @override
-  Future<void> scheduleDailyNotification(int hourToSchedule) async {
+  Future<void> scheduleDailyNotification(TimeOfDay timeToSchedule) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
         0,
         'HydrateMe',
         'Remember to drink your water',
-        _nextInstanceOfProvidedHour(hourToSchedule),
+        _nextInstanceOfProvidedHour(timeToSchedule),
         const NotificationDetails(
           android: AndroidNotificationDetails(
             'HydrateMe daily notification channel id',
@@ -31,10 +32,16 @@ class NotificationServiceImpl extends NotificationService {
             ScheduledNotificationRepeatFrequency.daily);
   }
 
-  tz.TZDateTime _nextInstanceOfProvidedHour(int hourToSchedule) {
+  tz.TZDateTime _nextInstanceOfProvidedHour(TimeOfDay timeToSchedule) {
     final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
-    tz.TZDateTime scheduledDate =
-        tz.TZDateTime(tz.local, now.year, now.month, now.day, hourToSchedule);
+    tz.TZDateTime scheduledDate = tz.TZDateTime(
+      tz.local,
+      now.year,
+      now.month,
+      now.day,
+      timeToSchedule.hour,
+      timeToSchedule.minute,
+    );
     if (scheduledDate.isBefore(now)) {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }

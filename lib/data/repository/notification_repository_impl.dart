@@ -16,9 +16,18 @@ class NotificationRepositoryImpl extends NotificationRepository {
     TimeOfDay wakeUpTime,
     TimeOfDay sleepTime,
   ) async {
-    final firstNotificationTime = wakeUpTime.hour + 1;
-    final secondNotificationTime = sleepTime.hour - wakeUpTime.hour;
-    final thirdNotificationTime = sleepTime.hour - 1;
+    final firstNotificationTime = TimeOfDay(
+      hour: wakeUpTime.hour + 1,
+      minute: wakeUpTime.minute,
+    );
+    final secondNotificationTime = TimeOfDay(
+      hour: sleepTime.hour - wakeUpTime.hour,
+      minute: wakeUpTime.minute,
+    );
+    final thirdNotificationTime = TimeOfDay(
+      hour: sleepTime.hour - 1,
+      minute: sleepTime.minute,
+    );
 
     return Right(
       Future.wait(

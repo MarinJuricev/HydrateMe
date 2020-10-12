@@ -157,9 +157,9 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                   const SizedBox(height: 16.0),
                   TimeSelection(
                     title: 'Select usual sleep time',
-                    timeOfDay: _wakeUpTime,
+                    timeOfDay: _sleepTime,
                     onTimeSelectedCallback: (newWakeUpTime) =>
-                        _wakeUpTime = newWakeUpTime,
+                        _sleepTime = newWakeUpTime,
                   ),
                 ],
               ),
