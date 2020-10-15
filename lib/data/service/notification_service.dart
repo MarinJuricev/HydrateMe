@@ -14,7 +14,7 @@ class NotificationServiceImpl extends NotificationService {
   @override
   Future<void> scheduleDailyNotification(TimeOfDay timeToSchedule) async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
-        0,
+        generateNotificationId(timeToSchedule),
         'HydrateMe',
         'Remember to drink your water',
         _nextInstanceOfProvidedHour(timeToSchedule),
@@ -67,5 +67,9 @@ class NotificationServiceImpl extends NotificationService {
       platformChannelSpecifics,
       payload: 'item x',
     );
+  }
+
+  int generateNotificationId(TimeOfDay timeToSchedule) {
+    return timeToSchedule.hour + timeToSchedule.minute;
   }
 }

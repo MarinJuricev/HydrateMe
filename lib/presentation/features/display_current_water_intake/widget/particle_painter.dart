@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'particle_model.dart';
-import 'particle_prop.dart';
+import '../model/particle_model.dart';
+import '../model/particle_prop.dart';
 
 class ParticlePainter extends CustomPainter {
   List<ParticleModel> particles;
@@ -18,8 +18,8 @@ class ParticlePainter extends CustomPainter {
       final widthAnimationValue = animation.get(ParticleProp.width);
       final heightAnimationValue = animation.get(ParticleProp.height);
 
-      final position =
-          Offset(widthAnimationValue * size.width, heightAnimationValue * size.height);
+      final position = Offset(
+          widthAnimationValue * size.width, heightAnimationValue * size.height);
 
       canvas.drawCircle(position, size.width * 0.2 * particle.size, paint);
     });

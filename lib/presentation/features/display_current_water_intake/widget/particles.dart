@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
 import 'package:supercharged/supercharged.dart';
 
-import 'particle_model.dart';
+import '../model/particle_model.dart';
 import 'particle_painter.dart';
 
 class Particles extends StatefulWidget {

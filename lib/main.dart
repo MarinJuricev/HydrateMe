@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/notifications/notification_setup.dart';
 import 'presentation/features/calculate_water_intake/pages/calculate_water_intake_page.dart';
-import 'presentation/features/display_current_water_intake/display_current_water_intake_page.dart';
+import 'presentation/features/display_current_water_intake/widget/pages/display_current_water_intake_page.dart';
 import 'service_locator.dart' as di;
 
 void main() async {

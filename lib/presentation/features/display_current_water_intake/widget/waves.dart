@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-import '../../../domain/model/hydrate_status.dart';
-import 'bloc/current_water_intake_bloc.dart';
+import '../../../../domain/model/hydrate_status.dart';
+import '../bloc/current_water_intake_bloc.dart';
 
 class Waves extends StatefulWidget {
   final HydrateStatus currentHydrateStatus;

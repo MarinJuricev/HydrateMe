@@ -1,8 +1,9 @@
-import 'package:HydrateMe/presentation/common/widgets/hydrate_button.dart';
-import 'package:HydrateMe/presentation/common/widgets/hydrate_text_field.dart';
-import 'package:HydrateMe/presentation/features/display_current_water_intake/bloc/current_water_intake_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../common/widgets/hydrate_button.dart';
+import '../../../common/widgets/hydrate_text_field.dart';
+import '../bloc/current_water_intake_bloc.dart';
 
 class ManualWaterIntake extends StatefulWidget {
   @override
