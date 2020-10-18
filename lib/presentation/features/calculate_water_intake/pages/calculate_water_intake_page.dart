@@ -1,3 +1,4 @@
+import 'package:HydrateMe/presentation/features/display_current_water_intake/pages/display_current_water_intake_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -6,7 +7,6 @@ import '../../../../domain/model/activity_level.dart';
 import '../../../../domain/model/gender.dart';
 import '../../../../domain/model/weight_type.dart';
 import '../../../../service_locator.dart' as di;
-import '../../display_current_water_intake/widget/pages/display_current_water_intake_page.dart';
 import '../bloc/calculate_water_intake_bloc.dart';
 import '../widget/activity_selection.dart';
 import '../widget/gender_toggle.dart';

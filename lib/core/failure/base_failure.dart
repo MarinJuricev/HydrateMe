@@ -25,3 +25,7 @@ class ValidationFailure extends Failure {
 class GeneralFailure extends Failure {
   GeneralFailure(String errorMessage) : super(message: errorMessage);
 }
+
+class CacheFailure extends Failure {
+  CacheFailure(String errorMessage) : super(message: errorMessage);
+}
