@@ -8,6 +8,7 @@ import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_
 import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
 import 'package:HydrateMe/domain/usecases/kg_to_lbs_converter.dart';
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
+import 'package:HydrateMe/domain/usecases/save_user_data.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -26,6 +27,9 @@ class MockWaterIntakeRepository extends Mock implements WaterIntakeRepository {}
 class MockNotificationRepository extends Mock
     implements NotificationRepository {}
 
+class MockSaveUserData extends Mock
+    implements SaveUserData {}
+
 void main() {
   MockKgToLbsConverter _mockKgToLbsConverter;
   MockCalculateAdditionalWaterIntakePerActivity
@@ -33,6 +37,7 @@ void main() {
   MockOzToMIliliterConverter _mockOzToMIliliterConverter;
   MockWaterIntakeRepository _mockWaterIntakeRepository;
   MockNotificationRepository _mockNotificationRepository;
+  MockSaveUserData _mockSaveUserData; 
 
   final useCaseParamsInKg = CalculateDailyWaterIntakeParams(
     currentSelectedGender: Gender.male,
@@ -62,6 +67,7 @@ void main() {
       _mockOzToMIliliterConverter = MockOzToMIliliterConverter();
       _mockWaterIntakeRepository = MockWaterIntakeRepository();
       _mockNotificationRepository = MockNotificationRepository();
+      _mockSaveUserData = MockSaveUserData();
 
       _calculateDailyWaterIntake = CalculateDailyWaterIntake(
         calculateAdditionalWaterIntakePerActivity:
@@ -70,12 +76,13 @@ void main() {
         ozToMIliliterConverter: _mockOzToMIliliterConverter,
         waterIntakeRepository: _mockWaterIntakeRepository,
         notificationRepository: _mockNotificationRepository,
+        saveUserData: _mockSaveUserData,
       );
     },
   );
 
   test(
-    'should return 2000 when useCaseParamsInKg is provided',
+    'should return hydrate status with 2000 as the dailyIntakeGoal when useCaseParamsInKg is provided',
     () async {
       when(
         _mockKgToLbsConverter(useCaseParamsInKg.currentWeight),
@@ -107,15 +114,11 @@ void main() {
 
       verify(_mockWaterIntakeRepository
           .saveCurrentWaterIntake(expectedHydrateStatus));
-      verify(_mockNotificationRepository.scheduleDailyNotifications(
-        useCaseParamsInKg.wakeUpTime,
-        useCaseParamsInKg.sleepTime,
-      ));
     },
   );
 
   test(
-    'should return 2000 when useCaseParamsInLbs is provided',
+    'should return hydrate status with 2000 as the dailyIntakeGoal when useCaseParamsInLbs is provided',
     () async {
       when(
         _mockKgToLbsConverter(useCaseParamsInLbs.currentWeight),
@@ -147,10 +150,55 @@ void main() {
 
       verify(_mockWaterIntakeRepository
           .saveCurrentWaterIntake(expectedHydrateStatus));
+    },
+  );
+
+  test(
+    'should trigger notificationRepository scheduleDaily notification with the provided wakeUpTime and sleepTime',
+    () async {
+      when(
+        _mockKgToLbsConverter(useCaseParamsInLbs.currentWeight),
+      ).thenAnswer((_) async => (Right(150)));
+
+      when(
+        _mockCalculateAdditionalWaterIntakePerActivity(
+            useCaseParamsInLbs.currentActivityInMinutes),
+      ).thenAnswer((_) async => (Right(30)));
+
+      when(
+        _mockOzToMIliliterConverter(80.0),
+      ).thenAnswer((_) async => (Right(2000)));
+
+      await _calculateDailyWaterIntake(useCaseParamsInLbs);
       verify(_mockNotificationRepository.scheduleDailyNotifications(
         useCaseParamsInLbs.wakeUpTime,
         useCaseParamsInLbs.sleepTime,
       ));
     },
   );
+
+  // test(
+  //   'should trigger saveUserData with the necessary parametars',
+  //   () async {
+  //     when(
+  //       _mockKgToLbsConverter(useCaseParamsInLbs.currentWeight),
+  //     ).thenAnswer((_) async => (Right(150)));
+
+  //     when(
+  //       _mockCalculateAdditionalWaterIntakePerActivity(
+  //           useCaseParamsInLbs.currentActivityInMinutes),
+  //     ).thenAnswer((_) async => (Right(30)));
+
+  //     when(
+  //       _mockOzToMIliliterConverter(80.0),
+  //     ).thenAnswer((_) async => (Right(2000)));
+
+  //     await _calculateDailyWaterIntake(useCaseParamsInLbs);
+  //     verify(_mockSaveUserData(
+  //       useCaseParamsInLbs.wakeUpTime,
+  //       useCaseParamsInLbs.sleepTime,
+  //     ));
+  //   },
+  // );
+
 }

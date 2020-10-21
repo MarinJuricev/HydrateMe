@@ -4,7 +4,6 @@ import 'package:HydrateMe/domain/model/user_data.dart';
 import 'package:HydrateMe/domain/model/weight_type.dart';
 import 'package:HydrateMe/domain/repository/user_data_repository.dart';
 import 'package:HydrateMe/domain/usecases/save_user_data.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -40,25 +39,24 @@ void main() {
     },
   );
 
-  // test(
-  //   'should trigger userDataRepository saveUserData with a constructed UserData object',
-  //   () async {
-  //     final saveUserDataParams = SaveUserDataParams(
-  //       wakeUpTime: testWakeUpTime,
-  //       sleepTime: testSleepTime,
-  //       currentWeight: testCurrentWeight,
-  //       gender: testGender,
-  //       weightType: testWeightType,
-  //       activityLevel: testActivityLevel,
-  //     );
+  test(
+    'should trigger userDataRepository saveUserData with a constructed UserData object',
+    () async {
+      final saveUserDataParams = SaveUserDataParams(
+        wakeUpTime: testWakeUpTime,
+        sleepTime: testSleepTime,
+        currentWeight: testCurrentWeight,
+        gender: testGender,
+        weightType: testWeightType,
+        activityLevel: testActivityLevel,
+      );
 
-  //     when(_mockUserDataRepository.saveUserData(testUserData))
-  //         .thenAnswer((_) => null);
+      when(_mockUserDataRepository.saveUserData(testUserData))
+          .thenAnswer((_) => null);
 
-  //     final actualResult = await saveUserData(saveUserDataParams);
-  //     final expectedResult = Right(null);
+      await saveUserData(saveUserDataParams);
 
-  //     expect(actualResult, expectedResult);
-  //   },
-  // );
+      verify(_mockUserDataRepository.saveUserData(testUserData));
+    },
+  );
 }

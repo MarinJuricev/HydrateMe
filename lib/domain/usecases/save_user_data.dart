@@ -1,12 +1,13 @@
-import 'package:HydrateMe/core/failure/base_failure.dart';
-import 'package:HydrateMe/core/usecase/base_usecase.dart';
-import 'package:HydrateMe/domain/model/activity_level.dart';
-import 'package:HydrateMe/domain/model/gender.dart';
-import 'package:HydrateMe/domain/model/user_data.dart';
-import 'package:HydrateMe/domain/model/weight_type.dart';
-import 'package:HydrateMe/domain/repository/user_data_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/failure/base_failure.dart';
+import '../../core/usecase/base_usecase.dart';
+import '../model/activity_level.dart';
+import '../model/gender.dart';
+import '../model/user_data.dart';
+import '../model/weight_type.dart';
+import '../repository/user_data_repository.dart';
 
 class SaveUserData extends BaseUseCase<void, SaveUserDataParams> {
   final UserDataRepository userDataRepository;
@@ -31,19 +32,19 @@ class SaveUserData extends BaseUseCase<void, SaveUserDataParams> {
 }
 
 class SaveUserDataParams {
-  TimeOfDay wakeUpTime;
-  TimeOfDay sleepTime;
-  int currentWeight;
-  Gender gender;
-  WeightType weightType;
-  ActivityLevel activityLevel;
+  final TimeOfDay wakeUpTime;
+  final TimeOfDay sleepTime;
+  final int currentWeight;
+  final Gender gender;
+  final WeightType weightType;
+  final ActivityLevel activityLevel;
 
   SaveUserDataParams({
-    @required TimeOfDay wakeUpTime,
-    @required TimeOfDay sleepTime,
-    @required int currentWeight,
-    @required Gender gender,
-    @required WeightType weightType,
-    @required ActivityLevel activityLevel,
+    @required this.wakeUpTime,
+    @required this.sleepTime,
+    @required this.currentWeight,
+    @required this.gender,
+    @required this.weightType,
+    @required this.activityLevel,
   });
 }

@@ -3,6 +3,7 @@ import 'package:HydrateMe/domain/repository/notification_repository.dart';
 import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
+import 'package:HydrateMe/domain/usecases/save_user_data.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class CalculateDailyWaterIntake
   final OzToMIliliterConverter ozToMIliliterConverter;
   final WaterIntakeRepository waterIntakeRepository;
   final NotificationRepository notificationRepository;
+  final SaveUserData saveUserData;
 
   CalculateDailyWaterIntake({
     @required this.kgToLbsconverter,
@@ -31,6 +33,7 @@ class CalculateDailyWaterIntake
     @required this.ozToMIliliterConverter,
     @required this.waterIntakeRepository,
     @required this.notificationRepository,
+    @required this.saveUserData,
   });
 
   @override
@@ -63,6 +66,16 @@ class CalculateDailyWaterIntake
     await notificationRepository.scheduleDailyNotifications(
       params.wakeUpTime,
       params.sleepTime,
+    );
+    await saveUserData(
+      SaveUserDataParams(
+        wakeUpTime: params.wakeUpTime,
+        sleepTime: params.sleepTime,
+        currentWeight: params.currentWeight,
+        gender: params.currentSelectedGender,
+        weightType: params.currentSelectedWeightType,
+        activityLevel: params.currentActivityInMinutes,
+      ),
     );
 
     return Future.value(Right(hydrateStatus));
