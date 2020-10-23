@@ -1,4 +1,7 @@
+import 'package:HydrateMe/data/model/local_user_data.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/notifications/notification_setup.dart';
 import 'presentation/features/calculate_water_intake/pages/calculate_water_intake_page.dart';
@@ -7,6 +10,10 @@ import 'service_locator.dart' as di;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //TODO WRAP THI SOMEWHERE LIKE LocalPersistence.init()
+  await Hive.initFlutter();
+  Hive.registerAdapter<LocalUserData>(LocalUserDataAdapter());
 
   await setupNotifications();
   await di.init();

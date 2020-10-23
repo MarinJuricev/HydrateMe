@@ -1,6 +1,5 @@
 import 'package:HydrateMe/core/common/constants/constants.dart';
 import 'package:HydrateMe/core/error/exceptions.dart';
-import 'package:HydrateMe/data/data_source/local_persistence_provider.dart';
 import 'package:HydrateMe/data/data_source/user_data_local_data_source.dart';
 import 'package:HydrateMe/domain/model/user_data.dart';
 import 'package:HydrateMe/core/failure/base_failure.dart';

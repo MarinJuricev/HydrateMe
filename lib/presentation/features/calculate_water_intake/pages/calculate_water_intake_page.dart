@@ -1,4 +1,4 @@
-import 'package:HydrateMe/presentation/features/display_current_water_intake/pages/display_current_water_intake_page.dart';
+import 'package:HydrateMe/presentation/features/bottom_nav/bottom_navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -199,7 +199,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => DisplayCurrentWaterIntakePage(),
+        builder: (context) => BottomNavigationPage(),
       ),
     );
   }
