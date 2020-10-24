@@ -9,6 +9,7 @@ part of 'user_data.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$UserDataTearOff {
   const _$UserDataTearOff();
 
@@ -31,9 +32,11 @@ class _$UserDataTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $UserData = _$UserDataTearOff();
 
+/// @nodoc
 mixin _$UserData {
   TimeOfDay get wakeUpTime;
   TimeOfDay get sleepTime;
@@ -45,6 +48,7 @@ mixin _$UserData {
   $UserDataCopyWith<UserData> get copyWith;
 }
 
+/// @nodoc
 abstract class $UserDataCopyWith<$Res> {
   factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
       _$UserDataCopyWithImpl<$Res>;
@@ -57,6 +61,7 @@ abstract class $UserDataCopyWith<$Res> {
       ActivityLevel activityLevel});
 }
 
+/// @nodoc
 class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
   _$UserDataCopyWithImpl(this._value, this._then);
 
@@ -91,6 +96,7 @@ class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
   factory _$UserDataCopyWith(_UserData value, $Res Function(_UserData) then) =
       __$UserDataCopyWithImpl<$Res>;
@@ -104,6 +110,7 @@ abstract class _$UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
       ActivityLevel activityLevel});
 }
 
+/// @nodoc
 class __$UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
     implements _$UserDataCopyWith<$Res> {
   __$UserDataCopyWithImpl(_UserData _value, $Res Function(_UserData) _then)
@@ -139,6 +146,7 @@ class __$UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_UserData with DiagnosticableTreeMixin implements _UserData {
   _$_UserData(
       {@required this.wakeUpTime,

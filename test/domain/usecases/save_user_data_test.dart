@@ -12,7 +12,7 @@ class MockUserDataRepository extends Mock implements UserDataRepository {}
 
 void main() {
   MockUserDataRepository _mockUserDataRepository;
-  SaveUserData saveUserData;
+  SaveUserData sut;
 
   final testWakeUpTime = TimeOfDay(hour: 6, minute: 0);
   final testSleepTime = TimeOfDay(hour: 23, minute: 0);
@@ -33,7 +33,7 @@ void main() {
   setUp(
     () {
       _mockUserDataRepository = MockUserDataRepository();
-      saveUserData = SaveUserData(
+      sut = SaveUserData(
         userDataRepository: _mockUserDataRepository,
       );
     },
@@ -54,7 +54,7 @@ void main() {
       when(_mockUserDataRepository.saveUserData(testUserData))
           .thenAnswer((_) => null);
 
-      await saveUserData(saveUserDataParams);
+      await sut(saveUserDataParams);
 
       verify(_mockUserDataRepository.saveUserData(testUserData));
     },

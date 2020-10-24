@@ -9,6 +9,7 @@ part of 'hydrate_status.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$HydrateStatusTearOff {
   const _$HydrateStatusTearOff();
 
@@ -27,10 +28,13 @@ class _$HydrateStatusTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $HydrateStatus = _$HydrateStatusTearOff();
 
+/// @nodoc
 mixin _$HydrateStatus {
+// Used to render the waves widget, it should range from [0.0 - 1.0]
   double get hydrationPercentage;
   String get formattedCurrentIntake;
   int get dailyIntakeGoal;
@@ -39,6 +43,7 @@ mixin _$HydrateStatus {
   $HydrateStatusCopyWith<HydrateStatus> get copyWith;
 }
 
+/// @nodoc
 abstract class $HydrateStatusCopyWith<$Res> {
   factory $HydrateStatusCopyWith(
           HydrateStatus value, $Res Function(HydrateStatus) then) =
@@ -50,6 +55,7 @@ abstract class $HydrateStatusCopyWith<$Res> {
       int currentIntake});
 }
 
+/// @nodoc
 class _$HydrateStatusCopyWithImpl<$Res>
     implements $HydrateStatusCopyWith<$Res> {
   _$HydrateStatusCopyWithImpl(this._value, this._then);
@@ -82,6 +88,7 @@ class _$HydrateStatusCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$HydrateStatusCopyWith<$Res>
     implements $HydrateStatusCopyWith<$Res> {
   factory _$HydrateStatusCopyWith(
@@ -95,6 +102,7 @@ abstract class _$HydrateStatusCopyWith<$Res>
       int currentIntake});
 }
 
+/// @nodoc
 class __$HydrateStatusCopyWithImpl<$Res>
     extends _$HydrateStatusCopyWithImpl<$Res>
     implements _$HydrateStatusCopyWith<$Res> {
@@ -129,6 +137,7 @@ class __$HydrateStatusCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
   _$_HydrateStatus(
       {@required this.hydrationPercentage,
@@ -140,7 +149,7 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
         assert(dailyIntakeGoal != null),
         assert(currentIntake != null);
 
-  @override
+  @override // Used to render the waves widget, it should range from [0.0 - 1.0]
   final double hydrationPercentage;
   @override
   final String formattedCurrentIntake;
@@ -204,7 +213,7 @@ abstract class _HydrateStatus implements HydrateStatus {
       @required int dailyIntakeGoal,
       @required int currentIntake}) = _$_HydrateStatus;
 
-  @override
+  @override // Used to render the waves widget, it should range from [0.0 - 1.0]
   double get hydrationPercentage;
   @override
   String get formattedCurrentIntake;

@@ -17,12 +17,12 @@ class LocalUserDataAdapter extends TypeAdapter<LocalUserData> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return LocalUserData(
-      wakeUpTime: fields[0] as TimeOfDay,
-      sleepTime: fields[1] as TimeOfDay,
+      wakeUpTime: fields[0] as DateTime,
+      sleepTime: fields[1] as DateTime,
       currentWeight: fields[2] as int,
-      gender: fields[3] as Gender,
-      weightType: fields[4] as WeightType,
-      activityLevel: fields[5] as ActivityLevel,
+      gender: fields[3] as LocalGender,
+      weightType: fields[4] as LocalWeightType,
+      activityLevel: fields[5] as LocalActivityLevel,
     );
   }
 

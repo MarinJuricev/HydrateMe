@@ -1,6 +1,10 @@
 import 'package:HydrateMe/core/mapper/base_mapper.dart';
 import 'package:HydrateMe/data/data_source/user_data_local_data_source.dart';
+import 'package:HydrateMe/data/mapper/activity_level_to_local_activity_level_mapper.dart';
+import 'package:HydrateMe/data/mapper/gender_to_local_gender_mapper.dart';
 import 'package:HydrateMe/data/mapper/user_data_to_local_user_data_mapper.dart';
+import 'package:HydrateMe/data/mapper/weight_type_to_local_weight_type_mapper.dart';
+import 'package:HydrateMe/data/model/local_activity_level.dart';
 import 'package:HydrateMe/data/model/local_user_data.dart';
 import 'package:HydrateMe/data/service/notification_service.dart';
 import 'package:HydrateMe/domain/model/user_data.dart';
@@ -9,9 +13,15 @@ import 'package:HydrateMe/domain/usecases/save_user_data.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/data_source/local_persistence_provider.dart';
+import 'data/data_source/time_provider.dart';
+import 'data/model/local_gender.dart';
+import 'data/model/local_weight_type.dart';
 import 'data/repository/notification_repository_impl.dart';
 import 'data/repository/user_data_repository_impl.dart';
 import 'data/repository/water_intake_repository_impl.dart';
+import 'domain/model/activity_level.dart';
+import 'domain/model/gender.dart';
+import 'domain/model/weight_type.dart';
 import 'domain/repository/notification_repository.dart';
 import 'domain/repository/water_intake_repository.dart';
 import 'domain/usecases/calculate_additional_water_intake_per_activity.dart';
@@ -102,10 +112,27 @@ Future<void> init() async {
   getIt.registerLazySingleton<NotificationService>(
     () => NotificationServiceImpl(),
   );
+  getIt.registerLazySingleton<TimeProvider>(
+    () => TimeProviderImpl(),
+  );
 
   // Data Mappers
+  getIt.registerFactory<Mapper<LocalActivityLevel, ActivityLevel>>(
+    () => ActivityLevelToLocalActivityLevelMapper(),
+  );
+  getIt.registerFactory<Mapper<LocalGender, Gender>>(
+    () => GenderToLocalGenderMapper(),
+  );
+  getIt.registerFactory<Mapper<LocalWeightType, WeightType>>(
+    () => WeightTypeToLocalWeightTypeMapper(),
+  );
   getIt.registerFactory<Mapper<LocalUserData, UserData>>(
-    () => UserDataToLocalUserDataMapper(),
+    () => UserDataToLocalUserDataMapper(
+      timeProvider: getIt<TimeProvider>(),
+      activityLevelMapper: getIt(),
+      genderMaper: getIt(),
+      weightTypeMapper: getIt(),
+    ),
   );
 
   //Util

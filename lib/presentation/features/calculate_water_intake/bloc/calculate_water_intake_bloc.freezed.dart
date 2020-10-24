@@ -9,6 +9,7 @@ part of 'calculate_water_intake_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CalculateWaterIntakeEventTearOff {
   const _$CalculateWaterIntakeEventTearOff();
 
@@ -31,9 +32,11 @@ class _$CalculateWaterIntakeEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CalculateWaterIntakeEvent = _$CalculateWaterIntakeEventTearOff();
 
+/// @nodoc
 mixin _$CalculateWaterIntakeEvent {
   Gender get currentSelectedGender;
   WeightType get currentSelectedWeightType;
@@ -77,6 +80,7 @@ mixin _$CalculateWaterIntakeEvent {
   $CalculateWaterIntakeEventCopyWith<CalculateWaterIntakeEvent> get copyWith;
 }
 
+/// @nodoc
 abstract class $CalculateWaterIntakeEventCopyWith<$Res> {
   factory $CalculateWaterIntakeEventCopyWith(CalculateWaterIntakeEvent value,
           $Res Function(CalculateWaterIntakeEvent) then) =
@@ -90,6 +94,7 @@ abstract class $CalculateWaterIntakeEventCopyWith<$Res> {
       TimeOfDay sleepTime});
 }
 
+/// @nodoc
 class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
     implements $CalculateWaterIntakeEventCopyWith<$Res> {
   _$CalculateWaterIntakeEventCopyWithImpl(this._value, this._then);
@@ -128,6 +133,7 @@ class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$CalculateClickedCopyWith<$Res>
     implements $CalculateWaterIntakeEventCopyWith<$Res> {
   factory _$CalculateClickedCopyWith(
@@ -143,6 +149,7 @@ abstract class _$CalculateClickedCopyWith<$Res>
       TimeOfDay sleepTime});
 }
 
+/// @nodoc
 class __$CalculateClickedCopyWithImpl<$Res>
     extends _$CalculateWaterIntakeEventCopyWithImpl<$Res>
     implements _$CalculateClickedCopyWith<$Res> {
@@ -179,6 +186,7 @@ class __$CalculateClickedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CalculateClicked implements _CalculateClicked {
   const _$_CalculateClicked(
       this.currentSelectedGender,
@@ -337,6 +345,7 @@ abstract class _CalculateClicked implements CalculateWaterIntakeEvent {
   _$CalculateClickedCopyWith<_CalculateClicked> get copyWith;
 }
 
+/// @nodoc
 class _$CalculateWaterIntakeStateTearOff {
   const _$CalculateWaterIntakeStateTearOff();
 
@@ -358,9 +367,11 @@ class _$CalculateWaterIntakeStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CalculateWaterIntakeState = _$CalculateWaterIntakeStateTearOff();
 
+/// @nodoc
 mixin _$CalculateWaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -390,12 +401,14 @@ mixin _$CalculateWaterIntakeState {
   });
 }
 
+/// @nodoc
 abstract class $CalculateWaterIntakeStateCopyWith<$Res> {
   factory $CalculateWaterIntakeStateCopyWith(CalculateWaterIntakeState value,
           $Res Function(CalculateWaterIntakeState) then) =
       _$CalculateWaterIntakeStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CalculateWaterIntakeStateCopyWithImpl<$Res>
     implements $CalculateWaterIntakeStateCopyWith<$Res> {
   _$CalculateWaterIntakeStateCopyWithImpl(this._value, this._then);
@@ -405,6 +418,7 @@ class _$CalculateWaterIntakeStateCopyWithImpl<$Res>
   final $Res Function(CalculateWaterIntakeState) _then;
 }
 
+/// @nodoc
 abstract class _$CalculateWaterIntakeInitialCopyWith<$Res> {
   factory _$CalculateWaterIntakeInitialCopyWith(
           _CalculateWaterIntakeInitial value,
@@ -412,6 +426,7 @@ abstract class _$CalculateWaterIntakeInitialCopyWith<$Res> {
       __$CalculateWaterIntakeInitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$CalculateWaterIntakeInitialCopyWithImpl<$Res>
     extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
     implements _$CalculateWaterIntakeInitialCopyWith<$Res> {
@@ -425,6 +440,7 @@ class __$CalculateWaterIntakeInitialCopyWithImpl<$Res>
       super._value as _CalculateWaterIntakeInitial;
 }
 
+/// @nodoc
 class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
   const _$_CalculateWaterIntakeInitial();
 
@@ -503,6 +519,7 @@ abstract class _CalculateWaterIntakeInitial
   const factory _CalculateWaterIntakeInitial() = _$_CalculateWaterIntakeInitial;
 }
 
+/// @nodoc
 abstract class _$CalculateWaterIntakeErrorStateCopyWith<$Res> {
   factory _$CalculateWaterIntakeErrorStateCopyWith(
           _CalculateWaterIntakeErrorState value,
@@ -511,6 +528,7 @@ abstract class _$CalculateWaterIntakeErrorStateCopyWith<$Res> {
   $Res call({String errorMessage});
 }
 
+/// @nodoc
 class __$CalculateWaterIntakeErrorStateCopyWithImpl<$Res>
     extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
     implements _$CalculateWaterIntakeErrorStateCopyWith<$Res> {
@@ -533,6 +551,7 @@ class __$CalculateWaterIntakeErrorStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_CalculateWaterIntakeErrorState
     implements _CalculateWaterIntakeErrorState {
   const _$_CalculateWaterIntakeErrorState(this.errorMessage)
@@ -631,12 +650,14 @@ abstract class _CalculateWaterIntakeErrorState
       get copyWith;
 }
 
+/// @nodoc
 abstract class _$CalculationFinishedCopyWith<$Res> {
   factory _$CalculationFinishedCopyWith(_CalculationFinished value,
           $Res Function(_CalculationFinished) then) =
       __$CalculationFinishedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$CalculationFinishedCopyWithImpl<$Res>
     extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
     implements _$CalculationFinishedCopyWith<$Res> {
@@ -648,6 +669,7 @@ class __$CalculationFinishedCopyWithImpl<$Res>
   _CalculationFinished get _value => super._value as _CalculationFinished;
 }
 
+/// @nodoc
 class _$_CalculationFinished implements _CalculationFinished {
   const _$_CalculationFinished();
 

@@ -9,6 +9,7 @@ part of 'current_water_intake_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CurrentWaterIntakeEventTearOff {
   const _$CurrentWaterIntakeEventTearOff();
 
@@ -42,9 +43,11 @@ class _$CurrentWaterIntakeEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CurrentWaterIntakeEvent = _$CurrentWaterIntakeEventTearOff();
 
+/// @nodoc
 mixin _$CurrentWaterIntakeEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -78,12 +81,14 @@ mixin _$CurrentWaterIntakeEvent {
   });
 }
 
+/// @nodoc
 abstract class $CurrentWaterIntakeEventCopyWith<$Res> {
   factory $CurrentWaterIntakeEventCopyWith(CurrentWaterIntakeEvent value,
           $Res Function(CurrentWaterIntakeEvent) then) =
       _$CurrentWaterIntakeEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CurrentWaterIntakeEventCopyWithImpl<$Res>
     implements $CurrentWaterIntakeEventCopyWith<$Res> {
   _$CurrentWaterIntakeEventCopyWithImpl(this._value, this._then);
@@ -93,6 +98,7 @@ class _$CurrentWaterIntakeEventCopyWithImpl<$Res>
   final $Res Function(CurrentWaterIntakeEvent) _then;
 }
 
+/// @nodoc
 abstract class $WaterIntakeUpdatedEventCopyWith<$Res> {
   factory $WaterIntakeUpdatedEventCopyWith(WaterIntakeUpdatedEvent value,
           $Res Function(WaterIntakeUpdatedEvent) then) =
@@ -100,6 +106,7 @@ abstract class $WaterIntakeUpdatedEventCopyWith<$Res> {
   $Res call({double updatedValue, double waterMaximumHeight});
 }
 
+/// @nodoc
 class _$WaterIntakeUpdatedEventCopyWithImpl<$Res>
     extends _$CurrentWaterIntakeEventCopyWithImpl<$Res>
     implements $WaterIntakeUpdatedEventCopyWith<$Res> {
@@ -126,6 +133,7 @@ class _$WaterIntakeUpdatedEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$WaterIntakeUpdatedEvent
     with DiagnosticableTreeMixin
     implements WaterIntakeUpdatedEvent {
@@ -249,12 +257,14 @@ abstract class WaterIntakeUpdatedEvent implements CurrentWaterIntakeEvent {
   $WaterIntakeUpdatedEventCopyWith<WaterIntakeUpdatedEvent> get copyWith;
 }
 
+/// @nodoc
 abstract class $WaterIntakeStaredEventCopyWith<$Res> {
   factory $WaterIntakeStaredEventCopyWith(WaterIntakeStaredEvent value,
           $Res Function(WaterIntakeStaredEvent) then) =
       _$WaterIntakeStaredEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$WaterIntakeStaredEventCopyWithImpl<$Res>
     extends _$CurrentWaterIntakeEventCopyWithImpl<$Res>
     implements $WaterIntakeStaredEventCopyWith<$Res> {
@@ -266,6 +276,7 @@ class _$WaterIntakeStaredEventCopyWithImpl<$Res>
   WaterIntakeStaredEvent get _value => super._value as WaterIntakeStaredEvent;
 }
 
+/// @nodoc
 class _$WaterIntakeStaredEvent
     with DiagnosticableTreeMixin
     implements WaterIntakeStaredEvent {
@@ -358,6 +369,7 @@ abstract class WaterIntakeStaredEvent implements CurrentWaterIntakeEvent {
   const factory WaterIntakeStaredEvent() = _$WaterIntakeStaredEvent;
 }
 
+/// @nodoc
 abstract class $WaterIntakeManualAddEventCopyWith<$Res> {
   factory $WaterIntakeManualAddEventCopyWith(WaterIntakeManualAddEvent value,
           $Res Function(WaterIntakeManualAddEvent) then) =
@@ -365,6 +377,7 @@ abstract class $WaterIntakeManualAddEventCopyWith<$Res> {
   $Res call({String waterToAdd});
 }
 
+/// @nodoc
 class _$WaterIntakeManualAddEventCopyWithImpl<$Res>
     extends _$CurrentWaterIntakeEventCopyWithImpl<$Res>
     implements $WaterIntakeManualAddEventCopyWith<$Res> {
@@ -387,6 +400,7 @@ class _$WaterIntakeManualAddEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$WaterIntakeManualAddEvent
     with DiagnosticableTreeMixin
     implements WaterIntakeManualAddEvent {
@@ -499,6 +513,7 @@ abstract class WaterIntakeManualAddEvent implements CurrentWaterIntakeEvent {
   $WaterIntakeManualAddEventCopyWith<WaterIntakeManualAddEvent> get copyWith;
 }
 
+/// @nodoc
 abstract class $WaterIntakeManualDecreaseEventCopyWith<$Res> {
   factory $WaterIntakeManualDecreaseEventCopyWith(
           WaterIntakeManualDecreaseEvent value,
@@ -507,6 +522,7 @@ abstract class $WaterIntakeManualDecreaseEventCopyWith<$Res> {
   $Res call({String waterToSubtract});
 }
 
+/// @nodoc
 class _$WaterIntakeManualDecreaseEventCopyWithImpl<$Res>
     extends _$CurrentWaterIntakeEventCopyWithImpl<$Res>
     implements $WaterIntakeManualDecreaseEventCopyWith<$Res> {
@@ -531,6 +547,7 @@ class _$WaterIntakeManualDecreaseEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$WaterIntakeManualDecreaseEvent
     with DiagnosticableTreeMixin
     implements WaterIntakeManualDecreaseEvent {
@@ -646,6 +663,7 @@ abstract class WaterIntakeManualDecreaseEvent
       get copyWith;
 }
 
+/// @nodoc
 class _$CurrentWaterIntakeStateTearOff {
   const _$CurrentWaterIntakeStateTearOff();
 
@@ -681,9 +699,11 @@ class _$CurrentWaterIntakeStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CurrentWaterIntakeState = _$CurrentWaterIntakeStateTearOff();
 
+/// @nodoc
 mixin _$CurrentWaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -721,12 +741,14 @@ mixin _$CurrentWaterIntakeState {
   });
 }
 
+/// @nodoc
 abstract class $CurrentWaterIntakeStateCopyWith<$Res> {
   factory $CurrentWaterIntakeStateCopyWith(CurrentWaterIntakeState value,
           $Res Function(CurrentWaterIntakeState) then) =
       _$CurrentWaterIntakeStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $CurrentWaterIntakeStateCopyWith<$Res> {
   _$CurrentWaterIntakeStateCopyWithImpl(this._value, this._then);
@@ -736,6 +758,7 @@ class _$CurrentWaterIntakeStateCopyWithImpl<$Res>
   final $Res Function(CurrentWaterIntakeState) _then;
 }
 
+/// @nodoc
 abstract class $WaterIntakeInitialStateCopyWith<$Res> {
   factory $WaterIntakeInitialStateCopyWith(WaterIntakeInitialState value,
           $Res Function(WaterIntakeInitialState) then) =
@@ -745,6 +768,7 @@ abstract class $WaterIntakeInitialStateCopyWith<$Res> {
   $HydrateStatusCopyWith<$Res> get initalHydrateStatus;
 }
 
+/// @nodoc
 class _$WaterIntakeInitialStateCopyWithImpl<$Res>
     extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeInitialStateCopyWith<$Res> {
@@ -777,6 +801,7 @@ class _$WaterIntakeInitialStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$WaterIntakeInitialState
     with DiagnosticableTreeMixin
     implements WaterIntakeInitialState {
@@ -895,12 +920,14 @@ abstract class WaterIntakeInitialState implements CurrentWaterIntakeState {
   $WaterIntakeInitialStateCopyWith<WaterIntakeInitialState> get copyWith;
 }
 
+/// @nodoc
 abstract class $WaterIntakeLoadingStateCopyWith<$Res> {
   factory $WaterIntakeLoadingStateCopyWith(WaterIntakeLoadingState value,
           $Res Function(WaterIntakeLoadingState) then) =
       _$WaterIntakeLoadingStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$WaterIntakeLoadingStateCopyWithImpl<$Res>
     extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeLoadingStateCopyWith<$Res> {
@@ -912,6 +939,7 @@ class _$WaterIntakeLoadingStateCopyWithImpl<$Res>
   WaterIntakeLoadingState get _value => super._value as WaterIntakeLoadingState;
 }
 
+/// @nodoc
 class _$WaterIntakeLoadingState
     with DiagnosticableTreeMixin
     implements WaterIntakeLoadingState {
@@ -1010,6 +1038,7 @@ abstract class WaterIntakeLoadingState implements CurrentWaterIntakeState {
   const factory WaterIntakeLoadingState() = _$WaterIntakeLoadingState;
 }
 
+/// @nodoc
 abstract class $WaterIntakeUpdatedStateCopyWith<$Res> {
   factory $WaterIntakeUpdatedStateCopyWith(WaterIntakeUpdatedState value,
           $Res Function(WaterIntakeUpdatedState) then) =
@@ -1019,6 +1048,7 @@ abstract class $WaterIntakeUpdatedStateCopyWith<$Res> {
   $HydrateStatusCopyWith<$Res> get updatedHydrateStatus;
 }
 
+/// @nodoc
 class _$WaterIntakeUpdatedStateCopyWithImpl<$Res>
     extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeUpdatedStateCopyWith<$Res> {
@@ -1051,6 +1081,7 @@ class _$WaterIntakeUpdatedStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$WaterIntakeUpdatedState
     with DiagnosticableTreeMixin
     implements WaterIntakeUpdatedState {
@@ -1169,6 +1200,7 @@ abstract class WaterIntakeUpdatedState implements CurrentWaterIntakeState {
   $WaterIntakeUpdatedStateCopyWith<WaterIntakeUpdatedState> get copyWith;
 }
 
+/// @nodoc
 abstract class $WaterIntakeErrorStateCopyWith<$Res> {
   factory $WaterIntakeErrorStateCopyWith(WaterIntakeErrorState value,
           $Res Function(WaterIntakeErrorState) then) =
@@ -1176,6 +1208,7 @@ abstract class $WaterIntakeErrorStateCopyWith<$Res> {
   $Res call({String errorMessage});
 }
 
+/// @nodoc
 class _$WaterIntakeErrorStateCopyWithImpl<$Res>
     extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeErrorStateCopyWith<$Res> {
@@ -1196,6 +1229,7 @@ class _$WaterIntakeErrorStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$WaterIntakeErrorState
     with DiagnosticableTreeMixin
     implements WaterIntakeErrorState {
@@ -1313,12 +1347,14 @@ abstract class WaterIntakeErrorState implements CurrentWaterIntakeState {
   $WaterIntakeErrorStateCopyWith<WaterIntakeErrorState> get copyWith;
 }
 
+/// @nodoc
 abstract class $WaterIntakeCompletedStateCopyWith<$Res> {
   factory $WaterIntakeCompletedStateCopyWith(WaterIntakeCompletedState value,
           $Res Function(WaterIntakeCompletedState) then) =
       _$WaterIntakeCompletedStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$WaterIntakeCompletedStateCopyWithImpl<$Res>
     extends _$CurrentWaterIntakeStateCopyWithImpl<$Res>
     implements $WaterIntakeCompletedStateCopyWith<$Res> {
@@ -1331,6 +1367,7 @@ class _$WaterIntakeCompletedStateCopyWithImpl<$Res>
       super._value as WaterIntakeCompletedState;
 }
 
+/// @nodoc
 class _$WaterIntakeCompletedState
     with DiagnosticableTreeMixin
     implements WaterIntakeCompletedState {

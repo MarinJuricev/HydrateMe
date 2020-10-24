@@ -33,7 +33,7 @@ dependencies:
   flutter_xlider: ^3.4.0
 
   # Adds Kotlin like data classes, exhaustive when statement and much more.
-  freezed_annotation: ^0.11.0+1
+  freezed_annotation: ^0.12.0
   # Functional lib, provides Either type and much more
   dartz: ^0.9.1
   # Local Persistance
@@ -65,10 +65,10 @@ dev_dependencies:
     sdk: flutter
   test: ^1.15.3
   mockito: ^4.1.2
-  hive_generator: ^0.7.1
+  hive_generator: ^0.8.1
 
-  build_runner: ^1.10.2
-  freezed: ^0.11.5
+  build_runner: ^1.10.3
+  freezed: ^0.12.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

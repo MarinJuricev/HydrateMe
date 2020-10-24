@@ -1,7 +1,10 @@
 import 'package:HydrateMe/data/data_source/local_persistence_provider.dart';
 import 'package:HydrateMe/data/data_source/user_data_local_data_source.dart';
 import 'package:HydrateMe/data/mapper/user_data_to_local_user_data_mapper.dart';
+import 'package:HydrateMe/data/model/local_activity_level.dart';
+import 'package:HydrateMe/data/model/local_gender.dart';
 import 'package:HydrateMe/data/model/local_user_data.dart';
+import 'package:HydrateMe/data/model/local_weight_type.dart';
 import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:HydrateMe/domain/model/user_data.dart';
@@ -31,13 +34,15 @@ void main() {
     activityLevel: ActivityLevel.active,
   );
 
+  final testDate = DateTime.now();
+
   final testLocalUserData = LocalUserData(
-    wakeUpTime: TimeOfDay.now(),
-    sleepTime: TimeOfDay.now(),
+    wakeUpTime: testDate,
+    sleepTime: testDate,
     currentWeight: 75,
-    gender: Gender.male,
-    weightType: WeightType.kg,
-    activityLevel: ActivityLevel.active,
+    gender: LocalGender.male,
+    weightType: LocalWeightType.kg,
+    activityLevel: LocalActivityLevel.active,
   );
 
   setUp(
