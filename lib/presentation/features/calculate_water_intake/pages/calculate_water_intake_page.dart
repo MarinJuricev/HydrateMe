@@ -1,4 +1,3 @@
-import 'package:HydrateMe/presentation/features/bottom_nav/bottom_navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,6 +11,7 @@ import '../widget/activity_selection.dart';
 import '../widget/gender_toggle.dart';
 import '../widget/hydrate_text_with_icon.dart';
 import '../widget/time_selection.dart';
+import '../widget/water_transition.dart';
 import '../widget/weight_selection.dart';
 
 class CalculateWaterIntakePage extends StatefulWidget {
@@ -45,27 +45,15 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
         body: BlocProvider<CalculateWaterIntakeBloc>(
           create: (blocContext) => di.getIt<CalculateWaterIntakeBloc>(),
           child:
-              BlocConsumer<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
-            buildWhen: (previousState, newState) {
-              return (newState !=
-                  CalculateWaterIntakeState.calculationFinished());
-            },
+              BlocBuilder<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
             builder: (blocContext, state) {
-              return state.maybeWhen(
+              return state.when(
                 initial: () => _buildInitialState(blocContext),
                 error: (errorMessage) =>
+                    //TODO Add a generic unknown error occured widget
                     Text('PlaceHolder Error Text: $errorMessage'),
-                orElse: () =>
-                    Container(), //TODO Add a generic unknown error occured widget
+                calculationFinished: () => WaterTransition(),
               );
-            },
-            listenWhen: (previousState, newState) {
-              return (newState ==
-                  CalculateWaterIntakeState.calculationFinished());
-            },
-            listener: (blocContext, state) {
-              return state.maybeWhen(
-                  calculationFinished: _navigateToDisplayPage(), orElse: null);
             },
           ),
         ),
@@ -192,15 +180,6 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
           ),
         )
       ],
-    );
-  }
-
-  _navigateToDisplayPage() {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => BottomNavigationPage(),
-      ),
     );
   }
 }

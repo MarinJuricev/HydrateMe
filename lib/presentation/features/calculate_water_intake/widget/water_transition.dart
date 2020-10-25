@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 
-import '../../display_current_water_intake/bloc/current_water_intake_bloc.dart';
+import '../../bottom_nav/bottom_navigation_page.dart';
 
 class WaterTransition extends StatefulWidget {
   WaterTransition({Key key}) : super(key: key);
@@ -29,18 +28,24 @@ class _WaterTransitionState extends State<WaterTransition>
       duration: _animationDuration,
     )..addListener(() => setState(() {}));
 
-    _controller.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        Future.delayed(
-          Duration(milliseconds: 1000),
-        ).then(
-          (value) => {
-            BlocProvider.of<CurrentWaterIntakeBloc>(context)
-                .add(CurrentWaterIntakeEvent.started())
-          },
-        );
-      }
-    });
+    _controller.addStatusListener(
+      (status) {
+        if (status == AnimationStatus.completed) {
+          Future.delayed(
+            Duration(milliseconds: 1000),
+          ).then(
+            (value) => {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BottomNavigationPage(),
+                ),
+              )
+            },
+          );
+        }
+      },
+    );
   }
 
   @override

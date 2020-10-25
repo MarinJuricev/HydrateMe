@@ -1,7 +1,10 @@
 import 'package:HydrateMe/core/mapper/base_mapper.dart';
 import 'package:HydrateMe/data/data_source/time_provider.dart';
 import 'package:HydrateMe/data/mapper/user_data_to_local_user_data_mapper.dart';
+import 'package:HydrateMe/data/model/local_activity_level.dart';
+import 'package:HydrateMe/data/model/local_gender.dart';
 import 'package:HydrateMe/data/model/local_user_data.dart';
+import 'package:HydrateMe/data/model/local_weight_type.dart';
 import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:HydrateMe/domain/model/user_data.dart';
@@ -12,24 +15,44 @@ import 'package:mockito/mockito.dart';
 
 class MockTimeProvider extends Mock implements TimeProvider {}
 
+class MockGenderMapper extends Mock implements Mapper<LocalGender, Gender> {}
+
+class MockActivityMapper extends Mock
+    implements Mapper<LocalActivityLevel, ActivityLevel> {}
+
+class MockWeightTypeMapper extends Mock
+    implements Mapper<LocalWeightType, WeightType> {}
+
 void main() {
+  MockGenderMapper _mockGenderMapper;
+  MockActivityMapper _mockActivityMapper;
+  MockWeightTypeMapper _mockWeightTypeMapper;
   MockTimeProvider _mockTimeProvider;
 
   Mapper<LocalUserData, UserData> sut;
-  final testActivityLevel = ActivityLevel.active;
   final testCurrentWeight = 75;
-  final testGender = Gender.male;
+  final testDateTime = DateTime.now();
   final testSleepTime = TimeOfDay(hour: 23, minute: 0);
   final testWakeUpTime = TimeOfDay(hour: 7, minute: 0);
+  final testGender = Gender.male;
   final testWeightType = WeightType.kg;
-  final testDateTime = DateTime.now();
+  final testActivityLevel = ActivityLevel.active;
+  final testLocalGender = LocalGender.male;
+  final testLocalWeightType = LocalWeightType.kg;
+  final testLocalActivityLevel = LocalActivityLevel.active;
 
   setUp(
     () {
+      _mockGenderMapper = MockGenderMapper();
+      _mockActivityMapper = MockActivityMapper();
+      _mockWeightTypeMapper = MockWeightTypeMapper();
       _mockTimeProvider = MockTimeProvider();
 
       sut = UserDataToLocalUserDataMapper(
         timeProvider: _mockTimeProvider,
+        activityLevelMapper: _mockActivityMapper,
+        genderMaper: _mockGenderMapper,
+        weightTypeMapper: _mockWeightTypeMapper,
       );
     },
   );
@@ -38,6 +61,12 @@ void main() {
     'map should return a valid LocalUserData instance',
     () async {
       when(_mockTimeProvider.getCurrentDate()).thenReturn(testDateTime);
+      when(_mockWeightTypeMapper.map(testWeightType))
+          .thenAnswer((_) => Future.value(testLocalWeightType));
+      when(_mockActivityMapper.map(testActivityLevel))
+          .thenAnswer((_) => Future.value(testLocalActivityLevel));
+      when(_mockGenderMapper.map(testGender))
+          .thenAnswer((_) => Future.value(testLocalGender));
 
       final testUserData = UserData(
         activityLevel: testActivityLevel,
@@ -48,29 +77,29 @@ void main() {
         weightType: testWeightType,
       );
 
-      // final actualResult = await sut.map(testUserData);
-      // final expectedResult = LocalUserData(
-      //   wakeUpTime: DateTime(
-      //     testDateTime.year,
-      //     testDateTime.month,
-      //     testDateTime.day,
-      //     testWakeUpTime.hour,
-      //     testWakeUpTime.minute,
-      //   ),
-      //   sleepTime: DateTime(
-      //     testDateTime.year,
-      //     testDateTime.month,
-      //     testDateTime.day,
-      //     testSleepTime.hour,
-      //     testSleepTime.minute,
-      //   ),
-      //   currentWeight: testCurrentWeight,
-      //   gender: testGender,
-      //   weightType: testWeightType,
-      //   activityLevel: testActivityLevel,
-      // );
+      final actualResult = await sut.map(testUserData);
+      final expectedResult = LocalUserData(
+        wakeUpTime: DateTime(
+          testDateTime.year,
+          testDateTime.month,
+          testDateTime.day,
+          testWakeUpTime.hour,
+          testWakeUpTime.minute,
+        ),
+        sleepTime: DateTime(
+          testDateTime.year,
+          testDateTime.month,
+          testDateTime.day,
+          testSleepTime.hour,
+          testSleepTime.minute,
+        ),
+        currentWeight: testCurrentWeight,
+        gender: testLocalGender,
+        weightType: testLocalWeightType,
+        activityLevel: testLocalActivityLevel,
+      );
 
-      // expect(actualResult, null);
+      expect(actualResult, expectedResult);
     },
   );
 }
