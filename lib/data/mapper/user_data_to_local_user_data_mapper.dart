@@ -13,13 +13,13 @@ import 'package:flutter/foundation.dart';
 class UserDataToLocalUserDataMapper extends Mapper<LocalUserData, UserData> {
   final TimeProvider timeProvider;
   final Mapper<LocalActivityLevel, ActivityLevel> activityLevelMapper;
-  final Mapper<LocalGender, Gender> genderMaper;
+  final Mapper<LocalGender, Gender> genderMapper;
   final Mapper<LocalWeightType, WeightType> weightTypeMapper;
 
   UserDataToLocalUserDataMapper({
     @required this.timeProvider,
     @required this.activityLevelMapper,
-    @required this.genderMaper,
+    @required this.genderMapper,
     @required this.weightTypeMapper,
   });
 
@@ -31,7 +31,7 @@ class UserDataToLocalUserDataMapper extends Mapper<LocalUserData, UserData> {
       LocalUserData(
         activityLevel: await activityLevelMapper.map(origin.activityLevel),
         currentWeight: origin.currentWeight,
-        gender: await genderMaper.map(origin.gender),
+        gender: await genderMapper.map(origin.gender),
         sleepTime: DateTime(
           currentTime.year,
           currentTime.month,

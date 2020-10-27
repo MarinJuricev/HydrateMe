@@ -1,6 +1,5 @@
 import 'package:HydrateMe/core/mapper/base_mapper.dart';
-import 'package:HydrateMe/data/data_source/time_provider.dart';
-import 'package:HydrateMe/data/mapper/user_data_to_local_user_data_mapper.dart';
+import 'package:HydrateMe/data/mapper/local_user_data_to_user_data_mapper.dart';
 import 'package:HydrateMe/data/model/local_activity_level.dart';
 import 'package:HydrateMe/data/model/local_gender.dart';
 import 'package:HydrateMe/data/model/local_user_data.dart';
@@ -13,23 +12,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-class MockTimeProvider extends Mock implements TimeProvider {}
+class MockLocalGenderMapper extends Mock
+    implements Mapper<Gender, LocalGender> {}
 
-class MockGenderMapper extends Mock implements Mapper<LocalGender, Gender> {}
+class MockLocalActivityMapper extends Mock
+    implements Mapper<ActivityLevel, LocalActivityLevel> {}
 
-class MockActivityMapper extends Mock
-    implements Mapper<LocalActivityLevel, ActivityLevel> {}
-
-class MockWeightTypeMapper extends Mock
-    implements Mapper<LocalWeightType, WeightType> {}
+class MockLocalWeightTypeMapper extends Mock
+    implements Mapper<WeightType, LocalWeightType> {}
 
 void main() {
-  MockGenderMapper _mockGenderMapper;
-  MockActivityMapper _mockActivityMapper;
-  MockWeightTypeMapper _mockWeightTypeMapper;
-  MockTimeProvider _mockTimeProvider;
+  MockLocalGenderMapper _mockGenderMapper;
+  MockLocalActivityMapper _mockActivityMapper;
+  MockLocalWeightTypeMapper _mockWeightTypeMapper;
 
-  Mapper<LocalUserData, UserData> sut;
+  Mapper<UserData, LocalUserData> sut;
   final testCurrentWeight = 75;
   final testDateTime = DateTime.now();
   final testSleepTime = TimeOfDay(hour: 23, minute: 0);
@@ -43,13 +40,11 @@ void main() {
 
   setUp(
     () {
-      _mockGenderMapper = MockGenderMapper();
-      _mockActivityMapper = MockActivityMapper();
-      _mockWeightTypeMapper = MockWeightTypeMapper();
-      _mockTimeProvider = MockTimeProvider();
+      _mockGenderMapper = MockLocalGenderMapper();
+      _mockActivityMapper = MockLocalActivityMapper();
+      _mockWeightTypeMapper = MockLocalWeightTypeMapper();
 
-      sut = UserDataToLocalUserDataMapper(
-        timeProvider: _mockTimeProvider,
+      sut = LocalUserDataToUserDataMapper(
         activityLevelMapper: _mockActivityMapper,
         genderMapper: _mockGenderMapper,
         weightTypeMapper: _mockWeightTypeMapper,
@@ -58,27 +53,16 @@ void main() {
   );
 
   test(
-    'map should return a valid LocalUserData instance',
+    'map should return a valid UserData instance',
     () async {
-      when(_mockTimeProvider.getCurrentDate()).thenReturn(testDateTime);
-      when(_mockWeightTypeMapper.map(testWeightType))
-          .thenAnswer((_) => Future.value(testLocalWeightType));
-      when(_mockActivityMapper.map(testActivityLevel))
-          .thenAnswer((_) => Future.value(testLocalActivityLevel));
-      when(_mockGenderMapper.map(testGender))
-          .thenAnswer((_) => Future.value(testLocalGender));
+      when(_mockWeightTypeMapper.map(testLocalWeightType))
+          .thenAnswer((_) => Future.value(testWeightType));
+      when(_mockActivityMapper.map(testLocalActivityLevel))
+          .thenAnswer((_) => Future.value(testActivityLevel));
+      when(_mockGenderMapper.map(testLocalGender))
+          .thenAnswer((_) => Future.value(testGender));
 
-      final testUserData = UserData(
-        activityLevel: testActivityLevel,
-        currentWeight: testCurrentWeight,
-        gender: testGender,
-        sleepTime: testSleepTime,
-        wakeUpTime: testWakeUpTime,
-        weightType: testWeightType,
-      );
-
-      final actualResult = await sut.map(testUserData);
-      final expectedResult = LocalUserData(
+      final testLocalUserData = LocalUserData(
         wakeUpTime: DateTime(
           testDateTime.year,
           testDateTime.month,
@@ -97,6 +81,22 @@ void main() {
         gender: testLocalGender,
         weightType: testLocalWeightType,
         activityLevel: testLocalActivityLevel,
+      );
+
+      final actualResult = await sut.map(testLocalUserData);
+      final expectedResult = UserData(
+        activityLevel: testActivityLevel,
+        currentWeight: testCurrentWeight,
+        gender: testGender,
+        weightType: testWeightType,
+        sleepTime: TimeOfDay(
+          hour: testSleepTime.hour,
+          minute: testSleepTime.minute,
+        ),
+        wakeUpTime: TimeOfDay(
+          hour: testWakeUpTime.hour,
+          minute: testWakeUpTime.minute,
+        ),
       );
 
       expect(actualResult, expectedResult);

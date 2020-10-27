@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../domain/model/hydrate_status.dart';
-import '../../../../service_locator.dart' as di;
 import '../bloc/current_water_intake_bloc.dart';
 import '../widget/manual_water_intake.dart';
 import '../widget/particles.dart';
@@ -17,28 +16,25 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
       backgroundColor: Colors.blue,
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: BlocProvider(
-          create: (BuildContext context) => di.getIt<CurrentWaterIntakeBloc>(),
-          child: BlocBuilder<CurrentWaterIntakeBloc, CurrentWaterIntakeState>(
-            builder: (context, state) {
-              return state.when(
-                initial: (HydrateStatus initialHydrateStatus) =>
-                    _buildWaterIntake(initialHydrateStatus),
-                updated: (HydrateStatus hydrateStatus) =>
-                    _buildWaterIntake(hydrateStatus),
-                completed: () => _buildWaterIntake(
-                  HydrateStatus(
-                    hydrationPercentage: 0,
-                    formattedCurrentIntake: '0',
-                    currentIntake: 0,
-                    dailyIntakeGoal: 0,
-                  ),
+        child: BlocBuilder<CurrentWaterIntakeBloc, CurrentWaterIntakeState>(
+          builder: (context, state) {
+            return state.when(
+              initial: (HydrateStatus initialHydrateStatus) =>
+                  _buildWaterIntake(initialHydrateStatus),
+              updated: (HydrateStatus hydrateStatus) =>
+                  _buildWaterIntake(hydrateStatus),
+              completed: () => _buildWaterIntake(
+                HydrateStatus(
+                  hydrationPercentage: 0,
+                  formattedCurrentIntake: '0',
+                  currentIntake: 0,
+                  dailyIntakeGoal: 0,
                 ),
-                error: (String errorMessage) => Text(errorMessage),
-                loading: () => _buildLoading(context),
-              );
-            },
-          ),
+              ),
+              error: (String errorMessage) => Text(errorMessage),
+              loading: () => _buildLoading(context),
+            );
+          },
         ),
       ),
     );
@@ -48,6 +44,10 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
 _buildLoading(BuildContext context) {
   BlocProvider.of<CurrentWaterIntakeBloc>(context)
       .add(CurrentWaterIntakeEvent.started());
+
+  return Center(
+    child: CircularProgressIndicator(),
+  );
 }
 
 Widget _buildWaterIntake(HydrateStatus hydrateStatus) {
