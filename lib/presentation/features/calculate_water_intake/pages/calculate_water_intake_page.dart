@@ -12,6 +12,7 @@ import '../widget/hydrate_text_with_icon.dart';
 import '../widget/time_selection.dart';
 import '../widget/water_transition.dart';
 import '../widget/weight_selection.dart';
+import '../../../../service_locator.dart' as di;
 
 class CalculateWaterIntakePage extends StatefulWidget {
   static const CALCULATE_WATER_INTAKE_PAGE = '/calculateIntakePage';
@@ -41,16 +42,20 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey.shade200,
-        body: BlocBuilder<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
-          builder: (blocContext, state) {
-            return state.when(
-              initial: () => _buildInitialState(blocContext),
-              error: (errorMessage) =>
-                  //TODO Add a generic unknown error occured widget
-                  Text('PlaceHolder Error Text: $errorMessage'),
-              calculationFinished: () => WaterTransition(),
-            );
-          },
+        body: BlocProvider<CalculateWaterIntakeBloc>(
+          create: (blocContext) => di.getIt<CalculateWaterIntakeBloc>(),
+          child:
+              BlocBuilder<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
+            builder: (blocContext, state) {
+              return state.when(
+                initial: () => _buildInitialState(blocContext),
+                error: (errorMessage) =>
+                    //TODO Add a generic unknown error occured widget
+                    Text('PlaceHolder Error Text: $errorMessage'),
+                calculationFinished: () => WaterTransition(),
+              );
+            },
+          ),
         ),
       ),
     );

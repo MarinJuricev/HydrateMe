@@ -31,6 +31,7 @@ import 'domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'domain/usecases/calculate_daily_water_intake.dart';
 import 'domain/usecases/calculate_waves_percentage.dart';
 import 'domain/usecases/get_current_hydrate_status.dart';
+import 'domain/usecases/get_user_data.dart';
 import 'domain/usecases/kg_to_lbs_converter.dart';
 import 'domain/usecases/manual_add_water_intake.dart';
 import 'domain/usecases/manual_decrease_water_intake.dart';
@@ -55,7 +56,7 @@ Future<void> init() async {
   );
   getIt.registerFactory(
       () => CalculateWaterIntakeBloc(getIt<CalculateDailyWaterIntake>()));
-  getIt.registerFactory(() => SettingsBloc());
+  getIt.registerFactory(() => SettingsBloc(getUserData: getIt<GetUserData>()));
 
   //Usecase
   getIt.registerFactory(
@@ -87,6 +88,8 @@ Future<void> init() async {
       ));
   getIt.registerFactory(
       () => SaveUserData(userDataRepository: getIt<UserDataRepository>()));
+  getIt.registerFactory(
+      () => GetUserData(userDataRepository: getIt<UserDataRepository>()));
 
   //Datasources
   getIt.registerLazySingleton<LocalPersistenceProvider>(

@@ -154,8 +154,17 @@ class _$SettingsStateTearOff {
   }
 
 // ignore: unused_element
-  _Loaded loaded() {
-    return const _Loaded();
+  _Error error(String errorMessage) {
+    return _Error(
+      errorMessage,
+    );
+  }
+
+// ignore: unused_element
+  _Loaded loaded(UserData userData) {
+    return _Loaded(
+      userData,
+    );
   }
 }
 
@@ -168,22 +177,26 @@ mixin _$SettingsState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loaded(),
+    @required Result error(String errorMessage),
+    @required Result loaded(UserData userData),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loaded(),
+    Result error(String errorMessage),
+    Result loaded(UserData userData),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
+    @required Result error(_Error value),
     @required Result loaded(_Loaded value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
+    Result error(_Error value),
     Result loaded(_Loaded value),
     @required Result orElse(),
   });
@@ -243,9 +256,11 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loaded(),
+    @required Result error(String errorMessage),
+    @required Result loaded(UserData userData),
   }) {
     assert(initial != null);
+    assert(error != null);
     assert(loaded != null);
     return initial();
   }
@@ -254,7 +269,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loaded(),
+    Result error(String errorMessage),
+    Result loaded(UserData userData),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -268,9 +284,11 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
+    @required Result error(_Error value),
     @required Result loaded(_Loaded value),
   }) {
     assert(initial != null);
+    assert(error != null);
     assert(loaded != null);
     return initial(this);
   }
@@ -279,6 +297,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
+    Result error(_Error value),
     Result loaded(_Loaded value),
     @required Result orElse(),
   }) {
@@ -295,9 +314,129 @@ abstract class _Initial implements SettingsState {
 }
 
 /// @nodoc
+abstract class _$ErrorCopyWith<$Res> {
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
+      __$ErrorCopyWithImpl<$Res>;
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$ErrorCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
+      : super(_value, (v) => _then(v as _Error));
+
+  @override
+  _Error get _value => super._value as _Error;
+
+  @override
+  $Res call({
+    Object errorMessage = freezed,
+  }) {
+    return _then(_Error(
+      errorMessage == freezed ? _value.errorMessage : errorMessage as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_Error implements _Error {
+  const _$_Error(this.errorMessage) : assert(errorMessage != null);
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'SettingsState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Error &&
+            (identical(other.errorMessage, errorMessage) ||
+                const DeepCollectionEquality()
+                    .equals(other.errorMessage, errorMessage)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(errorMessage);
+
+  @override
+  _$ErrorCopyWith<_Error> get copyWith =>
+      __$ErrorCopyWithImpl<_Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result error(String errorMessage),
+    @required Result loaded(UserData userData),
+  }) {
+    assert(initial != null);
+    assert(error != null);
+    assert(loaded != null);
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result error(String errorMessage),
+    Result loaded(UserData userData),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result error(_Error value),
+    @required Result loaded(_Loaded value),
+  }) {
+    assert(initial != null);
+    assert(error != null);
+    assert(loaded != null);
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result error(_Error value),
+    Result loaded(_Loaded value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error implements SettingsState {
+  const factory _Error(String errorMessage) = _$_Error;
+
+  String get errorMessage;
+  _$ErrorCopyWith<_Error> get copyWith;
+}
+
+/// @nodoc
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
+  $Res call({UserData userData});
 }
 
 /// @nodoc
@@ -308,46 +447,70 @@ class __$LoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
 
   @override
   _Loaded get _value => super._value as _Loaded;
+
+  @override
+  $Res call({
+    Object userData = freezed,
+  }) {
+    return _then(_Loaded(
+      userData == freezed ? _value.userData : userData as UserData,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_Loaded implements _Loaded {
-  const _$_Loaded();
+  const _$_Loaded(this.userData) : assert(userData != null);
+
+  @override
+  final UserData userData;
 
   @override
   String toString() {
-    return 'SettingsState.loaded()';
+    return 'SettingsState.loaded(userData: $userData)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Loaded);
+    return identical(this, other) ||
+        (other is _Loaded &&
+            (identical(other.userData, userData) ||
+                const DeepCollectionEquality()
+                    .equals(other.userData, userData)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userData);
+
+  @override
+  _$LoadedCopyWith<_Loaded> get copyWith =>
+      __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result loaded(),
+    @required Result error(String errorMessage),
+    @required Result loaded(UserData userData),
   }) {
     assert(initial != null);
+    assert(error != null);
     assert(loaded != null);
-    return loaded();
+    return loaded(userData);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result loaded(),
+    Result error(String errorMessage),
+    Result loaded(UserData userData),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (loaded != null) {
-      return loaded();
+      return loaded(userData);
     }
     return orElse();
   }
@@ -356,9 +519,11 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
+    @required Result error(_Error value),
     @required Result loaded(_Loaded value),
   }) {
     assert(initial != null);
+    assert(error != null);
     assert(loaded != null);
     return loaded(this);
   }
@@ -367,6 +532,7 @@ class _$_Loaded implements _Loaded {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
+    Result error(_Error value),
     Result loaded(_Loaded value),
     @required Result orElse(),
   }) {
@@ -379,5 +545,8 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements SettingsState {
-  const factory _Loaded() = _$_Loaded;
+  const factory _Loaded(UserData userData) = _$_Loaded;
+
+  UserData get userData;
+  _$LoadedCopyWith<_Loaded> get copyWith;
 }
