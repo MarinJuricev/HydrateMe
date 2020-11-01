@@ -75,6 +75,7 @@ Future<void> init() async {
         waterIntakeRepository: getIt<WaterIntakeRepository>(),
         notificationRepository: getIt<NotificationRepository>(),
         saveUserData: getIt<SaveUserData>(),
+        timeProvider: getIt<TimeProvider>(),
       ));
   getIt.registerFactory(() => GetCurrentHydrateStatus(
       waterIntakeRepository: getIt<WaterIntakeRepository>()));

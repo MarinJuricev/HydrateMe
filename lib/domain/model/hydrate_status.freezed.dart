@@ -18,12 +18,14 @@ class _$HydrateStatusTearOff {
       {@required double hydrationPercentage,
       @required String formattedCurrentIntake,
       @required int dailyIntakeGoal,
-      @required int currentIntake}) {
+      @required int currentIntake,
+      @required DateTime date}) {
     return _HydrateStatus(
       hydrationPercentage: hydrationPercentage,
       formattedCurrentIntake: formattedCurrentIntake,
       dailyIntakeGoal: dailyIntakeGoal,
       currentIntake: currentIntake,
+      date: date,
     );
   }
 }
@@ -39,6 +41,7 @@ mixin _$HydrateStatus {
   String get formattedCurrentIntake;
   int get dailyIntakeGoal;
   int get currentIntake;
+  DateTime get date;
 
   $HydrateStatusCopyWith<HydrateStatus> get copyWith;
 }
@@ -52,7 +55,8 @@ abstract class $HydrateStatusCopyWith<$Res> {
       {double hydrationPercentage,
       String formattedCurrentIntake,
       int dailyIntakeGoal,
-      int currentIntake});
+      int currentIntake,
+      DateTime date});
 }
 
 /// @nodoc
@@ -70,6 +74,7 @@ class _$HydrateStatusCopyWithImpl<$Res>
     Object formattedCurrentIntake = freezed,
     Object dailyIntakeGoal = freezed,
     Object currentIntake = freezed,
+    Object date = freezed,
   }) {
     return _then(_value.copyWith(
       hydrationPercentage: hydrationPercentage == freezed
@@ -84,6 +89,7 @@ class _$HydrateStatusCopyWithImpl<$Res>
       currentIntake: currentIntake == freezed
           ? _value.currentIntake
           : currentIntake as int,
+      date: date == freezed ? _value.date : date as DateTime,
     ));
   }
 }
@@ -99,7 +105,8 @@ abstract class _$HydrateStatusCopyWith<$Res>
       {double hydrationPercentage,
       String formattedCurrentIntake,
       int dailyIntakeGoal,
-      int currentIntake});
+      int currentIntake,
+      DateTime date});
 }
 
 /// @nodoc
@@ -119,6 +126,7 @@ class __$HydrateStatusCopyWithImpl<$Res>
     Object formattedCurrentIntake = freezed,
     Object dailyIntakeGoal = freezed,
     Object currentIntake = freezed,
+    Object date = freezed,
   }) {
     return _then(_HydrateStatus(
       hydrationPercentage: hydrationPercentage == freezed
@@ -133,6 +141,7 @@ class __$HydrateStatusCopyWithImpl<$Res>
       currentIntake: currentIntake == freezed
           ? _value.currentIntake
           : currentIntake as int,
+      date: date == freezed ? _value.date : date as DateTime,
     ));
   }
 }
@@ -143,11 +152,13 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
       {@required this.hydrationPercentage,
       @required this.formattedCurrentIntake,
       @required this.dailyIntakeGoal,
-      @required this.currentIntake})
+      @required this.currentIntake,
+      @required this.date})
       : assert(hydrationPercentage != null),
         assert(formattedCurrentIntake != null),
         assert(dailyIntakeGoal != null),
-        assert(currentIntake != null);
+        assert(currentIntake != null),
+        assert(date != null);
 
   @override // Used to render the waves widget, it should range from [0.0 - 1.0]
   final double hydrationPercentage;
@@ -157,10 +168,12 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
   final int dailyIntakeGoal;
   @override
   final int currentIntake;
+  @override
+  final DateTime date;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'HydrateStatus(hydrationPercentage: $hydrationPercentage, formattedCurrentIntake: $formattedCurrentIntake, dailyIntakeGoal: $dailyIntakeGoal, currentIntake: $currentIntake)';
+    return 'HydrateStatus(hydrationPercentage: $hydrationPercentage, formattedCurrentIntake: $formattedCurrentIntake, dailyIntakeGoal: $dailyIntakeGoal, currentIntake: $currentIntake, date: $date)';
   }
 
   @override
@@ -172,7 +185,8 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
       ..add(
           DiagnosticsProperty('formattedCurrentIntake', formattedCurrentIntake))
       ..add(DiagnosticsProperty('dailyIntakeGoal', dailyIntakeGoal))
-      ..add(DiagnosticsProperty('currentIntake', currentIntake));
+      ..add(DiagnosticsProperty('currentIntake', currentIntake))
+      ..add(DiagnosticsProperty('date', date));
   }
 
   @override
@@ -190,7 +204,9 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
                     .equals(other.dailyIntakeGoal, dailyIntakeGoal)) &&
             (identical(other.currentIntake, currentIntake) ||
                 const DeepCollectionEquality()
-                    .equals(other.currentIntake, currentIntake)));
+                    .equals(other.currentIntake, currentIntake)) &&
+            (identical(other.date, date) ||
+                const DeepCollectionEquality().equals(other.date, date)));
   }
 
   @override
@@ -199,7 +215,8 @@ class _$_HydrateStatus with DiagnosticableTreeMixin implements _HydrateStatus {
       const DeepCollectionEquality().hash(hydrationPercentage) ^
       const DeepCollectionEquality().hash(formattedCurrentIntake) ^
       const DeepCollectionEquality().hash(dailyIntakeGoal) ^
-      const DeepCollectionEquality().hash(currentIntake);
+      const DeepCollectionEquality().hash(currentIntake) ^
+      const DeepCollectionEquality().hash(date);
 
   @override
   _$HydrateStatusCopyWith<_HydrateStatus> get copyWith =>
@@ -211,7 +228,8 @@ abstract class _HydrateStatus implements HydrateStatus {
       {@required double hydrationPercentage,
       @required String formattedCurrentIntake,
       @required int dailyIntakeGoal,
-      @required int currentIntake}) = _$_HydrateStatus;
+      @required int currentIntake,
+      @required DateTime date}) = _$_HydrateStatus;
 
   @override // Used to render the waves widget, it should range from [0.0 - 1.0]
   double get hydrationPercentage;
@@ -221,6 +239,8 @@ abstract class _HydrateStatus implements HydrateStatus {
   int get dailyIntakeGoal;
   @override
   int get currentIntake;
+  @override
+  DateTime get date;
   @override
   _$HydrateStatusCopyWith<_HydrateStatus> get copyWith;
 }

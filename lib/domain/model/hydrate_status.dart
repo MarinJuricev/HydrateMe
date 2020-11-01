@@ -11,5 +11,6 @@ abstract class HydrateStatus with _$HydrateStatus {
     @required String formattedCurrentIntake,
     @required int dailyIntakeGoal,
     @required int currentIntake,
+    @required DateTime date,
   }) = _HydrateStatus;
 }

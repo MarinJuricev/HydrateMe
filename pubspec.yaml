@@ -67,7 +67,7 @@ dev_dependencies:
   mockito: ^4.1.2
   hive_generator: ^0.8.1
 
-  build_runner: ^1.10.3
+  build_runner: ^1.10.4
   freezed: ^0.12.2
 
 # For information on the generic Dart part of this file, see the

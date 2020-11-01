@@ -20,11 +20,14 @@ void main() {
   const String TEST_WATER_TO_ADD = '200';
   const int TEST_FORMATTED_TEST_WATER_TO_ADD = 200;
 
+  final testDate = DateTime.now();
+
   final testHydrateStatus = HydrateStatus(
     hydrationPercentage: 0,
     formattedCurrentIntake: '',
     dailyIntakeGoal: 1000,
     currentIntake: 0,
+    date: testDate,
   );
 
   final testHydrateStatusWithAddedCurrentIntake = HydrateStatus(
@@ -32,6 +35,7 @@ void main() {
     formattedCurrentIntake: '',
     dailyIntakeGoal: 1000,
     currentIntake: 999,
+    date: testDate,
   );
 
   setUp(
@@ -111,6 +115,7 @@ void main() {
         formattedCurrentIntake: '200/1000',
         currentIntake: 200,
         dailyIntakeGoal: 1000,
+        date: testDate,
       );
       final expectedResult = Right(expectedHydrateStatus);
 
@@ -137,6 +142,7 @@ void main() {
         formattedCurrentIntake: '1000/1000',
         currentIntake: 1000,
         dailyIntakeGoal: 1000,
+        date: testDate,
       );
       final expectedResult = Right(expectedHydrateStatus);
 
