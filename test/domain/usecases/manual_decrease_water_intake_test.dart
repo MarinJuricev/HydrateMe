@@ -25,6 +25,7 @@ void main() {
     formattedCurrentIntake: '',
     dailyIntakeGoal: 1000,
     currentIntake: 0,
+    date: DateTime.now(),
   );
 
   final testHydrateStatusWithAddedCurrentIntake = HydrateStatus(
@@ -32,6 +33,7 @@ void main() {
     formattedCurrentIntake: '',
     dailyIntakeGoal: 1000,
     currentIntake: 900,
+    date: DateTime.now(),
   );
 
   setUp(
@@ -114,6 +116,7 @@ void main() {
         formattedCurrentIntake: '700/1000',
         currentIntake: 700,
         dailyIntakeGoal: 1000,
+        date: testHydrateStatusWithAddedCurrentIntake.date,
       );
       final expectedResult = Right(expectedHydrateStatus);
 
@@ -139,6 +142,7 @@ void main() {
         formattedCurrentIntake: '0/1000',
         currentIntake: 0,
         dailyIntakeGoal: 1000,
+        date: testHydrateStatus.date,
       );
       final expectedResult = Right(expectedHydrateStatus);
 

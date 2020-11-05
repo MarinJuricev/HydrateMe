@@ -1,3 +1,4 @@
+import 'package:HydrateMe/data/data_source/time_provider.dart';
 import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
@@ -27,6 +28,8 @@ class MockWaterIntakeRepository extends Mock implements WaterIntakeRepository {}
 class MockNotificationRepository extends Mock
     implements NotificationRepository {}
 
+class MockTimeProvider extends Mock implements TimeProvider{}
+
 class MockSaveUserData extends Mock
     implements SaveUserData {}
 
@@ -38,6 +41,7 @@ void main() {
   MockWaterIntakeRepository _mockWaterIntakeRepository;
   MockNotificationRepository _mockNotificationRepository;
   MockSaveUserData _mockSaveUserData; 
+  MockTimeProvider _mockTimeProvider;
 
   final useCaseParamsInKg = CalculateDailyWaterIntakeParams(
     currentSelectedGender: Gender.male,
@@ -47,6 +51,8 @@ void main() {
     wakeUpTime: TimeOfDay(hour: 7, minute: 0),
     sleepTime: TimeOfDay(hour: 24, minute: 0),
   );
+
+  final testDate = DateTime.now();
 
   final useCaseParamsInLbs = CalculateDailyWaterIntakeParams(
     currentSelectedGender: Gender.male,
@@ -68,6 +74,7 @@ void main() {
       _mockWaterIntakeRepository = MockWaterIntakeRepository();
       _mockNotificationRepository = MockNotificationRepository();
       _mockSaveUserData = MockSaveUserData();
+      _mockTimeProvider = MockTimeProvider();
 
       _calculateDailyWaterIntake = CalculateDailyWaterIntake(
         calculateAdditionalWaterIntakePerActivity:
@@ -77,7 +84,10 @@ void main() {
         waterIntakeRepository: _mockWaterIntakeRepository,
         notificationRepository: _mockNotificationRepository,
         saveUserData: _mockSaveUserData,
+        timeProvider: _mockTimeProvider
       );
+
+      when(_mockTimeProvider.getCurrentDate()).thenReturn(testDate);
     },
   );
 
@@ -102,6 +112,7 @@ void main() {
         dailyIntakeGoal: 2000,
         formattedCurrentIntake: '0/2000',
         currentIntake: 0,
+        date: testDate,
       );
 
       final actualResult = await _calculateDailyWaterIntake(useCaseParamsInKg);
@@ -138,6 +149,7 @@ void main() {
         dailyIntakeGoal: 2000,
         formattedCurrentIntake: '0/2000',
         currentIntake: 0,
+        date: testDate,
       );
 
       final actualResult = await _calculateDailyWaterIntake(useCaseParamsInLbs);

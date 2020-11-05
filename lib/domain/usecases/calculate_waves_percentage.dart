@@ -20,9 +20,9 @@ class CalculateWavesPercentage
     final currentHydrateStatusEither =
         await waterIntakeRepository.getCurrentWaterIntake();
 
-    final dailyIntakeGoal = extractDailyIntake(currentHydrateStatusEither);
+    final hydrateStatus = extractHydrateStatus(currentHydrateStatusEither);
 
-    if (dailyIntakeGoal == 0) {
+    if (hydrateStatus == null) {
       return Left(NonExistentDailyIntake(DAILY_WATER_INTAKE_MUST_BE_DEFINED));
     }
 
@@ -32,15 +32,16 @@ class CalculateWavesPercentage
     );
 
     final currentIntake =
-        calculateCurrentIntake(hydrationPercentage, dailyIntakeGoal);
+        calculateCurrentIntake(hydrationPercentage, hydrateStatus.dailyIntakeGoal);
     final formattedCurrentIntake =
-        formatCurrentIntake(currentIntake, dailyIntakeGoal);
+        formatCurrentIntake(currentIntake, hydrateStatus.dailyIntakeGoal);
 
     final updatedHydrateStatus = HydrateStatus(
       hydrationPercentage: hydrationPercentage,
       formattedCurrentIntake: formattedCurrentIntake,
       currentIntake: currentIntake,
-      dailyIntakeGoal: dailyIntakeGoal,
+      dailyIntakeGoal: hydrateStatus.dailyIntakeGoal,
+      date: hydrateStatus.date
     );
 
     await waterIntakeRepository.saveCurrentWaterIntake(updatedHydrateStatus);
@@ -80,11 +81,11 @@ class CalculateWavesPercentage
     return '$currentIntake/$dailyIntakeGoal';
   }
 
-  int extractDailyIntake(
+  HydrateStatus extractHydrateStatus(
       Either<Failure, HydrateStatus> currentHydrateStatusEither) {
     return currentHydrateStatusEither.fold(
-      (error) => 0,
-      (currentHydrateStatus) => currentHydrateStatus.dailyIntakeGoal,
+      (error) => null,
+      (currentHydrateStatus) => currentHydrateStatus,
     );
   }
 }

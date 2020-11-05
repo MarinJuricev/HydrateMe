@@ -1,5 +1,6 @@
 import 'package:HydrateMe/data/data_source/local_persistence_provider.dart';
 import 'package:HydrateMe/data/data_source/user_data_local_data_source.dart';
+import 'package:HydrateMe/data/mapper/local_user_data_to_user_data_mapper.dart';
 import 'package:HydrateMe/data/mapper/user_data_to_local_user_data_mapper.dart';
 import 'package:HydrateMe/data/model/local_activity_level.dart';
 import 'package:HydrateMe/data/model/local_gender.dart';
@@ -19,9 +20,13 @@ class MockLocalPersistenceProvider extends Mock
 class MockUserDataToLocalUserDataMapper extends Mock
     implements UserDataToLocalUserDataMapper {}
 
+class MockLocalUserDataToUserDataMapper extends Mock
+    implements LocalUserDataToUserDataMapper {}
+
 void main() {
   MockLocalPersistenceProvider _mockLocalPersistenceProvider;
   MockUserDataToLocalUserDataMapper _mockUserDataToLocalUserDataMapper;
+  MockLocalUserDataToUserDataMapper _mockLocalUserDataToUserDataMapper;
 
   UserDataLocalDataSource sut;
 
@@ -49,10 +54,12 @@ void main() {
     () {
       _mockLocalPersistenceProvider = MockLocalPersistenceProvider();
       _mockUserDataToLocalUserDataMapper = MockUserDataToLocalUserDataMapper();
+      _mockLocalUserDataToUserDataMapper = MockLocalUserDataToUserDataMapper();
 
       sut = UserDataLocalDataSourceImpl(
         localPersistenceProvider: _mockLocalPersistenceProvider,
         userDataToLocalUserDataMapper: _mockUserDataToLocalUserDataMapper,
+        localUserDataToUserDataMapper: _mockLocalUserDataToUserDataMapper,
       );
     },
   );
@@ -60,6 +67,10 @@ void main() {
   test(
     'saveUserData should trigger localPersistenceProvider.saveKeyValuePair with USER_DATA_BOX and the provided userData',
     () async {
+      when(_mockLocalPersistenceProvider.saveKeyValuePair(
+        boxToSaveInto: UserDataLocalDataSourceImpl.USER_DATA_BOX,
+         valueToSave: testUserData,
+         )).thenAnswer((_) => Future.value(null));
       when(_mockUserDataToLocalUserDataMapper.map(testUserData))
           .thenAnswer((_) => Future.value(testLocalUserData));
       await sut.saveUserData(testUserData);
@@ -80,7 +91,9 @@ void main() {
         _mockLocalPersistenceProvider.getFromKeyValuePair(
           boxToGetDataFrom: UserDataLocalDataSourceImpl.USER_DATA_BOX,
         ),
-      ).thenAnswer((_) => Future.value(testUserData));
+      ).thenAnswer((_) => Future.value(testLocalUserData));
+      when(_mockLocalUserDataToUserDataMapper.map(testLocalUserData))
+          .thenAnswer((_) => Future.value(testUserData));
 
       final actualResult = await sut.getUserData();
 
@@ -91,6 +104,7 @@ void main() {
           boxToGetDataFrom: UserDataLocalDataSourceImpl.USER_DATA_BOX,
         ),
       );
+      verify(_mockLocalUserDataToUserDataMapper.map(testLocalUserData));
     },
   );
 }

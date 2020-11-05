@@ -12,6 +12,8 @@ class MockWaterIntakeRepository extends Mock implements WaterIntakeRepository {}
 void main() {
   MockWaterIntakeRepository _mockWaterIntakeRepository;
   CalculateWavesPercentage _calculateWavesPercentage;
+  
+  final testDate = DateTime.now();
 
   setUp(
     () {
@@ -31,6 +33,8 @@ void main() {
         formattedCurrentIntake: '',
         dailyIntakeGoal: 1000,
         currentIntake: 0,
+        date: testDate,
+
       );
 
       final Either<Failure, HydrateStatus> testRepositoryResponse =
@@ -51,6 +55,8 @@ void main() {
         currentIntake: 300,
         formattedCurrentIntake: '300/1000',
         dailyIntakeGoal: 1000,
+        date: testHydrateStatus.date,
+
       );
       final expectedValue = Right(expectedHydrateStatus);
 
@@ -70,6 +76,8 @@ void main() {
         formattedCurrentIntake: '',
         dailyIntakeGoal: 1000,
         currentIntake: 0,
+        date: testDate,
+
       );
 
       final Either<Failure, HydrateStatus> testRepositoryResponse =
@@ -90,6 +98,8 @@ void main() {
         currentIntake: 0,
         dailyIntakeGoal: 1000,
         formattedCurrentIntake: '0/1000',
+        date: testDate,
+
       );
       final expectedValue = Right(expectedHydrateStatus);
 
@@ -102,20 +112,10 @@ void main() {
   );
 
   test(
-    'should return <Left(NonExistentDailyIntake)> when 0 dailyIntake is returned from the repo',
+    'should return <Left(NonExistentDailyIntake)> when null is returned from the repo',
     () async {
-      final testHydrateStatus = HydrateStatus(
-        hydrationPercentage: 0,
-        formattedCurrentIntake: '0/0',
-        dailyIntakeGoal: 0,
-        currentIntake: 0,
-      );
-
-      final Either<Failure, HydrateStatus> testRepositoryResponse =
-          Right(testHydrateStatus);
-
       when(_mockWaterIntakeRepository.getCurrentWaterIntake())
-          .thenAnswer((_) async => testRepositoryResponse);
+          .thenAnswer((_) async => null);
 
       final actualResult = await _calculateWavesPercentage(
         CalculateWavesPercentageParams(

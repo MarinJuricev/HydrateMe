@@ -1,3 +1,4 @@
+import 'package:HydrateMe/data/data_source/time_provider.dart';
 import 'package:HydrateMe/domain/model/activity_level.dart';
 import 'package:HydrateMe/domain/repository/notification_repository.dart';
 import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
@@ -26,6 +27,7 @@ class CalculateDailyWaterIntake
   final WaterIntakeRepository waterIntakeRepository;
   final NotificationRepository notificationRepository;
   final SaveUserData saveUserData;
+  final TimeProvider timeProvider;
 
   CalculateDailyWaterIntake({
     @required this.kgToLbsconverter,
@@ -34,6 +36,7 @@ class CalculateDailyWaterIntake
     @required this.waterIntakeRepository,
     @required this.notificationRepository,
     @required this.saveUserData,
+    @required this.timeProvider,
   });
 
   @override
@@ -60,6 +63,7 @@ class CalculateDailyWaterIntake
       dailyIntakeGoal: dailyWaterIntakeInMiliLiters,
       currentIntake: 0,
       formattedCurrentIntake: '0/$dailyWaterIntakeInMiliLiters',
+      date: timeProvider.getCurrentDate(),
     );
 
     await waterIntakeRepository.saveCurrentWaterIntake(hydrateStatus);
