@@ -14,6 +14,11 @@ class _$CalculateWaterIntakeEventTearOff {
   const _$CalculateWaterIntakeEventTearOff();
 
 // ignore: unused_element
+  _CalculateShouldSkipInitial shouldSkipCalculation() {
+    return const _CalculateShouldSkipInitial();
+  }
+
+// ignore: unused_element
   _CalculateClicked calculateClicked(
       Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
@@ -38,15 +43,9 @@ const $CalculateWaterIntakeEvent = _$CalculateWaterIntakeEventTearOff();
 
 /// @nodoc
 mixin _$CalculateWaterIntakeEvent {
-  Gender get currentSelectedGender;
-  WeightType get currentSelectedWeightType;
-  ActivityLevel get activityLevel;
-  int get currentWeight;
-  TimeOfDay get wakeUpTime;
-  TimeOfDay get sleepTime;
-
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result shouldSkipCalculation(),
     @required
         Result calculateClicked(
             Gender currentSelectedGender,
@@ -58,6 +57,7 @@ mixin _$CalculateWaterIntakeEvent {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result shouldSkipCalculation(),
     Result calculateClicked(
         Gender currentSelectedGender,
         WeightType currentSelectedWeightType,
@@ -69,15 +69,15 @@ mixin _$CalculateWaterIntakeEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
     @required Result calculateClicked(_CalculateClicked value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
     Result calculateClicked(_CalculateClicked value),
     @required Result orElse(),
   });
-
-  $CalculateWaterIntakeEventCopyWith<CalculateWaterIntakeEvent> get copyWith;
 }
 
 /// @nodoc
@@ -85,13 +85,6 @@ abstract class $CalculateWaterIntakeEventCopyWith<$Res> {
   factory $CalculateWaterIntakeEventCopyWith(CalculateWaterIntakeEvent value,
           $Res Function(CalculateWaterIntakeEvent) then) =
       _$CalculateWaterIntakeEventCopyWithImpl<$Res>;
-  $Res call(
-      {Gender currentSelectedGender,
-      WeightType currentSelectedWeightType,
-      ActivityLevel activityLevel,
-      int currentWeight,
-      TimeOfDay wakeUpTime,
-      TimeOfDay sleepTime});
 }
 
 /// @nodoc
@@ -102,44 +95,120 @@ class _$CalculateWaterIntakeEventCopyWithImpl<$Res>
   final CalculateWaterIntakeEvent _value;
   // ignore: unused_field
   final $Res Function(CalculateWaterIntakeEvent) _then;
-
-  @override
-  $Res call({
-    Object currentSelectedGender = freezed,
-    Object currentSelectedWeightType = freezed,
-    Object activityLevel = freezed,
-    Object currentWeight = freezed,
-    Object wakeUpTime = freezed,
-    Object sleepTime = freezed,
-  }) {
-    return _then(_value.copyWith(
-      currentSelectedGender: currentSelectedGender == freezed
-          ? _value.currentSelectedGender
-          : currentSelectedGender as Gender,
-      currentSelectedWeightType: currentSelectedWeightType == freezed
-          ? _value.currentSelectedWeightType
-          : currentSelectedWeightType as WeightType,
-      activityLevel: activityLevel == freezed
-          ? _value.activityLevel
-          : activityLevel as ActivityLevel,
-      currentWeight: currentWeight == freezed
-          ? _value.currentWeight
-          : currentWeight as int,
-      wakeUpTime:
-          wakeUpTime == freezed ? _value.wakeUpTime : wakeUpTime as TimeOfDay,
-      sleepTime:
-          sleepTime == freezed ? _value.sleepTime : sleepTime as TimeOfDay,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$CalculateClickedCopyWith<$Res>
-    implements $CalculateWaterIntakeEventCopyWith<$Res> {
+abstract class _$CalculateShouldSkipInitialCopyWith<$Res> {
+  factory _$CalculateShouldSkipInitialCopyWith(
+          _CalculateShouldSkipInitial value,
+          $Res Function(_CalculateShouldSkipInitial) then) =
+      __$CalculateShouldSkipInitialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$CalculateShouldSkipInitialCopyWithImpl<$Res>
+    extends _$CalculateWaterIntakeEventCopyWithImpl<$Res>
+    implements _$CalculateShouldSkipInitialCopyWith<$Res> {
+  __$CalculateShouldSkipInitialCopyWithImpl(_CalculateShouldSkipInitial _value,
+      $Res Function(_CalculateShouldSkipInitial) _then)
+      : super(_value, (v) => _then(v as _CalculateShouldSkipInitial));
+
+  @override
+  _CalculateShouldSkipInitial get _value =>
+      super._value as _CalculateShouldSkipInitial;
+}
+
+/// @nodoc
+class _$_CalculateShouldSkipInitial implements _CalculateShouldSkipInitial {
+  const _$_CalculateShouldSkipInitial();
+
+  @override
+  String toString() {
+    return 'CalculateWaterIntakeEvent.shouldSkipCalculation()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _CalculateShouldSkipInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result shouldSkipCalculation(),
+    @required
+        Result calculateClicked(
+            Gender currentSelectedGender,
+            WeightType currentSelectedWeightType,
+            ActivityLevel activityLevel,
+            int currentWeight,
+            TimeOfDay wakeUpTime,
+            TimeOfDay sleepTime),
+  }) {
+    assert(shouldSkipCalculation != null);
+    assert(calculateClicked != null);
+    return shouldSkipCalculation();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result shouldSkipCalculation(),
+    Result calculateClicked(
+        Gender currentSelectedGender,
+        WeightType currentSelectedWeightType,
+        ActivityLevel activityLevel,
+        int currentWeight,
+        TimeOfDay wakeUpTime,
+        TimeOfDay sleepTime),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (shouldSkipCalculation != null) {
+      return shouldSkipCalculation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
+    @required Result calculateClicked(_CalculateClicked value),
+  }) {
+    assert(shouldSkipCalculation != null);
+    assert(calculateClicked != null);
+    return shouldSkipCalculation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
+    Result calculateClicked(_CalculateClicked value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (shouldSkipCalculation != null) {
+      return shouldSkipCalculation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CalculateShouldSkipInitial
+    implements CalculateWaterIntakeEvent {
+  const factory _CalculateShouldSkipInitial() = _$_CalculateShouldSkipInitial;
+}
+
+/// @nodoc
+abstract class _$CalculateClickedCopyWith<$Res> {
   factory _$CalculateClickedCopyWith(
           _CalculateClicked value, $Res Function(_CalculateClicked) then) =
       __$CalculateClickedCopyWithImpl<$Res>;
-  @override
   $Res call(
       {Gender currentSelectedGender,
       WeightType currentSelectedWeightType,
@@ -263,6 +332,7 @@ class _$_CalculateClicked implements _CalculateClicked {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result shouldSkipCalculation(),
     @required
         Result calculateClicked(
             Gender currentSelectedGender,
@@ -272,6 +342,7 @@ class _$_CalculateClicked implements _CalculateClicked {
             TimeOfDay wakeUpTime,
             TimeOfDay sleepTime),
   }) {
+    assert(shouldSkipCalculation != null);
     assert(calculateClicked != null);
     return calculateClicked(currentSelectedGender, currentSelectedWeightType,
         activityLevel, currentWeight, wakeUpTime, sleepTime);
@@ -280,6 +351,7 @@ class _$_CalculateClicked implements _CalculateClicked {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result shouldSkipCalculation(),
     Result calculateClicked(
         Gender currentSelectedGender,
         WeightType currentSelectedWeightType,
@@ -300,8 +372,10 @@ class _$_CalculateClicked implements _CalculateClicked {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
     @required Result calculateClicked(_CalculateClicked value),
   }) {
+    assert(shouldSkipCalculation != null);
     assert(calculateClicked != null);
     return calculateClicked(this);
   }
@@ -309,6 +383,7 @@ class _$_CalculateClicked implements _CalculateClicked {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
     Result calculateClicked(_CalculateClicked value),
     @required Result orElse(),
   }) {
@@ -329,19 +404,12 @@ abstract class _CalculateClicked implements CalculateWaterIntakeEvent {
       TimeOfDay wakeUpTime,
       TimeOfDay sleepTime) = _$_CalculateClicked;
 
-  @override
   Gender get currentSelectedGender;
-  @override
   WeightType get currentSelectedWeightType;
-  @override
   ActivityLevel get activityLevel;
-  @override
   int get currentWeight;
-  @override
   TimeOfDay get wakeUpTime;
-  @override
   TimeOfDay get sleepTime;
-  @override
   _$CalculateClickedCopyWith<_CalculateClicked> get copyWith;
 }
 
@@ -352,6 +420,16 @@ class _$CalculateWaterIntakeStateTearOff {
 // ignore: unused_element
   _CalculateWaterIntakeInitial initial() {
     return const _CalculateWaterIntakeInitial();
+  }
+
+// ignore: unused_element
+  _CalculateWaterIntakeSkipCalculation skipCalculation() {
+    return const _CalculateWaterIntakeSkipCalculation();
+  }
+
+// ignore: unused_element
+  _CalculateWaterIntakeStartCalculation startCalculation() {
+    return const _CalculateWaterIntakeStartCalculation();
   }
 
 // ignore: unused_element
@@ -376,12 +454,16 @@ mixin _$CalculateWaterIntakeState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result skipCalculation(),
+    @required Result startCalculation(),
     @required Result error(String errorMessage),
     @required Result calculationFinished(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result skipCalculation(),
+    Result startCalculation(),
     Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
@@ -389,12 +471,18 @@ mixin _$CalculateWaterIntakeState {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_CalculateWaterIntakeInitial value),
+    @required
+        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    @required
+        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
     @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_CalculateWaterIntakeInitial value),
+    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
     Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
@@ -461,10 +549,14 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result skipCalculation(),
+    @required Result startCalculation(),
     @required Result error(String errorMessage),
     @required Result calculationFinished(),
   }) {
     assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
     assert(error != null);
     assert(calculationFinished != null);
     return initial();
@@ -474,6 +566,8 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result skipCalculation(),
+    Result startCalculation(),
     Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
@@ -489,10 +583,16 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_CalculateWaterIntakeInitial value),
+    @required
+        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    @required
+        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
     @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
     assert(error != null);
     assert(calculationFinished != null);
     return initial(this);
@@ -502,6 +602,8 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_CalculateWaterIntakeInitial value),
+    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
     Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
@@ -517,6 +619,242 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
 abstract class _CalculateWaterIntakeInitial
     implements CalculateWaterIntakeState {
   const factory _CalculateWaterIntakeInitial() = _$_CalculateWaterIntakeInitial;
+}
+
+/// @nodoc
+abstract class _$CalculateWaterIntakeSkipCalculationCopyWith<$Res> {
+  factory _$CalculateWaterIntakeSkipCalculationCopyWith(
+          _CalculateWaterIntakeSkipCalculation value,
+          $Res Function(_CalculateWaterIntakeSkipCalculation) then) =
+      __$CalculateWaterIntakeSkipCalculationCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$CalculateWaterIntakeSkipCalculationCopyWithImpl<$Res>
+    extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
+    implements _$CalculateWaterIntakeSkipCalculationCopyWith<$Res> {
+  __$CalculateWaterIntakeSkipCalculationCopyWithImpl(
+      _CalculateWaterIntakeSkipCalculation _value,
+      $Res Function(_CalculateWaterIntakeSkipCalculation) _then)
+      : super(_value, (v) => _then(v as _CalculateWaterIntakeSkipCalculation));
+
+  @override
+  _CalculateWaterIntakeSkipCalculation get _value =>
+      super._value as _CalculateWaterIntakeSkipCalculation;
+}
+
+/// @nodoc
+class _$_CalculateWaterIntakeSkipCalculation
+    implements _CalculateWaterIntakeSkipCalculation {
+  const _$_CalculateWaterIntakeSkipCalculation();
+
+  @override
+  String toString() {
+    return 'CalculateWaterIntakeState.skipCalculation()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CalculateWaterIntakeSkipCalculation);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result skipCalculation(),
+    @required Result startCalculation(),
+    @required Result error(String errorMessage),
+    @required Result calculationFinished(),
+  }) {
+    assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
+    assert(error != null);
+    assert(calculationFinished != null);
+    return skipCalculation();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result skipCalculation(),
+    Result startCalculation(),
+    Result error(String errorMessage),
+    Result calculationFinished(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (skipCalculation != null) {
+      return skipCalculation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_CalculateWaterIntakeInitial value),
+    @required
+        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    @required
+        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
+    @required Result error(_CalculateWaterIntakeErrorState value),
+    @required Result calculationFinished(_CalculationFinished value),
+  }) {
+    assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
+    assert(error != null);
+    assert(calculationFinished != null);
+    return skipCalculation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_CalculateWaterIntakeInitial value),
+    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
+    Result error(_CalculateWaterIntakeErrorState value),
+    Result calculationFinished(_CalculationFinished value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (skipCalculation != null) {
+      return skipCalculation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CalculateWaterIntakeSkipCalculation
+    implements CalculateWaterIntakeState {
+  const factory _CalculateWaterIntakeSkipCalculation() =
+      _$_CalculateWaterIntakeSkipCalculation;
+}
+
+/// @nodoc
+abstract class _$CalculateWaterIntakeStartCalculationCopyWith<$Res> {
+  factory _$CalculateWaterIntakeStartCalculationCopyWith(
+          _CalculateWaterIntakeStartCalculation value,
+          $Res Function(_CalculateWaterIntakeStartCalculation) then) =
+      __$CalculateWaterIntakeStartCalculationCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$CalculateWaterIntakeStartCalculationCopyWithImpl<$Res>
+    extends _$CalculateWaterIntakeStateCopyWithImpl<$Res>
+    implements _$CalculateWaterIntakeStartCalculationCopyWith<$Res> {
+  __$CalculateWaterIntakeStartCalculationCopyWithImpl(
+      _CalculateWaterIntakeStartCalculation _value,
+      $Res Function(_CalculateWaterIntakeStartCalculation) _then)
+      : super(_value, (v) => _then(v as _CalculateWaterIntakeStartCalculation));
+
+  @override
+  _CalculateWaterIntakeStartCalculation get _value =>
+      super._value as _CalculateWaterIntakeStartCalculation;
+}
+
+/// @nodoc
+class _$_CalculateWaterIntakeStartCalculation
+    implements _CalculateWaterIntakeStartCalculation {
+  const _$_CalculateWaterIntakeStartCalculation();
+
+  @override
+  String toString() {
+    return 'CalculateWaterIntakeState.startCalculation()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CalculateWaterIntakeStartCalculation);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result skipCalculation(),
+    @required Result startCalculation(),
+    @required Result error(String errorMessage),
+    @required Result calculationFinished(),
+  }) {
+    assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
+    assert(error != null);
+    assert(calculationFinished != null);
+    return startCalculation();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result skipCalculation(),
+    Result startCalculation(),
+    Result error(String errorMessage),
+    Result calculationFinished(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (startCalculation != null) {
+      return startCalculation();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_CalculateWaterIntakeInitial value),
+    @required
+        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    @required
+        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
+    @required Result error(_CalculateWaterIntakeErrorState value),
+    @required Result calculationFinished(_CalculationFinished value),
+  }) {
+    assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
+    assert(error != null);
+    assert(calculationFinished != null);
+    return startCalculation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_CalculateWaterIntakeInitial value),
+    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
+    Result error(_CalculateWaterIntakeErrorState value),
+    Result calculationFinished(_CalculationFinished value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (startCalculation != null) {
+      return startCalculation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CalculateWaterIntakeStartCalculation
+    implements CalculateWaterIntakeState {
+  const factory _CalculateWaterIntakeStartCalculation() =
+      _$_CalculateWaterIntakeStartCalculation;
 }
 
 /// @nodoc
@@ -587,10 +925,14 @@ class _$_CalculateWaterIntakeErrorState
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result skipCalculation(),
+    @required Result startCalculation(),
     @required Result error(String errorMessage),
     @required Result calculationFinished(),
   }) {
     assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
     assert(error != null);
     assert(calculationFinished != null);
     return error(errorMessage);
@@ -600,6 +942,8 @@ class _$_CalculateWaterIntakeErrorState
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result skipCalculation(),
+    Result startCalculation(),
     Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
@@ -615,10 +959,16 @@ class _$_CalculateWaterIntakeErrorState
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_CalculateWaterIntakeInitial value),
+    @required
+        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    @required
+        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
     @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
     assert(error != null);
     assert(calculationFinished != null);
     return error(this);
@@ -628,6 +978,8 @@ class _$_CalculateWaterIntakeErrorState
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_CalculateWaterIntakeInitial value),
+    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
     Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),
@@ -690,10 +1042,14 @@ class _$_CalculationFinished implements _CalculationFinished {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
+    @required Result skipCalculation(),
+    @required Result startCalculation(),
     @required Result error(String errorMessage),
     @required Result calculationFinished(),
   }) {
     assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
     assert(error != null);
     assert(calculationFinished != null);
     return calculationFinished();
@@ -703,6 +1059,8 @@ class _$_CalculationFinished implements _CalculationFinished {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
+    Result skipCalculation(),
+    Result startCalculation(),
     Result error(String errorMessage),
     Result calculationFinished(),
     @required Result orElse(),
@@ -718,10 +1076,16 @@ class _$_CalculationFinished implements _CalculationFinished {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_CalculateWaterIntakeInitial value),
+    @required
+        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    @required
+        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
     @required Result error(_CalculateWaterIntakeErrorState value),
     @required Result calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
+    assert(skipCalculation != null);
+    assert(startCalculation != null);
     assert(error != null);
     assert(calculationFinished != null);
     return calculationFinished(this);
@@ -731,6 +1095,8 @@ class _$_CalculationFinished implements _CalculationFinished {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_CalculateWaterIntakeInitial value),
+    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
     Result error(_CalculateWaterIntakeErrorState value),
     Result calculationFinished(_CalculationFinished value),
     @required Result orElse(),

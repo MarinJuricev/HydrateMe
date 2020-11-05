@@ -5,6 +5,7 @@ import '../../../../core/common/constants/constants.dart';
 import '../../../../domain/model/activity_level.dart';
 import '../../../../domain/model/gender.dart';
 import '../../../../domain/model/weight_type.dart';
+import '../../../../service_locator.dart' as di;
 import '../bloc/calculate_water_intake_bloc.dart';
 import '../widget/activity_selection.dart';
 import '../widget/gender_toggle.dart';
@@ -12,7 +13,6 @@ import '../widget/hydrate_text_with_icon.dart';
 import '../widget/time_selection.dart';
 import '../widget/water_transition.dart';
 import '../widget/weight_selection.dart';
-import '../../../../service_locator.dart' as di;
 
 class CalculateWaterIntakePage extends StatefulWidget {
   static const CALCULATE_WATER_INTAKE_PAGE = '/calculateIntakePage';
@@ -45,14 +45,21 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
         body: BlocProvider<CalculateWaterIntakeBloc>(
           create: (blocContext) => di.getIt<CalculateWaterIntakeBloc>(),
           child:
-              BlocBuilder<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
+              BlocConsumer<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
+            listener: (blocContext, state) {
+              return state.maybeWhen(orElse: null);
+            },
+            buildWhen: (previousState, newState) {
+              return newState.maybeMap(orElse: () => false);
+            },
             builder: (blocContext, state) {
-              return state.when(
+              return state.maybeWhen(
                 initial: () => _buildInitialState(blocContext),
                 error: (errorMessage) =>
                     //TODO Add a generic unknown error occured widget
                     Text('PlaceHolder Error Text: $errorMessage'),
                 calculationFinished: () => WaterTransition(),
+                orElse: () => Container(),
               );
             },
           ),
@@ -61,7 +68,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
     );
   }
 
-  _buildInitialState(BuildContext blocContext) {
+  Widget _buildInitialState(BuildContext blocContext) {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -184,7 +191,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
   }
 }
 
-_sendCalculateEvent(
+void _sendCalculateEvent(
   Gender currentSelectedGender,
   WeightType currentSelectedWeightType,
   ActivityLevel currentActivityInMinutes,

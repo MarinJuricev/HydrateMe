@@ -54,8 +54,10 @@ Future<void> init() async {
       manualDecraseWaterIntake: getIt<ManualDecreaseWaterIntake>(),
     ),
   );
-  getIt.registerFactory(
-      () => CalculateWaterIntakeBloc(getIt<CalculateDailyWaterIntake>()));
+  getIt.registerFactory(() => CalculateWaterIntakeBloc(
+        calculateDailyWaterIntake: getIt<CalculateDailyWaterIntake>(),
+        getUserData: getIt<GetUserData>(),
+      ));
   getIt.registerFactory(() => SettingsBloc(getUserData: getIt<GetUserData>()));
 
   //Usecase

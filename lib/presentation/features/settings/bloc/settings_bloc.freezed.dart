@@ -437,6 +437,8 @@ abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
   $Res call({UserData userData});
+
+  $UserDataCopyWith<$Res> get userData;
 }
 
 /// @nodoc
@@ -455,6 +457,16 @@ class __$LoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
     return _then(_Loaded(
       userData == freezed ? _value.userData : userData as UserData,
     ));
+  }
+
+  @override
+  $UserDataCopyWith<$Res> get userData {
+    if (_value.userData == null) {
+      return null;
+    }
+    return $UserDataCopyWith<$Res>(_value.userData, (value) {
+      return _then(_value.copyWith(userData: value));
+    });
   }
 }
 
