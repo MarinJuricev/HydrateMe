@@ -8,8 +8,6 @@ import '../widget/particles.dart';
 import '../widget/waves.dart';
 
 class DisplayCurrentWaterIntakePage extends StatelessWidget {
-  static const DISPLAY_CURRENT_WATER_INTAKE_PAGE = '/displayCurrentWaterIntake';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +23,12 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
                   _buildWaterIntake(hydrateStatus),
               completed: () => _buildWaterIntake(
                 HydrateStatus(
-                  //TODO: send the completed hydrate status through the state... no need to initliaze it here
-                  hydrationPercentage: 0,
-                  formattedCurrentIntake: '0',
-                  currentIntake: 0,
-                  dailyIntakeGoal: 0,
-                  date: DateTime.now()
-                ),
+                    //TODO: send the completed hydrate status through the state... no need to initliaze it here
+                    hydrationPercentage: 0,
+                    formattedCurrentIntake: '0',
+                    currentIntake: 0,
+                    dailyIntakeGoal: 0,
+                    date: DateTime.now()),
               ),
               error: (String errorMessage) => Text(errorMessage),
               loading: () => _buildLoading(context),

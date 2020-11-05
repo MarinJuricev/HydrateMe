@@ -35,11 +35,11 @@ class CurrentWaterIntakeBloc
     CurrentWaterIntakeEvent event,
   ) async* {
     yield* event.map(
+      started: (params) => _handleStartedEvent(),
       updated: (params) => _handleUpdateWaterIntake(
         params.updatedValue,
         params.waterMaximumHeight,
       ),
-      started: (WaterIntakeStaredEvent value) => _handleStartedEvent(),
       manualIncrease: (params) => _handleManualIncrease(params.waterToAdd),
       manualDecrease: (params) => _handleManualDecrease(params.waterToSubtract),
     );

@@ -2,6 +2,7 @@ import 'package:HydrateMe/data/model/local_activity_level.dart';
 import 'package:HydrateMe/data/model/local_gender.dart';
 import 'package:HydrateMe/data/model/local_user_data.dart';
 import 'package:HydrateMe/data/model/local_weight_type.dart';
+import 'package:HydrateMe/presentation/features/bottom_nav/bottom_navigation_page.dart';
 import 'package:HydrateMe/presentation/features/display_current_water_intake/bloc/current_water_intake_bloc.dart';
 import 'package:HydrateMe/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
@@ -51,8 +52,8 @@ class MyApp extends StatelessWidget {
         routes: {
           CalculateWaterIntakePage.CALCULATE_WATER_INTAKE_PAGE: (context) =>
               CalculateWaterIntakePage(),
-          DisplayCurrentWaterIntakePage.DISPLAY_CURRENT_WATER_INTAKE_PAGE:
-              (context) => DisplayCurrentWaterIntakePage()
+          BottomNavigationPage.BOTTOM_NAVIGATION_PAGE: (context) =>
+              BottomNavigationPage()
         },
       ),
     );

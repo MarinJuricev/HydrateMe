@@ -6,6 +6,8 @@ import '../../../../domain/model/activity_level.dart';
 import '../../../../domain/model/gender.dart';
 import '../../../../domain/model/weight_type.dart';
 import '../../../../service_locator.dart' as di;
+import '../../../common/widgets/hydrate_loading_indicator.dart';
+import '../../bottom_nav/bottom_navigation_page.dart';
 import '../bloc/calculate_water_intake_bloc.dart';
 import '../widget/activity_selection.dart';
 import '../widget/gender_toggle.dart';
@@ -46,19 +48,28 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
           create: (blocContext) => di.getIt<CalculateWaterIntakeBloc>(),
           child:
               BlocConsumer<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
-            listener: (blocContext, state) {
-              return state.maybeWhen(orElse: null);
-            },
-            buildWhen: (previousState, newState) {
-              return newState.maybeMap(orElse: () => false);
-            },
+            listenWhen: (previousState, newState) =>
+                newState == CalculateWaterIntakeState.skipCalculation(),
+            listener: (blocContext, state) => state.maybeWhen(
+              skipCalculation: _navigateToDisplayCurrentIntake(blocContext),
+              orElse: null,
+            ),
+            buildWhen: (previousState, newState) =>
+                newState != CalculateWaterIntakeState.skipCalculation(),
             builder: (blocContext, state) {
               return state.maybeWhen(
-                initial: () => _buildInitialState(blocContext),
+                initial: () => HydrateLoadingIndicator(
+                  onStartCallback: () =>
+                      BlocProvider.of<CalculateWaterIntakeBloc>(blocContext)
+                          .add(
+                    CalculateWaterIntakeEvent.shouldSkipCalculation(),
+                  ),
+                ),
                 error: (errorMessage) =>
                     //TODO Add a generic unknown error occured widget
                     Text('PlaceHolder Error Text: $errorMessage'),
                 calculationFinished: () => WaterTransition(),
+                startCalculation: () => _buildInitialState(blocContext),
                 orElse: () => Container(),
               );
             },
@@ -190,6 +201,9 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
     );
   }
 }
+
+_navigateToDisplayCurrentIntake(BuildContext context) => Navigator.of(context)
+    .pushReplacementNamed(BottomNavigationPage.BOTTOM_NAVIGATION_PAGE);
 
 void _sendCalculateEvent(
   Gender currentSelectedGender,
