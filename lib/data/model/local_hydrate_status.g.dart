@@ -8,7 +8,7 @@ part of 'local_hydrate_status.dart';
 
 class LocalHydrateStatusAdapter extends TypeAdapter<LocalHydrateStatus> {
   @override
-  final int typeId = 1;
+  final int typeId = 4;
 
   @override
   LocalHydrateStatus read(BinaryReader reader) {

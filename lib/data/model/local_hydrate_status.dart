@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 
 part 'local_hydrate_status.g.dart';
 
-@HiveType(typeId: 1)
+@HiveType(typeId: 4)
 class LocalHydrateStatus extends HiveObject with EquatableMixin {
   @HiveField(0)
   final double hydrationPercentage;

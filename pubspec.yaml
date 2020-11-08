@@ -24,8 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  bloc: ^6.0.2
-  flutter_bloc: ^6.0.1
+  bloc: ^6.1.0
+  flutter_bloc: ^6.1.0
   get_it: ^4.0.4
   wave: ^0.1.0
   simple_animations: ^2.2.1
@@ -47,7 +47,7 @@ dependencies:
   # Material/Android-like number picker that scrolls vertically
   numberpicker: ^1.2.1
   # Easier value equality 
-  equatable: ^1.2.4
+  equatable: ^1.2.5
   # Cross platform local notification wrapper
   flutter_local_notifications: ^2.0.0+1
   # Seems like a huge overkill to import rxDart just for notifications..

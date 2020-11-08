@@ -4,16 +4,20 @@ import 'core/mapper/base_mapper.dart';
 import 'data/data_source/local_persistence_provider.dart';
 import 'data/data_source/time_provider.dart';
 import 'data/data_source/user_data_local_data_source.dart';
+import 'data/data_source/water_intake_local_data_source.dart';
 import 'data/mapper/activity_level_to_local_activity_level_mapper.dart';
 import 'data/mapper/gender_to_local_gender_mapper.dart';
+import 'data/mapper/hydrate_status_to_local_hydrate_status_mapper.dart';
 import 'data/mapper/local_activity_level_to_activity_level_mapper.dart';
 import 'data/mapper/local_gender_to_gender_mapper.dart';
+import 'data/mapper/local_hydrate_status_to_hydrate_status.dart';
 import 'data/mapper/local_user_data_to_user_data_mapper.dart';
 import 'data/mapper/local_weight_type_to_weight_type_mapper.dart';
 import 'data/mapper/user_data_to_local_user_data_mapper.dart';
 import 'data/mapper/weight_type_to_local_weight_type_mapper.dart';
 import 'data/model/local_activity_level.dart';
 import 'data/model/local_gender.dart';
+import 'data/model/local_hydrate_status.dart';
 import 'data/model/local_user_data.dart';
 import 'data/model/local_weight_type.dart';
 import 'data/repository/notification_repository_impl.dart';
@@ -22,6 +26,7 @@ import 'data/repository/water_intake_repository_impl.dart';
 import 'data/service/notification_service.dart';
 import 'domain/model/activity_level.dart';
 import 'domain/model/gender.dart';
+import 'domain/model/hydrate_status.dart';
 import 'domain/model/user_data.dart';
 import 'domain/model/weight_type.dart';
 import 'domain/repository/notification_repository.dart';
@@ -105,10 +110,21 @@ Future<void> init() async {
       localUserDataToUserDataMapper: getIt<Mapper<UserData, LocalUserData>>(),
     ),
   );
+  getIt.registerLazySingleton<WaterIntakeLocalDataSource>(
+    () => WaterIntakeLocalDataSourceImpl(
+      localPersistenceProvider: getIt<LocalPersistenceProvider>(),
+      hydrateStatusToLocalHydrateStatusMapper:
+          getIt<Mapper<LocalHydrateStatus, HydrateStatus>>(),
+      localHydrateStatusToHydrateStatusMapper:
+          getIt<Mapper<HydrateStatus, LocalHydrateStatus>>(),
+    ),
+  );
 
   //Repository
   getIt.registerLazySingleton<WaterIntakeRepository>(
-    () => WaterIntakeRepositoryImpl(),
+    () => WaterIntakeRepositoryImpl(
+      waterIntakeLocalDataSource: getIt<WaterIntakeLocalDataSource>(),
+    ),
   );
   getIt.registerLazySingleton<NotificationRepository>(
     () => NotificationRepositoryImpl(
@@ -162,6 +178,12 @@ Future<void> init() async {
       genderMapper: getIt(),
       weightTypeMapper: getIt(),
     ),
+  );
+  getIt.registerFactory<Mapper<LocalHydrateStatus, HydrateStatus>>(
+    () => HydrateStatusToLocalHydrateStatusMapper(),
+  );
+  getIt.registerFactory<Mapper<HydrateStatus, LocalHydrateStatus>>(
+    () => LocalHydrateStatusToHydrateStatusMapper(),
   );
 
   //Util

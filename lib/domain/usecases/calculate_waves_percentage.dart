@@ -23,7 +23,7 @@ class CalculateWavesPercentage
     final hydrateStatus = extractHydrateStatus(currentHydrateStatusEither);
 
     if (hydrateStatus == null) {
-      return Left(NonExistentDailyIntake(DAILY_WATER_INTAKE_MUST_BE_DEFINED));
+      return Left(NonExistentHydrateStatus(ERROR_RETREIVING_LOCAL_DATA));
     }
 
     final hydrationPercentage = calculateHydrationPercentage(
@@ -31,18 +31,17 @@ class CalculateWavesPercentage
       params.waterMaximumHeight,
     );
 
-    final currentIntake =
-        calculateCurrentIntake(hydrationPercentage, hydrateStatus.dailyIntakeGoal);
+    final currentIntake = calculateCurrentIntake(
+        hydrationPercentage, hydrateStatus.dailyIntakeGoal);
     final formattedCurrentIntake =
         formatCurrentIntake(currentIntake, hydrateStatus.dailyIntakeGoal);
 
     final updatedHydrateStatus = HydrateStatus(
-      hydrationPercentage: hydrationPercentage,
-      formattedCurrentIntake: formattedCurrentIntake,
-      currentIntake: currentIntake,
-      dailyIntakeGoal: hydrateStatus.dailyIntakeGoal,
-      date: hydrateStatus.date
-    );
+        hydrationPercentage: hydrationPercentage,
+        formattedCurrentIntake: formattedCurrentIntake,
+        currentIntake: currentIntake,
+        dailyIntakeGoal: hydrateStatus.dailyIntakeGoal,
+        date: hydrateStatus.date);
 
     await waterIntakeRepository.saveCurrentWaterIntake(updatedHydrateStatus);
 

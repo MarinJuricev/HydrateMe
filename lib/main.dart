@@ -1,5 +1,6 @@
 import 'package:HydrateMe/data/model/local_activity_level.dart';
 import 'package:HydrateMe/data/model/local_gender.dart';
+import 'package:HydrateMe/data/model/local_hydrate_status.dart';
 import 'package:HydrateMe/data/model/local_user_data.dart';
 import 'package:HydrateMe/data/model/local_weight_type.dart';
 import 'package:HydrateMe/presentation/features/bottom_nav/bottom_navigation_page.dart';
@@ -23,6 +24,7 @@ void main() async {
   Hive.registerAdapter<LocalGender>(LocalGenderAdapter());
   Hive.registerAdapter<LocalWeightType>(LocalWeightTypeAdapter());
   Hive.registerAdapter<LocalActivityLevel>(LocalActivityLevelAdapter());
+  Hive.registerAdapter<LocalHydrateStatus>(LocalHydrateStatusAdapter());
 
   await setupNotifications();
   await di.init();

@@ -1,6 +1,8 @@
+import 'package:HydrateMe/core/error/exceptions.dart';
 import 'package:HydrateMe/data/data_source/local_persistence_provider.dart';
 import 'package:HydrateMe/data/mapper/local_user_data_to_user_data_mapper.dart';
 import 'package:HydrateMe/data/mapper/user_data_to_local_user_data_mapper.dart';
+import 'package:HydrateMe/data/model/local_user_data.dart';
 import 'package:HydrateMe/domain/model/user_data.dart';
 import 'package:flutter/foundation.dart';
 
@@ -32,9 +34,13 @@ class UserDataLocalDataSourceImpl extends UserDataLocalDataSource {
 
   @override
   Future<UserData> getUserData() async {
-    final localResult = await localPersistenceProvider.getFromKeyValuePair(
-        boxToGetDataFrom: USER_DATA_BOX);
+    //TODO Unit test when this throws
+    final LocalUserData localResult = await localPersistenceProvider
+        .getFromKeyValuePair(boxToGetDataFrom: USER_DATA_BOX);
 
-    return await localUserDataToUserDataMapper.map(localResult);
+    if (localResult != null)
+      return await localUserDataToUserDataMapper.map(localResult);
+    else
+      throw CacheException();
   }
 }

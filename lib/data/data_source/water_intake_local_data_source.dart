@@ -1,6 +1,9 @@
-import 'package:HydrateMe/data/data_source/local_persistence_provider.dart';
-import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:flutter/foundation.dart';
+
+import '../../domain/model/hydrate_status.dart';
+import '../mapper/hydrate_status_to_local_hydrate_status_mapper.dart';
+import '../mapper/local_hydrate_status_to_hydrate_status.dart';
+import 'local_persistence_provider.dart';
 
 abstract class WaterIntakeLocalDataSource {
   Future<void> saveWaterIntake(HydrateStatus hydrateStatus);
@@ -9,26 +12,33 @@ abstract class WaterIntakeLocalDataSource {
 
 class WaterIntakeLocalDataSourceImpl extends WaterIntakeLocalDataSource {
   final LocalPersistenceProvider localPersistenceProvider;
+  final HydrateStatusToLocalHydrateStatusMapper
+      hydrateStatusToLocalHydrateStatusMapper;
+  final LocalHydrateStatusToHydrateStatusMapper
+      localHydrateStatusToHydrateStatusMapper;
 
   static const HYDRATE_STATUS_BOX = 'HYDRATE_STATUS_BOX';
 
   WaterIntakeLocalDataSourceImpl({
     @required this.localPersistenceProvider,
+    @required this.hydrateStatusToLocalHydrateStatusMapper,
+    @required this.localHydrateStatusToHydrateStatusMapper,
   });
 
   @override
   Future<void> saveWaterIntake(HydrateStatus hydrateStatus) async {
-    return await localPersistenceProvider.saveIntoPersistence(
+    return await localPersistenceProvider.saveKeyValuePair(
       boxToSaveInto: HYDRATE_STATUS_BOX,
-      valueToSave: await userDataToLocalUserDataMapper.map(userData),
+      valueToSave:
+          await hydrateStatusToLocalHydrateStatusMapper.map(hydrateStatus),
     );
   }
 
   @override
   Future<HydrateStatus> getWaterIntake() async {
-    final localResult = await localPersistenceProvider.(
+    final localResult = await localPersistenceProvider.getFromKeyValuePair(
         boxToGetDataFrom: HYDRATE_STATUS_BOX);
 
-    return await localUserDataToUserDataMapper.map(localResult);
+    return await localHydrateStatusToHydrateStatusMapper.map(localResult);
   }
 }

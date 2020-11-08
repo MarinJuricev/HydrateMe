@@ -12,7 +12,7 @@ class MockWaterIntakeRepository extends Mock implements WaterIntakeRepository {}
 void main() {
   MockWaterIntakeRepository _mockWaterIntakeRepository;
   CalculateWavesPercentage _calculateWavesPercentage;
-  
+
   final testDate = DateTime.now();
 
   setUp(
@@ -34,7 +34,6 @@ void main() {
         dailyIntakeGoal: 1000,
         currentIntake: 0,
         date: testDate,
-
       );
 
       final Either<Failure, HydrateStatus> testRepositoryResponse =
@@ -56,7 +55,6 @@ void main() {
         formattedCurrentIntake: '300/1000',
         dailyIntakeGoal: 1000,
         date: testHydrateStatus.date,
-
       );
       final expectedValue = Right(expectedHydrateStatus);
 
@@ -77,7 +75,6 @@ void main() {
         dailyIntakeGoal: 1000,
         currentIntake: 0,
         date: testDate,
-
       );
 
       final Either<Failure, HydrateStatus> testRepositoryResponse =
@@ -99,7 +96,6 @@ void main() {
         dailyIntakeGoal: 1000,
         formattedCurrentIntake: '0/1000',
         date: testDate,
-
       );
       final expectedValue = Right(expectedHydrateStatus);
 
@@ -112,10 +108,10 @@ void main() {
   );
 
   test(
-    'should return <Left(NonExistentDailyIntake)> when null is returned from the repo',
+    'should return <Left(NonExistentHydrateStatus)> when Failure is returned from the repository',
     () async {
-      when(_mockWaterIntakeRepository.getCurrentWaterIntake())
-          .thenAnswer((_) async => null);
+      when(_mockWaterIntakeRepository.getCurrentWaterIntake()).thenAnswer(
+          (_) async => Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA)));
 
       final actualResult = await _calculateWavesPercentage(
         CalculateWavesPercentageParams(
@@ -125,7 +121,7 @@ void main() {
       );
 
       final expectedValue =
-          Left(NonExistentDailyIntake(DAILY_WATER_INTAKE_MUST_BE_DEFINED));
+          Left(NonExistentHydrateStatus(ERROR_RETREIVING_LOCAL_DATA));
 
       expect(actualResult, expectedValue);
     },
