@@ -18,7 +18,7 @@ class MockUserDataLocalDataSource extends Mock
 
 void main() {
   MockUserDataLocalDataSource _mockUserDataLocalDataSource;
-  UserDataRepository userDataRepository;
+  UserDataRepository sut;
   final testUserData = UserData(
     wakeUpTime: TimeOfDay.now(),
     sleepTime: TimeOfDay.now(),
@@ -31,7 +31,7 @@ void main() {
   setUp(
     () {
       _mockUserDataLocalDataSource = MockUserDataLocalDataSource();
-      userDataRepository = UserDataRepositoryImpl(
+      sut = UserDataRepositoryImpl(
         userDataLocalDataSource: _mockUserDataLocalDataSource,
       );
     },
@@ -43,7 +43,7 @@ void main() {
       when(_mockUserDataLocalDataSource.getUserData())
           .thenAnswer((_) => Future.value(testUserData));
 
-      final actualResult = await userDataRepository.getUserData();
+      final actualResult = await sut.getUserData();
       final expectedResult = Right(testUserData);
 
       expect(actualResult, expectedResult);
@@ -57,7 +57,7 @@ void main() {
       when(_mockUserDataLocalDataSource.getUserData())
           .thenThrow(CacheException());
 
-      final actualResult = await userDataRepository.getUserData();
+      final actualResult = await sut.getUserData();
       final expectedResult = Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
 
       expect(actualResult, expectedResult);
@@ -71,7 +71,7 @@ void main() {
       when(_mockUserDataLocalDataSource.saveUserData(testUserData))
           .thenAnswer((_) => Future.value(null));
 
-      final actualResult = await userDataRepository.saveUserData(testUserData);
+      final actualResult = await sut.saveUserData(testUserData);
       final expectedResult = Right(null);
 
       expect(actualResult, expectedResult);
@@ -85,7 +85,7 @@ void main() {
       when(_mockUserDataLocalDataSource.saveUserData(testUserData))
           .thenThrow(CacheException());
 
-      final actualResult = await userDataRepository.saveUserData(testUserData);
+      final actualResult = await sut.saveUserData(testUserData);
       final expectedResult = Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
 
       expect(actualResult, expectedResult);

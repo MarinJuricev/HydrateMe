@@ -1,3 +1,4 @@
+import 'package:HydrateMe/core/error/exceptions.dart';
 import 'package:HydrateMe/data/data_source/local_persistence_provider.dart';
 import 'package:HydrateMe/data/data_source/user_data_local_data_source.dart';
 import 'package:HydrateMe/data/mapper/local_user_data_to_user_data_mapper.dart';
@@ -13,6 +14,7 @@ import 'package:HydrateMe/domain/model/weight_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:matcher/matcher.dart' as matcher;
 
 class MockLocalPersistenceProvider extends Mock
     implements LocalPersistenceProvider {}
@@ -69,8 +71,8 @@ void main() {
     () async {
       when(_mockLocalPersistenceProvider.saveKeyValuePair(
         boxToSaveInto: UserDataLocalDataSourceImpl.USER_DATA_BOX,
-         valueToSave: testUserData,
-         )).thenAnswer((_) => Future.value(null));
+        valueToSave: testUserData,
+      )).thenAnswer((_) => Future.value(null));
       when(_mockUserDataToLocalUserDataMapper.map(testUserData))
           .thenAnswer((_) => Future.value(testLocalUserData));
       await sut.saveUserData(testUserData);
@@ -105,6 +107,20 @@ void main() {
         ),
       );
       verify(_mockLocalUserDataToUserDataMapper.map(testLocalUserData));
+    },
+  );
+
+  test(
+    'getUserData should throw a CacheException when the local result is null',
+    () async {
+      when(
+        _mockLocalPersistenceProvider.getFromKeyValuePair(
+          boxToGetDataFrom: UserDataLocalDataSourceImpl.USER_DATA_BOX,
+        ),
+      ).thenAnswer((_) => Future.value(null));
+
+      expect(() => sut.getUserData(),
+          throwsA(const matcher.TypeMatcher<CacheException>()));
     },
   );
 }

@@ -34,7 +34,6 @@ class UserDataLocalDataSourceImpl extends UserDataLocalDataSource {
 
   @override
   Future<UserData> getUserData() async {
-    //TODO Unit test when this throws
     final LocalUserData localResult = await localPersistenceProvider
         .getFromKeyValuePair(boxToGetDataFrom: USER_DATA_BOX);
 
