@@ -1,26 +1,43 @@
-import 'package:HydrateMe/core/failure/base_failure.dart';
-import 'package:HydrateMe/core/usecase/base_usecase.dart';
-import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
-class ResetHydrateStatus extends BaseUseCase<HydrateStatus, HydrateStatus> {
+import '../../core/failure/base_failure.dart';
+import '../../core/usecase/base_usecase.dart';
+import '../model/hydrate_status.dart';
+
+class ResetHydrateStatus
+    extends BaseUseCase<HydrateStatus, ResetHydrateStatusParams> {
   @override
-  Future<Either<Failure, HydrateStatus>> call(HydrateStatus params) async {
-    // Provide it through the params... don't create it again
-    // TODO UNIT TEST
-    final testDate = DateTime.now();
+  Future<Either<Failure, HydrateStatus>> call(
+      ResetHydrateStatusParams params) async {
+    final convertedDailyIntakeGoal =
+        params.hydrateStatusToReset.dailyIntakeGoal.toString();
 
     return Future.value(
       Right(
-        params.copyWith(
-          hydrationPercentage: 1.0,
+        params.hydrateStatusToReset.copyWith(
+          hydrationPercentage: HydrateStatus.INITIAL_HYDRATION_PERCENTRAGE,
           formattedCurrentIntake:
-              '${params.dailyIntakeGoal.toString()}/${params.dailyIntakeGoal.toString()}',
-          dailyIntakeGoal: params.dailyIntakeGoal,
-          currentIntake: params.dailyIntakeGoal,
-          date: testDate,
+              '$convertedDailyIntakeGoal/$convertedDailyIntakeGoal',
+          dailyIntakeGoal: params.hydrateStatusToReset.dailyIntakeGoal,
+          currentIntake: params.hydrateStatusToReset.dailyIntakeGoal,
+          date: params.updatedDate,
         ),
       ),
     );
   }
+}
+
+class ResetHydrateStatusParams extends Equatable {
+  final HydrateStatus hydrateStatusToReset;
+  final DateTime updatedDate;
+
+  ResetHydrateStatusParams({
+    @required this.hydrateStatusToReset,
+    @required this.updatedDate,
+  });
+
+  @override
+  List<Object> get props => [hydrateStatusToReset, updatedDate];
 }

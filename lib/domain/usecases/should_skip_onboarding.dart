@@ -1,3 +1,4 @@
+import 'package:HydrateMe/core/common/constants/constants.dart';
 import 'package:HydrateMe/core/failure/base_failure.dart';
 import 'package:HydrateMe/core/usecase/base_usecase.dart';
 import 'package:HydrateMe/data/data_source/time_provider.dart';
@@ -20,8 +21,6 @@ class ShouldSkipOnboarding extends BaseUseCase<void, NoParams> {
 
   @override
   Future<Either<Failure, void>> call(NoParams params) async {
-    // TODO UNIT TEST
-
     final currentHydrateStatusEither =
         await waterIntakeRepository.getCurrentWaterIntake();
 
@@ -40,9 +39,22 @@ class ShouldSkipOnboarding extends BaseUseCase<void, NoParams> {
 
     if (currentDate.isAfter(hydrateStatus.date)) {
       //Reset the hydrateStatus in this case
-      return resetHydrateStatus(hydrateStatus);
+      final resetHydrateStatusEither = await resetHydrateStatus(
+        ResetHydrateStatusParams(
+          hydrateStatusToReset: hydrateStatus,
+          updatedDate: currentDate,
+        ),
+      );
+      return resetHydrateStatusEither.fold(
+        (error) => Future.value(Left(GeneralFailure(GENERAL_ERROR_MESSAGE))),
+        (resetedHydrateStatus) async {
+          await waterIntakeRepository
+              .saveCurrentWaterIntake(resetedHydrateStatus);
+          return Future.value(Right(null));
+        },
+      );
     } else {
-      return Right(null);
+      return Future.value(Right(null));
     }
   }
 }
