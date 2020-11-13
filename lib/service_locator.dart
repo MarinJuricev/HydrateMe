@@ -1,3 +1,4 @@
+import 'package:HydrateMe/domain/usecases/reset_hydrate_status.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/mapper/base_mapper.dart';
@@ -42,6 +43,7 @@ import 'domain/usecases/manual_add_water_intake.dart';
 import 'domain/usecases/manual_decrease_water_intake.dart';
 import 'domain/usecases/oz_to_milliliter_converter.dart';
 import 'domain/usecases/save_user_data.dart';
+import 'domain/usecases/should_skip_calculationh.dart';
 import 'domain/util/input_converter.dart';
 import 'presentation/features/calculate_water_intake/bloc/calculate_water_intake_bloc.dart';
 import 'presentation/features/display_current_water_intake/bloc/current_water_intake_bloc.dart';
@@ -61,7 +63,7 @@ Future<void> init() async {
   );
   getIt.registerFactory(() => CalculateWaterIntakeBloc(
         calculateDailyWaterIntake: getIt<CalculateDailyWaterIntake>(),
-        getUserData: getIt<GetUserData>(),
+        shouldSkipCalculation: getIt<ShouldSkipCalculation>(),
       ));
   getIt.registerFactory(() => SettingsBloc(getUserData: getIt<GetUserData>()));
 
@@ -98,6 +100,11 @@ Future<void> init() async {
       () => SaveUserData(userDataRepository: getIt<UserDataRepository>()));
   getIt.registerFactory(
       () => GetUserData(userDataRepository: getIt<UserDataRepository>()));
+  getIt.registerFactory(() => ResetHydrateStatus());
+  getIt.registerFactory(() => ShouldSkipCalculation(
+      resetHydrateStatus: getIt<ResetHydrateStatus>(),
+      timeProvider: getIt<TimeProvider>(),
+      waterIntakeRepository: getIt<WaterIntakeRepository>()));
 
   //Datasources
   getIt.registerLazySingleton<LocalPersistenceProvider>(

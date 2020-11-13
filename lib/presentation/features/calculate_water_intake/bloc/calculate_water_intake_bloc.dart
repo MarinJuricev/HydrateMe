@@ -1,27 +1,28 @@
 import 'dart:async';
 
-import 'package:HydrateMe/core/usecase/base_usecase.dart';
-import 'package:HydrateMe/domain/model/activity_level.dart';
-import 'package:HydrateMe/domain/usecases/calculate_daily_water_intake.dart';
-import 'package:HydrateMe/domain/model/gender.dart';
-import 'package:HydrateMe/domain/model/weight_type.dart';
-import 'package:HydrateMe/domain/usecases/get_user_data.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/usecase/base_usecase.dart';
+import '../../../../domain/model/activity_level.dart';
+import '../../../../domain/model/gender.dart';
+import '../../../../domain/model/weight_type.dart';
+import '../../../../domain/usecases/calculate_daily_water_intake.dart';
+import '../../../../domain/usecases/should_skip_calculationh.dart';
+
+part 'calculate_water_intake_bloc.freezed.dart';
 part 'calculate_water_intake_event.dart';
 part 'calculate_water_intake_state.dart';
-part 'calculate_water_intake_bloc.freezed.dart';
 
 class CalculateWaterIntakeBloc
     extends Bloc<CalculateWaterIntakeEvent, CalculateWaterIntakeState> {
   final CalculateDailyWaterIntake calculateDailyWaterIntake;
-  final GetUserData getUserData;
+  final ShouldSkipCalculation shouldSkipCalculation;
 
   CalculateWaterIntakeBloc({
     @required this.calculateDailyWaterIntake,
-    @required this.getUserData,
+    @required this.shouldSkipCalculation,
   }) : super(CalculateWaterIntakeState.initial());
 
   @override
@@ -54,11 +55,11 @@ class CalculateWaterIntakeBloc
   }
 
   Stream<CalculateWaterIntakeState> _handleShouldSkipCalculation() async* {
-    final getUserDataResult = await getUserData(NoParams());
+    final shouldSkipCalculationResult = await shouldSkipCalculation(NoParams());
 
-    yield getUserDataResult.fold(
-      (noUserDataSet) => CalculateWaterIntakeState.startCalculation(),
-      (userDataSet) => CalculateWaterIntakeState.skipCalculation(),
+    yield shouldSkipCalculationResult.fold(
+      (error) => CalculateWaterIntakeState.startCalculation(),
+      (success) => CalculateWaterIntakeState.skipCalculation(),
     );
   }
 }

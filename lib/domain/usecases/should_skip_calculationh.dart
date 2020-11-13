@@ -8,12 +8,12 @@ import 'package:HydrateMe/domain/usecases/reset_hydrate_status.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 
-class ShouldSkipOnboarding extends BaseUseCase<void, NoParams> {
+class ShouldSkipCalculation extends BaseUseCase<void, NoParams> {
   final WaterIntakeRepository waterIntakeRepository;
   final TimeProvider timeProvider;
   final ResetHydrateStatus resetHydrateStatus;
 
-  ShouldSkipOnboarding({
+  ShouldSkipCalculation({
     @required this.waterIntakeRepository,
     @required this.timeProvider,
     @required this.resetHydrateStatus,
@@ -37,7 +37,9 @@ class ShouldSkipOnboarding extends BaseUseCase<void, NoParams> {
   ) async {
     final currentDate = timeProvider.getCurrentDate();
 
-    if (currentDate.isAfter(hydrateStatus.date)) {
+    if (currentDate.isAfter(hydrateStatus.date) &&
+        (hydrateStatus.date.day != currentDate.day ||
+            hydrateStatus.date.difference(currentDate).inHours > 24)) {
       //Reset the hydrateStatus in this case
       final resetHydrateStatusEither = await resetHydrateStatus(
         ResetHydrateStatusParams(
