@@ -12,22 +12,35 @@ class BottomNavigationPage extends StatefulWidget {
 }
 
 class _BottomNavigationPageState extends State<BottomNavigationPage> {
-  int _selectedIndex = 0;
-  static List<Widget> _bottonNavigationOptions = <Widget>[
-    DisplayCurrentWaterIntakePage(),
-    SettingsPage(),
-  ];
+  PageController _pageController = PageController(
+    initialPage: 0,
+  );
 
-  void _onItemTapped(int tappedIndex) {
+  int _selectedPageIndex = 0;
+
+  void selectPage(int page) {
     setState(() {
-      _selectedIndex = tappedIndex;
+      _selectedPageIndex = page;
+      _pageController.animateToPage(page,
+          duration: Duration(milliseconds: 200), curve: Curves.linear);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _bottonNavigationOptions.elementAt(_selectedIndex),
+      body: SafeArea(
+        child: PageView(
+          controller: _pageController,
+          onPageChanged: (newPage) {
+            setState(() => _selectedPageIndex = newPage);
+          },
+          children: [
+            DisplayCurrentWaterIntakePage(),
+            SettingsPage(),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -39,9 +52,9 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
             label: 'Settings',
           ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: _selectedPageIndex,
         selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
+        onTap: selectPage,
       ),
     );
   }
