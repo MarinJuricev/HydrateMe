@@ -7,6 +7,7 @@ import 'package:HydrateMe/presentation/features/bottom_nav/bottom_navigation_pag
 import 'package:HydrateMe/presentation/features/display_current_water_intake/bloc/current_water_intake_bloc.dart';
 import 'package:HydrateMe/presentation/features/settings/bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -34,6 +35,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.blue,
+    ));
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<CurrentWaterIntakeBloc>(

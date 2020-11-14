@@ -12,21 +12,16 @@ class HydrateListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.purple,
-      child: InkWell(
-        onTap: () => {},
-        child: Container(
-          child: ListTile(
-            title: Text(
-              title,
-              style: TextStyle(color: Colors.blue),
-            ),
-            tileColor: Colors.white,
-            subtitle: Text(
-              subtitle,
-            ),
-          ),
+    return InkWell(
+      onTap: () {},
+      child: ListTile(
+        onTap: () {},
+        title: Text(
+          title,
+          style: TextStyle(color: Colors.blue),
+        ),
+        subtitle: Text(
+          subtitle,
         ),
       ),
     );
