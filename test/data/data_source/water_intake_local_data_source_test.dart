@@ -1,3 +1,4 @@
+import 'package:HydrateMe/core/error/exceptions.dart';
 import 'package:HydrateMe/data/data_source/local_persistence_provider.dart';
 import 'package:HydrateMe/data/data_source/water_intake_local_data_source.dart';
 import 'package:HydrateMe/data/mapper/hydrate_status_to_local_hydrate_status_mapper.dart';
@@ -5,6 +6,7 @@ import 'package:HydrateMe/data/mapper/local_hydrate_status_to_hydrate_status.dar
 import 'package:HydrateMe/data/model/local_hydrate_status.dart';
 import 'package:HydrateMe/domain/model/hydrate_status.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:matcher/matcher.dart' as matcher;
 import 'package:mockito/mockito.dart';
 
 class MockLocalPersistenceProvider extends Mock
@@ -104,6 +106,20 @@ void main() {
       );
       verify(_mockLocalHydrateStatusToHydrateStatusMapper
           .map(testLocalHydrateStatus));
+    },
+  );
+
+  test(
+    'getWaterIntake should return throw [CacheException] when there is not data in the local persistence',
+    () async {
+      when(
+        _mockLocalPersistenceProvider.getFromKeyValuePair(
+          boxToGetDataFrom: WaterIntakeLocalDataSourceImpl.HYDRATE_STATUS_BOX,
+        ),
+      ).thenAnswer((_) => Future.value(null));
+
+      expect(() => sut.getWaterIntake(),
+          throwsA(const matcher.TypeMatcher<CacheException>()));
     },
   );
 }

@@ -1,3 +1,5 @@
+import 'package:HydrateMe/core/error/exceptions.dart';
+import 'package:HydrateMe/data/model/local_hydrate_status.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../domain/model/hydrate_status.dart';
@@ -36,9 +38,14 @@ class WaterIntakeLocalDataSourceImpl extends WaterIntakeLocalDataSource {
 
   @override
   Future<HydrateStatus> getWaterIntake() async {
-    final localResult = await localPersistenceProvider.getFromKeyValuePair(
-        boxToGetDataFrom: HYDRATE_STATUS_BOX);
+    final LocalHydrateStatus localResult =
+        await localPersistenceProvider.getFromKeyValuePair(
+      boxToGetDataFrom: HYDRATE_STATUS_BOX,
+    );
 
-    return await localHydrateStatusToHydrateStatusMapper.map(localResult);
+    if (localResult != null)
+      return await localHydrateStatusToHydrateStatusMapper.map(localResult);
+    else
+      throw CacheException();
   }
 }

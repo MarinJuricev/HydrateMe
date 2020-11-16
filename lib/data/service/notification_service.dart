@@ -1,3 +1,4 @@
+import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
@@ -11,25 +12,41 @@ abstract class NotificationService {
 }
 
 class NotificationServiceImpl extends NotificationService {
+  final WaterIntakeRepository waterIntakeRepository;
+
+  NotificationServiceImpl({
+    @required this.waterIntakeRepository,
+  });
+
   @override
   Future<void> scheduleDailyNotification(TimeOfDay timeToSchedule) async {
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-        generateNotificationId(timeToSchedule),
-        'HydrateMe',
-        'Remember to drink your water',
-        _nextInstanceOfProvidedHour(timeToSchedule),
-        const NotificationDetails(
-          android: AndroidNotificationDetails(
-            'HydrateMe daily notification channel id',
-            'Daily water intake reminder',
-            'Remember to drink your water, a hydrated body is a healthy body',
-          ),
-        ),
-        androidAllowWhileIdle: true,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
-        scheduledNotificationRepeatFrequency:
-            ScheduledNotificationRepeatFrequency.daily);
+    final repositoryResult =
+        await waterIntakeRepository.getCurrentWaterIntake();
+
+    return repositoryResult.fold(
+      // Fail silently in case of an error. Idealy we would notify crashliytics
+      // of a failure here for whatever reason, but for this mini personal app this is "acceptable"
+      (error) => Future.value(null),
+      (hydrateStatus) async {
+        await flutterLocalNotificationsPlugin.zonedSchedule(
+            generateNotificationId(timeToSchedule),
+            'Remember to drink your water',
+            'Current intake ${hydrateStatus.formattedCurrentIntake}',
+            _nextInstanceOfProvidedHour(timeToSchedule),
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                'HydrateMe daily notification channel id',
+                'Daily water intake reminder',
+                'Notifications used to remind you of your daily water intake',
+              ),
+            ),
+            androidAllowWhileIdle: true,
+            uiLocalNotificationDateInterpretation:
+                UILocalNotificationDateInterpretation.absoluteTime,
+            scheduledNotificationRepeatFrequency:
+                ScheduledNotificationRepeatFrequency.daily);
+      },
+    );
   }
 
   tz.TZDateTime _nextInstanceOfProvidedHour(TimeOfDay timeToSchedule) {
@@ -50,22 +67,33 @@ class NotificationServiceImpl extends NotificationService {
 
   @override
   Future<void> scheduleInstantNotification() async {
-    const AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails(
-            'HydrateMe daily notification channel id',
-            'Daily water intake reminder',
-            'Remember to drink your water, a hydrated body is a healthy body',
-            importance: Importance.max,
-            priority: Priority.high,
-            ticker: 'ticker');
-    const NotificationDetails platformChannelSpecifics =
-        NotificationDetails(android: androidPlatformChannelSpecifics);
-    return await flutterLocalNotificationsPlugin.show(
-      0,
-      'HydrateMe',
-      'Remember to drink your water',
-      platformChannelSpecifics,
-      payload: 'item x',
+    final repositoryResult =
+        await waterIntakeRepository.getCurrentWaterIntake();
+
+    return repositoryResult.fold(
+      // Fail silently in case of an error. Idealy we would notify crashliytics
+      // of a failure here for whatever reason, but for this mini personal app this is "acceptable"
+      (error) => Future.value(null),
+      (hydrateStatus) async {
+        const AndroidNotificationDetails androidPlatformChannelSpecifics =
+            AndroidNotificationDetails(
+          'HydrateMe daily notification channel id',
+          'Daily water intake reminder',
+          'Notifications used to remind you of your daily water intake',
+          importance: Importance.max,
+          priority: Priority.high,
+          ticker: 'ticker',
+        );
+        const NotificationDetails platformChannelSpecifics =
+            NotificationDetails(android: androidPlatformChannelSpecifics);
+        return await flutterLocalNotificationsPlugin.show(
+          0,
+          'Remember to drink your water',
+          'Current intake ${hydrateStatus.formattedCurrentIntake}',
+          platformChannelSpecifics,
+          payload: 'item x',
+        );
+      },
     );
   }
 

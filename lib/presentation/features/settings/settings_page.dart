@@ -55,7 +55,7 @@ class SettingsPage extends StatelessWidget {
           ),
           HydrateListTile(
             title: 'Kg/Lbs',
-            subtitle: '${userData.currentWeight}',
+            subtitle: '${userData.weightType}',
           ),
           HydrateListTile(
             title: 'Activity level',

@@ -58,11 +58,15 @@ class CalculateDailyWaterIntake
     final dailyWaterIntakeInMiliLiters =
         await getWaterIntakeInMiliLiters(dailyWaterIntakeInOunces);
 
+    final String currentIntakeType =
+        getCurrentWeightType(params.currentSelectedWeightType);
+
     final hydrateStatus = HydrateStatus(
       hydrationPercentage: 1.0,
       dailyIntakeGoal: dailyWaterIntakeInMiliLiters,
       currentIntake: 0,
-      formattedCurrentIntake: '0/$dailyWaterIntakeInMiliLiters',
+      formattedCurrentIntake:
+          '0/$dailyWaterIntakeInMiliLiters $currentIntakeType',
       date: timeProvider.getCurrentDate(),
     );
 
@@ -121,6 +125,14 @@ class CalculateDailyWaterIntake
       (error) => 0,
       (waterInMililiters) => waterInMililiters,
     );
+  }
+
+  String getCurrentWeightType(WeightType currentSelectedWeightType) {
+    if (currentSelectedWeightType == WeightType.kg) {
+      return 'ml';
+    } else {
+      return 'oz';
+    }
   }
 }
 

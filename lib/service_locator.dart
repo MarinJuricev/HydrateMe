@@ -71,6 +71,7 @@ Future<void> init() async {
   getIt.registerFactory(
     () => CalculateWavesPercentage(
       waterIntakeRepository: getIt<WaterIntakeRepository>(),
+      userDataRepository: getIt<UserDataRepository>(),
     ),
   );
   getIt.registerFactory(() => CalculateAdditionalWaterIntakePerActivity());
@@ -146,7 +147,9 @@ Future<void> init() async {
 
   //Service
   getIt.registerLazySingleton<NotificationService>(
-    () => NotificationServiceImpl(),
+    () => NotificationServiceImpl(
+      waterIntakeRepository: getIt<WaterIntakeRepository>(),
+    ),
   );
   getIt.registerLazySingleton<TimeProvider>(
     () => TimeProviderImpl(),
