@@ -33,6 +33,17 @@ void main() {
     activityLevel: ActivityLevel.active,
   );
 
+  final testHydrateStatus = HydrateStatus(
+    hydrationPercentage: 0,
+    formattedCurrentIntake: '',
+    dailyIntakeGoal: 1000,
+    currentIntake: 0,
+    date: testDate,
+  );
+
+  final Either<Failure, HydrateStatus> testRepositoryResponse =
+      Right(testHydrateStatus);
+
   setUp(
     () {
       _mockWaterIntakeRepository = MockWaterIntakeRepository();
@@ -45,28 +56,31 @@ void main() {
     },
   );
 
+  void setupWaterIntakeSuccessCase() {
+    when(_mockWaterIntakeRepository.getCurrentWaterIntake())
+        .thenAnswer((_) async => testRepositoryResponse);
+  }
+
+  void setupWaterIntakeFailureCase() {
+    when(_mockWaterIntakeRepository.getCurrentWaterIntake()).thenAnswer(
+        (_) async => Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA)));
+  }
+
   void setupUserDataSuccessCase() {
     when(_mockUserDataRepository.getUserData())
         .thenAnswer((_) => Future.value(Right(testUserData)));
   }
 
+  void setupUserDataFailureCase() {
+    when(_mockUserDataRepository.getUserData()).thenAnswer(
+        (_) => Future.value(Left(CacheFailure(GENERAL_ERROR_MESSAGE))));
+  }
+
   test(
     'should return valid hydrate status with hydrationPercentage 0.70 and percentage 70% when 70 and 100 are provided',
     () async {
-      final testHydrateStatus = HydrateStatus(
-        hydrationPercentage: 0,
-        formattedCurrentIntake: '',
-        dailyIntakeGoal: 1000,
-        currentIntake: 0,
-        date: testDate,
-      );
-
-      final Either<Failure, HydrateStatus> testRepositoryResponse =
-          Right(testHydrateStatus);
-
+      setupWaterIntakeSuccessCase();
       setupUserDataSuccessCase();
-      when(_mockWaterIntakeRepository.getCurrentWaterIntake())
-          .thenAnswer((_) async => testRepositoryResponse);
 
       final actualResult = await sut(
         CalculateWavesPercentageParams(
@@ -78,7 +92,7 @@ void main() {
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 0.7,
         currentIntake: 300,
-        formattedCurrentIntake: '300/1000',
+        formattedCurrentIntake: '300/1000 ml',
         dailyIntakeGoal: 1000,
         date: testHydrateStatus.date,
       );
@@ -95,19 +109,8 @@ void main() {
   test(
     'should return hydrate status with hydrationPercentage 1.0 and percentage 100% when 110 and 100 are provided',
     () async {
-      final testHydrateStatus = HydrateStatus(
-        hydrationPercentage: 0,
-        formattedCurrentIntake: '',
-        dailyIntakeGoal: 1000,
-        currentIntake: 0,
-        date: testDate,
-      );
-
-      final Either<Failure, HydrateStatus> testRepositoryResponse =
-          Right(testHydrateStatus);
-
-      when(_mockWaterIntakeRepository.getCurrentWaterIntake())
-          .thenAnswer((_) async => testRepositoryResponse);
+      setupWaterIntakeSuccessCase();
+      setupUserDataSuccessCase();
 
       final actualResult = await sut(
         CalculateWavesPercentageParams(
@@ -120,7 +123,7 @@ void main() {
         hydrationPercentage: 1.0,
         currentIntake: 0,
         dailyIntakeGoal: 1000,
-        formattedCurrentIntake: '0/1000',
+        formattedCurrentIntake: '0/1000 ml',
         date: testDate,
       );
       final expectedValue = Right(expectedHydrateStatus);
@@ -134,10 +137,10 @@ void main() {
   );
 
   test(
-    'should return <Left(NonExistentHydrateStatus)> when Failure is returned from the repository',
+    'should return <Left(MissingDataFailure)> when the extracted HydrateStatus is null',
     () async {
-      when(_mockWaterIntakeRepository.getCurrentWaterIntake()).thenAnswer(
-          (_) async => Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA)));
+      setupUserDataSuccessCase();
+      setupWaterIntakeFailureCase();
 
       final actualResult = await sut(
         CalculateWavesPercentageParams(
@@ -147,7 +150,27 @@ void main() {
       );
 
       final expectedValue =
-          Left(NonExistentHydrateStatus(ERROR_RETREIVING_LOCAL_DATA));
+          Left(MissingDataFailure(ERROR_RETREIVING_LOCAL_DATA));
+
+      expect(actualResult, expectedValue);
+    },
+  );
+
+  test(
+    'should return <Left(MissingDataFailure)> when the extracted UserData is null',
+    () async {
+      setupWaterIntakeSuccessCase();
+      setupUserDataFailureCase();
+
+      final actualResult = await sut(
+        CalculateWavesPercentageParams(
+          updatedValue: -10,
+          waterMaximumHeight: 100,
+        ),
+      );
+
+      final expectedValue =
+          Left(MissingDataFailure(ERROR_RETREIVING_LOCAL_DATA));
 
       expect(actualResult, expectedValue);
     },

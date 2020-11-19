@@ -6,6 +6,7 @@ import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_
 import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
 import 'package:HydrateMe/domain/usecases/save_user_data.dart';
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -136,13 +137,13 @@ class CalculateDailyWaterIntake
   }
 }
 
-class CalculateDailyWaterIntakeParams {
-  Gender currentSelectedGender;
-  WeightType currentSelectedWeightType;
-  ActivityLevel currentActivityInMinutes;
-  int currentWeight;
-  TimeOfDay wakeUpTime;
-  TimeOfDay sleepTime;
+class CalculateDailyWaterIntakeParams extends Equatable {
+  final Gender currentSelectedGender;
+  final WeightType currentSelectedWeightType;
+  final ActivityLevel currentActivityInMinutes;
+  final int currentWeight;
+  final TimeOfDay wakeUpTime;
+  final TimeOfDay sleepTime;
 
   CalculateDailyWaterIntakeParams({
     @required this.currentSelectedGender,
@@ -152,4 +153,14 @@ class CalculateDailyWaterIntakeParams {
     @required this.wakeUpTime,
     @required this.sleepTime,
   });
+
+  @override
+  List<Object> get props => [
+        currentSelectedGender,
+        currentSelectedWeightType,
+        currentActivityInMinutes,
+        currentWeight,
+        wakeUpTime,
+        sleepTime,
+      ];
 }

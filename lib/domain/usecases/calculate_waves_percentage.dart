@@ -33,7 +33,7 @@ class CalculateWavesPercentage
     final userData = extractUserData(userDataEither);
 
     if (hydrateStatus == null || userData == null) {
-      return Left(NonExistentHydrateStatus(ERROR_RETREIVING_LOCAL_DATA));
+      return Left(MissingDataFailure(ERROR_RETREIVING_LOCAL_DATA));
     }
 
     final hydrationPercentage = calculateHydrationPercentage(

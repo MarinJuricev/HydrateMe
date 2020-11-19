@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/failure/base_failure.dart';
@@ -31,7 +32,7 @@ class SaveUserData extends BaseUseCase<void, SaveUserDataParams> {
   }
 }
 
-class SaveUserDataParams {
+class SaveUserDataParams extends Equatable {
   final TimeOfDay wakeUpTime;
   final TimeOfDay sleepTime;
   final int currentWeight;
@@ -47,4 +48,14 @@ class SaveUserDataParams {
     @required this.weightType,
     @required this.activityLevel,
   });
+
+  @override
+  List<Object> get props => [
+        wakeUpTime,
+        sleepTime,
+        currentWeight,
+        gender,
+        weightType,
+        activityLevel,
+      ];
 }

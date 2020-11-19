@@ -28,10 +28,9 @@ class MockWaterIntakeRepository extends Mock implements WaterIntakeRepository {}
 class MockNotificationRepository extends Mock
     implements NotificationRepository {}
 
-class MockTimeProvider extends Mock implements TimeProvider{}
+class MockTimeProvider extends Mock implements TimeProvider {}
 
-class MockSaveUserData extends Mock
-    implements SaveUserData {}
+class MockSaveUserData extends Mock implements SaveUserData {}
 
 void main() {
   MockKgToLbsConverter _mockKgToLbsConverter;
@@ -40,7 +39,7 @@ void main() {
   MockOzToMIliliterConverter _mockOzToMIliliterConverter;
   MockWaterIntakeRepository _mockWaterIntakeRepository;
   MockNotificationRepository _mockNotificationRepository;
-  MockSaveUserData _mockSaveUserData; 
+  MockSaveUserData _mockSaveUserData;
   MockTimeProvider _mockTimeProvider;
 
   final useCaseParamsInKg = CalculateDailyWaterIntakeParams(
@@ -77,15 +76,14 @@ void main() {
       _mockTimeProvider = MockTimeProvider();
 
       _calculateDailyWaterIntake = CalculateDailyWaterIntake(
-        calculateAdditionalWaterIntakePerActivity:
-            _mockCalculateAdditionalWaterIntakePerActivity,
-        kgToLbsconverter: _mockKgToLbsConverter,
-        ozToMIliliterConverter: _mockOzToMIliliterConverter,
-        waterIntakeRepository: _mockWaterIntakeRepository,
-        notificationRepository: _mockNotificationRepository,
-        saveUserData: _mockSaveUserData,
-        timeProvider: _mockTimeProvider
-      );
+          calculateAdditionalWaterIntakePerActivity:
+              _mockCalculateAdditionalWaterIntakePerActivity,
+          kgToLbsconverter: _mockKgToLbsConverter,
+          ozToMIliliterConverter: _mockOzToMIliliterConverter,
+          waterIntakeRepository: _mockWaterIntakeRepository,
+          notificationRepository: _mockNotificationRepository,
+          saveUserData: _mockSaveUserData,
+          timeProvider: _mockTimeProvider);
 
       when(_mockTimeProvider.getCurrentDate()).thenReturn(testDate);
     },
@@ -110,7 +108,7 @@ void main() {
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 1.0,
         dailyIntakeGoal: 2000,
-        formattedCurrentIntake: '0/2000',
+        formattedCurrentIntake: '0/2000 ml',
         currentIntake: 0,
         date: testDate,
       );
@@ -147,7 +145,7 @@ void main() {
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 1.0,
         dailyIntakeGoal: 2000,
-        formattedCurrentIntake: '0/2000',
+        formattedCurrentIntake: '0/2000 oz',
         currentIntake: 0,
         date: testDate,
       );
@@ -189,28 +187,35 @@ void main() {
     },
   );
 
-  // test(
-  //   'should trigger saveUserData with the necessary parametars',
-  //   () async {
-  //     when(
-  //       _mockKgToLbsConverter(useCaseParamsInLbs.currentWeight),
-  //     ).thenAnswer((_) async => (Right(150)));
+  test(
+    'should trigger saveUserData with the necessary parametars',
+    () async {
+      when(
+        _mockKgToLbsConverter(useCaseParamsInLbs.currentWeight),
+      ).thenAnswer((_) async => (Right(150)));
 
-  //     when(
-  //       _mockCalculateAdditionalWaterIntakePerActivity(
-  //           useCaseParamsInLbs.currentActivityInMinutes),
-  //     ).thenAnswer((_) async => (Right(30)));
+      when(
+        _mockCalculateAdditionalWaterIntakePerActivity(
+            useCaseParamsInLbs.currentActivityInMinutes),
+      ).thenAnswer((_) async => (Right(30)));
 
-  //     when(
-  //       _mockOzToMIliliterConverter(80.0),
-  //     ).thenAnswer((_) async => (Right(2000)));
+      when(
+        _mockOzToMIliliterConverter(80.0),
+      ).thenAnswer((_) async => (Right(2000)));
 
-  //     await _calculateDailyWaterIntake(useCaseParamsInLbs);
-  //     verify(_mockSaveUserData(
-  //       useCaseParamsInLbs.wakeUpTime,
-  //       useCaseParamsInLbs.sleepTime,
-  //     ));
-  //   },
-  // );
-
+      await _calculateDailyWaterIntake(useCaseParamsInLbs);
+      verify(
+        _mockSaveUserData(
+          SaveUserDataParams(
+            wakeUpTime: useCaseParamsInLbs.wakeUpTime,
+            sleepTime: useCaseParamsInLbs.sleepTime,
+            currentWeight: useCaseParamsInLbs.currentWeight,
+            gender: useCaseParamsInLbs.currentSelectedGender,
+            weightType: useCaseParamsInLbs.currentSelectedWeightType,
+            activityLevel: useCaseParamsInLbs.currentActivityInMinutes,
+          ),
+        ),
+      );
+    },
+  );
 }
