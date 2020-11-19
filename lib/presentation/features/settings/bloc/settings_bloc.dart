@@ -30,7 +30,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     final useCaseResult = await getUserData(NoParams());
 
     yield useCaseResult.fold(
-      (error) => SettingsState.error('TEST ERROR'),
+      (error) => SettingsState.error(error.message),
       (userData) => SettingsState.loaded(userData),
     );
   }
