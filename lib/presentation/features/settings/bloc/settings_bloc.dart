@@ -1,20 +1,21 @@
 import 'dart:async';
 
-import 'package:HydrateMe/core/usecase/base_usecase.dart';
-import 'package:HydrateMe/domain/model/user_data.dart';
-import 'package:HydrateMe/domain/usecases/get_user_data.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/usecase/base_usecase.dart';
+import '../../../../domain/usecases/get_settings_data.dart';
+import '../model/ui_user_data.dart';
+
+part 'settings_bloc.freezed.dart';
 part 'settings_event.dart';
 part 'settings_state.dart';
-part 'settings_bloc.freezed.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
-  final GetUserData getUserData;
+  final GetSettingsData getSettingsData;
 
   SettingsBloc({
-    @required this.getUserData,
+    @required this.getSettingsData,
   }) : super(_Initial());
 
   @override
@@ -27,11 +28,11 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
 
   Stream<SettingsState> _handleSettingsStarted() async* {
-    final useCaseResult = await getUserData(NoParams());
+    final useCaseResult = await getSettingsData(NoParams());
 
     yield useCaseResult.fold(
       (error) => SettingsState.error(error.message),
-      (userData) => SettingsState.loaded(userData),
+      (uiUserData) => SettingsState.loaded(uiUserData),
     );
   }
 }

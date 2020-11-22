@@ -1,4 +1,4 @@
-import 'package:HydrateMe/domain/usecases/reset_hydrate_status.dart';
+import 'package:HydrateMe/presentation/features/settings/mapper/user_data_to_ui_user_data_mapper.dart';
 import 'package:get_it/get_it.dart';
 
 import 'core/mapper/base_mapper.dart';
@@ -37,17 +37,20 @@ import 'domain/usecases/calculate_additional_water_intake_per_activity.dart';
 import 'domain/usecases/calculate_daily_water_intake.dart';
 import 'domain/usecases/calculate_waves_percentage.dart';
 import 'domain/usecases/get_current_hydrate_status.dart';
+import 'domain/usecases/get_settings_data.dart';
 import 'domain/usecases/get_user_data.dart';
 import 'domain/usecases/kg_to_lbs_converter.dart';
 import 'domain/usecases/manual_add_water_intake.dart';
 import 'domain/usecases/manual_decrease_water_intake.dart';
 import 'domain/usecases/oz_to_milliliter_converter.dart';
+import 'domain/usecases/reset_hydrate_status.dart';
 import 'domain/usecases/save_user_data.dart';
 import 'domain/usecases/should_skip_calculationh.dart';
 import 'domain/util/input_converter.dart';
 import 'presentation/features/calculate_water_intake/bloc/calculate_water_intake_bloc.dart';
 import 'presentation/features/display_current_water_intake/bloc/current_water_intake_bloc.dart';
 import 'presentation/features/settings/bloc/settings_bloc.dart';
+import 'presentation/features/settings/model/ui_user_data.dart';
 
 final getIt = GetIt.instance;
 
@@ -65,7 +68,8 @@ Future<void> init() async {
         calculateDailyWaterIntake: getIt<CalculateDailyWaterIntake>(),
         shouldSkipCalculation: getIt<ShouldSkipCalculation>(),
       ));
-  getIt.registerFactory(() => SettingsBloc(getUserData: getIt<GetUserData>()));
+  getIt.registerFactory(
+      () => SettingsBloc(getSettingsData: getIt<GetSettingsData>()));
 
   //Usecase
   getIt.registerFactory(
@@ -106,6 +110,9 @@ Future<void> init() async {
       resetHydrateStatus: getIt<ResetHydrateStatus>(),
       timeProvider: getIt<TimeProvider>(),
       waterIntakeRepository: getIt<WaterIntakeRepository>()));
+  getIt.registerFactory(() => GetSettingsData(
+      getUserData: getIt<GetUserData>(),
+      userDataToUiUserDataMapper: getIt<Mapper<UiUserData, UserData>>()));
 
   //Datasources
   getIt.registerLazySingleton<LocalPersistenceProvider>(
@@ -194,6 +201,9 @@ Future<void> init() async {
   );
   getIt.registerFactory<Mapper<HydrateStatus, LocalHydrateStatus>>(
     () => LocalHydrateStatusToHydrateStatusMapper(),
+  );
+  getIt.registerFactory<Mapper<UiUserData, UserData>>(
+    () => UserDataToUiUserDataMapper(),
   );
 
   //Util

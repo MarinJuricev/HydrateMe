@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class HydrateListTile extends StatelessWidget {
   final String title;
   final String subtitle;
+  final Function onClick;
 
   const HydrateListTile({
     Key key,
     @required this.title,
     @required this.subtitle,
+    @required this.onClick,
   }) : super(key: key);
 
   @override
@@ -15,7 +17,7 @@ class HydrateListTile extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: ListTile(
-        onTap: () {},
+        onTap: onClick,
         title: Text(
           title,
           style: TextStyle(color: Colors.blue),

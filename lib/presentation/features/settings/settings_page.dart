@@ -1,8 +1,10 @@
-import 'package:HydrateMe/domain/model/user_data.dart';
-import 'package:HydrateMe/presentation/common/widgets/hydrate_list_tile.dart';
-import 'package:HydrateMe/presentation/features/settings/bloc/settings_bloc.dart';
+import 'package:HydrateMe/presentation/common/widgets/hydrate_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../common/widgets/hydrate_list_tile.dart';
+import 'bloc/settings_bloc.dart';
+import 'model/ui_user_data.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -14,7 +16,8 @@ class SettingsPage extends StatelessWidget {
           return state.when(
             initial: () => _buildSettingInitialState(context),
             error: (errorMessage) => _buildSettingsErrorState(errorMessage),
-            loaded: (userData) => _buildSettingsLoadedState(userData, context),
+            loaded: (uiUserData) =>
+                _buildSettingsLoadedState(uiUserData, context),
           );
         },
       ),
@@ -30,7 +33,8 @@ class SettingsPage extends StatelessWidget {
   Widget _buildSettingsErrorState(String errorMessage) =>
       Center(child: Text(errorMessage));
 
-  Widget _buildSettingsLoadedState(UserData userData, BuildContext context) {
+  Widget _buildSettingsLoadedState(
+      UiUserData uiUserData, BuildContext context) {
     return ListView(
       children: ListTile.divideTiles(
         context: context,
@@ -39,27 +43,42 @@ class SettingsPage extends StatelessWidget {
           HydrateListTile(
             title: 'Wake up time',
             subtitle:
-                '${userData.wakeUpTime.hour}:${userData.wakeUpTime.minute}',
+                '${uiUserData.wakeUpTime.hour}:${uiUserData.wakeUpTime.minute}',
+            onClick: () => showDialog(
+              context: context,
+              builder: (BuildContext context) => HydrateDialog(
+                title: "Change Wakeup time",
+                bodyContent: Text(
+                  'Dummy content should be settingItem specific',
+                ),
+              ),
+            ),
           ),
           HydrateListTile(
             title: 'Sleep time',
-            subtitle: '${userData.sleepTime.hour}:${userData.sleepTime.minute}',
+            subtitle:
+                '${uiUserData.sleepTime.hour}:${uiUserData.sleepTime.minute}',
+            onClick: () {},
           ),
           HydrateListTile(
             title: 'Current Weight',
-            subtitle: '${userData.currentWeight}',
+            subtitle: '${uiUserData.currentWeight}',
+            onClick: () {},
           ),
           HydrateListTile(
             title: 'Gender',
-            subtitle: '${userData.gender}',
+            subtitle: '${uiUserData.gender}',
+            onClick: () {},
           ),
           HydrateListTile(
             title: 'Kg/Lbs',
-            subtitle: '${userData.weightType}',
+            subtitle: '${uiUserData.weightType}',
+            onClick: () {},
           ),
           HydrateListTile(
             title: 'Activity level',
-            subtitle: '${userData.activityLevel}',
+            subtitle: '${uiUserData.activityLevel}',
+            onClick: () {},
           ),
         ],
       ).toList(),

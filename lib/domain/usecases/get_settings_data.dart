@@ -21,9 +21,10 @@ class GetSettingsData extends BaseUseCase<UiUserData, NoParams> {
     final userDataEither = await getUserData(params);
 
     return userDataEither.fold(
-      // Just propagate the either to the UI layer, we already know that this
-      // is a failure
-      (error) => Future.value(userDataEither) as Either<Failure, UiUserData>,
+      (error) async {
+        final Either<Failure, UiUserData> useCaseFailure = Left(error);
+        return Future.value(useCaseFailure);
+      },
       (userData) async {
         final mappedUiUserData = await userDataToUiUserDataMapper.map(userData);
         return Future.value(Right(mappedUiUserData));

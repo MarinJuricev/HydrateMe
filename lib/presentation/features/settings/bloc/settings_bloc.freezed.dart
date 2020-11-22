@@ -161,9 +161,9 @@ class _$SettingsStateTearOff {
   }
 
 // ignore: unused_element
-  _Loaded loaded(UserData userData) {
+  _Loaded loaded(UiUserData uiUserData) {
     return _Loaded(
-      userData,
+      uiUserData,
     );
   }
 }
@@ -178,13 +178,13 @@ mixin _$SettingsState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result error(String errorMessage),
-    @required Result loaded(UserData userData),
+    @required Result loaded(UiUserData uiUserData),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result error(String errorMessage),
-    Result loaded(UserData userData),
+    Result loaded(UiUserData uiUserData),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -257,7 +257,7 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result error(String errorMessage),
-    @required Result loaded(UserData userData),
+    @required Result loaded(UiUserData uiUserData),
   }) {
     assert(initial != null);
     assert(error != null);
@@ -270,7 +270,7 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result error(String errorMessage),
-    Result loaded(UserData userData),
+    Result loaded(UiUserData uiUserData),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -373,7 +373,7 @@ class _$_Error implements _Error {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result error(String errorMessage),
-    @required Result loaded(UserData userData),
+    @required Result loaded(UiUserData uiUserData),
   }) {
     assert(initial != null);
     assert(error != null);
@@ -386,7 +386,7 @@ class _$_Error implements _Error {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result error(String errorMessage),
-    Result loaded(UserData userData),
+    Result loaded(UiUserData uiUserData),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -436,9 +436,9 @@ abstract class _Error implements SettingsState {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({UserData userData});
+  $Res call({UiUserData uiUserData});
 
-  $UserDataCopyWith<$Res> get userData;
+  $UiUserDataCopyWith<$Res> get uiUserData;
 }
 
 /// @nodoc
@@ -452,48 +452,48 @@ class __$LoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object userData = freezed,
+    Object uiUserData = freezed,
   }) {
     return _then(_Loaded(
-      userData == freezed ? _value.userData : userData as UserData,
+      uiUserData == freezed ? _value.uiUserData : uiUserData as UiUserData,
     ));
   }
 
   @override
-  $UserDataCopyWith<$Res> get userData {
-    if (_value.userData == null) {
+  $UiUserDataCopyWith<$Res> get uiUserData {
+    if (_value.uiUserData == null) {
       return null;
     }
-    return $UserDataCopyWith<$Res>(_value.userData, (value) {
-      return _then(_value.copyWith(userData: value));
+    return $UiUserDataCopyWith<$Res>(_value.uiUserData, (value) {
+      return _then(_value.copyWith(uiUserData: value));
     });
   }
 }
 
 /// @nodoc
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.userData) : assert(userData != null);
+  const _$_Loaded(this.uiUserData) : assert(uiUserData != null);
 
   @override
-  final UserData userData;
+  final UiUserData uiUserData;
 
   @override
   String toString() {
-    return 'SettingsState.loaded(userData: $userData)';
+    return 'SettingsState.loaded(uiUserData: $uiUserData)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Loaded &&
-            (identical(other.userData, userData) ||
+            (identical(other.uiUserData, uiUserData) ||
                 const DeepCollectionEquality()
-                    .equals(other.userData, userData)));
+                    .equals(other.uiUserData, uiUserData)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(userData);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(uiUserData);
 
   @override
   _$LoadedCopyWith<_Loaded> get copyWith =>
@@ -504,12 +504,12 @@ class _$_Loaded implements _Loaded {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result error(String errorMessage),
-    @required Result loaded(UserData userData),
+    @required Result loaded(UiUserData uiUserData),
   }) {
     assert(initial != null);
     assert(error != null);
     assert(loaded != null);
-    return loaded(userData);
+    return loaded(uiUserData);
   }
 
   @override
@@ -517,12 +517,12 @@ class _$_Loaded implements _Loaded {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result error(String errorMessage),
-    Result loaded(UserData userData),
+    Result loaded(UiUserData uiUserData),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (loaded != null) {
-      return loaded(userData);
+      return loaded(uiUserData);
     }
     return orElse();
   }
@@ -557,8 +557,8 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements SettingsState {
-  const factory _Loaded(UserData userData) = _$_Loaded;
+  const factory _Loaded(UiUserData uiUserData) = _$_Loaded;
 
-  UserData get userData;
+  UiUserData get uiUserData;
   _$LoadedCopyWith<_Loaded> get copyWith;
 }
