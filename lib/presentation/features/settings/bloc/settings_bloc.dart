@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:HydrateMe/domain/model/settings_item.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -23,8 +24,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     SettingsEvent event,
   ) async* {
     yield* event.map(
-      started: (params) => _handleSettingsStarted(),
-    );
+        started: (params) => _handleSettingsStarted(),
+        onSettingedChanged: (params) =>
+            _handleOnSettingsChanged(params.settingsItem));
   }
 
   Stream<SettingsState> _handleSettingsStarted() async* {
@@ -35,4 +37,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       (uiUserData) => SettingsState.loaded(uiUserData),
     );
   }
+
+  Stream<SettingsState> _handleOnSettingsChanged(
+      SettingsItem newSettingsItem) async* {}
 }

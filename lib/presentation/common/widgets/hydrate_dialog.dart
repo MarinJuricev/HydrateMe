@@ -4,10 +4,12 @@ class HydrateDialog extends StatelessWidget {
   final String title, buttonText;
   final Widget bodyContent;
   final Image image;
+  final Function onApplyClicked;
 
   HydrateDialog({
     @required this.title,
     @required this.bodyContent,
+    this.onApplyClicked,
     this.buttonText,
     this.image,
   });
@@ -50,7 +52,7 @@ class HydrateDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min, // To make the card compact
             children: <Widget>[
               Text(
-                'title',
+                title,
                 style: TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w700,
@@ -58,18 +60,12 @@ class HydrateDialog extends StatelessWidget {
               ),
               SizedBox(height: 16.0),
               bodyContent,
-              Text(
-                'description',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
               SizedBox(height: 24.0),
               Align(
                 alignment: Alignment.bottomRight,
                 child: FlatButton(
                   onPressed: () {
+                    onApplyClicked();
                     Navigator.of(context).pop(); // To close the dialog
                   },
                   child: Text(buttonText ?? 'Apply'),

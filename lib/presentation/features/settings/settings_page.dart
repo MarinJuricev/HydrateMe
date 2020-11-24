@@ -1,4 +1,6 @@
+import 'package:HydrateMe/domain/model/settings_item.dart';
 import 'package:HydrateMe/presentation/common/widgets/hydrate_dialog.dart';
+import 'package:HydrateMe/presentation/features/calculate_water_intake/widget/time_selection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,8 +50,21 @@ class SettingsPage extends StatelessWidget {
               context: context,
               builder: (BuildContext context) => HydrateDialog(
                 title: "Change Wakeup time",
-                bodyContent: Text(
-                  'Dummy content should be settingItem specific',
+                bodyContent: TimeSelection(
+                  title: 'Change usual wake up time',
+                  timeOfDay: uiUserData.wakeUpTime,
+                  optionalBorderColor: Colors.blue,
+                  optionalTextColor: Colors.blue,
+                  onTimeSelectedCallback: (newWakeUpTime) {
+                    BlocProvider.of<SettingsBloc>(context).add(
+                      SettingsEvent.onSettingedChanged(
+                        SettingsItem.updateWakeUpTime(
+                          newWakeUpTime: newWakeUpTime,
+                        ),
+                      ),
+                    );
+                    Navigator.of(context).pop(); // To close the dialog
+                  },
                 ),
               ),
             ),
@@ -58,7 +73,28 @@ class SettingsPage extends StatelessWidget {
             title: 'Sleep time',
             subtitle:
                 '${uiUserData.sleepTime.hour}:${uiUserData.sleepTime.minute}',
-            onClick: () {},
+            onClick: () => showDialog(
+              context: context,
+              builder: (BuildContext context) => HydrateDialog(
+                title: "Change Sleep time",
+                bodyContent: TimeSelection(
+                  title: 'Change usual sleep time',
+                  timeOfDay: uiUserData.sleepTime,
+                  optionalBorderColor: Colors.blue,
+                  optionalTextColor: Colors.blue,
+                  onTimeSelectedCallback: (newSleepTime) {
+                    BlocProvider.of<SettingsBloc>(context).add(
+                      SettingsEvent.onSettingedChanged(
+                        SettingsItem.updateSleepTime(
+                          newSleepTime: newSleepTime,
+                        ),
+                      ),
+                    );
+                    Navigator.of(context).pop(); // To close the dialog
+                  },
+                ),
+              ),
+            ),
           ),
           HydrateListTile(
             title: 'Current Weight',

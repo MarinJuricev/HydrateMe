@@ -6,12 +6,16 @@ class TimeSelection extends StatefulWidget {
   final String title;
   final TimeOfDay timeOfDay;
   final Function(TimeOfDay value) onTimeSelectedCallback;
+  final Color optionalTextColor;
+  final Color optionalBorderColor;
 
   TimeSelection({
     Key key,
     @required this.title,
     @required this.timeOfDay,
     @required this.onTimeSelectedCallback,
+    this.optionalBorderColor,
+    this.optionalTextColor,
   }) : super(key: key);
 
   @override
@@ -36,7 +40,7 @@ class _TimeSelectionState extends State<TimeSelection> {
             borderRadius: BorderRadius.circular(8.0),
             side: BorderSide(color: Colors.red)),
         borderSide: BorderSide(
-          color: Colors.white,
+          color: widget.optionalBorderColor ?? Colors.white,
           style: BorderStyle.solid,
           width: 1.5,
         ),
@@ -44,7 +48,10 @@ class _TimeSelectionState extends State<TimeSelection> {
         child: Text(
           '${widget.title}\n Current: ${timeToRender.format(context)}',
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white, fontSize: 16.0),
+          style: TextStyle(
+            color: widget.optionalTextColor ?? Colors.white,
+            fontSize: 16.0,
+          ),
         ),
       ),
     );

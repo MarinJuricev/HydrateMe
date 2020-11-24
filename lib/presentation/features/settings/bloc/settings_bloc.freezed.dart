@@ -17,6 +17,13 @@ class _$SettingsEventTearOff {
   _Started started() {
     return const _Started();
   }
+
+// ignore: unused_element
+  _OnSettingsChanged onSettingedChanged(SettingsItem settingsItem) {
+    return _OnSettingsChanged(
+      settingsItem,
+    );
+  }
 }
 
 /// @nodoc
@@ -28,19 +35,23 @@ mixin _$SettingsEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result started(),
+    @required Result onSettingedChanged(SettingsItem settingsItem),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result started(),
+    Result onSettingedChanged(SettingsItem settingsItem),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result started(_Started value),
+    @required Result onSettingedChanged(_OnSettingsChanged value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result started(_Started value),
+    Result onSettingedChanged(_OnSettingsChanged value),
     @required Result orElse(),
   });
 }
@@ -99,8 +110,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result started(),
+    @required Result onSettingedChanged(SettingsItem settingsItem),
   }) {
     assert(started != null);
+    assert(onSettingedChanged != null);
     return started();
   }
 
@@ -108,6 +121,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result started(),
+    Result onSettingedChanged(SettingsItem settingsItem),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -121,8 +135,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result started(_Started value),
+    @required Result onSettingedChanged(_OnSettingsChanged value),
   }) {
     assert(started != null);
+    assert(onSettingedChanged != null);
     return started(this);
   }
 
@@ -130,6 +146,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result started(_Started value),
+    Result onSettingedChanged(_OnSettingsChanged value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -142,6 +159,125 @@ class _$_Started implements _Started {
 
 abstract class _Started implements SettingsEvent {
   const factory _Started() = _$_Started;
+}
+
+/// @nodoc
+abstract class _$OnSettingsChangedCopyWith<$Res> {
+  factory _$OnSettingsChangedCopyWith(
+          _OnSettingsChanged value, $Res Function(_OnSettingsChanged) then) =
+      __$OnSettingsChangedCopyWithImpl<$Res>;
+  $Res call({SettingsItem settingsItem});
+}
+
+/// @nodoc
+class __$OnSettingsChangedCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res>
+    implements _$OnSettingsChangedCopyWith<$Res> {
+  __$OnSettingsChangedCopyWithImpl(
+      _OnSettingsChanged _value, $Res Function(_OnSettingsChanged) _then)
+      : super(_value, (v) => _then(v as _OnSettingsChanged));
+
+  @override
+  _OnSettingsChanged get _value => super._value as _OnSettingsChanged;
+
+  @override
+  $Res call({
+    Object settingsItem = freezed,
+  }) {
+    return _then(_OnSettingsChanged(
+      settingsItem == freezed
+          ? _value.settingsItem
+          : settingsItem as SettingsItem,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_OnSettingsChanged implements _OnSettingsChanged {
+  const _$_OnSettingsChanged(this.settingsItem) : assert(settingsItem != null);
+
+  @override
+  final SettingsItem settingsItem;
+
+  @override
+  String toString() {
+    return 'SettingsEvent.onSettingedChanged(settingsItem: $settingsItem)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnSettingsChanged &&
+            (identical(other.settingsItem, settingsItem) ||
+                const DeepCollectionEquality()
+                    .equals(other.settingsItem, settingsItem)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(settingsItem);
+
+  @override
+  _$OnSettingsChangedCopyWith<_OnSettingsChanged> get copyWith =>
+      __$OnSettingsChangedCopyWithImpl<_OnSettingsChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result started(),
+    @required Result onSettingedChanged(SettingsItem settingsItem),
+  }) {
+    assert(started != null);
+    assert(onSettingedChanged != null);
+    return onSettingedChanged(settingsItem);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result started(),
+    Result onSettingedChanged(SettingsItem settingsItem),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (onSettingedChanged != null) {
+      return onSettingedChanged(settingsItem);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result started(_Started value),
+    @required Result onSettingedChanged(_OnSettingsChanged value),
+  }) {
+    assert(started != null);
+    assert(onSettingedChanged != null);
+    return onSettingedChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result started(_Started value),
+    Result onSettingedChanged(_OnSettingsChanged value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (onSettingedChanged != null) {
+      return onSettingedChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSettingsChanged implements SettingsEvent {
+  const factory _OnSettingsChanged(SettingsItem settingsItem) =
+      _$_OnSettingsChanged;
+
+  SettingsItem get settingsItem;
+  _$OnSettingsChangedCopyWith<_OnSettingsChanged> get copyWith;
 }
 
 /// @nodoc
