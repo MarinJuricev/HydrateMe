@@ -1,10 +1,11 @@
-import 'package:HydrateMe/domain/model/settings_item.dart';
-import 'package:HydrateMe/presentation/common/widgets/hydrate_dialog.dart';
-import 'package:HydrateMe/presentation/features/calculate_water_intake/widget/time_selection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../domain/model/settings_item.dart';
+import '../../common/widgets/hydrate_dialog.dart';
 import '../../common/widgets/hydrate_list_tile.dart';
+import '../calculate_water_intake/widget/time_selection.dart';
+import '../calculate_water_intake/widget/weight_selection.dart';
 import 'bloc/settings_bloc.dart';
 import 'model/ui_user_data.dart';
 
@@ -37,6 +38,8 @@ class SettingsPage extends StatelessWidget {
 
   Widget _buildSettingsLoadedState(
       UiUserData uiUserData, BuildContext context) {
+    int updatedWeight;
+
     return ListView(
       children: ListTile.divideTiles(
         context: context,
@@ -99,7 +102,32 @@ class SettingsPage extends StatelessWidget {
           HydrateListTile(
             title: 'Current Weight',
             subtitle: '${uiUserData.currentWeight}',
-            onClick: () {},
+            onClick: () => showDialog(
+              context: context,
+              builder: (BuildContext context) => HydrateDialog(
+                title: "Change Current Weight",
+                onApplyClicked: () => {
+                  BlocProvider.of<SettingsBloc>(context).add(
+                    SettingsEvent.onSettingedChanged(
+                      SettingsItem.updateCurrentWeight(
+                          updatedWeight: updatedWeight),
+                    ),
+                  ),
+                  // Navigator.of(context).pop() // To close the dialog
+                },
+                bodyContent: WeightNumberPicker(
+                  // Far from ideal... string comparisons are mega flaky, not to
+                  // not to mention that they fail on any attempt in localizing the
+                  // app, but at this point it's "enough" for this app.
+                  isWeightTypeKg: uiUserData.weightType == 'Kg',
+                  currentWeight: uiUserData.currentWeight,
+                  weightPickerColor: Colors.blue,
+                  onWeightChangeCallback: (int newWeight) {
+                    updatedWeight = newWeight;
+                  },
+                ),
+              ),
+            ),
           ),
           HydrateListTile(
             title: 'Gender',

@@ -19,9 +19,7 @@ class WeightSelection extends StatefulWidget {
 }
 
 class _WeightSelectionState extends State<WeightSelection> {
-  final List<bool> _isSelected = [true, false];
-  final _currentWeight = INITIAL_WEIGHT;
-  final _maximumWeight = 200;
+  final List<bool> _isKgSelected = [true, false];
 
   @override
   Widget build(BuildContext context) {
@@ -30,28 +28,11 @@ class _WeightSelectionState extends State<WeightSelection> {
       children: [
         Expanded(
           flex: 1,
-          child: Theme(
-            data: ThemeData(
-              accentColor: Colors.white,
-              textTheme: TextTheme(bodyText2: TextStyle(color: Colors.white)),
-            ),
-            child: NumberPicker.integer(
-              initialValue:
-                  _isSelected[0] ? _currentWeight : _currentWeight * 2,
-              minValue: 0,
-              maxValue: _isSelected[0] ? _maximumWeight : _maximumWeight * 2,
-              infiniteLoop: true,
-              highlightSelectedValue: false,
-              decoration: BoxDecoration(
-                  border: Border(
-                top: BorderSide(width: 1.5, color: Colors.white),
-                bottom: BorderSide(
-                  width: 1.5,
-                  color: Colors.white,
-                ),
-              )),
-              onChanged: (newValue) => widget.onWeightChangeCallback(newValue),
-            ),
+          child: WeightNumberPicker(
+            currentWeight: INITIAL_WEIGHT,
+            isWeightTypeKg: _isKgSelected[0],
+            onWeightChangeCallback: (newWeight) =>
+                widget.onWeightChangeCallback(newWeight),
           ),
         ),
         Expanded(
@@ -73,12 +54,12 @@ class _WeightSelectionState extends State<WeightSelection> {
               onPressed: (int index) {
                 setState(() {
                   for (int buttonIndex = 0;
-                      buttonIndex < _isSelected.length;
+                      buttonIndex < _isKgSelected.length;
                       buttonIndex++) {
                     if (buttonIndex == index) {
-                      _isSelected[buttonIndex] = true;
+                      _isKgSelected[buttonIndex] = true;
                     } else {
-                      _isSelected[buttonIndex] = false;
+                      _isKgSelected[buttonIndex] = false;
                     }
 
                     if (index == 0) {
@@ -89,11 +70,57 @@ class _WeightSelectionState extends State<WeightSelection> {
                   }
                 });
               },
-              isSelected: _isSelected,
+              isSelected: _isKgSelected,
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+class WeightNumberPicker extends StatelessWidget {
+  const WeightNumberPicker({
+    Key key,
+    this.weightPickerColor,
+    @required this.currentWeight,
+    @required this.isWeightTypeKg,
+    @required this.onWeightChangeCallback,
+  }) : super(key: key);
+
+  final bool isWeightTypeKg;
+  final Function(int value) onWeightChangeCallback;
+  final int currentWeight;
+
+  final Color weightPickerColor;
+  final _maximumWeight = 200;
+
+  @override
+  Widget build(BuildContext context) {
+    return Theme(
+      data: ThemeData(
+        accentColor: Colors.white,
+        textTheme: TextTheme(
+            bodyText2: TextStyle(color: weightPickerColor ?? Colors.white)),
+      ),
+      child: NumberPicker.integer(
+        initialValue: isWeightTypeKg ? currentWeight : currentWeight * 2,
+        minValue: 0,
+        maxValue: isWeightTypeKg ? _maximumWeight : _maximumWeight * 2,
+        infiniteLoop: true,
+        highlightSelectedValue: false,
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+                width: 1.5, color: weightPickerColor ?? Colors.white),
+            bottom: BorderSide(
+              width: 1.5,
+              color: weightPickerColor ?? Colors.white,
+            ),
+          ),
+        ),
+        onChanged: (newValue) => onWeightChangeCallback(newValue),
+      ),
     );
   }
 }
