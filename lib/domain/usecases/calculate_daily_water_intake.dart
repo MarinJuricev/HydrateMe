@@ -1,10 +1,3 @@
-import 'package:HydrateMe/data/data_source/time_provider.dart';
-import 'package:HydrateMe/domain/model/activity_level.dart';
-import 'package:HydrateMe/domain/repository/notification_repository.dart';
-import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
-import 'package:HydrateMe/domain/usecases/calculate_additional_water_intake_per_activity.dart';
-import 'package:HydrateMe/domain/usecases/oz_to_milliliter_converter.dart';
-import 'package:HydrateMe/domain/usecases/save_user_data.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
@@ -12,12 +5,19 @@ import 'package:flutter/material.dart';
 
 import '../../core/failure/base_failure.dart';
 import '../../core/usecase/base_usecase.dart';
+import '../../data/data_source/time_provider.dart';
+import '../model/activity_level.dart';
 import '../model/gender.dart';
-import '../model/weight_type.dart';
 import '../model/hydrate_status.dart';
+import '../model/weight_type.dart';
+import '../repository/notification_repository.dart';
+import '../repository/water_intake_repository.dart';
+import 'calculate_additional_water_intake_per_activity.dart';
 import 'kg_to_lbs_converter.dart';
+import 'oz_to_milliliter_converter.dart';
+import 'save_user_data.dart';
 
-const INVALID_CONVERTED_WEIGHT = -1;
+const invalidConvertedWeight = -1;
 
 class CalculateDailyWaterIntake
     extends BaseUseCase<HydrateStatus, CalculateDailyWaterIntakeParams> {
@@ -97,7 +97,7 @@ class CalculateDailyWaterIntake
     if (currentSelectedWeightType == WeightType.kg) {
       final converterResult = await kgToLbsconverter(currentWeight);
       return converterResult.fold(
-        (error) => INVALID_CONVERTED_WEIGHT,
+        (error) => invalidConvertedWeight,
         (convertedWeight) => convertedWeight,
       );
     } else {
@@ -145,7 +145,7 @@ class CalculateDailyWaterIntakeParams extends Equatable {
   final TimeOfDay wakeUpTime;
   final TimeOfDay sleepTime;
 
-  CalculateDailyWaterIntakeParams({
+  const CalculateDailyWaterIntakeParams({
     @required this.currentSelectedGender,
     @required this.currentSelectedWeightType,
     @required this.currentWeight,

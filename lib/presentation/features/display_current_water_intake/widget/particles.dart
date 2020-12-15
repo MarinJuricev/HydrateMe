@@ -10,7 +10,7 @@ import 'particle_painter.dart';
 class Particles extends StatefulWidget {
   final int numberOfParticles;
 
-  Particles(this.numberOfParticles);
+  const Particles(this.numberOfParticles);
 
   @override
   _ParticlesState createState() => _ParticlesState();
@@ -44,7 +44,7 @@ class _ParticlesState extends State<Particles> {
     );
   }
 
-  _simulateParticles(Duration time) {
+  void _simulateParticles(Duration time) {
     particles.forEach((particle) => particle.maintainRestart(time));
   }
 }

@@ -30,7 +30,6 @@ class _ManualWaterIntakeState extends State<ManualWaterIntake> {
           ),
         ),
         Expanded(
-          flex: 1,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: HydrateButton(
@@ -40,7 +39,6 @@ class _ManualWaterIntakeState extends State<ManualWaterIntake> {
           ),
         ),
         Expanded(
-          flex: 1,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: HydrateButton(

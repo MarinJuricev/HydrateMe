@@ -63,7 +63,7 @@ void main() {
 
   void setupWaterIntakeFailureCase() {
     when(_mockWaterIntakeRepository.getCurrentWaterIntake()).thenAnswer(
-        (_) async => Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA)));
+        (_) async => const Left(CacheFailure(errorRetreivingLocalData)));
   }
 
   void setupUserDataSuccessCase() {
@@ -73,7 +73,7 @@ void main() {
 
   void setupUserDataFailureCase() {
     when(_mockUserDataRepository.getUserData()).thenAnswer(
-        (_) => Future.value(Left(CacheFailure(GENERAL_ERROR_MESSAGE))));
+        (_) => Future.value(const Left(CacheFailure(genericErrorMessage))));
   }
 
   test(
@@ -149,8 +149,7 @@ void main() {
         ),
       );
 
-      final expectedValue =
-          Left(MissingDataFailure(ERROR_RETREIVING_LOCAL_DATA));
+      const expectedValue = Left(MissingDataFailure(errorRetreivingLocalData));
 
       expect(actualResult, expectedValue);
     },
@@ -169,8 +168,7 @@ void main() {
         ),
       );
 
-      final expectedValue =
-          Left(MissingDataFailure(ERROR_RETREIVING_LOCAL_DATA));
+      const expectedValue = Left(MissingDataFailure(errorRetreivingLocalData));
 
       expect(actualResult, expectedValue);
     },

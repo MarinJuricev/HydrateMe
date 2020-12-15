@@ -70,7 +70,7 @@ void main() {
     'saveUserData should trigger localPersistenceProvider.saveKeyValuePair with USER_DATA_BOX and the provided userData',
     () async {
       when(_mockLocalPersistenceProvider.saveKeyValuePair(
-        boxToSaveInto: UserDataLocalDataSourceImpl.USER_DATA_BOX,
+        boxToSaveInto: UserDataLocalDataSourceImpl.userDataBox,
         valueToSave: testUserData,
       )).thenAnswer((_) => Future.value(null));
       when(_mockUserDataToLocalUserDataMapper.map(testUserData))
@@ -79,7 +79,7 @@ void main() {
 
       verify(
         _mockLocalPersistenceProvider.saveKeyValuePair(
-          boxToSaveInto: UserDataLocalDataSourceImpl.USER_DATA_BOX,
+          boxToSaveInto: UserDataLocalDataSourceImpl.userDataBox,
           valueToSave: testLocalUserData,
         ),
       );
@@ -91,7 +91,7 @@ void main() {
     () async {
       when(
         _mockLocalPersistenceProvider.getFromKeyValuePair(
-          boxToGetDataFrom: UserDataLocalDataSourceImpl.USER_DATA_BOX,
+          boxToGetDataFrom: UserDataLocalDataSourceImpl.userDataBox,
         ),
       ).thenAnswer((_) => Future.value(testLocalUserData));
       when(_mockLocalUserDataToUserDataMapper.map(testLocalUserData))
@@ -103,7 +103,7 @@ void main() {
 
       verify(
         _mockLocalPersistenceProvider.getFromKeyValuePair(
-          boxToGetDataFrom: UserDataLocalDataSourceImpl.USER_DATA_BOX,
+          boxToGetDataFrom: UserDataLocalDataSourceImpl.userDataBox,
         ),
       );
       verify(_mockLocalUserDataToUserDataMapper.map(testLocalUserData));
@@ -115,7 +115,7 @@ void main() {
     () async {
       when(
         _mockLocalPersistenceProvider.getFromKeyValuePair(
-          boxToGetDataFrom: UserDataLocalDataSourceImpl.USER_DATA_BOX,
+          boxToGetDataFrom: UserDataLocalDataSourceImpl.userDataBox,
         ),
       ).thenAnswer((_) => Future.value(null));
 

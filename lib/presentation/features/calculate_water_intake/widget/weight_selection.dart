@@ -8,7 +8,7 @@ class WeightSelection extends StatefulWidget {
   final Function(WeightType value) onWeightTypeSwitchCallback;
   final Function(int value) onWeightChangeCallback;
 
-  WeightSelection({
+  const WeightSelection({
     Key key,
     @required this.onWeightTypeSwitchCallback,
     @required this.onWeightChangeCallback,
@@ -27,30 +27,23 @@ class _WeightSelectionState extends State<WeightSelection> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Expanded(
-          flex: 1,
           child: WeightNumberPicker(
-            currentWeight: INITIAL_WEIGHT,
+            currentWeight: initialWeight,
             isWeightTypeKg: _isKgSelected[0],
             onWeightChangeCallback: (newWeight) =>
                 widget.onWeightChangeCallback(newWeight),
           ),
         ),
         Expanded(
-          flex: 1,
           child: Align(
-            alignment: Alignment.center,
             child: ToggleButtons(
               selectedColor: Colors.blue,
               splashColor: Colors.white,
               borderColor: Colors.white,
               fillColor: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
               selectedBorderColor: Colors.white,
               borderWidth: 2.0,
-              children: <Widget>[
-                Text('KG'),
-                Text('LBS'),
-              ],
               onPressed: (int index) {
                 setState(() {
                   for (int buttonIndex = 0;
@@ -71,6 +64,10 @@ class _WeightSelectionState extends State<WeightSelection> {
                 });
               },
               isSelected: _isKgSelected,
+              children: const [
+                Text('KG'),
+                Text('LBS'),
+              ],
             ),
           ),
         ),
@@ -93,7 +90,7 @@ class WeightNumberPicker extends StatelessWidget {
   final int currentWeight;
 
   final Color weightPickerColor;
-  final _maximumWeight = 200;
+  final int _maximumWeight = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +116,7 @@ class WeightNumberPicker extends StatelessWidget {
             ),
           ),
         ),
-        onChanged: (newValue) => onWeightChangeCallback(newValue),
+        onChanged: (num newValue) => onWeightChangeCallback(newValue as int),
       ),
     );
   }

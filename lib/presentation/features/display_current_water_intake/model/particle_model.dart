@@ -17,7 +17,7 @@ class ParticleModel {
     restart();
   }
 
-  restart({Duration time = Duration.zero}) {
+  void restart({Duration time = Duration.zero}) {
     final startPosition = Offset(-0.2 + 1.4 * random.nextDouble(), 1.2);
     final endPosition = Offset(-0.2 + 1.4 * random.nextDouble(), -0.2);
 
@@ -39,7 +39,7 @@ class ParticleModel {
     size = 0.1 + random.nextDouble() * 0.25;
   }
 
-  maintainRestart(Duration time) {
+  void maintainRestart(Duration time) {
     if (progress() == 1.0) {
       restart(time: time);
     }

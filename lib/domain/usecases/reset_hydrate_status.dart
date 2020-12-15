@@ -17,7 +17,7 @@ class ResetHydrateStatus
     return Future.value(
       Right(
         params.hydrateStatusToReset.copyWith(
-          hydrationPercentage: HydrateStatus.INITIAL_HYDRATION_PERCENTRAGE,
+          hydrationPercentage: HydrateStatus.initialHydrationPercentage,
           formattedCurrentIntake:
               '$convertedDailyIntakeGoal/$convertedDailyIntakeGoal',
           dailyIntakeGoal: params.hydrateStatusToReset.dailyIntakeGoal,
@@ -33,7 +33,7 @@ class ResetHydrateStatusParams extends Equatable {
   final HydrateStatus hydrateStatusToReset;
   final DateTime updatedDate;
 
-  ResetHydrateStatusParams({
+  const ResetHydrateStatusParams({
     @required this.hydrateStatusToReset,
     @required this.updatedDate,
   });

@@ -18,7 +18,7 @@ void main() {
     'should return Future(WeightType.kg) when LocalWeightType.kg is provided',
     () async {
       final actualResult = await sut.map(LocalWeightType.kg);
-      final expectedResult = WeightType.kg;
+      const expectedResult = WeightType.kg;
 
       expect(actualResult, expectedResult);
     },
@@ -28,7 +28,7 @@ void main() {
     'should return Future(WeightType.lbs) when LocalWeightType.lbs is provided',
     () async {
       final actualResult = await sut.map(LocalWeightType.lbs);
-      final expectedResult = WeightType.lbs;
+      const expectedResult = WeightType.lbs;
 
       expect(actualResult, expectedResult);
     },

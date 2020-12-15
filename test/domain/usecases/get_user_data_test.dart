@@ -16,12 +16,12 @@ void main() {
   MockUserDataRepository _mockUserDataRepository;
   GetUserData sut;
 
-  final testWakeUpTime = TimeOfDay(hour: 6, minute: 0);
-  final testSleepTime = TimeOfDay(hour: 23, minute: 0);
-  final testCurrentWeight = 75;
-  final testGender = Gender.male;
-  final testWeightType = WeightType.kg;
-  final testActivityLevel = ActivityLevel.active;
+  const testWakeUpTime = TimeOfDay(hour: 6, minute: 0);
+  const testSleepTime = TimeOfDay(hour: 23, minute: 0);
+  const testCurrentWeight = 75;
+  const testGender = Gender.male;
+  const testWeightType = WeightType.kg;
+  const testActivityLevel = ActivityLevel.active;
 
   final testUserData = UserData(
     wakeUpTime: testWakeUpTime,

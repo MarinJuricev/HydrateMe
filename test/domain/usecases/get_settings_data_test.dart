@@ -60,10 +60,10 @@ void main() {
     'should return the getUser result when it returns a failure',
     () async {
       when(_mockGetUserData(_noParams)).thenAnswer(
-          (_) => Future.value(Left(CacheFailure(GENERAL_ERROR_MESSAGE))));
+          (_) => Future.value(const Left(CacheFailure(genericErrorMessage))));
 
       final actualResult = await sut(_noParams);
-      final expectedResult = Left(CacheFailure(GENERAL_ERROR_MESSAGE));
+      const expectedResult = Left(CacheFailure(genericErrorMessage));
 
       expect(actualResult, expectedResult);
     },

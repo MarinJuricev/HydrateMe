@@ -11,12 +11,12 @@ void main() {
   MockNotificationService _mockNotificationService;
   NotificationRepository _notificationRepository;
 
-  final testWakeUpTime = TimeOfDay(hour: 7, minute: 0);
-  final testSleepTime = TimeOfDay(hour: 22, minute: 0);
+  const testWakeUpTime = TimeOfDay(hour: 7, minute: 0);
+  const testSleepTime = TimeOfDay(hour: 22, minute: 0);
 
-  final expectedFirstNotificationTime = TimeOfDay(hour: 8, minute: 0);
-  final expectedSecondNotificationTime = TimeOfDay(hour: 15, minute: 0);
-  final expectedThirdNotificationTime = TimeOfDay(hour: 21, minute: 0);
+  const expectedFirstNotificationTime = TimeOfDay(hour: 8, minute: 0);
+  const expectedSecondNotificationTime = TimeOfDay(hour: 15, minute: 0);
+  const expectedThirdNotificationTime = TimeOfDay(hour: 21, minute: 0);
 
   setUp(
     () {

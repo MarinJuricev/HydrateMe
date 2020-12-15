@@ -19,7 +19,7 @@ void main() {
     () async {
       final actualResult =
           await _calculateAdditionalWaterIntakePerActivity(ActivityLevel.low);
-      final expectedResult = Right(12);
+      const expectedResult = Right(12);
 
       expect(actualResult, expectedResult);
     },
@@ -30,7 +30,7 @@ void main() {
     () async {
       final actualResult = await _calculateAdditionalWaterIntakePerActivity(
           ActivityLevel.active);
-      final expectedResult = Right(24);
+      const expectedResult = Right(24);
 
       expect(actualResult, expectedResult);
     },
@@ -41,7 +41,7 @@ void main() {
     () async {
       final actualResult = await _calculateAdditionalWaterIntakePerActivity(
           ActivityLevel.veryActive);
-      final expectedResult = Right(48);
+      const expectedResult = Right(48);
 
       expect(actualResult, expectedResult);
     },

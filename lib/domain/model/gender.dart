@@ -2,7 +2,7 @@ enum Gender { male, female }
 
 extension StringGenderExtension on String {
   Gender get weightType {
-    switch (this.toLowerCase()) {
+    switch (toLowerCase()) {
       case 'male':
         return Gender.male;
       case 'female':

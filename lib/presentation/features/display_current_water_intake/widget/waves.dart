@@ -9,9 +9,9 @@ import '../bloc/current_water_intake_bloc.dart';
 class Waves extends StatefulWidget {
   final HydrateStatus currentHydrateStatus;
 
-  static const WAVE_HEIGHT_OFFSET = 2;
+  static const waveHeightOffset = 2;
 
-  Waves({
+  const Waves({
     Key key,
     @required this.currentHydrateStatus,
   }) : super(key: key);
@@ -26,8 +26,7 @@ class _WavesState extends State<Waves> {
 
   @override
   Widget build(BuildContext context) {
-    _wavesHeight =
-        MediaQuery.of(context).size.height / Waves.WAVE_HEIGHT_OFFSET;
+    _wavesHeight = MediaQuery.of(context).size.height / Waves.waveHeightOffset;
     _offset = Offset(
       0,
       widget.currentHydrateStatus.hydrationPercentage * _wavesHeight,
@@ -43,8 +42,8 @@ class _WavesState extends State<Waves> {
           );
         }
       },
-      child: Container(
-        height: MediaQuery.of(context).size.height / Waves.WAVE_HEIGHT_OFFSET,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height / Waves.waveHeightOffset,
         width: double.infinity,
         child: Stack(
           children: [
@@ -52,18 +51,19 @@ class _WavesState extends State<Waves> {
               elevation: 12.0,
               margin: const EdgeInsets.only(right: 16.0, left: 16.0),
               clipBehavior: Clip.antiAlias,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(48)),
               ),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: AnimatedContainer(
-                  duration: Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 100),
                   curve: Curves.decelerate,
+                  height: _offset.dy,
                   child: WaveWidget(
                     duration: 1,
                     config: CustomConfig(
-                      gradients: [
+                      gradients: const [
                         [
                           Color.fromRGBO(0, 100, 175, 0.4),
                           Color.fromRGBO(0, 100, 235, 0.8)
@@ -75,22 +75,21 @@ class _WavesState extends State<Waves> {
                       ],
                       durations: [10800, 19440],
                       heightPercentages: [0.0, 0.0],
-                      blur: MaskFilter.blur(BlurStyle.solid, 5),
+                      blur: const MaskFilter.blur(BlurStyle.solid, 5),
                       gradientBegin: Alignment.centerLeft,
                       gradientEnd: Alignment.centerRight,
                     ),
                     waveAmplitude: 1.0,
                     backgroundColor: Colors.transparent,
-                    size: Size(double.infinity, double.infinity),
+                    size: const Size(double.infinity, double.infinity),
                   ),
-                  height: _offset.dy,
                 ),
               ),
             ),
             Center(
               child: Text(
                 widget.currentHydrateStatus.formattedCurrentIntake,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 16.0,
                 ),

@@ -19,9 +19,9 @@ class _$SettingsEventTearOff {
   }
 
 // ignore: unused_element
-  _OnSettingsChanged onSettingedChanged(SettingsItem settingsItem) {
+  _OnSettingsChanged onSettingedChanged(SettingsItem settingsItemChanged) {
     return _OnSettingsChanged(
-      settingsItem,
+      settingsItemChanged,
     );
   }
 }
@@ -33,26 +33,26 @@ const $SettingsEvent = _$SettingsEventTearOff();
 /// @nodoc
 mixin _$SettingsEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result started(),
-    @required Result onSettingedChanged(SettingsItem settingsItem),
+  TResult when<TResult extends Object>({
+    @required TResult started(),
+    @required TResult onSettingedChanged(SettingsItem settingsItemChanged),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result started(),
-    Result onSettingedChanged(SettingsItem settingsItem),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult started(),
+    TResult onSettingedChanged(SettingsItem settingsItemChanged),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result started(_Started value),
-    @required Result onSettingedChanged(_OnSettingsChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult started(_Started value),
+    @required TResult onSettingedChanged(_OnSettingsChanged value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result started(_Started value),
-    Result onSettingedChanged(_OnSettingsChanged value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult started(_Started value),
+    TResult onSettingedChanged(_OnSettingsChanged value),
+    @required TResult orElse(),
   });
 }
 
@@ -108,9 +108,9 @@ class _$_Started implements _Started {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result started(),
-    @required Result onSettingedChanged(SettingsItem settingsItem),
+  TResult when<TResult extends Object>({
+    @required TResult started(),
+    @required TResult onSettingedChanged(SettingsItem settingsItemChanged),
   }) {
     assert(started != null);
     assert(onSettingedChanged != null);
@@ -119,10 +119,10 @@ class _$_Started implements _Started {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result started(),
-    Result onSettingedChanged(SettingsItem settingsItem),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult started(),
+    TResult onSettingedChanged(SettingsItem settingsItemChanged),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (started != null) {
@@ -133,9 +133,9 @@ class _$_Started implements _Started {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result started(_Started value),
-    @required Result onSettingedChanged(_OnSettingsChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult started(_Started value),
+    @required TResult onSettingedChanged(_OnSettingsChanged value),
   }) {
     assert(started != null);
     assert(onSettingedChanged != null);
@@ -144,10 +144,10 @@ class _$_Started implements _Started {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result started(_Started value),
-    Result onSettingedChanged(_OnSettingsChanged value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult started(_Started value),
+    TResult onSettingedChanged(_OnSettingsChanged value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (started != null) {
@@ -166,7 +166,9 @@ abstract class _$OnSettingsChangedCopyWith<$Res> {
   factory _$OnSettingsChangedCopyWith(
           _OnSettingsChanged value, $Res Function(_OnSettingsChanged) then) =
       __$OnSettingsChangedCopyWithImpl<$Res>;
-  $Res call({SettingsItem settingsItem});
+  $Res call({SettingsItem settingsItemChanged});
+
+  $SettingsItemCopyWith<$Res> get settingsItemChanged;
 }
 
 /// @nodoc
@@ -182,40 +184,52 @@ class __$OnSettingsChangedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object settingsItem = freezed,
+    Object settingsItemChanged = freezed,
   }) {
     return _then(_OnSettingsChanged(
-      settingsItem == freezed
-          ? _value.settingsItem
-          : settingsItem as SettingsItem,
+      settingsItemChanged == freezed
+          ? _value.settingsItemChanged
+          : settingsItemChanged as SettingsItem,
     ));
+  }
+
+  @override
+  $SettingsItemCopyWith<$Res> get settingsItemChanged {
+    if (_value.settingsItemChanged == null) {
+      return null;
+    }
+    return $SettingsItemCopyWith<$Res>(_value.settingsItemChanged, (value) {
+      return _then(_value.copyWith(settingsItemChanged: value));
+    });
   }
 }
 
 /// @nodoc
 class _$_OnSettingsChanged implements _OnSettingsChanged {
-  const _$_OnSettingsChanged(this.settingsItem) : assert(settingsItem != null);
+  const _$_OnSettingsChanged(this.settingsItemChanged)
+      : assert(settingsItemChanged != null);
 
   @override
-  final SettingsItem settingsItem;
+  final SettingsItem settingsItemChanged;
 
   @override
   String toString() {
-    return 'SettingsEvent.onSettingedChanged(settingsItem: $settingsItem)';
+    return 'SettingsEvent.onSettingedChanged(settingsItemChanged: $settingsItemChanged)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _OnSettingsChanged &&
-            (identical(other.settingsItem, settingsItem) ||
+            (identical(other.settingsItemChanged, settingsItemChanged) ||
                 const DeepCollectionEquality()
-                    .equals(other.settingsItem, settingsItem)));
+                    .equals(other.settingsItemChanged, settingsItemChanged)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(settingsItem);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(settingsItemChanged);
 
   @override
   _$OnSettingsChangedCopyWith<_OnSettingsChanged> get copyWith =>
@@ -223,34 +237,34 @@ class _$_OnSettingsChanged implements _OnSettingsChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result started(),
-    @required Result onSettingedChanged(SettingsItem settingsItem),
+  TResult when<TResult extends Object>({
+    @required TResult started(),
+    @required TResult onSettingedChanged(SettingsItem settingsItemChanged),
   }) {
     assert(started != null);
     assert(onSettingedChanged != null);
-    return onSettingedChanged(settingsItem);
+    return onSettingedChanged(settingsItemChanged);
   }
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result started(),
-    Result onSettingedChanged(SettingsItem settingsItem),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult started(),
+    TResult onSettingedChanged(SettingsItem settingsItemChanged),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (onSettingedChanged != null) {
-      return onSettingedChanged(settingsItem);
+      return onSettingedChanged(settingsItemChanged);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result started(_Started value),
-    @required Result onSettingedChanged(_OnSettingsChanged value),
+  TResult map<TResult extends Object>({
+    @required TResult started(_Started value),
+    @required TResult onSettingedChanged(_OnSettingsChanged value),
   }) {
     assert(started != null);
     assert(onSettingedChanged != null);
@@ -259,10 +273,10 @@ class _$_OnSettingsChanged implements _OnSettingsChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result started(_Started value),
-    Result onSettingedChanged(_OnSettingsChanged value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult started(_Started value),
+    TResult onSettingedChanged(_OnSettingsChanged value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (onSettingedChanged != null) {
@@ -273,10 +287,10 @@ class _$_OnSettingsChanged implements _OnSettingsChanged {
 }
 
 abstract class _OnSettingsChanged implements SettingsEvent {
-  const factory _OnSettingsChanged(SettingsItem settingsItem) =
+  const factory _OnSettingsChanged(SettingsItem settingsItemChanged) =
       _$_OnSettingsChanged;
 
-  SettingsItem get settingsItem;
+  SettingsItem get settingsItemChanged;
   _$OnSettingsChangedCopyWith<_OnSettingsChanged> get copyWith;
 }
 
@@ -311,30 +325,30 @@ const $SettingsState = _$SettingsStateTearOff();
 /// @nodoc
 mixin _$SettingsState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result error(String errorMessage),
-    @required Result loaded(UiUserData uiUserData),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult error(String errorMessage),
+    @required TResult loaded(UiUserData uiUserData),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result error(String errorMessage),
-    Result loaded(UiUserData uiUserData),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult error(String errorMessage),
+    TResult loaded(UiUserData uiUserData),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result error(_Error value),
-    @required Result loaded(_Loaded value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult error(_Error value),
+    @required TResult loaded(_Loaded value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result error(_Error value),
-    Result loaded(_Loaded value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult error(_Error value),
+    TResult loaded(_Loaded value),
+    @required TResult orElse(),
   });
 }
 
@@ -390,10 +404,10 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result error(String errorMessage),
-    @required Result loaded(UiUserData uiUserData),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult error(String errorMessage),
+    @required TResult loaded(UiUserData uiUserData),
   }) {
     assert(initial != null);
     assert(error != null);
@@ -403,11 +417,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result error(String errorMessage),
-    Result loaded(UiUserData uiUserData),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult error(String errorMessage),
+    TResult loaded(UiUserData uiUserData),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -418,10 +432,10 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result error(_Error value),
-    @required Result loaded(_Loaded value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult error(_Error value),
+    @required TResult loaded(_Loaded value),
   }) {
     assert(initial != null);
     assert(error != null);
@@ -431,11 +445,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result error(_Error value),
-    Result loaded(_Loaded value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult error(_Error value),
+    TResult loaded(_Loaded value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -506,10 +520,10 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result error(String errorMessage),
-    @required Result loaded(UiUserData uiUserData),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult error(String errorMessage),
+    @required TResult loaded(UiUserData uiUserData),
   }) {
     assert(initial != null);
     assert(error != null);
@@ -519,11 +533,11 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result error(String errorMessage),
-    Result loaded(UiUserData uiUserData),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult error(String errorMessage),
+    TResult loaded(UiUserData uiUserData),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
@@ -534,10 +548,10 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result error(_Error value),
-    @required Result loaded(_Loaded value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult error(_Error value),
+    @required TResult loaded(_Loaded value),
   }) {
     assert(initial != null);
     assert(error != null);
@@ -547,11 +561,11 @@ class _$_Error implements _Error {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result error(_Error value),
-    Result loaded(_Loaded value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult error(_Error value),
+    TResult loaded(_Loaded value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
@@ -637,10 +651,10 @@ class _$_Loaded implements _Loaded {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result error(String errorMessage),
-    @required Result loaded(UiUserData uiUserData),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult error(String errorMessage),
+    @required TResult loaded(UiUserData uiUserData),
   }) {
     assert(initial != null);
     assert(error != null);
@@ -650,11 +664,11 @@ class _$_Loaded implements _Loaded {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result error(String errorMessage),
-    Result loaded(UiUserData uiUserData),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult error(String errorMessage),
+    TResult loaded(UiUserData uiUserData),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loaded != null) {
@@ -665,10 +679,10 @@ class _$_Loaded implements _Loaded {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result error(_Error value),
-    @required Result loaded(_Loaded value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult error(_Error value),
+    @required TResult loaded(_Loaded value),
   }) {
     assert(initial != null);
     assert(error != null);
@@ -678,11 +692,11 @@ class _$_Loaded implements _Loaded {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result error(_Error value),
-    Result loaded(_Loaded value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult error(_Error value),
+    TResult loaded(_Loaded value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loaded != null) {

@@ -27,16 +27,16 @@ void main() {
   MockLocalWeightTypeMapper _mockWeightTypeMapper;
 
   Mapper<UserData, LocalUserData> sut;
-  final testCurrentWeight = 75;
+  const testCurrentWeight = 75;
   final testDateTime = DateTime.now();
-  final testSleepTime = TimeOfDay(hour: 23, minute: 0);
-  final testWakeUpTime = TimeOfDay(hour: 7, minute: 0);
-  final testGender = Gender.male;
-  final testWeightType = WeightType.kg;
-  final testActivityLevel = ActivityLevel.active;
-  final testLocalGender = LocalGender.male;
-  final testLocalWeightType = LocalWeightType.kg;
-  final testLocalActivityLevel = LocalActivityLevel.active;
+  const testSleepTime = TimeOfDay(hour: 23, minute: 0);
+  const testWakeUpTime = TimeOfDay(hour: 7, minute: 0);
+  const testGender = Gender.male;
+  const testWeightType = WeightType.kg;
+  const testActivityLevel = ActivityLevel.active;
+  const testLocalGender = LocalGender.male;
+  const testLocalWeightType = LocalWeightType.kg;
+  const testLocalActivityLevel = LocalActivityLevel.active;
 
   setUp(
     () {

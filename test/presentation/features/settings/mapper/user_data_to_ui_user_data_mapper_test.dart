@@ -71,7 +71,7 @@ void main() {
       );
 
       final actualResult = await sut.map(testUserData);
-      final expectedResult = 75;
+      const expectedResult = 75;
 
       expect(actualResult.currentWeight, expectedResult);
     },
@@ -90,7 +90,7 @@ void main() {
       );
 
       final actualResult = await sut.map(testUserData);
-      final expectedResult = 75;
+      const expectedResult = 75;
 
       expect(actualResult.currentWeight, expectedResult);
     },
@@ -109,7 +109,7 @@ void main() {
       );
 
       final actualResult = await sut.map(testUserData);
-      final expectedResult = 'Male';
+      const expectedResult = 'Male';
 
       expect(actualResult.gender, expectedResult);
     },
@@ -128,7 +128,7 @@ void main() {
       );
 
       final actualResult = await sut.map(testUserData);
-      final expectedResult = 'Female';
+      const expectedResult = 'Female';
 
       expect(actualResult.gender, expectedResult);
     },
@@ -147,7 +147,7 @@ void main() {
       );
 
       final actualResult = await sut.map(testUserData);
-      final expectedResult = 'Kg';
+      const expectedResult = 'Kg';
 
       expect(actualResult.weightType, expectedResult);
     },
@@ -166,7 +166,7 @@ void main() {
       );
 
       final actualResult = await sut.map(testUserData);
-      final expectedResult = 'Lbs';
+      const expectedResult = 'Lbs';
 
       expect(actualResult.weightType, expectedResult);
     },
@@ -185,7 +185,7 @@ void main() {
       );
 
       final actualResult = await sut.map(testUserData);
-      final expectedResult = 'Low';
+      const expectedResult = 'Low';
 
       expect(actualResult.activityLevel, expectedResult);
     },
@@ -204,7 +204,7 @@ void main() {
       );
 
       final actualResult = await sut.map(testUserData);
-      final expectedResult = 'Active';
+      const expectedResult = 'Active';
 
       expect(actualResult.activityLevel, expectedResult);
     },
@@ -222,7 +222,7 @@ void main() {
           activityLevel: ActivityLevel.veryActive);
 
       final actualResult = await sut.map(testUserData);
-      final expectedResult = 'Very Active';
+      const expectedResult = 'Very Active';
 
       expect(actualResult.activityLevel, expectedResult);
     },

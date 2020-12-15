@@ -18,7 +18,7 @@ void main() {
     'should return Future(LocalActivityLevel.low) when ActivityLevel.low is provided',
     () async {
       final actualResult = await sut.map(ActivityLevel.low);
-      final expectedResult = LocalActivityLevel.low;
+      const expectedResult = LocalActivityLevel.low;
 
       expect(actualResult, expectedResult);
     },
@@ -28,7 +28,7 @@ void main() {
     'should return Future(LocalActivityLevel.active) when ActivityLevel.active is provided',
     () async {
       final actualResult = await sut.map(ActivityLevel.active);
-      final expectedResult = LocalActivityLevel.active;
+      const expectedResult = LocalActivityLevel.active;
 
       expect(actualResult, expectedResult);
     },
@@ -38,7 +38,7 @@ void main() {
     'should return Future(LocalActivityLevel.veryActive) when ActivityLevel.veryActive is provided',
     () async {
       final actualResult = await sut.map(ActivityLevel.veryActive);
-      final expectedResult = LocalActivityLevel.veryActive;
+      const expectedResult = LocalActivityLevel.veryActive;
 
       expect(actualResult, expectedResult);
     },

@@ -5,7 +5,7 @@ part 'hydrate_status.freezed.dart';
 
 @freezed
 abstract class HydrateStatus with _$HydrateStatus {
-  static const INITIAL_HYDRATION_PERCENTRAGE = 1.0;
+  static const initialHydrationPercentage = 1.0;
 
   factory HydrateStatus({
     // Used to render the waves widget, it should range from [0.0 - 1.0]

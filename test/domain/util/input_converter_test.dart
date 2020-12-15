@@ -23,50 +23,50 @@ void main() {
       test(
         'should return an integer when the string represents an unsigned integer',
         () async {
-          final str = '123';
+          const String str = '123';
 
           final result = inputConverter.stringToUnsignedInteger(str);
 
-          expect(result, Right(123));
+          expect(result, const Right(123));
         },
       );
 
       test(
         'should return a Failure when the string is not a integer',
         () async {
-          final str = 'abc';
+          const String str = 'abc';
 
           final result = inputConverter.stringToUnsignedInteger(str);
 
-          expect(result, Left(ValidationFailure(INVALID_NUMBER_PROVIDED)));
+          expect(result, const Left(ValidationFailure(invalidNumberProvided)));
         },
       );
 
       test(
         'should return a Failure when the string is a negative integer',
         () async {
-          final str = '-123';
+          const String str = '-123';
 
           final result = inputConverter.stringToUnsignedInteger(str);
 
-          expect(result, Left(ValidationFailure(POSITIVE_PROVIDED_NUMBER)));
+          expect(result, const Left(ValidationFailure(positiveProvidedNumber)));
         },
       );
 
       test('should return a Failure when the provided string is null', () {
-        final str = null;
+        const String str = null;
 
         final result = inputConverter.stringToUnsignedInteger(str);
 
-        expect(result, Left(ValidationFailure(REQUIRED_FIELDS_NOT_EMTPY)));
+        expect(result, const Left(ValidationFailure(requiredFieldsNotEmpty)));
       });
 
       test('should return a Failure when the provided string is empty', () {
-        final str = '';
+        const String str = '';
 
         final result = inputConverter.stringToUnsignedInteger(str);
 
-        expect(result, Left(ValidationFailure(REQUIRED_FIELDS_NOT_EMTPY)));
+        expect(result, const Left(ValidationFailure(requiredFieldsNotEmpty)));
       });
     },
   );

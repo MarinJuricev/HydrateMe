@@ -67,7 +67,7 @@ void main() {
     'saveWaterIntake should trigger localPersistenceProvider.saveKeyValuePair with HYDRATE_STATUS_BOX and the provided hydrateStatus',
     () async {
       when(_mockLocalPersistenceProvider.saveKeyValuePair(
-        boxToSaveInto: WaterIntakeLocalDataSourceImpl.HYDRATE_STATUS_BOX,
+        boxToSaveInto: WaterIntakeLocalDataSourceImpl.hydrateStatusBox,
         valueToSave: testHydrateStatus,
       )).thenAnswer((_) => Future.value(null));
       when(_mockHydrateStatusToLocalHydrateStatusMapper.map(testHydrateStatus))
@@ -76,7 +76,7 @@ void main() {
 
       verify(
         _mockLocalPersistenceProvider.saveKeyValuePair(
-          boxToSaveInto: WaterIntakeLocalDataSourceImpl.HYDRATE_STATUS_BOX,
+          boxToSaveInto: WaterIntakeLocalDataSourceImpl.hydrateStatusBox,
           valueToSave: testLocalHydrateStatus,
         ),
       );
@@ -88,7 +88,7 @@ void main() {
     () async {
       when(
         _mockLocalPersistenceProvider.getFromKeyValuePair(
-          boxToGetDataFrom: WaterIntakeLocalDataSourceImpl.HYDRATE_STATUS_BOX,
+          boxToGetDataFrom: WaterIntakeLocalDataSourceImpl.hydrateStatusBox,
         ),
       ).thenAnswer((_) => Future.value(testLocalHydrateStatus));
       when(_mockLocalHydrateStatusToHydrateStatusMapper
@@ -101,7 +101,7 @@ void main() {
 
       verify(
         _mockLocalPersistenceProvider.getFromKeyValuePair(
-          boxToGetDataFrom: WaterIntakeLocalDataSourceImpl.HYDRATE_STATUS_BOX,
+          boxToGetDataFrom: WaterIntakeLocalDataSourceImpl.hydrateStatusBox,
         ),
       );
       verify(_mockLocalHydrateStatusToHydrateStatusMapper
@@ -114,7 +114,7 @@ void main() {
     () async {
       when(
         _mockLocalPersistenceProvider.getFromKeyValuePair(
-          boxToGetDataFrom: WaterIntakeLocalDataSourceImpl.HYDRATE_STATUS_BOX,
+          boxToGetDataFrom: WaterIntakeLocalDataSourceImpl.hydrateStatusBox,
         ),
       ).thenAnswer((_) => Future.value(null));
 

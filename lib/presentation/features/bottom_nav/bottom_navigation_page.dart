@@ -3,18 +3,16 @@ import 'package:HydrateMe/presentation/features/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationPage extends StatefulWidget {
-  static const BOTTOM_NAVIGATION_PAGE = '/home';
+  static const bottomNavigationPage = '/home';
 
-  BottomNavigationPage({Key key}) : super(key: key);
+  const BottomNavigationPage({Key key}) : super(key: key);
 
   @override
   _BottomNavigationPageState createState() => _BottomNavigationPageState();
 }
 
 class _BottomNavigationPageState extends State<BottomNavigationPage> {
-  PageController _pageController = PageController(
-    initialPage: 0,
-  );
+  final PageController _pageController = PageController();
 
   int _selectedPageIndex = 0;
 
@@ -22,7 +20,7 @@ class _BottomNavigationPageState extends State<BottomNavigationPage> {
     setState(() {
       _selectedPageIndex = page;
       _pageController.animateToPage(page,
-          duration: Duration(milliseconds: 200), curve: Curves.linear);
+          duration: const Duration(milliseconds: 200), curve: Curves.linear);
     });
   }
 

@@ -33,7 +33,7 @@ class NotificationServiceImpl extends NotificationService {
             'Remember to drink your water',
             'Current intake ${hydrateStatus.formattedCurrentIntake}',
             _nextInstanceOfProvidedHour(timeToSchedule),
-            NotificationDetails(
+            const NotificationDetails(
               android: AndroidNotificationDetails(
                 'HydrateMe daily notification channel id',
                 'Daily water intake reminder',
@@ -86,7 +86,7 @@ class NotificationServiceImpl extends NotificationService {
         );
         const NotificationDetails platformChannelSpecifics =
             NotificationDetails(android: androidPlatformChannelSpecifics);
-        return await flutterLocalNotificationsPlugin.show(
+        return flutterLocalNotificationsPlugin.show(
           0,
           'Remember to drink your water',
           'Current intake ${hydrateStatus.formattedCurrentIntake}',

@@ -22,7 +22,7 @@ class WaterIntakeRepositoryImpl extends WaterIntakeRepository {
 
       return Right(localResult);
     } on CacheException {
-      return Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
+      return const Left(CacheFailure(errorRetreivingLocalData));
     }
   }
 
@@ -35,7 +35,7 @@ class WaterIntakeRepositoryImpl extends WaterIntakeRepository {
 
       return Right(localResult);
     } on CacheException {
-      return Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
+      return const Left(CacheFailure(errorRetreivingLocalData));
     }
   }
 }

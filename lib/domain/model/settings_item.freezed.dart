@@ -64,42 +64,42 @@ const $SettingsItem = _$SettingsItemTearOff();
 /// @nodoc
 mixin _$SettingsItem {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    @required Result updateSleepTime(TimeOfDay newSleepTime),
-    @required Result updateCurrentWeight(int updatedWeight),
-    @required Result updateGender(Gender updatedGender),
-    @required Result updateWeightType(WeightType updatedWeightType),
-    @required Result updateActivityLevel(ActivityLevel updatedActivityLevel),
+  TResult when<TResult extends Object>({
+    @required TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    @required TResult updateSleepTime(TimeOfDay newSleepTime),
+    @required TResult updateCurrentWeight(int updatedWeight),
+    @required TResult updateGender(Gender updatedGender),
+    @required TResult updateWeightType(WeightType updatedWeightType),
+    @required TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    Result updateSleepTime(TimeOfDay newSleepTime),
-    Result updateCurrentWeight(int updatedWeight),
-    Result updateGender(Gender updatedGender),
-    Result updateWeightType(WeightType updatedWeightType),
-    Result updateActivityLevel(ActivityLevel updatedActivityLevel),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    TResult updateSleepTime(TimeOfDay newSleepTime),
+    TResult updateCurrentWeight(int updatedWeight),
+    TResult updateGender(Gender updatedGender),
+    TResult updateWeightType(WeightType updatedWeightType),
+    TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateWakeUpTime(_UpdateWakeUpItem value),
-    @required Result updateSleepTime(_UpdateSleepItem value),
-    @required Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    @required Result updateGender(_UpdateGenderItem value),
-    @required Result updateWeightType(_UpdateWeightType value),
-    @required Result updateActivityLevel(_UpdatedActivityLevel value),
+  TResult map<TResult extends Object>({
+    @required TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    @required TResult updateSleepTime(_UpdateSleepItem value),
+    @required TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    @required TResult updateGender(_UpdateGenderItem value),
+    @required TResult updateWeightType(_UpdateWeightType value),
+    @required TResult updateActivityLevel(_UpdatedActivityLevel value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateWakeUpTime(_UpdateWakeUpItem value),
-    Result updateSleepTime(_UpdateSleepItem value),
-    Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    Result updateGender(_UpdateGenderItem value),
-    Result updateWeightType(_UpdateWeightType value),
-    Result updateActivityLevel(_UpdatedActivityLevel value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    TResult updateSleepTime(_UpdateSleepItem value),
+    TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    TResult updateGender(_UpdateGenderItem value),
+    TResult updateWeightType(_UpdateWeightType value),
+    TResult updateActivityLevel(_UpdatedActivityLevel value),
+    @required TResult orElse(),
   });
 }
 
@@ -182,13 +182,13 @@ class _$_UpdateWakeUpItem implements _UpdateWakeUpItem {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    @required Result updateSleepTime(TimeOfDay newSleepTime),
-    @required Result updateCurrentWeight(int updatedWeight),
-    @required Result updateGender(Gender updatedGender),
-    @required Result updateWeightType(WeightType updatedWeightType),
-    @required Result updateActivityLevel(ActivityLevel updatedActivityLevel),
+  TResult when<TResult extends Object>({
+    @required TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    @required TResult updateSleepTime(TimeOfDay newSleepTime),
+    @required TResult updateCurrentWeight(int updatedWeight),
+    @required TResult updateGender(Gender updatedGender),
+    @required TResult updateWeightType(WeightType updatedWeightType),
+    @required TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -201,14 +201,14 @@ class _$_UpdateWakeUpItem implements _UpdateWakeUpItem {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    Result updateSleepTime(TimeOfDay newSleepTime),
-    Result updateCurrentWeight(int updatedWeight),
-    Result updateGender(Gender updatedGender),
-    Result updateWeightType(WeightType updatedWeightType),
-    Result updateActivityLevel(ActivityLevel updatedActivityLevel),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    TResult updateSleepTime(TimeOfDay newSleepTime),
+    TResult updateCurrentWeight(int updatedWeight),
+    TResult updateGender(Gender updatedGender),
+    TResult updateWeightType(WeightType updatedWeightType),
+    TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateWakeUpTime != null) {
@@ -219,13 +219,13 @@ class _$_UpdateWakeUpItem implements _UpdateWakeUpItem {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateWakeUpTime(_UpdateWakeUpItem value),
-    @required Result updateSleepTime(_UpdateSleepItem value),
-    @required Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    @required Result updateGender(_UpdateGenderItem value),
-    @required Result updateWeightType(_UpdateWeightType value),
-    @required Result updateActivityLevel(_UpdatedActivityLevel value),
+  TResult map<TResult extends Object>({
+    @required TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    @required TResult updateSleepTime(_UpdateSleepItem value),
+    @required TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    @required TResult updateGender(_UpdateGenderItem value),
+    @required TResult updateWeightType(_UpdateWeightType value),
+    @required TResult updateActivityLevel(_UpdatedActivityLevel value),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -238,14 +238,14 @@ class _$_UpdateWakeUpItem implements _UpdateWakeUpItem {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateWakeUpTime(_UpdateWakeUpItem value),
-    Result updateSleepTime(_UpdateSleepItem value),
-    Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    Result updateGender(_UpdateGenderItem value),
-    Result updateWeightType(_UpdateWeightType value),
-    Result updateActivityLevel(_UpdatedActivityLevel value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    TResult updateSleepTime(_UpdateSleepItem value),
+    TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    TResult updateGender(_UpdateGenderItem value),
+    TResult updateWeightType(_UpdateWeightType value),
+    TResult updateActivityLevel(_UpdatedActivityLevel value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateWakeUpTime != null) {
@@ -326,13 +326,13 @@ class _$_UpdateSleepItem implements _UpdateSleepItem {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    @required Result updateSleepTime(TimeOfDay newSleepTime),
-    @required Result updateCurrentWeight(int updatedWeight),
-    @required Result updateGender(Gender updatedGender),
-    @required Result updateWeightType(WeightType updatedWeightType),
-    @required Result updateActivityLevel(ActivityLevel updatedActivityLevel),
+  TResult when<TResult extends Object>({
+    @required TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    @required TResult updateSleepTime(TimeOfDay newSleepTime),
+    @required TResult updateCurrentWeight(int updatedWeight),
+    @required TResult updateGender(Gender updatedGender),
+    @required TResult updateWeightType(WeightType updatedWeightType),
+    @required TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -345,14 +345,14 @@ class _$_UpdateSleepItem implements _UpdateSleepItem {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    Result updateSleepTime(TimeOfDay newSleepTime),
-    Result updateCurrentWeight(int updatedWeight),
-    Result updateGender(Gender updatedGender),
-    Result updateWeightType(WeightType updatedWeightType),
-    Result updateActivityLevel(ActivityLevel updatedActivityLevel),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    TResult updateSleepTime(TimeOfDay newSleepTime),
+    TResult updateCurrentWeight(int updatedWeight),
+    TResult updateGender(Gender updatedGender),
+    TResult updateWeightType(WeightType updatedWeightType),
+    TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateSleepTime != null) {
@@ -363,13 +363,13 @@ class _$_UpdateSleepItem implements _UpdateSleepItem {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateWakeUpTime(_UpdateWakeUpItem value),
-    @required Result updateSleepTime(_UpdateSleepItem value),
-    @required Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    @required Result updateGender(_UpdateGenderItem value),
-    @required Result updateWeightType(_UpdateWeightType value),
-    @required Result updateActivityLevel(_UpdatedActivityLevel value),
+  TResult map<TResult extends Object>({
+    @required TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    @required TResult updateSleepTime(_UpdateSleepItem value),
+    @required TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    @required TResult updateGender(_UpdateGenderItem value),
+    @required TResult updateWeightType(_UpdateWeightType value),
+    @required TResult updateActivityLevel(_UpdatedActivityLevel value),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -382,14 +382,14 @@ class _$_UpdateSleepItem implements _UpdateSleepItem {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateWakeUpTime(_UpdateWakeUpItem value),
-    Result updateSleepTime(_UpdateSleepItem value),
-    Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    Result updateGender(_UpdateGenderItem value),
-    Result updateWeightType(_UpdateWeightType value),
-    Result updateActivityLevel(_UpdatedActivityLevel value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    TResult updateSleepTime(_UpdateSleepItem value),
+    TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    TResult updateGender(_UpdateGenderItem value),
+    TResult updateWeightType(_UpdateWeightType value),
+    TResult updateActivityLevel(_UpdatedActivityLevel value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateSleepTime != null) {
@@ -472,13 +472,13 @@ class _$_UpdateCurrentWeightItem implements _UpdateCurrentWeightItem {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    @required Result updateSleepTime(TimeOfDay newSleepTime),
-    @required Result updateCurrentWeight(int updatedWeight),
-    @required Result updateGender(Gender updatedGender),
-    @required Result updateWeightType(WeightType updatedWeightType),
-    @required Result updateActivityLevel(ActivityLevel updatedActivityLevel),
+  TResult when<TResult extends Object>({
+    @required TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    @required TResult updateSleepTime(TimeOfDay newSleepTime),
+    @required TResult updateCurrentWeight(int updatedWeight),
+    @required TResult updateGender(Gender updatedGender),
+    @required TResult updateWeightType(WeightType updatedWeightType),
+    @required TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -491,14 +491,14 @@ class _$_UpdateCurrentWeightItem implements _UpdateCurrentWeightItem {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    Result updateSleepTime(TimeOfDay newSleepTime),
-    Result updateCurrentWeight(int updatedWeight),
-    Result updateGender(Gender updatedGender),
-    Result updateWeightType(WeightType updatedWeightType),
-    Result updateActivityLevel(ActivityLevel updatedActivityLevel),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    TResult updateSleepTime(TimeOfDay newSleepTime),
+    TResult updateCurrentWeight(int updatedWeight),
+    TResult updateGender(Gender updatedGender),
+    TResult updateWeightType(WeightType updatedWeightType),
+    TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateCurrentWeight != null) {
@@ -509,13 +509,13 @@ class _$_UpdateCurrentWeightItem implements _UpdateCurrentWeightItem {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateWakeUpTime(_UpdateWakeUpItem value),
-    @required Result updateSleepTime(_UpdateSleepItem value),
-    @required Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    @required Result updateGender(_UpdateGenderItem value),
-    @required Result updateWeightType(_UpdateWeightType value),
-    @required Result updateActivityLevel(_UpdatedActivityLevel value),
+  TResult map<TResult extends Object>({
+    @required TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    @required TResult updateSleepTime(_UpdateSleepItem value),
+    @required TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    @required TResult updateGender(_UpdateGenderItem value),
+    @required TResult updateWeightType(_UpdateWeightType value),
+    @required TResult updateActivityLevel(_UpdatedActivityLevel value),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -528,14 +528,14 @@ class _$_UpdateCurrentWeightItem implements _UpdateCurrentWeightItem {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateWakeUpTime(_UpdateWakeUpItem value),
-    Result updateSleepTime(_UpdateSleepItem value),
-    Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    Result updateGender(_UpdateGenderItem value),
-    Result updateWeightType(_UpdateWeightType value),
-    Result updateActivityLevel(_UpdatedActivityLevel value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    TResult updateSleepTime(_UpdateSleepItem value),
+    TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    TResult updateGender(_UpdateGenderItem value),
+    TResult updateWeightType(_UpdateWeightType value),
+    TResult updateActivityLevel(_UpdatedActivityLevel value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateCurrentWeight != null) {
@@ -616,13 +616,13 @@ class _$_UpdateGenderItem implements _UpdateGenderItem {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    @required Result updateSleepTime(TimeOfDay newSleepTime),
-    @required Result updateCurrentWeight(int updatedWeight),
-    @required Result updateGender(Gender updatedGender),
-    @required Result updateWeightType(WeightType updatedWeightType),
-    @required Result updateActivityLevel(ActivityLevel updatedActivityLevel),
+  TResult when<TResult extends Object>({
+    @required TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    @required TResult updateSleepTime(TimeOfDay newSleepTime),
+    @required TResult updateCurrentWeight(int updatedWeight),
+    @required TResult updateGender(Gender updatedGender),
+    @required TResult updateWeightType(WeightType updatedWeightType),
+    @required TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -635,14 +635,14 @@ class _$_UpdateGenderItem implements _UpdateGenderItem {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    Result updateSleepTime(TimeOfDay newSleepTime),
-    Result updateCurrentWeight(int updatedWeight),
-    Result updateGender(Gender updatedGender),
-    Result updateWeightType(WeightType updatedWeightType),
-    Result updateActivityLevel(ActivityLevel updatedActivityLevel),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    TResult updateSleepTime(TimeOfDay newSleepTime),
+    TResult updateCurrentWeight(int updatedWeight),
+    TResult updateGender(Gender updatedGender),
+    TResult updateWeightType(WeightType updatedWeightType),
+    TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateGender != null) {
@@ -653,13 +653,13 @@ class _$_UpdateGenderItem implements _UpdateGenderItem {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateWakeUpTime(_UpdateWakeUpItem value),
-    @required Result updateSleepTime(_UpdateSleepItem value),
-    @required Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    @required Result updateGender(_UpdateGenderItem value),
-    @required Result updateWeightType(_UpdateWeightType value),
-    @required Result updateActivityLevel(_UpdatedActivityLevel value),
+  TResult map<TResult extends Object>({
+    @required TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    @required TResult updateSleepTime(_UpdateSleepItem value),
+    @required TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    @required TResult updateGender(_UpdateGenderItem value),
+    @required TResult updateWeightType(_UpdateWeightType value),
+    @required TResult updateActivityLevel(_UpdatedActivityLevel value),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -672,14 +672,14 @@ class _$_UpdateGenderItem implements _UpdateGenderItem {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateWakeUpTime(_UpdateWakeUpItem value),
-    Result updateSleepTime(_UpdateSleepItem value),
-    Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    Result updateGender(_UpdateGenderItem value),
-    Result updateWeightType(_UpdateWeightType value),
-    Result updateActivityLevel(_UpdatedActivityLevel value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    TResult updateSleepTime(_UpdateSleepItem value),
+    TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    TResult updateGender(_UpdateGenderItem value),
+    TResult updateWeightType(_UpdateWeightType value),
+    TResult updateActivityLevel(_UpdatedActivityLevel value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateGender != null) {
@@ -761,13 +761,13 @@ class _$_UpdateWeightType implements _UpdateWeightType {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    @required Result updateSleepTime(TimeOfDay newSleepTime),
-    @required Result updateCurrentWeight(int updatedWeight),
-    @required Result updateGender(Gender updatedGender),
-    @required Result updateWeightType(WeightType updatedWeightType),
-    @required Result updateActivityLevel(ActivityLevel updatedActivityLevel),
+  TResult when<TResult extends Object>({
+    @required TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    @required TResult updateSleepTime(TimeOfDay newSleepTime),
+    @required TResult updateCurrentWeight(int updatedWeight),
+    @required TResult updateGender(Gender updatedGender),
+    @required TResult updateWeightType(WeightType updatedWeightType),
+    @required TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -780,14 +780,14 @@ class _$_UpdateWeightType implements _UpdateWeightType {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    Result updateSleepTime(TimeOfDay newSleepTime),
-    Result updateCurrentWeight(int updatedWeight),
-    Result updateGender(Gender updatedGender),
-    Result updateWeightType(WeightType updatedWeightType),
-    Result updateActivityLevel(ActivityLevel updatedActivityLevel),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    TResult updateSleepTime(TimeOfDay newSleepTime),
+    TResult updateCurrentWeight(int updatedWeight),
+    TResult updateGender(Gender updatedGender),
+    TResult updateWeightType(WeightType updatedWeightType),
+    TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateWeightType != null) {
@@ -798,13 +798,13 @@ class _$_UpdateWeightType implements _UpdateWeightType {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateWakeUpTime(_UpdateWakeUpItem value),
-    @required Result updateSleepTime(_UpdateSleepItem value),
-    @required Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    @required Result updateGender(_UpdateGenderItem value),
-    @required Result updateWeightType(_UpdateWeightType value),
-    @required Result updateActivityLevel(_UpdatedActivityLevel value),
+  TResult map<TResult extends Object>({
+    @required TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    @required TResult updateSleepTime(_UpdateSleepItem value),
+    @required TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    @required TResult updateGender(_UpdateGenderItem value),
+    @required TResult updateWeightType(_UpdateWeightType value),
+    @required TResult updateActivityLevel(_UpdatedActivityLevel value),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -817,14 +817,14 @@ class _$_UpdateWeightType implements _UpdateWeightType {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateWakeUpTime(_UpdateWakeUpItem value),
-    Result updateSleepTime(_UpdateSleepItem value),
-    Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    Result updateGender(_UpdateGenderItem value),
-    Result updateWeightType(_UpdateWeightType value),
-    Result updateActivityLevel(_UpdatedActivityLevel value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    TResult updateSleepTime(_UpdateSleepItem value),
+    TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    TResult updateGender(_UpdateGenderItem value),
+    TResult updateWeightType(_UpdateWeightType value),
+    TResult updateActivityLevel(_UpdatedActivityLevel value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateWeightType != null) {
@@ -907,13 +907,13 @@ class _$_UpdatedActivityLevel implements _UpdatedActivityLevel {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    @required Result updateSleepTime(TimeOfDay newSleepTime),
-    @required Result updateCurrentWeight(int updatedWeight),
-    @required Result updateGender(Gender updatedGender),
-    @required Result updateWeightType(WeightType updatedWeightType),
-    @required Result updateActivityLevel(ActivityLevel updatedActivityLevel),
+  TResult when<TResult extends Object>({
+    @required TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    @required TResult updateSleepTime(TimeOfDay newSleepTime),
+    @required TResult updateCurrentWeight(int updatedWeight),
+    @required TResult updateGender(Gender updatedGender),
+    @required TResult updateWeightType(WeightType updatedWeightType),
+    @required TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -926,14 +926,14 @@ class _$_UpdatedActivityLevel implements _UpdatedActivityLevel {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updateWakeUpTime(TimeOfDay newWakeUpTime),
-    Result updateSleepTime(TimeOfDay newSleepTime),
-    Result updateCurrentWeight(int updatedWeight),
-    Result updateGender(Gender updatedGender),
-    Result updateWeightType(WeightType updatedWeightType),
-    Result updateActivityLevel(ActivityLevel updatedActivityLevel),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updateWakeUpTime(TimeOfDay newWakeUpTime),
+    TResult updateSleepTime(TimeOfDay newSleepTime),
+    TResult updateCurrentWeight(int updatedWeight),
+    TResult updateGender(Gender updatedGender),
+    TResult updateWeightType(WeightType updatedWeightType),
+    TResult updateActivityLevel(ActivityLevel updatedActivityLevel),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateActivityLevel != null) {
@@ -944,13 +944,13 @@ class _$_UpdatedActivityLevel implements _UpdatedActivityLevel {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updateWakeUpTime(_UpdateWakeUpItem value),
-    @required Result updateSleepTime(_UpdateSleepItem value),
-    @required Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    @required Result updateGender(_UpdateGenderItem value),
-    @required Result updateWeightType(_UpdateWeightType value),
-    @required Result updateActivityLevel(_UpdatedActivityLevel value),
+  TResult map<TResult extends Object>({
+    @required TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    @required TResult updateSleepTime(_UpdateSleepItem value),
+    @required TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    @required TResult updateGender(_UpdateGenderItem value),
+    @required TResult updateWeightType(_UpdateWeightType value),
+    @required TResult updateActivityLevel(_UpdatedActivityLevel value),
   }) {
     assert(updateWakeUpTime != null);
     assert(updateSleepTime != null);
@@ -963,14 +963,14 @@ class _$_UpdatedActivityLevel implements _UpdatedActivityLevel {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updateWakeUpTime(_UpdateWakeUpItem value),
-    Result updateSleepTime(_UpdateSleepItem value),
-    Result updateCurrentWeight(_UpdateCurrentWeightItem value),
-    Result updateGender(_UpdateGenderItem value),
-    Result updateWeightType(_UpdateWeightType value),
-    Result updateActivityLevel(_UpdatedActivityLevel value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updateWakeUpTime(_UpdateWakeUpItem value),
+    TResult updateSleepTime(_UpdateSleepItem value),
+    TResult updateCurrentWeight(_UpdateCurrentWeightItem value),
+    TResult updateGender(_UpdateGenderItem value),
+    TResult updateWeightType(_UpdateWeightType value),
+    TResult updateActivityLevel(_UpdatedActivityLevel value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updateActivityLevel != null) {

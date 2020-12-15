@@ -58,7 +58,7 @@ void main() {
           .thenThrow(CacheException());
 
       final actualResult = await sut.getUserData();
-      final expectedResult = Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
+      const expectedResult = Left(CacheFailure(errorRetreivingLocalData));
 
       expect(actualResult, expectedResult);
       verify(_mockUserDataLocalDataSource.getUserData());
@@ -72,7 +72,7 @@ void main() {
           .thenAnswer((_) => Future.value(null));
 
       final actualResult = await sut.saveUserData(testUserData);
-      final expectedResult = Right(null);
+      const expectedResult = Right(null);
 
       expect(actualResult, expectedResult);
       verify(_mockUserDataLocalDataSource.saveUserData(testUserData));
@@ -86,7 +86,7 @@ void main() {
           .thenThrow(CacheException());
 
       final actualResult = await sut.saveUserData(testUserData);
-      final expectedResult = Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
+      const expectedResult = Left(CacheFailure(errorRetreivingLocalData));
 
       expect(actualResult, expectedResult);
       verify(_mockUserDataLocalDataSource.saveUserData(testUserData));

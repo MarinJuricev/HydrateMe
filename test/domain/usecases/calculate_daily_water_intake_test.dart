@@ -41,8 +41,7 @@ void main() {
   MockNotificationRepository _mockNotificationRepository;
   MockSaveUserData _mockSaveUserData;
   MockTimeProvider _mockTimeProvider;
-
-  final useCaseParamsInKg = CalculateDailyWaterIntakeParams(
+  const useCaseParamsInKg = CalculateDailyWaterIntakeParams(
     currentSelectedGender: Gender.male,
     currentSelectedWeightType: WeightType.kg,
     currentWeight: 75,
@@ -53,7 +52,7 @@ void main() {
 
   final testDate = DateTime.now();
 
-  final useCaseParamsInLbs = CalculateDailyWaterIntakeParams(
+  const useCaseParamsInLbs = CalculateDailyWaterIntakeParams(
     currentSelectedGender: Gender.male,
     currentSelectedWeightType: WeightType.lbs,
     currentWeight: 75,
@@ -94,16 +93,16 @@ void main() {
     () async {
       when(
         _mockKgToLbsConverter(useCaseParamsInKg.currentWeight),
-      ).thenAnswer((_) async => (Right(150)));
+      ).thenAnswer((_) async => const Right(150));
 
       when(
         _mockCalculateAdditionalWaterIntakePerActivity(
             useCaseParamsInKg.currentActivityInMinutes),
-      ).thenAnswer((_) async => (Right(30)));
+      ).thenAnswer((_) async => const Right(30));
 
       when(
         _mockOzToMIliliterConverter(130.0),
-      ).thenAnswer((_) async => (Right(2000)));
+      ).thenAnswer((_) async => const Right(2000));
 
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 1.0,
@@ -131,16 +130,16 @@ void main() {
     () async {
       when(
         _mockKgToLbsConverter(useCaseParamsInLbs.currentWeight),
-      ).thenAnswer((_) async => (Right(150)));
+      ).thenAnswer((_) async => const Right(150));
 
       when(
         _mockCalculateAdditionalWaterIntakePerActivity(
             useCaseParamsInLbs.currentActivityInMinutes),
-      ).thenAnswer((_) async => (Right(30)));
+      ).thenAnswer((_) async => const Right(30));
 
       when(
         _mockOzToMIliliterConverter(80.0),
-      ).thenAnswer((_) async => (Right(2000)));
+      ).thenAnswer((_) async => const Right(2000));
 
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 1.0,
@@ -168,16 +167,16 @@ void main() {
     () async {
       when(
         _mockKgToLbsConverter(useCaseParamsInLbs.currentWeight),
-      ).thenAnswer((_) async => (Right(150)));
+      ).thenAnswer((_) async => const Right(150));
 
       when(
         _mockCalculateAdditionalWaterIntakePerActivity(
             useCaseParamsInLbs.currentActivityInMinutes),
-      ).thenAnswer((_) async => (Right(30)));
+      ).thenAnswer((_) async => const Right(30));
 
       when(
         _mockOzToMIliliterConverter(80.0),
-      ).thenAnswer((_) async => (Right(2000)));
+      ).thenAnswer((_) async => const Right(2000));
 
       await _calculateDailyWaterIntake(useCaseParamsInLbs);
       verify(_mockNotificationRepository.scheduleDailyNotifications(
@@ -192,16 +191,16 @@ void main() {
     () async {
       when(
         _mockKgToLbsConverter(useCaseParamsInLbs.currentWeight),
-      ).thenAnswer((_) async => (Right(150)));
+      ).thenAnswer((_) async => const Right(150));
 
       when(
         _mockCalculateAdditionalWaterIntakePerActivity(
             useCaseParamsInLbs.currentActivityInMinutes),
-      ).thenAnswer((_) async => (Right(30)));
+      ).thenAnswer((_) async => const Right(30));
 
       when(
         _mockOzToMIliliterConverter(80.0),
-      ).thenAnswer((_) async => (Right(2000)));
+      ).thenAnswer((_) async => const Right(2000));
 
       await _calculateDailyWaterIntake(useCaseParamsInLbs);
       verify(

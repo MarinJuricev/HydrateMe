@@ -12,7 +12,7 @@ class HydrateLoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     onStartCallback();
 
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(),
     );
   }

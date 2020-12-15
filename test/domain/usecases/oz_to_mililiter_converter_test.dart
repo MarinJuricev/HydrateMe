@@ -17,8 +17,8 @@ void main() {
     'should return Left(NegativeNumberFailure()) when a negative number is provided',
     () async {
       final actualResult = await _ozToMIliliterConverter(-1);
-      final expectedResult =
-          Left(NegativeNumberFailure(CANT_PROVIDE_NEGATIVE_NUMBER));
+      const expectedResult =
+          Left(NegativeNumberFailure(cantProvideNegativeNumber));
 
       expect(actualResult, expectedResult);
     },
@@ -28,7 +28,7 @@ void main() {
     'should return [Right(2957)], when 100 oz is provided',
     () async {
       final actualResult = await _ozToMIliliterConverter(100);
-      final expectedResult = Right(2957);
+      const expectedResult = Right(2957);
 
       expect(actualResult, expectedResult);
     },
@@ -38,7 +38,7 @@ void main() {
     'should return [Right(2957)], when 100 oz is provided',
     () async {
       final actualResult = await _ozToMIliliterConverter(100);
-      final expectedResult = Right(2957);
+      const expectedResult = Right(2957);
 
       expect(actualResult, expectedResult);
     },

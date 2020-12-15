@@ -16,7 +16,7 @@ class UserDataLocalDataSourceImpl extends UserDataLocalDataSource {
   final UserDataToLocalUserDataMapper userDataToLocalUserDataMapper;
   final LocalUserDataToUserDataMapper localUserDataToUserDataMapper;
 
-  static const USER_DATA_BOX = 'USER_DATA_BOX';
+  static const userDataBox = 'USER_DATA_BOX';
 
   UserDataLocalDataSourceImpl({
     @required this.localPersistenceProvider,
@@ -26,8 +26,8 @@ class UserDataLocalDataSourceImpl extends UserDataLocalDataSource {
 
   @override
   Future<void> saveUserData(UserData userData) async {
-    return await localPersistenceProvider.saveKeyValuePair(
-      boxToSaveInto: USER_DATA_BOX,
+    return localPersistenceProvider.saveKeyValuePair(
+      boxToSaveInto: userDataBox,
       valueToSave: await userDataToLocalUserDataMapper.map(userData),
     );
   }
@@ -35,11 +35,12 @@ class UserDataLocalDataSourceImpl extends UserDataLocalDataSource {
   @override
   Future<UserData> getUserData() async {
     final LocalUserData localResult = await localPersistenceProvider
-        .getFromKeyValuePair(boxToGetDataFrom: USER_DATA_BOX);
+        .getFromKeyValuePair(boxToGetDataFrom: userDataBox) as LocalUserData;
 
-    if (localResult != null)
-      return await localUserDataToUserDataMapper.map(localResult);
-    else
+    if (localResult != null) {
+      return localUserDataToUserDataMapper.map(localResult);
+    } else {
       throw CacheException();
+    }
   }
 }

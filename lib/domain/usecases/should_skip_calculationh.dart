@@ -48,15 +48,16 @@ class ShouldSkipCalculation extends BaseUseCase<void, NoParams> {
         ),
       );
       return resetHydrateStatusEither.fold(
-        (error) => Future.value(Left(GeneralFailure(GENERAL_ERROR_MESSAGE))),
+        (error) =>
+            Future.value(const Left(GeneralFailure(genericErrorMessage))),
         (resetedHydrateStatus) async {
           await waterIntakeRepository
               .saveCurrentWaterIntake(resetedHydrateStatus);
-          return Future.value(Right(null));
+          return Future.value(const Right(null));
         },
       );
     } else {
-      return Future.value(Right(null));
+      return Future.value(const Right(null));
     }
   }
 }

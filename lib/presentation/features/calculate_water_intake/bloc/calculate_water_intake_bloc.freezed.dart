@@ -44,10 +44,10 @@ const $CalculateWaterIntakeEvent = _$CalculateWaterIntakeEventTearOff();
 /// @nodoc
 mixin _$CalculateWaterIntakeEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result shouldSkipCalculation(),
+  TResult when<TResult extends Object>({
+    @required TResult shouldSkipCalculation(),
     @required
-        Result calculateClicked(
+        TResult calculateClicked(
             Gender currentSelectedGender,
             WeightType currentSelectedWeightType,
             ActivityLevel activityLevel,
@@ -56,27 +56,27 @@ mixin _$CalculateWaterIntakeEvent {
             TimeOfDay sleepTime),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result shouldSkipCalculation(),
-    Result calculateClicked(
+  TResult maybeWhen<TResult extends Object>({
+    TResult shouldSkipCalculation(),
+    TResult calculateClicked(
         Gender currentSelectedGender,
         WeightType currentSelectedWeightType,
         ActivityLevel activityLevel,
         int currentWeight,
         TimeOfDay wakeUpTime,
         TimeOfDay sleepTime),
-    @required Result orElse(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
-    @required Result calculateClicked(_CalculateClicked value),
+  TResult map<TResult extends Object>({
+    @required TResult shouldSkipCalculation(_CalculateShouldSkipInitial value),
+    @required TResult calculateClicked(_CalculateClicked value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
-    Result calculateClicked(_CalculateClicked value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult shouldSkipCalculation(_CalculateShouldSkipInitial value),
+    TResult calculateClicked(_CalculateClicked value),
+    @required TResult orElse(),
   });
 }
 
@@ -137,10 +137,10 @@ class _$_CalculateShouldSkipInitial implements _CalculateShouldSkipInitial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result shouldSkipCalculation(),
+  TResult when<TResult extends Object>({
+    @required TResult shouldSkipCalculation(),
     @required
-        Result calculateClicked(
+        TResult calculateClicked(
             Gender currentSelectedGender,
             WeightType currentSelectedWeightType,
             ActivityLevel activityLevel,
@@ -155,16 +155,16 @@ class _$_CalculateShouldSkipInitial implements _CalculateShouldSkipInitial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result shouldSkipCalculation(),
-    Result calculateClicked(
+  TResult maybeWhen<TResult extends Object>({
+    TResult shouldSkipCalculation(),
+    TResult calculateClicked(
         Gender currentSelectedGender,
         WeightType currentSelectedWeightType,
         ActivityLevel activityLevel,
         int currentWeight,
         TimeOfDay wakeUpTime,
         TimeOfDay sleepTime),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (shouldSkipCalculation != null) {
@@ -175,9 +175,9 @@ class _$_CalculateShouldSkipInitial implements _CalculateShouldSkipInitial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
-    @required Result calculateClicked(_CalculateClicked value),
+  TResult map<TResult extends Object>({
+    @required TResult shouldSkipCalculation(_CalculateShouldSkipInitial value),
+    @required TResult calculateClicked(_CalculateClicked value),
   }) {
     assert(shouldSkipCalculation != null);
     assert(calculateClicked != null);
@@ -186,10 +186,10 @@ class _$_CalculateShouldSkipInitial implements _CalculateShouldSkipInitial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
-    Result calculateClicked(_CalculateClicked value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult shouldSkipCalculation(_CalculateShouldSkipInitial value),
+    TResult calculateClicked(_CalculateClicked value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (shouldSkipCalculation != null) {
@@ -331,10 +331,10 @@ class _$_CalculateClicked implements _CalculateClicked {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result shouldSkipCalculation(),
+  TResult when<TResult extends Object>({
+    @required TResult shouldSkipCalculation(),
     @required
-        Result calculateClicked(
+        TResult calculateClicked(
             Gender currentSelectedGender,
             WeightType currentSelectedWeightType,
             ActivityLevel activityLevel,
@@ -350,16 +350,16 @@ class _$_CalculateClicked implements _CalculateClicked {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result shouldSkipCalculation(),
-    Result calculateClicked(
+  TResult maybeWhen<TResult extends Object>({
+    TResult shouldSkipCalculation(),
+    TResult calculateClicked(
         Gender currentSelectedGender,
         WeightType currentSelectedWeightType,
         ActivityLevel activityLevel,
         int currentWeight,
         TimeOfDay wakeUpTime,
         TimeOfDay sleepTime),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (calculateClicked != null) {
@@ -371,9 +371,9 @@ class _$_CalculateClicked implements _CalculateClicked {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
-    @required Result calculateClicked(_CalculateClicked value),
+  TResult map<TResult extends Object>({
+    @required TResult shouldSkipCalculation(_CalculateShouldSkipInitial value),
+    @required TResult calculateClicked(_CalculateClicked value),
   }) {
     assert(shouldSkipCalculation != null);
     assert(calculateClicked != null);
@@ -382,10 +382,10 @@ class _$_CalculateClicked implements _CalculateClicked {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result shouldSkipCalculation(_CalculateShouldSkipInitial value),
-    Result calculateClicked(_CalculateClicked value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult shouldSkipCalculation(_CalculateShouldSkipInitial value),
+    TResult calculateClicked(_CalculateClicked value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (calculateClicked != null) {
@@ -452,40 +452,40 @@ const $CalculateWaterIntakeState = _$CalculateWaterIntakeStateTearOff();
 /// @nodoc
 mixin _$CalculateWaterIntakeState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result skipCalculation(),
-    @required Result startCalculation(),
-    @required Result error(String errorMessage),
-    @required Result calculationFinished(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult skipCalculation(),
+    @required TResult startCalculation(),
+    @required TResult error(String errorMessage),
+    @required TResult calculationFinished(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result skipCalculation(),
-    Result startCalculation(),
-    Result error(String errorMessage),
-    Result calculationFinished(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult skipCalculation(),
+    TResult startCalculation(),
+    TResult error(String errorMessage),
+    TResult calculationFinished(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_CalculateWaterIntakeInitial value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_CalculateWaterIntakeInitial value),
     @required
-        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+        TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
     @required
-        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    @required Result error(_CalculateWaterIntakeErrorState value),
-    @required Result calculationFinished(_CalculationFinished value),
+        TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    @required TResult error(_CalculateWaterIntakeErrorState value),
+    @required TResult calculationFinished(_CalculationFinished value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_CalculateWaterIntakeInitial value),
-    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
-    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    Result error(_CalculateWaterIntakeErrorState value),
-    Result calculationFinished(_CalculationFinished value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_CalculateWaterIntakeInitial value),
+    TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    TResult error(_CalculateWaterIntakeErrorState value),
+    TResult calculationFinished(_CalculationFinished value),
+    @required TResult orElse(),
   });
 }
 
@@ -547,12 +547,12 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result skipCalculation(),
-    @required Result startCalculation(),
-    @required Result error(String errorMessage),
-    @required Result calculationFinished(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult skipCalculation(),
+    @required TResult startCalculation(),
+    @required TResult error(String errorMessage),
+    @required TResult calculationFinished(),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -564,13 +564,13 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result skipCalculation(),
-    Result startCalculation(),
-    Result error(String errorMessage),
-    Result calculationFinished(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult skipCalculation(),
+    TResult startCalculation(),
+    TResult error(String errorMessage),
+    TResult calculationFinished(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -581,14 +581,14 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_CalculateWaterIntakeInitial value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_CalculateWaterIntakeInitial value),
     @required
-        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+        TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
     @required
-        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    @required Result error(_CalculateWaterIntakeErrorState value),
-    @required Result calculationFinished(_CalculationFinished value),
+        TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    @required TResult error(_CalculateWaterIntakeErrorState value),
+    @required TResult calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -600,13 +600,13 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_CalculateWaterIntakeInitial value),
-    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
-    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    Result error(_CalculateWaterIntakeErrorState value),
-    Result calculationFinished(_CalculationFinished value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_CalculateWaterIntakeInitial value),
+    TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    TResult error(_CalculateWaterIntakeErrorState value),
+    TResult calculationFinished(_CalculationFinished value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -664,12 +664,12 @@ class _$_CalculateWaterIntakeSkipCalculation
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result skipCalculation(),
-    @required Result startCalculation(),
-    @required Result error(String errorMessage),
-    @required Result calculationFinished(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult skipCalculation(),
+    @required TResult startCalculation(),
+    @required TResult error(String errorMessage),
+    @required TResult calculationFinished(),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -681,13 +681,13 @@ class _$_CalculateWaterIntakeSkipCalculation
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result skipCalculation(),
-    Result startCalculation(),
-    Result error(String errorMessage),
-    Result calculationFinished(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult skipCalculation(),
+    TResult startCalculation(),
+    TResult error(String errorMessage),
+    TResult calculationFinished(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (skipCalculation != null) {
@@ -698,14 +698,14 @@ class _$_CalculateWaterIntakeSkipCalculation
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_CalculateWaterIntakeInitial value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_CalculateWaterIntakeInitial value),
     @required
-        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+        TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
     @required
-        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    @required Result error(_CalculateWaterIntakeErrorState value),
-    @required Result calculationFinished(_CalculationFinished value),
+        TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    @required TResult error(_CalculateWaterIntakeErrorState value),
+    @required TResult calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -717,13 +717,13 @@ class _$_CalculateWaterIntakeSkipCalculation
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_CalculateWaterIntakeInitial value),
-    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
-    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    Result error(_CalculateWaterIntakeErrorState value),
-    Result calculationFinished(_CalculationFinished value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_CalculateWaterIntakeInitial value),
+    TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    TResult error(_CalculateWaterIntakeErrorState value),
+    TResult calculationFinished(_CalculationFinished value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (skipCalculation != null) {
@@ -782,12 +782,12 @@ class _$_CalculateWaterIntakeStartCalculation
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result skipCalculation(),
-    @required Result startCalculation(),
-    @required Result error(String errorMessage),
-    @required Result calculationFinished(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult skipCalculation(),
+    @required TResult startCalculation(),
+    @required TResult error(String errorMessage),
+    @required TResult calculationFinished(),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -799,13 +799,13 @@ class _$_CalculateWaterIntakeStartCalculation
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result skipCalculation(),
-    Result startCalculation(),
-    Result error(String errorMessage),
-    Result calculationFinished(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult skipCalculation(),
+    TResult startCalculation(),
+    TResult error(String errorMessage),
+    TResult calculationFinished(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (startCalculation != null) {
@@ -816,14 +816,14 @@ class _$_CalculateWaterIntakeStartCalculation
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_CalculateWaterIntakeInitial value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_CalculateWaterIntakeInitial value),
     @required
-        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+        TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
     @required
-        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    @required Result error(_CalculateWaterIntakeErrorState value),
-    @required Result calculationFinished(_CalculationFinished value),
+        TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    @required TResult error(_CalculateWaterIntakeErrorState value),
+    @required TResult calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -835,13 +835,13 @@ class _$_CalculateWaterIntakeStartCalculation
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_CalculateWaterIntakeInitial value),
-    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
-    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    Result error(_CalculateWaterIntakeErrorState value),
-    Result calculationFinished(_CalculationFinished value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_CalculateWaterIntakeInitial value),
+    TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    TResult error(_CalculateWaterIntakeErrorState value),
+    TResult calculationFinished(_CalculationFinished value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (startCalculation != null) {
@@ -923,12 +923,12 @@ class _$_CalculateWaterIntakeErrorState
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result skipCalculation(),
-    @required Result startCalculation(),
-    @required Result error(String errorMessage),
-    @required Result calculationFinished(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult skipCalculation(),
+    @required TResult startCalculation(),
+    @required TResult error(String errorMessage),
+    @required TResult calculationFinished(),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -940,13 +940,13 @@ class _$_CalculateWaterIntakeErrorState
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result skipCalculation(),
-    Result startCalculation(),
-    Result error(String errorMessage),
-    Result calculationFinished(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult skipCalculation(),
+    TResult startCalculation(),
+    TResult error(String errorMessage),
+    TResult calculationFinished(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
@@ -957,14 +957,14 @@ class _$_CalculateWaterIntakeErrorState
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_CalculateWaterIntakeInitial value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_CalculateWaterIntakeInitial value),
     @required
-        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+        TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
     @required
-        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    @required Result error(_CalculateWaterIntakeErrorState value),
-    @required Result calculationFinished(_CalculationFinished value),
+        TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    @required TResult error(_CalculateWaterIntakeErrorState value),
+    @required TResult calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -976,13 +976,13 @@ class _$_CalculateWaterIntakeErrorState
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_CalculateWaterIntakeInitial value),
-    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
-    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    Result error(_CalculateWaterIntakeErrorState value),
-    Result calculationFinished(_CalculationFinished value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_CalculateWaterIntakeInitial value),
+    TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    TResult error(_CalculateWaterIntakeErrorState value),
+    TResult calculationFinished(_CalculationFinished value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
@@ -1040,12 +1040,12 @@ class _$_CalculationFinished implements _CalculationFinished {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result skipCalculation(),
-    @required Result startCalculation(),
-    @required Result error(String errorMessage),
-    @required Result calculationFinished(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult skipCalculation(),
+    @required TResult startCalculation(),
+    @required TResult error(String errorMessage),
+    @required TResult calculationFinished(),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -1057,13 +1057,13 @@ class _$_CalculationFinished implements _CalculationFinished {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result skipCalculation(),
-    Result startCalculation(),
-    Result error(String errorMessage),
-    Result calculationFinished(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult skipCalculation(),
+    TResult startCalculation(),
+    TResult error(String errorMessage),
+    TResult calculationFinished(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (calculationFinished != null) {
@@ -1074,14 +1074,14 @@ class _$_CalculationFinished implements _CalculationFinished {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_CalculateWaterIntakeInitial value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_CalculateWaterIntakeInitial value),
     @required
-        Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+        TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
     @required
-        Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    @required Result error(_CalculateWaterIntakeErrorState value),
-    @required Result calculationFinished(_CalculationFinished value),
+        TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    @required TResult error(_CalculateWaterIntakeErrorState value),
+    @required TResult calculationFinished(_CalculationFinished value),
   }) {
     assert(initial != null);
     assert(skipCalculation != null);
@@ -1093,13 +1093,13 @@ class _$_CalculationFinished implements _CalculationFinished {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_CalculateWaterIntakeInitial value),
-    Result skipCalculation(_CalculateWaterIntakeSkipCalculation value),
-    Result startCalculation(_CalculateWaterIntakeStartCalculation value),
-    Result error(_CalculateWaterIntakeErrorState value),
-    Result calculationFinished(_CalculationFinished value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_CalculateWaterIntakeInitial value),
+    TResult skipCalculation(_CalculateWaterIntakeSkipCalculation value),
+    TResult startCalculation(_CalculateWaterIntakeStartCalculation value),
+    TResult error(_CalculateWaterIntakeErrorState value),
+    TResult calculationFinished(_CalculationFinished value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (calculationFinished != null) {

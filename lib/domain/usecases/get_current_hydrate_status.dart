@@ -13,6 +13,6 @@ class GetCurrentHydrateStatus extends BaseUseCase<HydrateStatus, NoParams> {
 
   @override
   Future<Either<Failure, HydrateStatus>> call(NoParams params) async {
-    return await waterIntakeRepository.getCurrentWaterIntake();
+    return waterIntakeRepository.getCurrentWaterIntake();
   }
 }

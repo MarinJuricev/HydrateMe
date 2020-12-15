@@ -12,7 +12,7 @@ class HydrateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width / 2.5,
       child: OutlineButton(
         onPressed: onPressedCallback,

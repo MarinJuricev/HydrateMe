@@ -23,9 +23,10 @@ void main() {
   ShouldSkipCalculation sut;
 
   final testDate = DateTime.now();
-  final testDateOneDayAfter = testDate.add(Duration(days: 1));
-  final testDateOneDayBefore = testDate.subtract(Duration(days: 1));
-  final testDateOneDayOneHourLater = testDate.subtract(Duration(hours: 1));
+  final testDateOneDayAfter = testDate.add(const Duration(days: 1));
+  final testDateOneDayBefore = testDate.subtract(const Duration(days: 1));
+  final testDateOneDayOneHourLater =
+      testDate.subtract(const Duration(hours: 1));
 
   final testHydrateStatus = HydrateStatus(
     currentIntake: 2500,
@@ -43,10 +44,10 @@ void main() {
     hydrationPercentage: 1.0,
   );
 
-  Either<Failure, HydrateStatus> errorResponse =
-      Left(GeneralFailure(GENERAL_ERROR_MESSAGE));
+  const Either<Failure, HydrateStatus> errorResponse =
+      Left(GeneralFailure(genericErrorMessage));
 
-  Either<Failure, HydrateStatus> repositorySuccessResponse =
+  final Either<Failure, HydrateStatus> repositorySuccessResponse =
       Right(testHydrateStatus);
 
   setUp(
@@ -90,7 +91,7 @@ void main() {
       when(mockTimeProvider.getCurrentDate()).thenReturn(testDateOneDayBefore);
 
       final actualResult = await sut(NoParams());
-      final expectedResult = Right(null);
+      const expectedResult = Right(null);
 
       expect(actualResult, expectedResult);
     },
@@ -103,7 +104,7 @@ void main() {
           .thenReturn(testDateOneDayOneHourLater);
 
       final actualResult = await sut(NoParams());
-      final expectedResult = Right(null);
+      const expectedResult = Right(null);
 
       expect(actualResult, expectedResult);
     },
@@ -138,7 +139,7 @@ void main() {
       )).thenAnswer((_) => Future.value(Right(testResetedHydrateStatus)));
 
       final actualResult = await sut(NoParams());
-      final expectedResult = Right(null);
+      const expectedResult = Right(null);
 
       expect(actualResult, expectedResult);
 

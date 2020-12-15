@@ -22,13 +22,10 @@ class HydrateTextWithIcon extends StatelessWidget {
             height: 24,
             width: 24,
           ),
-          SizedBox(width: 8.0),
+          const SizedBox(width: 8.0),
           Text(
             text,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18.0
-            ),
+            style: const TextStyle(color: Colors.white, fontSize: 18.0),
           ),
         ],
       ),

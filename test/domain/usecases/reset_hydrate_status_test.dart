@@ -7,7 +7,7 @@ void main() {
   ResetHydrateStatus sut;
 
   final testDate = DateTime.now();
-  final testDateOneDayAfter = testDate.add(Duration(days: 1));
+  final testDateOneDayAfter = testDate.add(const Duration(days: 1));
 
   final testHydrateStatus = HydrateStatus(
     currentIntake: 2000,
@@ -35,7 +35,7 @@ void main() {
 
       final expectedResult = Right(
         HydrateStatus(
-          hydrationPercentage: HydrateStatus.INITIAL_HYDRATION_PERCENTRAGE,
+          hydrationPercentage: HydrateStatus.initialHydrationPercentage,
           formattedCurrentIntake:
               '${testHydrateStatus.dailyIntakeGoal.toString()}/${testHydrateStatus.dailyIntakeGoal.toString()}',
           dailyIntakeGoal: testHydrateStatus.dailyIntakeGoal,

@@ -33,7 +33,7 @@ class CalculateWavesPercentage
     final userData = extractUserData(userDataEither);
 
     if (hydrateStatus == null || userData == null) {
-      return Left(MissingDataFailure(ERROR_RETREIVING_LOCAL_DATA));
+      return const Left(MissingDataFailure(errorRetreivingLocalData));
     }
 
     final hydrationPercentage = calculateHydrationPercentage(
@@ -79,7 +79,7 @@ class CalculateWavesPercentage
     return hydrationpercentage;
   }
 
-  String roundUpPercentage(hydrationPercentage) {
+  String roundUpPercentage(double hydrationPercentage) {
     return hydrationPercentage.toStringAsFixed(2);
   }
 

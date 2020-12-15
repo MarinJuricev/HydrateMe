@@ -6,9 +6,9 @@ import 'package:dartz/dartz.dart';
 class KgToLbsConverter extends BaseUseCase<int, int> {
   @override
   Future<Either<Failure, int>> call(int weightInKg) {
-
-    if(weightInKg < 0){
-      return Future.value(Left(NegativeNumberFailure(CANT_PROVIDE_NEGATIVE_NUMBER)));
+    if (weightInKg < 0) {
+      return Future.value(
+          const Left(NegativeNumberFailure(cantProvideNegativeNumber)));
     }
 
     final convertedWeight = weightInKg * 2.205;

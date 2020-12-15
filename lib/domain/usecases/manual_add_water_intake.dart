@@ -26,8 +26,9 @@ class ManualAddWaterIntake extends BaseUseCase<HydrateStatus, String> {
     final currentHydrateStatus = repositoryEither.getOrElse(() => null);
     final convertedWaterToAdd = convertedEither.getOrElse(() => null);
 
-    if (currentHydrateStatus == null || convertedWaterToAdd == null)
-      return Future.value(Left(GeneralFailure(GENERAL_ERROR_MESSAGE)));
+    if (currentHydrateStatus == null || convertedWaterToAdd == null) {
+      return Future.value(const Left(GeneralFailure(genericErrorMessage)));
+    }
 
     final updatedHydrateStatus = updateHydrateStatus(
       currentHydrateStatus,

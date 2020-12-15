@@ -6,8 +6,8 @@ import '../../core/failure/base_failure.dart';
 import '../../core/usecase/base_usecase.dart';
 import '../model/hydrate_status.dart';
 import '../repository/water_intake_repository.dart';
-import '../util/input_converter.dart';
 import '../util/extensions/double_extensions.dart';
+import '../util/input_converter.dart';
 
 class ManualDecreaseWaterIntake extends BaseUseCase<HydrateStatus, String> {
   final InputConverter inputConverter;
@@ -27,8 +27,9 @@ class ManualDecreaseWaterIntake extends BaseUseCase<HydrateStatus, String> {
     final currentHydrateStatus = repositoryEither.getOrElse(() => null);
     final convertedWaterToAdd = convertedEither.getOrElse(() => null);
 
-    if (currentHydrateStatus == null || convertedWaterToAdd == null)
-      return Future.value(Left(GeneralFailure(GENERAL_ERROR_MESSAGE)));
+    if (currentHydrateStatus == null || convertedWaterToAdd == null) {
+      return Future.value(const Left(GeneralFailure(genericErrorMessage)));
+    }
 
     final updatedHydrateStatus = updateHydrateStatus(
       currentHydrateStatus,

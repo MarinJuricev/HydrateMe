@@ -16,7 +16,7 @@ import 'core/notifications/notification_setup.dart';
 import 'presentation/features/calculate_water_intake/pages/calculate_water_intake_page.dart';
 import 'service_locator.dart' as di;
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   //TODO WRAP THIS SOMEWHERE LIKE LocalPersistence.init()
@@ -35,7 +35,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.blue,
     ));
 
@@ -54,12 +54,12 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        initialRoute: CalculateWaterIntakePage.CALCULATE_WATER_INTAKE_PAGE,
+        initialRoute: CalculateWaterIntakePage.calculateWaterIntakePage,
         routes: {
-          CalculateWaterIntakePage.CALCULATE_WATER_INTAKE_PAGE: (context) =>
+          CalculateWaterIntakePage.calculateWaterIntakePage: (context) =>
               CalculateWaterIntakePage(),
-          BottomNavigationPage.BOTTOM_NAVIGATION_PAGE: (context) =>
-              BottomNavigationPage()
+          BottomNavigationPage.bottomNavigationPage: (context) =>
+              const BottomNavigationPage()
         },
       ),
     );

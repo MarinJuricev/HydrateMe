@@ -55,7 +55,7 @@ void main() {
           .thenThrow(CacheException());
 
       final actualResult = await sut.getCurrentWaterIntake();
-      final expectedResult = Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
+      const expectedResult = Left(CacheFailure(errorRetreivingLocalData));
 
       expect(actualResult, expectedResult);
       verify(_mockWaterIntakeDataSource.getWaterIntake());
@@ -69,7 +69,7 @@ void main() {
           .thenAnswer((_) => Future.value(null));
 
       final actualResult = await sut.saveCurrentWaterIntake(testHydrateStatus);
-      final expectedResult = Right(null);
+      const expectedResult = Right(null);
 
       expect(actualResult, expectedResult);
       verify(_mockWaterIntakeDataSource.saveWaterIntake(testHydrateStatus));
@@ -83,7 +83,7 @@ void main() {
           .thenThrow(CacheException());
 
       final actualResult = await sut.saveCurrentWaterIntake(testHydrateStatus);
-      final expectedResult = Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
+      const expectedResult = Left(CacheFailure(errorRetreivingLocalData));
 
       expect(actualResult, expectedResult);
       verify(_mockWaterIntakeDataSource.saveWaterIntake(testHydrateStatus));

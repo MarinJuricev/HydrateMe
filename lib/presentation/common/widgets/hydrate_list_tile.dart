@@ -17,10 +17,10 @@ class HydrateListTile extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: ListTile(
-        onTap: onClick,
+        onTap: () => onClick,
         title: Text(
           title,
-          style: TextStyle(color: Colors.blue),
+          style: const TextStyle(color: Colors.blue),
         ),
         subtitle: Text(
           subtitle,

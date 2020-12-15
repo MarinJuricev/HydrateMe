@@ -17,7 +17,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 
   SettingsBloc({
     @required this.getSettingsData,
-  }) : super(_Initial());
+  }) : super(const _Initial());
 
   @override
   Stream<SettingsState> mapEventToState(
@@ -26,7 +26,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     yield* event.map(
         started: (params) => _handleSettingsStarted(),
         onSettingedChanged: (params) =>
-            _handleOnSettingsChanged(params.settingsItem));
+            _handleOnSettingsChanged(params.settingsItemChanged));
   }
 
   Stream<SettingsState> _handleSettingsStarted() async* {

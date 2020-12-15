@@ -17,7 +17,7 @@ import '../widget/water_transition.dart';
 import '../widget/weight_selection.dart';
 
 class CalculateWaterIntakePage extends StatefulWidget {
-  static const CALCULATE_WATER_INTAKE_PAGE = '/calculateIntakePage';
+  static const calculateWaterIntakePage = '/calculateIntakePage';
 
   @override
   _CalculateWaterIntakePageState createState() =>
@@ -25,10 +25,10 @@ class CalculateWaterIntakePage extends StatefulWidget {
 }
 
 class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
-  Gender _currentSelectedGender = INITIAL_GENDER;
-  WeightType _currentSelectedWeightType = INITIAL_WEIGHT_TYPE;
-  ActivityLevel _currentActivityInMinutes = INITIAL_DAILY_ACTIVITY;
-  int _currentWeight = INITIAL_WEIGHT;
+  Gender _currentSelectedGender = initialGender;
+  WeightType _currentSelectedWeightType = initialWeightType;
+  ActivityLevel _currentActivityInMinutes = initialDailyActivity;
+  int _currentWeight = initialWeight;
   TimeOfDay _wakeUpTime;
   TimeOfDay _sleepTime;
 
@@ -49,26 +49,27 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
           child:
               BlocConsumer<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
             listenWhen: (previousState, newState) =>
-                newState == CalculateWaterIntakeState.skipCalculation(),
-            listener: (blocContext, state) => state.maybeWhen(
-              skipCalculation: _navigateToDisplayCurrentIntake(blocContext),
+                newState == const CalculateWaterIntakeState.skipCalculation(),
+            listener: (BuildContext blocContext, state) => state.maybeWhen(
+              skipCalculation: () =>
+                  _navigateToDisplayCurrentIntake(blocContext),
               orElse: null,
             ),
             buildWhen: (previousState, newState) =>
-                newState != CalculateWaterIntakeState.skipCalculation(),
+                newState != const CalculateWaterIntakeState.skipCalculation(),
             builder: (blocContext, state) {
               return state.maybeWhen(
                 initial: () => HydrateLoadingIndicator(
                   onStartCallback: () =>
                       BlocProvider.of<CalculateWaterIntakeBloc>(blocContext)
                           .add(
-                    CalculateWaterIntakeEvent.shouldSkipCalculation(),
+                    const CalculateWaterIntakeEvent.shouldSkipCalculation(),
                   ),
                 ),
                 error: (errorMessage) =>
                     //TODO Add a generic unknown error occured widget
                     Text('PlaceHolder Error Text: $errorMessage'),
-                calculationFinished: () => WaterTransition(),
+                calculationFinished: () => const WaterTransition(),
                 startCalculation: () => _buildInitialState(blocContext),
                 orElse: () => Container(),
               );
@@ -81,16 +82,15 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
 
   Widget _buildInitialState(BuildContext blocContext) {
     return Column(
-      mainAxisSize: MainAxisSize.max,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
+        const Padding(
+          padding: EdgeInsets.symmetric(
             vertical: 16.0,
             horizontal: 16.0,
           ),
           child: Align(
             alignment: Alignment.topLeft,
-            child: const Text(
+            child: Text(
               'ABOUT ME',
               style: TextStyle(
                 color: Colors.black,
@@ -105,15 +105,15 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Container(
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.lightBlue,
-                borderRadius: const BorderRadius.all(
+                borderRadius: BorderRadius.all(
                   Radius.circular(12.0),
                 ),
               ),
               child: Column(
                 children: [
-                  HydrateTextWithIcon(
+                  const HydrateTextWithIcon(
                     assetIconPath: 'assets/images/gender.svg',
                     text: 'Gender',
                   ),
@@ -122,7 +122,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                       onGenderSwitchCallback: (Gender selectedGender) =>
                           _currentSelectedGender = selectedGender),
                   const SizedBox(height: 16.0),
-                  HydrateTextWithIcon(
+                  const HydrateTextWithIcon(
                     assetIconPath: 'assets/images/weight.svg',
                     text: 'Weight',
                   ),
@@ -134,7 +134,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                         _currentSelectedWeightType = newWeightType,
                   ),
                   const SizedBox(height: 16.0),
-                  HydrateTextWithIcon(
+                  const HydrateTextWithIcon(
                     assetIconPath: 'assets/images/activity.svg',
                     text: 'Daily activity',
                   ),
@@ -144,7 +144,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                         _currentActivityInMinutes = newActivity,
                   ),
                   const SizedBox(height: 16.0),
-                  HydrateTextWithIcon(
+                  const HydrateTextWithIcon(
                     assetIconPath: 'assets/images/alarm-clock.svg',
                     text: 'Wake up time',
                   ),
@@ -156,7 +156,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                         _wakeUpTime = newWakeUpTime,
                   ),
                   const SizedBox(height: 16.0),
-                  HydrateTextWithIcon(
+                  const HydrateTextWithIcon(
                     assetIconPath: 'assets/images/sleep.svg',
                     text: 'Sleep time',
                   ),
@@ -177,8 +177,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: RaisedButton(
-              child: const Text('Generate Plan'),
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(12.0),
                 ),
@@ -194,6 +193,7 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
               ),
               color: Colors.lightBlue,
               textColor: Colors.white,
+              child: const Text('Generate Plan'),
             ),
           ),
         )
@@ -202,8 +202,9 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
   }
 }
 
-_navigateToDisplayCurrentIntake(BuildContext context) => Navigator.of(context)
-    .pushReplacementNamed(BottomNavigationPage.BOTTOM_NAVIGATION_PAGE);
+void _navigateToDisplayCurrentIntake(BuildContext context) =>
+    Navigator.of(context)
+        .pushReplacementNamed(BottomNavigationPage.bottomNavigationPage);
 
 void _sendCalculateEvent(
   Gender currentSelectedGender,

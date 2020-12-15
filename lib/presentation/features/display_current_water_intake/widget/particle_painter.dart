@@ -13,7 +13,7 @@ class ParticlePainter extends CustomPainter {
     final paint = Paint()..color = Colors.white.withAlpha(50);
 
     particles.forEach((particle) {
-      var progress = particle.progress();
+      final progress = particle.progress();
       final animation = particle.tween.transform(progress);
       final widthAnimationValue = animation.get(ParticleProp.width);
       final heightAnimationValue = animation.get(ParticleProp.height);

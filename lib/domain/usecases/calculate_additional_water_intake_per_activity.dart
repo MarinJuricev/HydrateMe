@@ -4,8 +4,8 @@ import 'package:dartz/dartz.dart';
 import '../../core/failure/base_failure.dart';
 import '../../core/usecase/base_usecase.dart';
 
-const PER_30_MINUTES_PER_ACTIVITY = 30;
-const ADDITIONAL_12_OUNCES = 12;
+const per30MinutesPerActivity = 30;
+const additional12Ounces = 12;
 
 class CalculateAdditionalWaterIntakePerActivity
     extends BaseUseCase<int, ActivityLevel> {
@@ -15,10 +15,9 @@ class CalculateAdditionalWaterIntakePerActivity
 
     // Intake with water activity
     // {activity} / 30 × 12 = 30 ounces of additional water per day.
-    final additionalWaterInOunces = (mapActivityToMinutes /
-            PER_30_MINUTES_PER_ACTIVITY *
-            ADDITIONAL_12_OUNCES)
-        .toInt();
+    final additionalWaterInOunces =
+        (mapActivityToMinutes / per30MinutesPerActivity * additional12Ounces)
+            .toInt();
 
     return Future.value(Right(additionalWaterInOunces));
   }

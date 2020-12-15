@@ -17,7 +17,7 @@ void main() {
     'should return [Right(220)], when 100 kgs is provided',
     () async {
       final actualResult = await kgToLbsConverter(100);
-      final expectedResult = Right(220);
+      const expectedResult = Right(220);
 
       expect(actualResult, expectedResult);
     },
@@ -27,7 +27,7 @@ void main() {
     'should return [Right(218)], when 99 kgs is provided',
     () async {
       final actualResult = await kgToLbsConverter(99);
-      final expectedResult = Right(218);
+      const expectedResult = Right(218);
 
       expect(actualResult, expectedResult);
     },
@@ -37,7 +37,8 @@ void main() {
     'should return [Left(NegativeNumberFailure())], when a negative number is provided',
     () async {
       final actualResult = await kgToLbsConverter(-1);
-      final expectedResult = Left(NegativeNumberFailure(CANT_PROVIDE_NEGATIVE_NUMBER));
+      const expectedResult =
+          Left(NegativeNumberFailure(cantProvideNegativeNumber));
 
       expect(actualResult, expectedResult);
     },

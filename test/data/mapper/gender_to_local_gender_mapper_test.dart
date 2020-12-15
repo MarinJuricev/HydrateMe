@@ -18,7 +18,7 @@ void main() {
     'should return Future(LocalGender.male) when Gender.male is provided',
     () async {
       final actualResult = await sut.map(Gender.male);
-      final expectedResult = LocalGender.male;
+      const expectedResult = LocalGender.male;
 
       expect(actualResult, expectedResult);
     },
@@ -28,7 +28,7 @@ void main() {
     'should return Future(LocalGender.female) when Gender.female is provided',
     () async {
       final actualResult = await sut.map(Gender.female);
-      final expectedResult = LocalGender.female;
+      const expectedResult = LocalGender.female;
 
       expect(actualResult, expectedResult);
     },

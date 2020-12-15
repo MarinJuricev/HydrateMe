@@ -28,7 +28,7 @@ class CurrentWaterIntakeBloc
     @required this.getCurrentHydrateStatus,
     @required this.manualAddWaterIntake,
     @required this.manualDecraseWaterIntake,
-  }) : super(CurrentWaterIntakeState.loading());
+  }) : super(const CurrentWaterIntakeState.loading());
 
   @override
   Stream<CurrentWaterIntakeState> mapEventToState(

@@ -9,7 +9,7 @@ class TimeSelection extends StatefulWidget {
   final Color optionalTextColor;
   final Color optionalBorderColor;
 
-  TimeSelection({
+  const TimeSelection({
     Key key,
     @required this.title,
     @required this.timeOfDay,
@@ -33,15 +33,14 @@ class _TimeSelectionState extends State<TimeSelection> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: OutlineButton(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
-            side: BorderSide(color: Colors.red)),
+            side: const BorderSide(color: Colors.red)),
         borderSide: BorderSide(
           color: widget.optionalBorderColor ?? Colors.white,
-          style: BorderStyle.solid,
           width: 1.5,
         ),
         onPressed: _pickTime,
@@ -57,8 +56,8 @@ class _TimeSelectionState extends State<TimeSelection> {
     );
   }
 
-  _pickTime() async {
-    TimeOfDay newWakeUpTime = await showTimePicker(
+  void _pickTime() async {
+    final TimeOfDay newWakeUpTime = await showTimePicker(
       context: context,
       initialTime: widget.timeOfDay,
     );

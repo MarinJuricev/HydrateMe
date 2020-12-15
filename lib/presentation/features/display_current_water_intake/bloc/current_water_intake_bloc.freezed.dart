@@ -50,34 +50,34 @@ const $CurrentWaterIntakeEvent = _$CurrentWaterIntakeEventTearOff();
 /// @nodoc
 mixin _$CurrentWaterIntakeEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updated(double updatedValue, double waterMaximumHeight),
-    @required Result started(),
-    @required Result manualIncrease(String waterToAdd),
-    @required Result manualDecrease(String waterToSubtract),
+  TResult when<TResult extends Object>({
+    @required TResult updated(double updatedValue, double waterMaximumHeight),
+    @required TResult started(),
+    @required TResult manualIncrease(String waterToAdd),
+    @required TResult manualDecrease(String waterToSubtract),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updated(double updatedValue, double waterMaximumHeight),
-    Result started(),
-    Result manualIncrease(String waterToAdd),
-    Result manualDecrease(String waterToSubtract),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updated(double updatedValue, double waterMaximumHeight),
+    TResult started(),
+    TResult manualIncrease(String waterToAdd),
+    TResult manualDecrease(String waterToSubtract),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updated(WaterIntakeUpdatedEvent value),
-    @required Result started(WaterIntakeStaredEvent value),
-    @required Result manualIncrease(WaterIntakeManualAddEvent value),
-    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
+  TResult map<TResult extends Object>({
+    @required TResult updated(WaterIntakeUpdatedEvent value),
+    @required TResult started(WaterIntakeStaredEvent value),
+    @required TResult manualIncrease(WaterIntakeManualAddEvent value),
+    @required TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updated(WaterIntakeUpdatedEvent value),
-    Result started(WaterIntakeStaredEvent value),
-    Result manualIncrease(WaterIntakeManualAddEvent value),
-    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updated(WaterIntakeUpdatedEvent value),
+    TResult started(WaterIntakeStaredEvent value),
+    TResult manualIncrease(WaterIntakeManualAddEvent value),
+    TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
+    @required TResult orElse(),
   });
 }
 
@@ -186,11 +186,11 @@ class _$WaterIntakeUpdatedEvent
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updated(double updatedValue, double waterMaximumHeight),
-    @required Result started(),
-    @required Result manualIncrease(String waterToAdd),
-    @required Result manualDecrease(String waterToSubtract),
+  TResult when<TResult extends Object>({
+    @required TResult updated(double updatedValue, double waterMaximumHeight),
+    @required TResult started(),
+    @required TResult manualIncrease(String waterToAdd),
+    @required TResult manualDecrease(String waterToSubtract),
   }) {
     assert(updated != null);
     assert(started != null);
@@ -201,12 +201,12 @@ class _$WaterIntakeUpdatedEvent
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updated(double updatedValue, double waterMaximumHeight),
-    Result started(),
-    Result manualIncrease(String waterToAdd),
-    Result manualDecrease(String waterToSubtract),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updated(double updatedValue, double waterMaximumHeight),
+    TResult started(),
+    TResult manualIncrease(String waterToAdd),
+    TResult manualDecrease(String waterToSubtract),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updated != null) {
@@ -217,11 +217,11 @@ class _$WaterIntakeUpdatedEvent
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updated(WaterIntakeUpdatedEvent value),
-    @required Result started(WaterIntakeStaredEvent value),
-    @required Result manualIncrease(WaterIntakeManualAddEvent value),
-    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
+  TResult map<TResult extends Object>({
+    @required TResult updated(WaterIntakeUpdatedEvent value),
+    @required TResult started(WaterIntakeStaredEvent value),
+    @required TResult manualIncrease(WaterIntakeManualAddEvent value),
+    @required TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
   }) {
     assert(updated != null);
     assert(started != null);
@@ -232,12 +232,12 @@ class _$WaterIntakeUpdatedEvent
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updated(WaterIntakeUpdatedEvent value),
-    Result started(WaterIntakeStaredEvent value),
-    Result manualIncrease(WaterIntakeManualAddEvent value),
-    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updated(WaterIntakeUpdatedEvent value),
+    TResult started(WaterIntakeStaredEvent value),
+    TResult manualIncrease(WaterIntakeManualAddEvent value),
+    TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updated != null) {
@@ -291,7 +291,7 @@ class _$WaterIntakeStaredEvent
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeEvent.started'));
+        .add(DiagnosticsProperty('type', 'CurrentWaterIntakeEvent.started'));
   }
 
   @override
@@ -304,11 +304,11 @@ class _$WaterIntakeStaredEvent
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updated(double updatedValue, double waterMaximumHeight),
-    @required Result started(),
-    @required Result manualIncrease(String waterToAdd),
-    @required Result manualDecrease(String waterToSubtract),
+  TResult when<TResult extends Object>({
+    @required TResult updated(double updatedValue, double waterMaximumHeight),
+    @required TResult started(),
+    @required TResult manualIncrease(String waterToAdd),
+    @required TResult manualDecrease(String waterToSubtract),
   }) {
     assert(updated != null);
     assert(started != null);
@@ -319,12 +319,12 @@ class _$WaterIntakeStaredEvent
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updated(double updatedValue, double waterMaximumHeight),
-    Result started(),
-    Result manualIncrease(String waterToAdd),
-    Result manualDecrease(String waterToSubtract),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updated(double updatedValue, double waterMaximumHeight),
+    TResult started(),
+    TResult manualIncrease(String waterToAdd),
+    TResult manualDecrease(String waterToSubtract),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (started != null) {
@@ -335,11 +335,11 @@ class _$WaterIntakeStaredEvent
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updated(WaterIntakeUpdatedEvent value),
-    @required Result started(WaterIntakeStaredEvent value),
-    @required Result manualIncrease(WaterIntakeManualAddEvent value),
-    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
+  TResult map<TResult extends Object>({
+    @required TResult updated(WaterIntakeUpdatedEvent value),
+    @required TResult started(WaterIntakeStaredEvent value),
+    @required TResult manualIncrease(WaterIntakeManualAddEvent value),
+    @required TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
   }) {
     assert(updated != null);
     assert(started != null);
@@ -350,12 +350,12 @@ class _$WaterIntakeStaredEvent
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updated(WaterIntakeUpdatedEvent value),
-    Result started(WaterIntakeStaredEvent value),
-    Result manualIncrease(WaterIntakeManualAddEvent value),
-    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updated(WaterIntakeUpdatedEvent value),
+    TResult started(WaterIntakeStaredEvent value),
+    TResult manualIncrease(WaterIntakeManualAddEvent value),
+    TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (started != null) {
@@ -444,11 +444,11 @@ class _$WaterIntakeManualAddEvent
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updated(double updatedValue, double waterMaximumHeight),
-    @required Result started(),
-    @required Result manualIncrease(String waterToAdd),
-    @required Result manualDecrease(String waterToSubtract),
+  TResult when<TResult extends Object>({
+    @required TResult updated(double updatedValue, double waterMaximumHeight),
+    @required TResult started(),
+    @required TResult manualIncrease(String waterToAdd),
+    @required TResult manualDecrease(String waterToSubtract),
   }) {
     assert(updated != null);
     assert(started != null);
@@ -459,12 +459,12 @@ class _$WaterIntakeManualAddEvent
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updated(double updatedValue, double waterMaximumHeight),
-    Result started(),
-    Result manualIncrease(String waterToAdd),
-    Result manualDecrease(String waterToSubtract),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updated(double updatedValue, double waterMaximumHeight),
+    TResult started(),
+    TResult manualIncrease(String waterToAdd),
+    TResult manualDecrease(String waterToSubtract),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (manualIncrease != null) {
@@ -475,11 +475,11 @@ class _$WaterIntakeManualAddEvent
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updated(WaterIntakeUpdatedEvent value),
-    @required Result started(WaterIntakeStaredEvent value),
-    @required Result manualIncrease(WaterIntakeManualAddEvent value),
-    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
+  TResult map<TResult extends Object>({
+    @required TResult updated(WaterIntakeUpdatedEvent value),
+    @required TResult started(WaterIntakeStaredEvent value),
+    @required TResult manualIncrease(WaterIntakeManualAddEvent value),
+    @required TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
   }) {
     assert(updated != null);
     assert(started != null);
@@ -490,12 +490,12 @@ class _$WaterIntakeManualAddEvent
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updated(WaterIntakeUpdatedEvent value),
-    Result started(WaterIntakeStaredEvent value),
-    Result manualIncrease(WaterIntakeManualAddEvent value),
-    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updated(WaterIntakeUpdatedEvent value),
+    TResult started(WaterIntakeStaredEvent value),
+    TResult manualIncrease(WaterIntakeManualAddEvent value),
+    TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (manualIncrease != null) {
@@ -592,11 +592,11 @@ class _$WaterIntakeManualDecreaseEvent
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result updated(double updatedValue, double waterMaximumHeight),
-    @required Result started(),
-    @required Result manualIncrease(String waterToAdd),
-    @required Result manualDecrease(String waterToSubtract),
+  TResult when<TResult extends Object>({
+    @required TResult updated(double updatedValue, double waterMaximumHeight),
+    @required TResult started(),
+    @required TResult manualIncrease(String waterToAdd),
+    @required TResult manualDecrease(String waterToSubtract),
   }) {
     assert(updated != null);
     assert(started != null);
@@ -607,12 +607,12 @@ class _$WaterIntakeManualDecreaseEvent
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result updated(double updatedValue, double waterMaximumHeight),
-    Result started(),
-    Result manualIncrease(String waterToAdd),
-    Result manualDecrease(String waterToSubtract),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult updated(double updatedValue, double waterMaximumHeight),
+    TResult started(),
+    TResult manualIncrease(String waterToAdd),
+    TResult manualDecrease(String waterToSubtract),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (manualDecrease != null) {
@@ -623,11 +623,11 @@ class _$WaterIntakeManualDecreaseEvent
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result updated(WaterIntakeUpdatedEvent value),
-    @required Result started(WaterIntakeStaredEvent value),
-    @required Result manualIncrease(WaterIntakeManualAddEvent value),
-    @required Result manualDecrease(WaterIntakeManualDecreaseEvent value),
+  TResult map<TResult extends Object>({
+    @required TResult updated(WaterIntakeUpdatedEvent value),
+    @required TResult started(WaterIntakeStaredEvent value),
+    @required TResult manualIncrease(WaterIntakeManualAddEvent value),
+    @required TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
   }) {
     assert(updated != null);
     assert(started != null);
@@ -638,12 +638,12 @@ class _$WaterIntakeManualDecreaseEvent
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result updated(WaterIntakeUpdatedEvent value),
-    Result started(WaterIntakeStaredEvent value),
-    Result manualIncrease(WaterIntakeManualAddEvent value),
-    Result manualDecrease(WaterIntakeManualDecreaseEvent value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult updated(WaterIntakeUpdatedEvent value),
+    TResult started(WaterIntakeStaredEvent value),
+    TResult manualIncrease(WaterIntakeManualAddEvent value),
+    TResult manualDecrease(WaterIntakeManualDecreaseEvent value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (manualDecrease != null) {
@@ -706,38 +706,38 @@ const $CurrentWaterIntakeState = _$CurrentWaterIntakeStateTearOff();
 /// @nodoc
 mixin _$CurrentWaterIntakeState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(HydrateStatus initalHydrateStatus),
-    @required Result loading(),
-    @required Result updated(HydrateStatus updatedHydrateStatus),
-    @required Result error(String errorMessage),
-    @required Result completed(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(HydrateStatus initalHydrateStatus),
+    @required TResult loading(),
+    @required TResult updated(HydrateStatus updatedHydrateStatus),
+    @required TResult error(String errorMessage),
+    @required TResult completed(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(HydrateStatus initalHydrateStatus),
-    Result loading(),
-    Result updated(HydrateStatus updatedHydrateStatus),
-    Result error(String errorMessage),
-    Result completed(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(HydrateStatus initalHydrateStatus),
+    TResult loading(),
+    TResult updated(HydrateStatus updatedHydrateStatus),
+    TResult error(String errorMessage),
+    TResult completed(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(WaterIntakeInitialState value),
-    @required Result loading(WaterIntakeLoadingState value),
-    @required Result updated(WaterIntakeUpdatedState value),
-    @required Result error(WaterIntakeErrorState value),
-    @required Result completed(WaterIntakeCompletedState value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(WaterIntakeInitialState value),
+    @required TResult loading(WaterIntakeLoadingState value),
+    @required TResult updated(WaterIntakeUpdatedState value),
+    @required TResult error(WaterIntakeErrorState value),
+    @required TResult completed(WaterIntakeCompletedState value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(WaterIntakeInitialState value),
-    Result loading(WaterIntakeLoadingState value),
-    Result updated(WaterIntakeUpdatedState value),
-    Result error(WaterIntakeErrorState value),
-    Result completed(WaterIntakeCompletedState value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(WaterIntakeInitialState value),
+    TResult loading(WaterIntakeLoadingState value),
+    TResult updated(WaterIntakeUpdatedState value),
+    TResult error(WaterIntakeErrorState value),
+    TResult completed(WaterIntakeCompletedState value),
+    @required TResult orElse(),
   });
 }
 
@@ -845,12 +845,12 @@ class _$WaterIntakeInitialState
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(HydrateStatus initalHydrateStatus),
-    @required Result loading(),
-    @required Result updated(HydrateStatus updatedHydrateStatus),
-    @required Result error(String errorMessage),
-    @required Result completed(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(HydrateStatus initalHydrateStatus),
+    @required TResult loading(),
+    @required TResult updated(HydrateStatus updatedHydrateStatus),
+    @required TResult error(String errorMessage),
+    @required TResult completed(),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -862,13 +862,13 @@ class _$WaterIntakeInitialState
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(HydrateStatus initalHydrateStatus),
-    Result loading(),
-    Result updated(HydrateStatus updatedHydrateStatus),
-    Result error(String errorMessage),
-    Result completed(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(HydrateStatus initalHydrateStatus),
+    TResult loading(),
+    TResult updated(HydrateStatus updatedHydrateStatus),
+    TResult error(String errorMessage),
+    TResult completed(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -879,12 +879,12 @@ class _$WaterIntakeInitialState
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(WaterIntakeInitialState value),
-    @required Result loading(WaterIntakeLoadingState value),
-    @required Result updated(WaterIntakeUpdatedState value),
-    @required Result error(WaterIntakeErrorState value),
-    @required Result completed(WaterIntakeCompletedState value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(WaterIntakeInitialState value),
+    @required TResult loading(WaterIntakeLoadingState value),
+    @required TResult updated(WaterIntakeUpdatedState value),
+    @required TResult error(WaterIntakeErrorState value),
+    @required TResult completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -896,13 +896,13 @@ class _$WaterIntakeInitialState
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(WaterIntakeInitialState value),
-    Result loading(WaterIntakeLoadingState value),
-    Result updated(WaterIntakeUpdatedState value),
-    Result error(WaterIntakeErrorState value),
-    Result completed(WaterIntakeCompletedState value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(WaterIntakeInitialState value),
+    TResult loading(WaterIntakeLoadingState value),
+    TResult updated(WaterIntakeUpdatedState value),
+    TResult error(WaterIntakeErrorState value),
+    TResult completed(WaterIntakeCompletedState value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -954,7 +954,7 @@ class _$WaterIntakeLoadingState
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.loading'));
+        .add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.loading'));
   }
 
   @override
@@ -967,12 +967,12 @@ class _$WaterIntakeLoadingState
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(HydrateStatus initalHydrateStatus),
-    @required Result loading(),
-    @required Result updated(HydrateStatus updatedHydrateStatus),
-    @required Result error(String errorMessage),
-    @required Result completed(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(HydrateStatus initalHydrateStatus),
+    @required TResult loading(),
+    @required TResult updated(HydrateStatus updatedHydrateStatus),
+    @required TResult error(String errorMessage),
+    @required TResult completed(),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -984,13 +984,13 @@ class _$WaterIntakeLoadingState
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(HydrateStatus initalHydrateStatus),
-    Result loading(),
-    Result updated(HydrateStatus updatedHydrateStatus),
-    Result error(String errorMessage),
-    Result completed(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(HydrateStatus initalHydrateStatus),
+    TResult loading(),
+    TResult updated(HydrateStatus updatedHydrateStatus),
+    TResult error(String errorMessage),
+    TResult completed(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loading != null) {
@@ -1001,12 +1001,12 @@ class _$WaterIntakeLoadingState
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(WaterIntakeInitialState value),
-    @required Result loading(WaterIntakeLoadingState value),
-    @required Result updated(WaterIntakeUpdatedState value),
-    @required Result error(WaterIntakeErrorState value),
-    @required Result completed(WaterIntakeCompletedState value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(WaterIntakeInitialState value),
+    @required TResult loading(WaterIntakeLoadingState value),
+    @required TResult updated(WaterIntakeUpdatedState value),
+    @required TResult error(WaterIntakeErrorState value),
+    @required TResult completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -1018,13 +1018,13 @@ class _$WaterIntakeLoadingState
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(WaterIntakeInitialState value),
-    Result loading(WaterIntakeLoadingState value),
-    Result updated(WaterIntakeUpdatedState value),
-    Result error(WaterIntakeErrorState value),
-    Result completed(WaterIntakeCompletedState value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(WaterIntakeInitialState value),
+    TResult loading(WaterIntakeLoadingState value),
+    TResult updated(WaterIntakeUpdatedState value),
+    TResult error(WaterIntakeErrorState value),
+    TResult completed(WaterIntakeCompletedState value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loading != null) {
@@ -1125,12 +1125,12 @@ class _$WaterIntakeUpdatedState
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(HydrateStatus initalHydrateStatus),
-    @required Result loading(),
-    @required Result updated(HydrateStatus updatedHydrateStatus),
-    @required Result error(String errorMessage),
-    @required Result completed(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(HydrateStatus initalHydrateStatus),
+    @required TResult loading(),
+    @required TResult updated(HydrateStatus updatedHydrateStatus),
+    @required TResult error(String errorMessage),
+    @required TResult completed(),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -1142,13 +1142,13 @@ class _$WaterIntakeUpdatedState
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(HydrateStatus initalHydrateStatus),
-    Result loading(),
-    Result updated(HydrateStatus updatedHydrateStatus),
-    Result error(String errorMessage),
-    Result completed(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(HydrateStatus initalHydrateStatus),
+    TResult loading(),
+    TResult updated(HydrateStatus updatedHydrateStatus),
+    TResult error(String errorMessage),
+    TResult completed(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updated != null) {
@@ -1159,12 +1159,12 @@ class _$WaterIntakeUpdatedState
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(WaterIntakeInitialState value),
-    @required Result loading(WaterIntakeLoadingState value),
-    @required Result updated(WaterIntakeUpdatedState value),
-    @required Result error(WaterIntakeErrorState value),
-    @required Result completed(WaterIntakeCompletedState value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(WaterIntakeInitialState value),
+    @required TResult loading(WaterIntakeLoadingState value),
+    @required TResult updated(WaterIntakeUpdatedState value),
+    @required TResult error(WaterIntakeErrorState value),
+    @required TResult completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -1176,13 +1176,13 @@ class _$WaterIntakeUpdatedState
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(WaterIntakeInitialState value),
-    Result loading(WaterIntakeLoadingState value),
-    Result updated(WaterIntakeUpdatedState value),
-    Result error(WaterIntakeErrorState value),
-    Result completed(WaterIntakeCompletedState value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(WaterIntakeInitialState value),
+    TResult loading(WaterIntakeLoadingState value),
+    TResult updated(WaterIntakeUpdatedState value),
+    TResult error(WaterIntakeErrorState value),
+    TResult completed(WaterIntakeCompletedState value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (updated != null) {
@@ -1272,12 +1272,12 @@ class _$WaterIntakeErrorState
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(HydrateStatus initalHydrateStatus),
-    @required Result loading(),
-    @required Result updated(HydrateStatus updatedHydrateStatus),
-    @required Result error(String errorMessage),
-    @required Result completed(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(HydrateStatus initalHydrateStatus),
+    @required TResult loading(),
+    @required TResult updated(HydrateStatus updatedHydrateStatus),
+    @required TResult error(String errorMessage),
+    @required TResult completed(),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -1289,13 +1289,13 @@ class _$WaterIntakeErrorState
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(HydrateStatus initalHydrateStatus),
-    Result loading(),
-    Result updated(HydrateStatus updatedHydrateStatus),
-    Result error(String errorMessage),
-    Result completed(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(HydrateStatus initalHydrateStatus),
+    TResult loading(),
+    TResult updated(HydrateStatus updatedHydrateStatus),
+    TResult error(String errorMessage),
+    TResult completed(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
@@ -1306,12 +1306,12 @@ class _$WaterIntakeErrorState
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(WaterIntakeInitialState value),
-    @required Result loading(WaterIntakeLoadingState value),
-    @required Result updated(WaterIntakeUpdatedState value),
-    @required Result error(WaterIntakeErrorState value),
-    @required Result completed(WaterIntakeCompletedState value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(WaterIntakeInitialState value),
+    @required TResult loading(WaterIntakeLoadingState value),
+    @required TResult updated(WaterIntakeUpdatedState value),
+    @required TResult error(WaterIntakeErrorState value),
+    @required TResult completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -1323,13 +1323,13 @@ class _$WaterIntakeErrorState
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(WaterIntakeInitialState value),
-    Result loading(WaterIntakeLoadingState value),
-    Result updated(WaterIntakeUpdatedState value),
-    Result error(WaterIntakeErrorState value),
-    Result completed(WaterIntakeCompletedState value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(WaterIntakeInitialState value),
+    TResult loading(WaterIntakeLoadingState value),
+    TResult updated(WaterIntakeUpdatedState value),
+    TResult error(WaterIntakeErrorState value),
+    TResult completed(WaterIntakeCompletedState value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
@@ -1382,7 +1382,7 @@ class _$WaterIntakeCompletedState
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.completed'));
+        .add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.completed'));
   }
 
   @override
@@ -1395,12 +1395,12 @@ class _$WaterIntakeCompletedState
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(HydrateStatus initalHydrateStatus),
-    @required Result loading(),
-    @required Result updated(HydrateStatus updatedHydrateStatus),
-    @required Result error(String errorMessage),
-    @required Result completed(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(HydrateStatus initalHydrateStatus),
+    @required TResult loading(),
+    @required TResult updated(HydrateStatus updatedHydrateStatus),
+    @required TResult error(String errorMessage),
+    @required TResult completed(),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -1412,13 +1412,13 @@ class _$WaterIntakeCompletedState
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(HydrateStatus initalHydrateStatus),
-    Result loading(),
-    Result updated(HydrateStatus updatedHydrateStatus),
-    Result error(String errorMessage),
-    Result completed(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(HydrateStatus initalHydrateStatus),
+    TResult loading(),
+    TResult updated(HydrateStatus updatedHydrateStatus),
+    TResult error(String errorMessage),
+    TResult completed(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (completed != null) {
@@ -1429,12 +1429,12 @@ class _$WaterIntakeCompletedState
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(WaterIntakeInitialState value),
-    @required Result loading(WaterIntakeLoadingState value),
-    @required Result updated(WaterIntakeUpdatedState value),
-    @required Result error(WaterIntakeErrorState value),
-    @required Result completed(WaterIntakeCompletedState value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(WaterIntakeInitialState value),
+    @required TResult loading(WaterIntakeLoadingState value),
+    @required TResult updated(WaterIntakeUpdatedState value),
+    @required TResult error(WaterIntakeErrorState value),
+    @required TResult completed(WaterIntakeCompletedState value),
   }) {
     assert(initial != null);
     assert(loading != null);
@@ -1446,13 +1446,13 @@ class _$WaterIntakeCompletedState
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(WaterIntakeInitialState value),
-    Result loading(WaterIntakeLoadingState value),
-    Result updated(WaterIntakeUpdatedState value),
-    Result error(WaterIntakeErrorState value),
-    Result completed(WaterIntakeCompletedState value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(WaterIntakeInitialState value),
+    TResult loading(WaterIntakeLoadingState value),
+    TResult updated(WaterIntakeUpdatedState value),
+    TResult error(WaterIntakeErrorState value),
+    TResult completed(WaterIntakeCompletedState value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (completed != null) {

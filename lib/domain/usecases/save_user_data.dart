@@ -28,7 +28,7 @@ class SaveUserData extends BaseUseCase<void, SaveUserDataParams> {
       activityLevel: params.activityLevel,
     );
 
-    return await userDataRepository.saveUserData(userDataToSave);
+    return userDataRepository.saveUserData(userDataToSave);
   }
 }
 
@@ -40,7 +40,7 @@ class SaveUserDataParams extends Equatable {
   final WeightType weightType;
   final ActivityLevel activityLevel;
 
-  SaveUserDataParams({
+  const SaveUserDataParams({
     @required this.wakeUpTime,
     @required this.sleepTime,
     @required this.currentWeight,

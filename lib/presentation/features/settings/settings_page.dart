@@ -28,9 +28,9 @@ class SettingsPage extends StatelessWidget {
   }
 
   Widget _buildSettingInitialState(BuildContext context) {
-    BlocProvider.of<SettingsBloc>(context).add(SettingsEvent.started());
+    BlocProvider.of<SettingsBloc>(context).add(const SettingsEvent.started());
 
-    return Center(child: CircularProgressIndicator());
+    return const Center(child: CircularProgressIndicator());
   }
 
   Widget _buildSettingsErrorState(String errorMessage) =>
@@ -60,7 +60,7 @@ class SettingsPage extends StatelessWidget {
                   optionalTextColor: Colors.blue,
                   onTimeSelectedCallback: (newWakeUpTime) {
                     BlocProvider.of<SettingsBloc>(context).add(
-                      SettingsEvent.onSettingedChanged(
+                      SettingsEvent.onSettingsChanged(
                         SettingsItem.updateWakeUpTime(
                           newWakeUpTime: newWakeUpTime,
                         ),
@@ -87,7 +87,7 @@ class SettingsPage extends StatelessWidget {
                   optionalTextColor: Colors.blue,
                   onTimeSelectedCallback: (newSleepTime) {
                     BlocProvider.of<SettingsBloc>(context).add(
-                      SettingsEvent.onSettingedChanged(
+                      SettingsEvent.onSettingsChanged(
                         SettingsItem.updateSleepTime(
                           newSleepTime: newSleepTime,
                         ),
@@ -108,7 +108,7 @@ class SettingsPage extends StatelessWidget {
                 title: "Change Current Weight",
                 onApplyClicked: () => {
                   BlocProvider.of<SettingsBloc>(context).add(
-                    SettingsEvent.onSettingedChanged(
+                    SettingsEvent.onSettingsChanged(
                       SettingsItem.updateCurrentWeight(
                           updatedWeight: updatedWeight),
                     ),
@@ -131,17 +131,17 @@ class SettingsPage extends StatelessWidget {
           ),
           HydrateListTile(
             title: 'Gender',
-            subtitle: '${uiUserData.gender}',
+            subtitle: '$uiUserData.gender',
             onClick: () {},
           ),
           HydrateListTile(
             title: 'Kg/Lbs',
-            subtitle: '${uiUserData.weightType}',
+            subtitle: '$uiUserData.weightType',
             onClick: () {},
           ),
           HydrateListTile(
             title: 'Activity level',
-            subtitle: '${uiUserData.activityLevel}',
+            subtitle: '$uiUserData.activityLevel',
             onClick: () {},
           ),
         ],

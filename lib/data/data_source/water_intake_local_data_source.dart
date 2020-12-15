@@ -19,7 +19,7 @@ class WaterIntakeLocalDataSourceImpl extends WaterIntakeLocalDataSource {
   final LocalHydrateStatusToHydrateStatusMapper
       localHydrateStatusToHydrateStatusMapper;
 
-  static const HYDRATE_STATUS_BOX = 'HYDRATE_STATUS_BOX';
+  static const hydrateStatusBox = 'HYDRATE_STATUS_BOX';
 
   WaterIntakeLocalDataSourceImpl({
     @required this.localPersistenceProvider,
@@ -29,8 +29,8 @@ class WaterIntakeLocalDataSourceImpl extends WaterIntakeLocalDataSource {
 
   @override
   Future<void> saveWaterIntake(HydrateStatus hydrateStatus) async {
-    return await localPersistenceProvider.saveKeyValuePair(
-      boxToSaveInto: HYDRATE_STATUS_BOX,
+    return localPersistenceProvider.saveKeyValuePair(
+      boxToSaveInto: hydrateStatusBox,
       valueToSave:
           await hydrateStatusToLocalHydrateStatusMapper.map(hydrateStatus),
     );
@@ -40,12 +40,13 @@ class WaterIntakeLocalDataSourceImpl extends WaterIntakeLocalDataSource {
   Future<HydrateStatus> getWaterIntake() async {
     final LocalHydrateStatus localResult =
         await localPersistenceProvider.getFromKeyValuePair(
-      boxToGetDataFrom: HYDRATE_STATUS_BOX,
-    );
+      boxToGetDataFrom: hydrateStatusBox,
+    ) as LocalHydrateStatus;
 
-    if (localResult != null)
-      return await localHydrateStatusToHydrateStatusMapper.map(localResult);
-    else
+    if (localResult != null) {
+      return localHydrateStatusToHydrateStatusMapper.map(localResult);
+    } else {
       throw CacheException();
+    }
   }
 }

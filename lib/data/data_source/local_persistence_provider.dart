@@ -33,7 +33,7 @@ class LocalPersistenceProviderImpl implements LocalPersistenceProvider {
   }) async {
     final box = await Hive.openBox(boxToSaveInto);
 
-    return await box.add(valueToSave);
+    return box.add(valueToSave);
   }
 
   // Get's the latest entry inside the box
@@ -48,7 +48,7 @@ class LocalPersistenceProviderImpl implements LocalPersistenceProvider {
   @override
   Future getAllFromPersistence({String boxToGetDataFrom}) async {
     final box = await Hive.openBox(boxToGetDataFrom);
-    List<dynamic> listToReturn = [];
+    final List<dynamic> listToReturn = [];
 
     for (int i = 0; i <= box.length - 1; i++) {
       final valueToSave = await box.getAt(i);
@@ -68,12 +68,12 @@ class LocalPersistenceProviderImpl implements LocalPersistenceProvider {
   // key, we use saveKeyValuePair ( it functions like sharedPreferences in native Android )
   @override
   Future<void> saveKeyValuePair({
-    valueToSave,
+    dynamic valueToSave,
     String boxToSaveInto,
   }) async {
     final box = await Hive.openBox(boxToSaveInto);
 
-    return await box.put(boxToSaveInto, valueToSave);
+    return box.put(boxToSaveInto, valueToSave);
   }
 
   // If you something into the databse using [saveKeyValuePair] YOU HAVE to use this method
@@ -91,6 +91,6 @@ class LocalPersistenceProviderImpl implements LocalPersistenceProvider {
     String boxToDeleteFrom,
   }) async {
     final box = await Hive.openBox(boxToDeleteFrom);
-    return await box.deleteAt(positonToDelete);
+    return box.deleteAt(positonToDelete);
   }
 }

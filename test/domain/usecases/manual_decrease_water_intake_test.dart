@@ -17,8 +17,8 @@ void main() {
   MockInputConverter _mockInputConverter;
   ManualDecreaseWaterIntake manualDecreaseWaterIntake;
 
-  const String TEST_WATER_TO_DECREASE = '200';
-  const int TEST_FORMATTED_TEST_WATER_TO_ADD = 200;
+  const String testWaterToDecrease = '200';
+  const int testFormattedTestWaterToAdd = 200;
 
   final testHydrateStatus = HydrateStatus(
     hydrationPercentage: 0,
@@ -48,7 +48,7 @@ void main() {
     },
   );
 
-  _setupRepositorySuccessCase(HydrateStatus hydrateStatusToReturn) {
+  void _setupRepositorySuccessCase(HydrateStatus hydrateStatusToReturn) {
     final Either<Failure, HydrateStatus> testRepositoryResponse =
         Right(hydrateStatusToReturn);
 
@@ -56,22 +56,23 @@ void main() {
         .thenAnswer((_) async => testRepositoryResponse);
   }
 
-  _setupRepositoryFailureCase() {
-    final Either<Failure, HydrateStatus> testRepositoryResponse =
-        Left(GeneralFailure(GENERAL_ERROR_MESSAGE));
+  void _setupRepositoryFailureCase() {
+    const Either<Failure, HydrateStatus> testRepositoryResponse =
+        Left(GeneralFailure(genericErrorMessage));
 
     when(_mockWaterIntakeRepository.getCurrentWaterIntake())
         .thenAnswer((_) async => testRepositoryResponse);
   }
 
-  _setupInputConverterFailureCase() {
-    when(_mockInputConverter.stringToUnsignedInteger(TEST_WATER_TO_DECREASE))
-        .thenReturn(Left(NegativeNumberFailure(CANT_PROVIDE_NEGATIVE_NUMBER)));
+  void _setupInputConverterFailureCase() {
+    when(_mockInputConverter.stringToUnsignedInteger(testWaterToDecrease))
+        .thenReturn(
+            const Left(NegativeNumberFailure(cantProvideNegativeNumber)));
   }
 
-  _setupInputConverterSuccessCase() {
-    when(_mockInputConverter.stringToUnsignedInteger(TEST_WATER_TO_DECREASE))
-        .thenReturn(Right(TEST_FORMATTED_TEST_WATER_TO_ADD));
+  void _setupInputConverterSuccessCase() {
+    when(_mockInputConverter.stringToUnsignedInteger(testWaterToDecrease))
+        .thenReturn(const Right(testFormattedTestWaterToAdd));
   }
 
   test(
@@ -80,9 +81,8 @@ void main() {
       _setupRepositorySuccessCase(testHydrateStatus);
       _setupInputConverterFailureCase();
 
-      final actualResult =
-          await manualDecreaseWaterIntake(TEST_WATER_TO_DECREASE);
-      final expectedResult = Left(GeneralFailure(GENERAL_ERROR_MESSAGE));
+      final actualResult = await manualDecreaseWaterIntake(testWaterToDecrease);
+      const expectedResult = Left(GeneralFailure(genericErrorMessage));
 
       expect(actualResult, expectedResult);
     },
@@ -94,9 +94,8 @@ void main() {
       _setupRepositoryFailureCase();
       _setupInputConverterSuccessCase();
 
-      final actualResult =
-          await manualDecreaseWaterIntake(TEST_WATER_TO_DECREASE);
-      final expectedResult = Left(GeneralFailure(GENERAL_ERROR_MESSAGE));
+      final actualResult = await manualDecreaseWaterIntake(testWaterToDecrease);
+      const expectedResult = Left(GeneralFailure(genericErrorMessage));
 
       expect(actualResult, expectedResult);
     },
@@ -108,8 +107,7 @@ void main() {
       _setupRepositorySuccessCase(testHydrateStatusWithAddedCurrentIntake);
       _setupInputConverterSuccessCase();
 
-      final actualResult =
-          await manualDecreaseWaterIntake(TEST_WATER_TO_DECREASE);
+      final actualResult = await manualDecreaseWaterIntake(testWaterToDecrease);
 
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 0.3,
@@ -134,8 +132,7 @@ void main() {
       _setupRepositorySuccessCase(testHydrateStatus);
       _setupInputConverterSuccessCase();
 
-      final actualResult =
-          await manualDecreaseWaterIntake(TEST_WATER_TO_DECREASE);
+      final actualResult = await manualDecreaseWaterIntake(testWaterToDecrease);
 
       final expectedHydrateStatus = HydrateStatus(
         hydrationPercentage: 1.0,

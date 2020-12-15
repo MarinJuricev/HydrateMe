@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HydrateTextField extends StatelessWidget {
-  final labelText;
-  final hintText;
+  final String labelText;
+  final String hintText;
   final Function(String) getCurrentTextCallback;
 
   const HydrateTextField({
@@ -16,24 +16,22 @@ class HydrateTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       onSubmitted: (newWaterIntake) {},
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       onChanged: (newValue) => getCurrentTextCallback(newValue),
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Colors.white,
-            width: 1.0,
           ),
           borderRadius: BorderRadius.circular(12.0),
         ),
-        labelStyle: TextStyle(color: Colors.white),
+        labelStyle: const TextStyle(color: Colors.white),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Color.fromRGBO(0, 100, 235, 0.8),
-            width: 1.0,
           ),
           borderRadius: BorderRadius.circular(12.0),
         ),

@@ -7,15 +7,15 @@ class InputConverter {
   Either<Failure, int> stringToUnsignedInteger(String str) {
     try {
       if (str == null || str.isEmpty) {
-        return Left(ValidationFailure(REQUIRED_FIELDS_NOT_EMTPY));
+        return const Left(ValidationFailure(requiredFieldsNotEmpty));
       }
       final integer = int.parse(str);
       if (integer < 0) {
-        return Left(ValidationFailure(POSITIVE_PROVIDED_NUMBER));
+        return const Left(ValidationFailure(positiveProvidedNumber));
       }
       return Right(integer);
     } on FormatException {
-      return Left(ValidationFailure(INVALID_NUMBER_PROVIDED));
+      return const Left(ValidationFailure(invalidNumberProvided));
     }
   }
 }

@@ -6,7 +6,7 @@ import 'package:wave/wave.dart';
 import '../../bottom_nav/bottom_navigation_page.dart';
 
 class WaterTransition extends StatefulWidget {
-  WaterTransition({Key key}) : super(key: key);
+  const WaterTransition({Key key}) : super(key: key);
 
   @override
   _WaterTransitionState createState() => _WaterTransitionState();
@@ -32,13 +32,13 @@ class _WaterTransitionState extends State<WaterTransition>
       (status) {
         if (status == AnimationStatus.completed) {
           Future.delayed(
-            Duration(milliseconds: 1000),
+            const Duration(milliseconds: 1000),
           ).then(
             (value) => {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => BottomNavigationPage(),
+                  builder: (context) => const BottomNavigationPage(),
                 ),
               )
             },
@@ -71,7 +71,7 @@ class _WaterTransitionState extends State<WaterTransition>
             child: WaveWidget(
               duration: 1,
               config: CustomConfig(
-                gradients: [
+                gradients: const [
                   [
                     Color.fromRGBO(0, 100, 175, 0.4),
                     Color.fromRGBO(0, 100, 235, 0.8),
@@ -83,17 +83,17 @@ class _WaterTransitionState extends State<WaterTransition>
                 ],
                 durations: [10800, 19440],
                 heightPercentages: [0.000, 0.030],
-                blur: MaskFilter.blur(BlurStyle.solid, 5),
+                blur: const MaskFilter.blur(BlurStyle.solid, 5),
                 gradientBegin: Alignment.centerLeft,
                 gradientEnd: Alignment.centerRight,
               ),
               waveAmplitude: 1.0,
               backgroundColor: Colors.transparent,
-              size: Size(double.infinity, double.infinity),
+              size: const Size(double.infinity, double.infinity),
             ),
           ),
         ),
-        Center(
+        const Center(
           //TODO Animate the ...
           child: Text(
             'Calculating your personal plan...',

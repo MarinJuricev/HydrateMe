@@ -6,7 +6,7 @@ class HydrateDialog extends StatelessWidget {
   final Image image;
   final Function onApplyClicked;
 
-  HydrateDialog({
+  const HydrateDialog({
     @required this.title,
     @required this.bodyContent,
     this.onApplyClicked,
@@ -29,22 +29,21 @@ class HydrateDialog extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 76.0,
             bottom: 12.0,
             left: 12.0,
             right: 12.0,
           ),
-          margin: EdgeInsets.only(top: 64.0),
-          decoration: new BoxDecoration(
+          margin: const EdgeInsets.only(top: 64.0),
+          decoration: BoxDecoration(
             color: Colors.white,
-            shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(12.0),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black26,
                 blurRadius: 10.0,
-                offset: const Offset(0.0, 10.0),
+                offset: Offset(0.0, 10.0),
               ),
             ],
           ),
@@ -53,14 +52,14 @@ class HydrateDialog extends StatelessWidget {
             children: <Widget>[
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               bodyContent,
-              SizedBox(height: 24.0),
+              const SizedBox(height: 24.0),
               Align(
                 alignment: Alignment.bottomRight,
                 child: FlatButton(
@@ -74,7 +73,7 @@ class HydrateDialog extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
+        const Positioned(
           left: 12.0,
           right: 12.0,
           child: CircleAvatar(

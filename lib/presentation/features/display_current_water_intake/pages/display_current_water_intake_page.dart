@@ -40,11 +40,11 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
   }
 }
 
-_buildLoading(BuildContext context) {
+Widget _buildLoading(BuildContext context) {
   BlocProvider.of<CurrentWaterIntakeBloc>(context)
-      .add(CurrentWaterIntakeEvent.started());
+      .add(const CurrentWaterIntakeEvent.started());
 
-  return Center(
+  return const Center(
     child: CircularProgressIndicator(),
   );
 }
@@ -52,9 +52,8 @@ _buildLoading(BuildContext context) {
 Widget _buildWaterIntake(HydrateStatus hydrateStatus) {
   return Stack(
     children: <Widget>[
-      Positioned.fill(child: Particles(30)),
+      const Positioned.fill(child: Particles(30)),
       Column(
-        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24.0),

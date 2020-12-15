@@ -1,9 +1,9 @@
-import 'activity_level.dart';
-import 'weight_type.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'activity_level.dart';
 import 'gender.dart';
+import 'weight_type.dart';
 
 part 'settings_item.freezed.dart';
 

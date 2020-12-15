@@ -19,7 +19,7 @@ class UserDataRepositoryImpl extends UserDataRepository {
 
       return Right(localResult);
     } on CacheException {
-      return Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
+      return const Left(CacheFailure(errorRetreivingLocalData));
     }
   }
 
@@ -30,7 +30,7 @@ class UserDataRepositoryImpl extends UserDataRepository {
 
       return Right(localResult);
     } on CacheException {
-      return Left(CacheFailure(ERROR_RETREIVING_LOCAL_DATA));
+      return const Left(CacheFailure(errorRetreivingLocalData));
     }
   }
 }

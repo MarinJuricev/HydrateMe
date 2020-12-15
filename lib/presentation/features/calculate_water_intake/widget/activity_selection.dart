@@ -23,41 +23,9 @@ class _ActivitySelectionState extends State<ActivitySelection> {
       splashColor: Colors.white,
       borderColor: Colors.white,
       fillColor: Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      borderRadius: const BorderRadius.all(Radius.circular(8.0)),
       selectedBorderColor: Colors.white,
       borderWidth: 2.0,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            width: 50,
-            child: Text(
-              'LOW',
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            width: 50,
-            child: Text(
-              'ACTIVE',
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            width: 50,
-            child: Text(
-              'VERY ACTIVE',
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      ],
       onPressed: (int index) {
         setState(() {
           for (int buttonIndex = 0;
@@ -80,6 +48,38 @@ class _ActivitySelectionState extends State<ActivitySelection> {
         });
       },
       isSelected: _isSelected,
+      children: const [
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: SizedBox(
+            width: 50,
+            child: Text(
+              'LOW',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: SizedBox(
+            width: 50,
+            child: Text(
+              'ACTIVE',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: SizedBox(
+            width: 50,
+            child: Text(
+              'VERY ACTIVE',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
