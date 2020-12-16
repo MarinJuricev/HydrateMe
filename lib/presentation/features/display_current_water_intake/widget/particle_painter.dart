@@ -13,10 +13,12 @@ class ParticlePainter extends CustomPainter {
     final paint = Paint()..color = Colors.white.withAlpha(50);
 
     particles.forEach((particle) {
-      final progress = particle.progress();
+      final double progress = particle.progress();
       final animation = particle.tween.transform(progress);
-      final widthAnimationValue = animation.get(ParticleProp.width);
-      final heightAnimationValue = animation.get(ParticleProp.height);
+      final double widthAnimationValue =
+          animation.get(ParticleProp.width) as double;
+      final double heightAnimationValue =
+          animation.get(ParticleProp.height) as double;
 
       final position = Offset(
           widthAnimationValue * size.width, heightAnimationValue * size.height);

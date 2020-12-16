@@ -1,10 +1,10 @@
-import 'package:HydrateMe/core/error/exceptions.dart';
-import 'package:HydrateMe/data/data_source/local_persistence_provider.dart';
-import 'package:HydrateMe/data/mapper/local_user_data_to_user_data_mapper.dart';
-import 'package:HydrateMe/data/mapper/user_data_to_local_user_data_mapper.dart';
-import 'package:HydrateMe/data/model/local_user_data.dart';
-import 'package:HydrateMe/domain/model/user_data.dart';
 import 'package:flutter/foundation.dart';
+
+import '../../core/error/exceptions.dart';
+import '../../core/mapper/base_mapper.dart';
+import '../../domain/model/user_data.dart';
+import '../model/local_user_data.dart';
+import 'local_persistence_provider.dart';
 
 abstract class UserDataLocalDataSource {
   Future<void> saveUserData(UserData userData);
@@ -13,8 +13,8 @@ abstract class UserDataLocalDataSource {
 
 class UserDataLocalDataSourceImpl extends UserDataLocalDataSource {
   final LocalPersistenceProvider localPersistenceProvider;
-  final UserDataToLocalUserDataMapper userDataToLocalUserDataMapper;
-  final LocalUserDataToUserDataMapper localUserDataToUserDataMapper;
+  final Mapper<LocalUserData, UserData> userDataToLocalUserDataMapper;
+  final Mapper<UserData, LocalUserData> localUserDataToUserDataMapper;
 
   static const userDataBox = 'USER_DATA_BOX';
 

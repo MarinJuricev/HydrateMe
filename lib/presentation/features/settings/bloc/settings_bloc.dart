@@ -25,7 +25,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   ) async* {
     yield* event.map(
         started: (params) => _handleSettingsStarted(),
-        onSettingedChanged: (params) =>
+        onSettingsChanged: (params) =>
             _handleOnSettingsChanged(params.settingsItemChanged));
   }
 

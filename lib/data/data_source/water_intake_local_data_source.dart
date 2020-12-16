@@ -1,10 +1,9 @@
-import 'package:HydrateMe/core/error/exceptions.dart';
-import 'package:HydrateMe/data/model/local_hydrate_status.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../core/error/exceptions.dart';
+import '../../core/mapper/base_mapper.dart';
 import '../../domain/model/hydrate_status.dart';
-import '../mapper/hydrate_status_to_local_hydrate_status_mapper.dart';
-import '../mapper/local_hydrate_status_to_hydrate_status.dart';
+import '../model/local_hydrate_status.dart';
 import 'local_persistence_provider.dart';
 
 abstract class WaterIntakeLocalDataSource {
@@ -14,9 +13,9 @@ abstract class WaterIntakeLocalDataSource {
 
 class WaterIntakeLocalDataSourceImpl extends WaterIntakeLocalDataSource {
   final LocalPersistenceProvider localPersistenceProvider;
-  final HydrateStatusToLocalHydrateStatusMapper
+  final Mapper<LocalHydrateStatus, HydrateStatus>
       hydrateStatusToLocalHydrateStatusMapper;
-  final LocalHydrateStatusToHydrateStatusMapper
+  final Mapper<HydrateStatus, LocalHydrateStatus>
       localHydrateStatusToHydrateStatusMapper;
 
   static const hydrateStatusBox = 'HYDRATE_STATUS_BOX';

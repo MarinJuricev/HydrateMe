@@ -419,17 +419,17 @@ class _$CalculateWaterIntakeStateTearOff {
 
 // ignore: unused_element
   _CalculateWaterIntakeInitial initial() {
-    return const _CalculateWaterIntakeInitial();
+    return _CalculateWaterIntakeInitial();
   }
 
 // ignore: unused_element
   _CalculateWaterIntakeSkipCalculation skipCalculation() {
-    return const _CalculateWaterIntakeSkipCalculation();
+    return _CalculateWaterIntakeSkipCalculation();
   }
 
 // ignore: unused_element
   _CalculateWaterIntakeStartCalculation startCalculation() {
-    return const _CalculateWaterIntakeStartCalculation();
+    return _CalculateWaterIntakeStartCalculation();
   }
 
 // ignore: unused_element
@@ -441,7 +441,7 @@ class _$CalculateWaterIntakeStateTearOff {
 
 // ignore: unused_element
   _CalculationFinished calculationFinished() {
-    return const _CalculationFinished();
+    return _CalculationFinished();
   }
 }
 
@@ -530,7 +530,7 @@ class __$CalculateWaterIntakeInitialCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
-  const _$_CalculateWaterIntakeInitial();
+  _$_CalculateWaterIntakeInitial();
 
   @override
   String toString() {
@@ -618,7 +618,7 @@ class _$_CalculateWaterIntakeInitial implements _CalculateWaterIntakeInitial {
 
 abstract class _CalculateWaterIntakeInitial
     implements CalculateWaterIntakeState {
-  const factory _CalculateWaterIntakeInitial() = _$_CalculateWaterIntakeInitial;
+  factory _CalculateWaterIntakeInitial() = _$_CalculateWaterIntakeInitial;
 }
 
 /// @nodoc
@@ -646,7 +646,7 @@ class __$CalculateWaterIntakeSkipCalculationCopyWithImpl<$Res>
 /// @nodoc
 class _$_CalculateWaterIntakeSkipCalculation
     implements _CalculateWaterIntakeSkipCalculation {
-  const _$_CalculateWaterIntakeSkipCalculation();
+  _$_CalculateWaterIntakeSkipCalculation();
 
   @override
   String toString() {
@@ -735,7 +735,7 @@ class _$_CalculateWaterIntakeSkipCalculation
 
 abstract class _CalculateWaterIntakeSkipCalculation
     implements CalculateWaterIntakeState {
-  const factory _CalculateWaterIntakeSkipCalculation() =
+  factory _CalculateWaterIntakeSkipCalculation() =
       _$_CalculateWaterIntakeSkipCalculation;
 }
 
@@ -764,7 +764,7 @@ class __$CalculateWaterIntakeStartCalculationCopyWithImpl<$Res>
 /// @nodoc
 class _$_CalculateWaterIntakeStartCalculation
     implements _CalculateWaterIntakeStartCalculation {
-  const _$_CalculateWaterIntakeStartCalculation();
+  _$_CalculateWaterIntakeStartCalculation();
 
   @override
   String toString() {
@@ -853,7 +853,7 @@ class _$_CalculateWaterIntakeStartCalculation
 
 abstract class _CalculateWaterIntakeStartCalculation
     implements CalculateWaterIntakeState {
-  const factory _CalculateWaterIntakeStartCalculation() =
+  factory _CalculateWaterIntakeStartCalculation() =
       _$_CalculateWaterIntakeStartCalculation;
 }
 
@@ -892,7 +892,7 @@ class __$CalculateWaterIntakeErrorStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_CalculateWaterIntakeErrorState
     implements _CalculateWaterIntakeErrorState {
-  const _$_CalculateWaterIntakeErrorState(this.errorMessage)
+  _$_CalculateWaterIntakeErrorState(this.errorMessage)
       : assert(errorMessage != null);
 
   @override
@@ -994,7 +994,7 @@ class _$_CalculateWaterIntakeErrorState
 
 abstract class _CalculateWaterIntakeErrorState
     implements CalculateWaterIntakeState {
-  const factory _CalculateWaterIntakeErrorState(String errorMessage) =
+  factory _CalculateWaterIntakeErrorState(String errorMessage) =
       _$_CalculateWaterIntakeErrorState;
 
   String get errorMessage;
@@ -1023,7 +1023,7 @@ class __$CalculationFinishedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_CalculationFinished implements _CalculationFinished {
-  const _$_CalculationFinished();
+  _$_CalculationFinished();
 
   @override
   String toString() {
@@ -1110,5 +1110,5 @@ class _$_CalculationFinished implements _CalculationFinished {
 }
 
 abstract class _CalculationFinished implements CalculateWaterIntakeState {
-  const factory _CalculationFinished() = _$_CalculationFinished;
+  factory _CalculationFinished() = _$_CalculationFinished;
 }

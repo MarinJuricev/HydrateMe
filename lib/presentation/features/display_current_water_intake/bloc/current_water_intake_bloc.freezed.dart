@@ -291,7 +291,7 @@ class _$WaterIntakeStaredEvent
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'CurrentWaterIntakeEvent.started'));
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeEvent.started'));
   }
 
   @override
@@ -954,7 +954,7 @@ class _$WaterIntakeLoadingState
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.loading'));
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.loading'));
   }
 
   @override
@@ -1382,7 +1382,7 @@ class _$WaterIntakeCompletedState
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-        .add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.completed'));
+      ..add(DiagnosticsProperty('type', 'CurrentWaterIntakeState.completed'));
   }
 
   @override

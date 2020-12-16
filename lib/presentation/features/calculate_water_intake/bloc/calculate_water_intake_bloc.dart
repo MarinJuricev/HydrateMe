@@ -23,7 +23,7 @@ class CalculateWaterIntakeBloc
   CalculateWaterIntakeBloc({
     @required this.calculateDailyWaterIntake,
     @required this.shouldSkipCalculation,
-  }) : super(const CalculateWaterIntakeState.initial());
+  }) : super(CalculateWaterIntakeState.initial());
 
   @override
   Stream<CalculateWaterIntakeState> mapEventToState(
@@ -50,7 +50,7 @@ class CalculateWaterIntakeBloc
 
     yield dailyWaterIntakeResult.fold(
       (failure) => CalculateWaterIntakeState.error(failure.message),
-      (hydrateStatus) => const CalculateWaterIntakeState.calculationFinished(),
+      (hydrateStatus) => CalculateWaterIntakeState.calculationFinished(),
     );
   }
 
@@ -58,8 +58,8 @@ class CalculateWaterIntakeBloc
     final shouldSkipCalculationResult = await shouldSkipCalculation(NoParams());
 
     yield shouldSkipCalculationResult.fold(
-      (error) => const CalculateWaterIntakeState.startCalculation(),
-      (success) => const CalculateWaterIntakeState.skipCalculation(),
+      (error) => CalculateWaterIntakeState.startCalculation(),
+      (success) => CalculateWaterIntakeState.skipCalculation(),
     );
   }
 }

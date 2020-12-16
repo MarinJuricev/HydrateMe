@@ -19,7 +19,7 @@ class _$SettingsEventTearOff {
   }
 
 // ignore: unused_element
-  _OnSettingsChanged onSettingedChanged(SettingsItem settingsItemChanged) {
+  _OnSettingsChanged onSettingsChanged(SettingsItem settingsItemChanged) {
     return _OnSettingsChanged(
       settingsItemChanged,
     );
@@ -35,23 +35,23 @@ mixin _$SettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult started(),
-    @required TResult onSettingedChanged(SettingsItem settingsItemChanged),
+    @required TResult onSettingsChanged(SettingsItem settingsItemChanged),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult started(),
-    TResult onSettingedChanged(SettingsItem settingsItemChanged),
+    TResult onSettingsChanged(SettingsItem settingsItemChanged),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult started(_Started value),
-    @required TResult onSettingedChanged(_OnSettingsChanged value),
+    @required TResult onSettingsChanged(_OnSettingsChanged value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult started(_Started value),
-    TResult onSettingedChanged(_OnSettingsChanged value),
+    TResult onSettingsChanged(_OnSettingsChanged value),
     @required TResult orElse(),
   });
 }
@@ -110,10 +110,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult started(),
-    @required TResult onSettingedChanged(SettingsItem settingsItemChanged),
+    @required TResult onSettingsChanged(SettingsItem settingsItemChanged),
   }) {
     assert(started != null);
-    assert(onSettingedChanged != null);
+    assert(onSettingsChanged != null);
     return started();
   }
 
@@ -121,7 +121,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult started(),
-    TResult onSettingedChanged(SettingsItem settingsItemChanged),
+    TResult onSettingsChanged(SettingsItem settingsItemChanged),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -135,10 +135,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult started(_Started value),
-    @required TResult onSettingedChanged(_OnSettingsChanged value),
+    @required TResult onSettingsChanged(_OnSettingsChanged value),
   }) {
     assert(started != null);
-    assert(onSettingedChanged != null);
+    assert(onSettingsChanged != null);
     return started(this);
   }
 
@@ -146,7 +146,7 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult started(_Started value),
-    TResult onSettingedChanged(_OnSettingsChanged value),
+    TResult onSettingsChanged(_OnSettingsChanged value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -214,7 +214,7 @@ class _$_OnSettingsChanged implements _OnSettingsChanged {
 
   @override
   String toString() {
-    return 'SettingsEvent.onSettingedChanged(settingsItemChanged: $settingsItemChanged)';
+    return 'SettingsEvent.onSettingsChanged(settingsItemChanged: $settingsItemChanged)';
   }
 
   @override
@@ -239,23 +239,23 @@ class _$_OnSettingsChanged implements _OnSettingsChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult started(),
-    @required TResult onSettingedChanged(SettingsItem settingsItemChanged),
+    @required TResult onSettingsChanged(SettingsItem settingsItemChanged),
   }) {
     assert(started != null);
-    assert(onSettingedChanged != null);
-    return onSettingedChanged(settingsItemChanged);
+    assert(onSettingsChanged != null);
+    return onSettingsChanged(settingsItemChanged);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult started(),
-    TResult onSettingedChanged(SettingsItem settingsItemChanged),
+    TResult onSettingsChanged(SettingsItem settingsItemChanged),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (onSettingedChanged != null) {
-      return onSettingedChanged(settingsItemChanged);
+    if (onSettingsChanged != null) {
+      return onSettingsChanged(settingsItemChanged);
     }
     return orElse();
   }
@@ -264,23 +264,23 @@ class _$_OnSettingsChanged implements _OnSettingsChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult started(_Started value),
-    @required TResult onSettingedChanged(_OnSettingsChanged value),
+    @required TResult onSettingsChanged(_OnSettingsChanged value),
   }) {
     assert(started != null);
-    assert(onSettingedChanged != null);
-    return onSettingedChanged(this);
+    assert(onSettingsChanged != null);
+    return onSettingsChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult started(_Started value),
-    TResult onSettingedChanged(_OnSettingsChanged value),
+    TResult onSettingsChanged(_OnSettingsChanged value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (onSettingedChanged != null) {
-      return onSettingedChanged(this);
+    if (onSettingsChanged != null) {
+      return onSettingsChanged(this);
     }
     return orElse();
   }

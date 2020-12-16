@@ -49,17 +49,22 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
           child:
               BlocConsumer<CalculateWaterIntakeBloc, CalculateWaterIntakeState>(
             listenWhen: (previousState, newState) =>
-                newState == const CalculateWaterIntakeState.skipCalculation(),
-            listener: (BuildContext blocContext, state) => state.maybeWhen(
-              skipCalculation: () =>
-                  _navigateToDisplayCurrentIntake(blocContext),
-              orElse: null,
+                previousState == CalculateWaterIntakeState.skipCalculation() ||
+                newState == CalculateWaterIntakeState.skipCalculation(),
+            listener: (blocContext, state) => state.maybeMap(
+              // ignore: missing_return
+              skipCalculation: (_) =>
+                  Navigator.of(blocContext).pushReplacementNamed(
+                BottomNavigationPage.bottomNavigationPage,
+              ),
+              // ignore: missing_return
+              orElse: () {},
             ),
             buildWhen: (previousState, newState) =>
-                newState != const CalculateWaterIntakeState.skipCalculation(),
+                newState != CalculateWaterIntakeState.skipCalculation(),
             builder: (blocContext, state) {
-              return state.maybeWhen(
-                initial: () => HydrateLoadingIndicator(
+              return state.maybeMap(
+                initial: (_) => HydrateLoadingIndicator(
                   onStartCallback: () =>
                       BlocProvider.of<CalculateWaterIntakeBloc>(blocContext)
                           .add(
@@ -69,8 +74,8 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
                 error: (errorMessage) =>
                     //TODO Add a generic unknown error occured widget
                     Text('PlaceHolder Error Text: $errorMessage'),
-                calculationFinished: () => const WaterTransition(),
-                startCalculation: () => _buildInitialState(blocContext),
+                calculationFinished: (_) => const WaterTransition(),
+                startCalculation: (_) => _buildInitialState(blocContext),
                 orElse: () => Container(),
               );
             },
@@ -201,10 +206,6 @@ class _CalculateWaterIntakePageState extends State<CalculateWaterIntakePage> {
     );
   }
 }
-
-void _navigateToDisplayCurrentIntake(BuildContext context) =>
-    Navigator.of(context)
-        .pushReplacementNamed(BottomNavigationPage.bottomNavigationPage);
 
 void _sendCalculateEvent(
   Gender currentSelectedGender,

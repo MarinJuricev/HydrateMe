@@ -52,7 +52,7 @@ class SettingsPage extends StatelessWidget {
             onClick: () => showDialog(
               context: context,
               builder: (BuildContext context) => HydrateDialog(
-                title: "Change Wakeup time",
+                title: 'Change Wakeup time',
                 bodyContent: TimeSelection(
                   title: 'Change usual wake up time',
                   timeOfDay: uiUserData.wakeUpTime,
