@@ -12,6 +12,7 @@ class ParticlePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()..color = Colors.white.withAlpha(50);
 
+    // ignore: avoid_function_literals_in_foreach_calls
     particles.forEach((particle) {
       final double progress = particle.progress();
       final animation = particle.tween.transform(progress);

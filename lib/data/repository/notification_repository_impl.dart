@@ -29,15 +29,14 @@ class NotificationRepositoryImpl extends NotificationRepository {
       minute: sleepTime.minute,
     );
 
-    return Right(
-      Future.wait(
-        [
-          notificationService.scheduleDailyNotification(firstNotificationTime),
-          notificationService.scheduleDailyNotification(secondNotificationTime),
-          notificationService.scheduleDailyNotification(thirdNotificationTime),
-          notificationService.scheduleInstantNotification(),
-        ],
-      ),
-    );
+    // ignore: void_checks
+    return Right(Future.wait(
+      [
+        notificationService.scheduleDailyNotification(firstNotificationTime),
+        notificationService.scheduleDailyNotification(secondNotificationTime),
+        notificationService.scheduleDailyNotification(thirdNotificationTime),
+        notificationService.scheduleInstantNotification(),
+      ],
+    ));
   }
 }

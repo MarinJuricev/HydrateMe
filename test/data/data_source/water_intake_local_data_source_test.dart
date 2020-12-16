@@ -69,7 +69,7 @@ void main() {
       when(_mockLocalPersistenceProvider.saveKeyValuePair(
         boxToSaveInto: WaterIntakeLocalDataSourceImpl.hydrateStatusBox,
         valueToSave: testHydrateStatus,
-      )).thenAnswer((_) => Future.value(null));
+      )).thenAnswer((_) => Future.value());
       when(_mockHydrateStatusToLocalHydrateStatusMapper.map(testHydrateStatus))
           .thenAnswer((_) => Future.value(testLocalHydrateStatus));
       await sut.saveWaterIntake(testHydrateStatus);
@@ -116,7 +116,7 @@ void main() {
         _mockLocalPersistenceProvider.getFromKeyValuePair(
           boxToGetDataFrom: WaterIntakeLocalDataSourceImpl.hydrateStatusBox,
         ),
-      ).thenAnswer((_) => Future.value(null));
+      ).thenAnswer((_) => Future.value());
 
       expect(() => sut.getWaterIntake(),
           throwsA(const matcher.TypeMatcher<CacheException>()));

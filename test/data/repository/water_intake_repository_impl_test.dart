@@ -66,7 +66,7 @@ void main() {
     'saveCurrentWaterIntake should return Right Future<void> when waterIntakeDataLocalDataSource successfully saves data into the data source',
     () async {
       when(_mockWaterIntakeDataSource.saveWaterIntake(testHydrateStatus))
-          .thenAnswer((_) => Future.value(null));
+          .thenAnswer((_) => Future.value());
 
       final actualResult = await sut.saveCurrentWaterIntake(testHydrateStatus);
       const expectedResult = Right(null);

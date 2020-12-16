@@ -45,6 +45,7 @@ class _ParticlesState extends State<Particles> {
   }
 
   void _simulateParticles(Duration time) {
+    // ignore: avoid_function_literals_in_foreach_calls
     particles.forEach((particle) => particle.maintainRestart(time));
   }
 }

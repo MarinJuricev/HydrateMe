@@ -6,6 +6,7 @@ const initialGender = Gender.male;
 const initialWeight = 50;
 const initialWeightType = WeightType.kg;
 const initialDailyActivity = ActivityLevel.active;
+const int maximumWeight = 200;
 
 // Budget error messages
 const cantProvideNegativeNumber = "Can't provide a negative number";

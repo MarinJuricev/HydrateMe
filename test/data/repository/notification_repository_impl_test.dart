@@ -28,15 +28,15 @@ void main() {
 
       when(_mockNotificationService
               .scheduleDailyNotification(expectedFirstNotificationTime))
-          .thenAnswer((realInvocation) => Future.value(null));
+          .thenAnswer((realInvocation) => Future.value());
       when(_mockNotificationService
               .scheduleDailyNotification(expectedSecondNotificationTime))
-          .thenAnswer((realInvocation) => Future.value(null));
+          .thenAnswer((realInvocation) => Future.value());
       when(_mockNotificationService
               .scheduleDailyNotification(expectedThirdNotificationTime))
-          .thenAnswer((realInvocation) => Future.value(null));
+          .thenAnswer((realInvocation) => Future.value());
       when(_mockNotificationService.scheduleInstantNotification())
-          .thenAnswer((realInvocation) => Future.value(null));
+          .thenAnswer((realInvocation) => Future.value());
     },
   );
 

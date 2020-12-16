@@ -1,10 +1,10 @@
-import 'package:HydrateMe/domain/repository/water_intake_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 import '../../core/notifications/notification_setup.dart';
+import '../../domain/repository/water_intake_repository.dart';
 
 abstract class NotificationService {
   Future<void> scheduleDailyNotification(TimeOfDay hourToSchedule);
@@ -26,7 +26,7 @@ class NotificationServiceImpl extends NotificationService {
     return repositoryResult.fold(
       // Fail silently in case of an error. Idealy we would notify crashliytics
       // of a failure here for whatever reason, but for this mini personal app this is "acceptable"
-      (error) => Future.value(null),
+      (error) => Future.value(),
       (hydrateStatus) async {
         await flutterLocalNotificationsPlugin.zonedSchedule(
             generateNotificationId(timeToSchedule),
@@ -73,7 +73,7 @@ class NotificationServiceImpl extends NotificationService {
     return repositoryResult.fold(
       // Fail silently in case of an error. Idealy we would notify crashliytics
       // of a failure here for whatever reason, but for this mini personal app this is "acceptable"
-      (error) => Future.value(null),
+      (error) => Future.value(),
       (hydrateStatus) async {
         const AndroidNotificationDetails androidPlatformChannelSpecifics =
             AndroidNotificationDetails(
@@ -86,7 +86,7 @@ class NotificationServiceImpl extends NotificationService {
         );
         const NotificationDetails platformChannelSpecifics =
             NotificationDetails(android: androidPlatformChannelSpecifics);
-        return flutterLocalNotificationsPlugin.show(
+        await flutterLocalNotificationsPlugin.show(
           0,
           'Remember to drink your water',
           'Current intake ${hydrateStatus.formattedCurrentIntake}',

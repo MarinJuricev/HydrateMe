@@ -72,7 +72,7 @@ void main() {
       when(_mockLocalPersistenceProvider.saveKeyValuePair(
         boxToSaveInto: UserDataLocalDataSourceImpl.userDataBox,
         valueToSave: testUserData,
-      )).thenAnswer((_) => Future.value(null));
+      )).thenAnswer((_) => Future.value());
       when(_mockUserDataToLocalUserDataMapper.map(testUserData))
           .thenAnswer((_) => Future.value(testLocalUserData));
       await sut.saveUserData(testUserData);
@@ -117,7 +117,7 @@ void main() {
         _mockLocalPersistenceProvider.getFromKeyValuePair(
           boxToGetDataFrom: UserDataLocalDataSourceImpl.userDataBox,
         ),
-      ).thenAnswer((_) => Future.value(null));
+      ).thenAnswer((_) => Future.value());
 
       expect(() => sut.getUserData(),
           throwsA(const matcher.TypeMatcher<CacheException>()));

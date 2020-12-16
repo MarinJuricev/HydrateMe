@@ -90,7 +90,6 @@ class WeightNumberPicker extends StatelessWidget {
   final int currentWeight;
 
   final Color weightPickerColor;
-  final int _maximumWeight = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +102,7 @@ class WeightNumberPicker extends StatelessWidget {
       child: NumberPicker.integer(
         initialValue: isWeightTypeKg ? currentWeight : currentWeight * 2,
         minValue: 0,
-        maxValue: isWeightTypeKg ? _maximumWeight : _maximumWeight * 2,
+        maxValue: isWeightTypeKg ? maximumWeight : maximumWeight * 2,
         infiniteLoop: true,
         highlightSelectedValue: false,
         decoration: BoxDecoration(

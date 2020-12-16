@@ -56,7 +56,7 @@ class _TimeSelectionState extends State<TimeSelection> {
     );
   }
 
-  void _pickTime() async {
+  Future<void> _pickTime() async {
     final TimeOfDay newWakeUpTime = await showTimePicker(
       context: context,
       initialTime: widget.timeOfDay,

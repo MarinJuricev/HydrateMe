@@ -69,7 +69,7 @@ void main() {
     'saveUserData should return Right Future<void> when userDataLocalDataSource successfully saves data into the data source',
     () async {
       when(_mockUserDataLocalDataSource.saveUserData(testUserData))
-          .thenAnswer((_) => Future.value(null));
+          .thenAnswer((_) => Future.value());
 
       final actualResult = await sut.saveUserData(testUserData);
       const expectedResult = Right(null);
