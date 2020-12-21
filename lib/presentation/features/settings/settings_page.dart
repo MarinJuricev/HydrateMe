@@ -131,17 +131,20 @@ class SettingsPage extends StatelessWidget {
           ),
           HydrateListTile(
             title: 'Gender',
-            subtitle: '$uiUserData.gender',
+            // ignore: unnecessary_string_interpolations
+            subtitle: '${uiUserData.gender}',
             onClick: () {},
           ),
           HydrateListTile(
             title: 'Kg/Lbs',
-            subtitle: '$uiUserData.weightType',
+            // ignore: unnecessary_string_interpolations
+            subtitle: '${uiUserData.weightType}',
             onClick: () {},
           ),
           HydrateListTile(
             title: 'Activity level',
-            subtitle: '$uiUserData.activityLevel',
+            // ignore: unnecessary_string_interpolations
+            subtitle: '${uiUserData.activityLevel}',
             onClick: () {},
           ),
         ],
