@@ -1,7 +1,7 @@
+import 'package:HydrateMe/presentation/common/widgets/hydrate_waves.dart';
+import 'package:HydrateMe/presentation/common/widgets/hydrate_waves_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
 
 import '../../../../domain/model/hydrate_status.dart';
 import '../bloc/current_water_intake_bloc.dart';

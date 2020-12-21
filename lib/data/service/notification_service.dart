@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 import '../../core/notifications/notification_setup.dart';
@@ -29,22 +28,22 @@ class NotificationServiceImpl extends NotificationService {
       (error) => Future.value(),
       (hydrateStatus) async {
         await flutterLocalNotificationsPlugin.zonedSchedule(
-            generateNotificationId(timeToSchedule),
-            'Remember to drink your water',
-            'Current intake ${hydrateStatus.formattedCurrentIntake}',
-            _nextInstanceOfProvidedHour(timeToSchedule),
-            const NotificationDetails(
-              android: AndroidNotificationDetails(
-                'HydrateMe daily notification channel id',
-                'Daily water intake reminder',
-                'Notifications used to remind you of your daily water intake',
-              ),
+          generateNotificationId(timeToSchedule),
+          'Remember to drink your water',
+          'Current intake ${hydrateStatus.formattedCurrentIntake}',
+          _nextInstanceOfProvidedHour(timeToSchedule),
+          const NotificationDetails(
+            android: AndroidNotificationDetails(
+              'HydrateMe daily notification channel id',
+              'Daily water intake reminder',
+              'Notifications used to remind you of your daily water intake',
             ),
-            androidAllowWhileIdle: true,
-            uiLocalNotificationDateInterpretation:
-                UILocalNotificationDateInterpretation.absoluteTime,
-            scheduledNotificationRepeatFrequency:
-                ScheduledNotificationRepeatFrequency.daily);
+          ),
+          androidAllowWhileIdle: true,
+          uiLocalNotificationDateInterpretation:
+              UILocalNotificationDateInterpretation.absoluteTime,
+          matchDateTimeComponents: DateTimeComponents.dayOfWeekAndTime,
+        );
       },
     );
   }

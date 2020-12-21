@@ -1,7 +1,7 @@
+import 'package:HydrateMe/presentation/common/widgets/hydrate_waves.dart';
+import 'package:HydrateMe/presentation/common/widgets/hydrate_waves_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
 
 import '../../bottom_nav/bottom_navigation_page.dart';
 
