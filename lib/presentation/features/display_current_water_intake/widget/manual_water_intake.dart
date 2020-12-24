@@ -54,14 +54,16 @@ class _ManualWaterIntakeState extends State<ManualWaterIntake> {
   void _onManualAddClicked(BuildContext context) {
     BlocProvider.of<CurrentWaterIntakeBloc>(context).add(
       CurrentWaterIntakeEvent.manualIncrease(
-          waterToAdd: currentManualEntryText),
+        waterToAdd: currentManualEntryText,
+      ),
     );
   }
 
   void _onManualDecreaseClicked() {
     BlocProvider.of<CurrentWaterIntakeBloc>(context).add(
       CurrentWaterIntakeEvent.manualDecrease(
-          waterToSubtract: currentManualEntryText),
+        waterToSubtract: currentManualEntryText,
+      ),
     );
   }
 }

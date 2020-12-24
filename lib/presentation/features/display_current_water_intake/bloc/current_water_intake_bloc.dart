@@ -74,7 +74,8 @@ class CurrentWaterIntakeBloc
   }
 
   Stream<CurrentWaterIntakeState> _handleManualIncrease(
-      String waterToAdd) async* {
+    String waterToAdd,
+  ) async* {
     final useCaseResult = await manualAddWaterIntake(waterToAdd);
 
     yield useCaseResult.fold(
@@ -85,7 +86,8 @@ class CurrentWaterIntakeBloc
   }
 
   Stream<CurrentWaterIntakeState> _handleManualDecrease(
-      String waterToDecrease) async* {
+    String waterToDecrease,
+  ) async* {
     final useCaseResult = await manualDecraseWaterIntake(waterToDecrease);
 
     yield useCaseResult.fold(

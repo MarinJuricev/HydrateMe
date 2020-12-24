@@ -1,3 +1,6 @@
+import 'package:HydrateMe/core/common/constants/constants.dart';
+import 'package:flushbar/flushbar.dart';
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,9 +17,25 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
       backgroundColor: Colors.blue,
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
-        child: BlocBuilder<CurrentWaterIntakeBloc, CurrentWaterIntakeState>(
+        child: BlocConsumer<CurrentWaterIntakeBloc, CurrentWaterIntakeState>(
+          listenWhen: (previousState, currentState) {
+            return previousState ==
+                    const CurrentWaterIntakeState.error(genericErrorMessage) ||
+                currentState ==
+                    const CurrentWaterIntakeState.error(genericErrorMessage);
+          },
+          listener: (context, state) => state.maybeMap(
+              error: (errorState) =>
+                  FlushbarHelper.createError(message: errorState.errorMessage)
+                      .show(context),
+              orElse: () => null),
+          buildWhen: (previousState, currentState) =>
+              previousState !=
+                  const CurrentWaterIntakeState.error(genericErrorMessage) &&
+              currentState !=
+                  const CurrentWaterIntakeState.error(genericErrorMessage),
           builder: (context, state) {
-            return state.when(
+            return state.maybeWhen(
               initial: (HydrateStatus initialHydrateStatus) =>
                   _buildWaterIntake(initialHydrateStatus),
               updated: (HydrateStatus hydrateStatus) =>
@@ -30,8 +49,8 @@ class DisplayCurrentWaterIntakePage extends StatelessWidget {
                     dailyIntakeGoal: 0,
                     date: DateTime.now()),
               ),
-              error: (String errorMessage) => Text(errorMessage),
               loading: () => _buildLoading(context),
+              orElse: () => null,
             );
           },
         ),
