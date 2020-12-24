@@ -52,6 +52,7 @@ class HydrateDialog extends StatelessWidget {
             children: <Widget>[
               Text(
                 title,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.w700,
@@ -60,14 +61,17 @@ class HydrateDialog extends StatelessWidget {
               const SizedBox(height: 16.0),
               bodyContent,
               const SizedBox(height: 24.0),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: FlatButton(
-                  onPressed: () {
-                    onApplyClicked();
-                    Navigator.of(context).pop(); // To close the dialog
-                  },
-                  child: Text(buttonText ?? 'Apply'),
+              Visibility(
+                visible: onApplyClicked != null,
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: FlatButton(
+                    onPressed: () {
+                      onApplyClicked();
+                      Navigator.of(context).pop(); // To close the dialog
+                    },
+                    child: Text(buttonText ?? 'Apply'),
+                  ),
                 ),
               ),
             ],

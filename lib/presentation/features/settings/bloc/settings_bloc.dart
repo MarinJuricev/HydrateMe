@@ -39,5 +39,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   }
 
   Stream<SettingsState> _handleOnSettingsChanged(
-      SettingsItem newSettingsItem) async* {}
+      SettingsItem newSettingsItem) async* {
+    //TODO Actually handle this
+  }
 }

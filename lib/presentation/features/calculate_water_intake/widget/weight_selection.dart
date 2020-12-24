@@ -3,6 +3,7 @@ import 'package:numberpicker/numberpicker.dart';
 
 import '../../../../core/common/constants/constants.dart';
 import '../../../../domain/model/weight_type.dart';
+import 'kg_lbs_selection.dart';
 
 class WeightSelection extends StatefulWidget {
   final Function(WeightType value) onWeightTypeSwitchCallback;
@@ -36,38 +37,9 @@ class _WeightSelectionState extends State<WeightSelection> {
         ),
         Expanded(
           child: Align(
-            child: ToggleButtons(
-              selectedColor: Colors.blue,
-              splashColor: Colors.white,
-              borderColor: Colors.white,
-              fillColor: Colors.white,
-              borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-              selectedBorderColor: Colors.white,
-              borderWidth: 2.0,
-              onPressed: (int index) {
-                setState(() {
-                  for (int buttonIndex = 0;
-                      buttonIndex < _isKgSelected.length;
-                      buttonIndex++) {
-                    if (buttonIndex == index) {
-                      _isKgSelected[buttonIndex] = true;
-                    } else {
-                      _isKgSelected[buttonIndex] = false;
-                    }
-
-                    if (index == 0) {
-                      widget.onWeightTypeSwitchCallback(WeightType.kg);
-                    } else {
-                      widget.onWeightTypeSwitchCallback(WeightType.lbs);
-                    }
-                  }
-                });
-              },
-              isSelected: _isKgSelected,
-              children: const [
-                Text('KG'),
-                Text('LBS'),
-              ],
+            child: KgLbsSelection(
+              isKgSelected: _isKgSelected,
+              onWeightTypeSwitchCallback: widget.onWeightTypeSwitchCallback,
             ),
           ),
         ),

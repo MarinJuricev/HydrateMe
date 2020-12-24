@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../domain/model/activity_level.dart';
+import '../../../domain/model/gender.dart';
 import '../../../domain/model/settings_item.dart';
+import '../../../domain/model/weight_type.dart';
 import '../../common/widgets/hydrate_dialog.dart';
 import '../../common/widgets/hydrate_list_tile.dart';
+import '../calculate_water_intake/widget/activity_selection.dart';
+import '../calculate_water_intake/widget/gender_toggle.dart';
+import '../calculate_water_intake/widget/kg_lbs_selection.dart';
 import '../calculate_water_intake/widget/time_selection.dart';
 import '../calculate_water_intake/widget/weight_selection.dart';
 import 'bloc/settings_bloc.dart';
@@ -133,19 +139,74 @@ class SettingsPage extends StatelessWidget {
             title: 'Gender',
             // ignore: unnecessary_string_interpolations
             subtitle: '${uiUserData.gender}',
-            onClick: () {},
+            onClick: () => showDialog(
+              context: context,
+              builder: (BuildContext context) => HydrateDialog(
+                title: "Change Gender",
+                bodyContent: GenderToggle(
+                  onGenderSwitchCallback: (Gender newGender) {
+                    BlocProvider.of<SettingsBloc>(context).add(
+                      SettingsEvent.onSettingsChanged(
+                        SettingsItem.updateGender(
+                          updatedGender: newGender,
+                        ),
+                      ),
+                    );
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+            ),
           ),
           HydrateListTile(
             title: 'Kg/Lbs',
             // ignore: unnecessary_string_interpolations
             subtitle: '${uiUserData.weightType}',
-            onClick: () {},
+            onClick: () => showDialog(
+              context: context,
+              builder: (BuildContext context) => HydrateDialog(
+                title: "Change Current Weight Type",
+                onApplyClicked: () {},
+                bodyContent: KgLbsSelection(
+                  isKgSelected: [
+                    uiUserData.weightType == 'Kg',
+                    uiUserData.weightType == 'Kg'
+                  ],
+                  onWeightTypeSwitchCallback: (WeightType newWeightType) {
+                    BlocProvider.of<SettingsBloc>(context).add(
+                      SettingsEvent.onSettingsChanged(
+                        SettingsItem.updateWeightType(
+                          updatedWeightType: newWeightType,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
           ),
           HydrateListTile(
             title: 'Activity level',
             // ignore: unnecessary_string_interpolations
             subtitle: '${uiUserData.activityLevel}',
-            onClick: () {},
+            onClick: () => showDialog(
+              context: context,
+              builder: (BuildContext context) => HydrateDialog(
+                onApplyClicked: () {},
+                title: "Change Activity level",
+                bodyContent: ActivitySelection(
+                  onActivityChangeCallback: (ActivityLevel newActivityLevel) {
+                    BlocProvider.of<SettingsBloc>(context).add(
+                      SettingsEvent.onSettingsChanged(
+                        SettingsItem.updateActivityLevel(
+                          updatedActivityLevel: newActivityLevel,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
           ),
         ],
       ).toList(),
