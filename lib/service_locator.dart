@@ -1,3 +1,4 @@
+import 'package:HydrateMe/domain/usecases/update_settings_data.dart';
 import 'package:HydrateMe/presentation/features/settings/mapper/user_data_to_ui_user_data_mapper.dart';
 import 'package:get_it/get_it.dart';
 
@@ -68,8 +69,10 @@ Future<void> init() async {
         calculateDailyWaterIntake: getIt<CalculateDailyWaterIntake>(),
         shouldSkipCalculation: getIt<ShouldSkipCalculation>(),
       ));
-  getIt.registerFactory(
-      () => SettingsBloc(getSettingsData: getIt<GetSettingsData>()));
+  getIt.registerFactory(() => SettingsBloc(
+        getSettingsData: getIt<GetSettingsData>(),
+        updateSettingsData: getIt<UpdateSettingsData>(),
+      ));
 
   //Usecase
   getIt.registerFactory(
@@ -113,6 +116,13 @@ Future<void> init() async {
   getIt.registerFactory(() => GetSettingsData(
       getUserData: getIt<GetUserData>(),
       userDataToUiUserDataMapper: getIt<Mapper<UiUserData, UserData>>()));
+  getIt.registerFactory(
+    () => UpdateSettingsData(
+      getUserData: getIt<GetUserData>(),
+      getSettingsData: getIt<GetSettingsData>(),
+      saveUserData: getIt<SaveUserData>(),
+    ),
+  );
 
   //Datasources
   getIt.registerLazySingleton<LocalPersistenceProvider>(

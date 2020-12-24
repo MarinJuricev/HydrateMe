@@ -29,6 +29,7 @@ class HydrateDialog extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Container(
+          width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.only(
             top: 76.0,
             bottom: 12.0,

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:HydrateMe/domain/model/settings_item.dart';
+import 'package:HydrateMe/domain/usecases/update_settings_data.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,9 +15,11 @@ part 'settings_state.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   final GetSettingsData getSettingsData;
+  final UpdateSettingsData updateSettingsData;
 
   SettingsBloc({
     @required this.getSettingsData,
+    @required this.updateSettingsData,
   }) : super(const _Initial());
 
   @override
@@ -40,6 +43,11 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 
   Stream<SettingsState> _handleOnSettingsChanged(
       SettingsItem newSettingsItem) async* {
-    //TODO Actually handle this
+    final useCaseResult = await updateSettingsData(newSettingsItem);
+
+    yield useCaseResult.fold(
+      (error) => SettingsState.error(error.message),
+      (uiUserData) => SettingsState.loaded(uiUserData),
+    );
   }
 }
