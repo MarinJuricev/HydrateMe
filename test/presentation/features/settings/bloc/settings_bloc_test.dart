@@ -1,8 +1,6 @@
 import 'package:HydrateMe/core/common/constants/constants.dart';
 import 'package:HydrateMe/core/failure/base_failure.dart';
-import 'package:HydrateMe/core/notifications/notification_setup.dart';
 import 'package:HydrateMe/core/usecase/base_usecase.dart';
-import 'package:HydrateMe/domain/model/gender.dart';
 import 'package:HydrateMe/domain/model/settings_item.dart';
 import 'package:HydrateMe/domain/usecases/get_settings_data.dart';
 import 'package:HydrateMe/domain/usecases/update_settings_data.dart';
