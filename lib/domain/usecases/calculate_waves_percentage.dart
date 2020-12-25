@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../core/common/constants/constants.dart';
@@ -125,12 +126,15 @@ class CalculateWavesPercentage
   }
 }
 
-class CalculateWavesPercentageParams {
-  double updatedValue;
-  double waterMaximumHeight;
+class CalculateWavesPercentageParams extends Equatable {
+  final double updatedValue;
+  final double waterMaximumHeight;
 
-  CalculateWavesPercentageParams({
+  const CalculateWavesPercentageParams({
     @required this.updatedValue,
     @required this.waterMaximumHeight,
   });
+
+  @override
+  List<Object> get props => [updatedValue, waterMaximumHeight];
 }

@@ -83,7 +83,7 @@ void main() {
       setupUserDataSuccessCase();
 
       final actualResult = await sut(
-        CalculateWavesPercentageParams(
+        const CalculateWavesPercentageParams(
           updatedValue: 70,
           waterMaximumHeight: 100,
         ),
@@ -113,7 +113,7 @@ void main() {
       setupUserDataSuccessCase();
 
       final actualResult = await sut(
-        CalculateWavesPercentageParams(
+        const CalculateWavesPercentageParams(
           updatedValue: 110,
           waterMaximumHeight: 100,
         ),
@@ -143,7 +143,7 @@ void main() {
       setupWaterIntakeFailureCase();
 
       final actualResult = await sut(
-        CalculateWavesPercentageParams(
+        const CalculateWavesPercentageParams(
           updatedValue: -10,
           waterMaximumHeight: 100,
         ),
@@ -162,7 +162,7 @@ void main() {
       setupUserDataFailureCase();
 
       final actualResult = await sut(
-        CalculateWavesPercentageParams(
+        const CalculateWavesPercentageParams(
           updatedValue: -10,
           waterMaximumHeight: 100,
         ),

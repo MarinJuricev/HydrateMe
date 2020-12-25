@@ -45,6 +45,16 @@ class CurrentWaterIntakeBloc
     );
   }
 
+  Stream<CurrentWaterIntakeState> _handleStartedEvent() async* {
+    final useCaseResult = await getCurrentHydrateStatus(NoParams());
+
+    yield useCaseResult.fold(
+      (failure) => CurrentWaterIntakeState.error(failure.message),
+      (newHydrationStatus) =>
+          CurrentWaterIntakeState.initial(newHydrationStatus),
+    );
+  }
+
   Stream<CurrentWaterIntakeState> _handleUpdateWaterIntake(
     double updatedValue,
     double waterMaximumHeight,
@@ -60,16 +70,6 @@ class CurrentWaterIntakeBloc
       (failure) => CurrentWaterIntakeState.error(failure.message),
       (newHydrationStatus) =>
           CurrentWaterIntakeState.updated(newHydrationStatus),
-    );
-  }
-
-  Stream<CurrentWaterIntakeState> _handleStartedEvent() async* {
-    final useCaseResult = await getCurrentHydrateStatus(NoParams());
-
-    yield useCaseResult.fold(
-      (failure) => CurrentWaterIntakeState.error(failure.message),
-      (newHydrationStatus) =>
-          CurrentWaterIntakeState.initial(newHydrationStatus),
     );
   }
 
